@@ -5,6 +5,8 @@ import unittest
 from multi_agent_system.knowledge.supply_graph_database import (
     SupplyGraphDatabase,
     ValidationError,
+    DuplicateGroup,
+    MergeResult,
 )
 from multi_agent_system.knowledge.supply_graph_models import (
     SupplyEntity,
@@ -1076,8 +1078,296 @@ class TestMultiCriteriaQueries(unittest.TestCase):
         self.assertEqual(results[0].id, "product_1")
 
 
-if __name__ == "__main__":
-    unittest.main()
+class TestEntityNormalization(unittest.TestCase):
+    """Test cases for entity normalization and deduplication."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+
+    def test_calculate_entity_similarity_identical(self):
+        """Test similarity of identical entities."""
+        entity1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone 15", "price": 999.99},
+        )
+        entity2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone 15", "price": 999.99},
+        )
+
+        similarity = self.db.calculate_entity_similarity(entity1, entity2)
+
+        self.assertEqual(similarity, 1.0)
+
+    def test_calculate_entity_similarity_same_name_different_type(self):
+        """Test similarity when names match but types differ."""
+        entity1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        entity2 = SupplyEntity(
+            id="service_1",
+            type=SupplyEntityType.SERVICE,
+            properties={"name": "Test Product"},
+        )
+
+        similarity = self.db.calculate_entity_similarity(entity1, entity2)
+
+        # Same name but different type - should have type penalty
+        self.assertLess(similarity, 1.0)
+        self.assertGreater(similarity, 0.5)
+
+    def test_calculate_entity_similarity_different_names(self):
+        """Test similarity with different names."""
+        entity1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone 15"},
+        )
+        entity2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Samsung Galaxy"},
+        )
+
+        similarity = self.db.calculate_entity_similarity(entity1, entity2)
+
+        self.assertLess(similarity, 0.5)
+
+    def test_calculate_entity_similarity_substring(self):
+        """Test similarity with substring match."""
+        entity1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone 15 Pro"},
+        )
+        entity2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone 15"},
+        )
+
+        similarity = self.db.calculate_entity_similarity(entity1, entity2)
+
+        # Should get boost for substring match
+        self.assertGreater(similarity, 0.7)
+
+    def test_find_potential_duplicates_exact_match(self):
+        """Test finding exact duplicate entities."""
+        # Add duplicate entities
+        entities = [
+            SupplyEntity(
+                id="product_1",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": "Test Product", "price": 99.99},
+            ),
+            SupplyEntity(
+                id="product_2",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": "Test Product", "price": 99.99},
+            ),
+        ]
+        for e in entities:
+            self.db.create_entity(e)
+
+        duplicates = self.db.find_potential_duplicates(
+            entity_type=SupplyEntityType.PRODUCT,
+            similarity_threshold=0.8,
+        )
+
+        self.assertEqual(len(duplicates), 1)
+        self.assertEqual(duplicates[0].count, 2)
+
+    def test_find_potential_duplicates_no_duplicates(self):
+        """Test when no duplicates exist."""
+        entities = [
+            SupplyEntity(
+                id="product_1",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": "iPhone 15"},
+            ),
+            SupplyEntity(
+                id="product_2",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": "Samsung Galaxy"},
+            ),
+        ]
+        for e in entities:
+            self.db.create_entity(e)
+
+        duplicates = self.db.find_potential_duplicates(
+            entity_type=SupplyEntityType.PRODUCT,
+            similarity_threshold=0.8,
+        )
+
+        self.assertEqual(len(duplicates), 0)
+
+    def test_find_potential_duplicates_filter_by_type(self):
+        """Test filtering duplicates by entity type."""
+        # Add products and services with similar names
+        entities = [
+            SupplyEntity(
+                id="product_1",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": "Repair Service"},
+            ),
+            SupplyEntity(
+                id="service_1",
+                type=SupplyEntityType.SERVICE,
+                properties={"name": "Repair Service"},
+            ),
+        ]
+        for e in entities:
+            self.db.create_entity(e)
+
+        # Find duplicates only for products
+        product_dupes = self.db.find_potential_duplicates(
+            entity_type=SupplyEntityType.PRODUCT,
+            similarity_threshold=0.8,
+        )
+
+        self.assertEqual(len(product_dupes), 0)
+
+        # Find duplicates for services
+        service_dupes = self.db.find_potential_duplicates(
+            entity_type=SupplyEntityType.SERVICE,
+            similarity_threshold=0.8,
+        )
+
+        self.assertEqual(len(service_dupes), 0)
+
+    def test_merge_entities_basic(self):
+        """Test basic merge of two entities."""
+        # Create entities with relations
+        product1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product A", "price": 100},
+        )
+        product2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product A", "color": "red"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+
+        for e in [product1, product2, brand]:
+            self.db.create_entity(e)
+
+        # Add relations
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        # Merge
+        result = self.db.merge_entities(
+            entity_ids=["product_1", "product_2"],
+            canonical_id="product_1",
+        )
+
+        self.assertEqual(result.merged_entity.id, "product_1")
+        self.assertIn("price", result.merged_entity.properties)
+        self.assertIn("color", result.merged_entity.properties)
+        self.assertEqual(result.relations_preserved, 2)
+
+    def test_merge_entities_deletes_duplicates(self):
+        """Test that merge deletes duplicate entities."""
+        product1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product A"},
+        )
+        product2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product A"},
+        )
+
+        for e in [product1, product2]:
+            self.db.create_entity(e)
+
+        self.assertEqual(self.db.count(), 2)
+
+        result = self.db.merge_entities(
+            entity_ids=["product_1", "product_2"],
+            canonical_id="product_1",
+        )
+
+        self.assertEqual(self.db.count(), 1)
+        self.assertIsNotNone(self.db.get_entity("product_1"))
+        self.assertIsNone(self.db.get_entity("product_2"))
+
+    def test_merge_entities_invalid_entity(self):
+        """Test merge with non-existent entity raises error."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product A"},
+        )
+        self.db.create_entity(entity)
+
+        with self.assertRaises(ValueError):
+            self.db.merge_entities(
+                entity_ids=["product_1", "nonexistent"],
+            )
+
+    def test_deduplicate(self):
+        """Test automatic deduplication."""
+        # Create multiple duplicate products
+        products = [
+            SupplyEntity(id="p1", type=SupplyEntityType.PRODUCT, properties={"name": "Phone"}),
+            SupplyEntity(id="p2", type=SupplyEntityType.PRODUCT, properties={"name": "Phone"}),
+            SupplyEntity(id="p3", type=SupplyEntityType.PRODUCT, properties={"name": "Tablet"}),
+            SupplyEntity(id="p4", type=SupplyEntityType.PRODUCT, properties={"name": "Tablet"}),
+        ]
+        for p in products:
+            self.db.create_entity(p)
+
+        results = self.db.deduplicate(similarity_threshold=0.8)
+
+        # Should have merged 2 groups (phones and tablets)
+        self.assertEqual(len(results), 2)
+        # Should have 2 entities left (one canonical per group)
+        self.assertEqual(self.db.count(), 2)
+
+    def test_deduplicate_empty_graph(self):
+        """Test deduplication on empty graph."""
+        results = self.db.deduplicate()
+
+        self.assertEqual(len(results), 0)
+
+    def test_get_normalized_entity_representatives(self):
+        """Test getting normalized entity representatives."""
+        # Create products with duplicates
+        entities = [
+            SupplyEntity(id="p1", type=SupplyEntityType.PRODUCT, properties={"name": "Phone"}),
+            SupplyEntity(id="p2", type=SupplyEntityType.PRODUCT, properties={"name": "Phone"}),
+            SupplyEntity(id="p3", type=SupplyEntityType.PRODUCT, properties={"name": "Tablet"}),
+        ]
+        for e in entities:
+            self.db.create_entity(e)
+
+        representatives = self.db.get_normalized_entity_representatives(
+            entity_type=SupplyEntityType.PRODUCT
+        )
+
+        # Should return 2 - one for Phone group, one for Tablet
+        self.assertEqual(len(representatives), 2)
 
 
 if __name__ == "__main__":

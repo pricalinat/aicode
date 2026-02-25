@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Callable
+import re
 
 from .supply_graph_models import (
     SupplyEntity,
@@ -28,6 +29,27 @@ class ValidationError(Exception):
 class CycleDetectedError(Exception):
     """Raised when a cycle is detected in the graph."""
     pass
+
+
+@dataclass
+class DuplicateGroup:
+    """A group of duplicate entities."""
+    canonical_id: str
+    entities: list[SupplyEntity]
+    similarity_scores: list[float]
+
+    @property
+    def count(self) -> int:
+        return len(self.entities)
+
+
+@dataclass
+class MergeResult:
+    """Result of a merge operation."""
+    merged_entity: SupplyEntity
+    source_ids: list[str]
+    relations_preserved: int
+    relations_removed: int
 
 
 @dataclass
@@ -1058,6 +1080,328 @@ class SupplyGraphDatabase:
             visited.update(current_level)
 
         return result
+
+    # Entity Normalization and Deduplication
+
+    def _normalize_text(self, text: str) -> str:
+        """Normalize text for comparison.
+
+        Converts to lowercase, removes extra whitespace, and strips special chars.
+        """
+        text = text.lower().strip()
+        text = re.sub(r'\s+', ' ', text)
+        text = re.sub(r'[^\w\s]', '', text)
+        return text
+
+    def calculate_entity_similarity(
+        self,
+        entity1: SupplyEntity,
+        entity2: SupplyEntity,
+    ) -> float:
+        """Calculate similarity score between two entities.
+
+        Uses multiple factors:
+        - Name similarity (edit distance based)
+        - Property overlap
+        - Same entity type (bonus)
+
+        Returns score between 0.0 and 1.0.
+        """
+        if entity1.id == entity2.id:
+            return 1.0
+
+        # Type bonus: same type is more likely to be duplicate
+        type_bonus = 0.0
+        if entity1.type == entity2.type:
+            type_bonus = 0.2
+
+        # Name similarity
+        name1 = self._normalize_text(entity1.name)
+        name2 = self._normalize_text(entity2.name)
+
+        if name1 == name2:
+            name_score = 1.0
+        elif name1 in name2 or name2 in name1:
+            name_score = 0.8
+        else:
+            # Simple character-based similarity
+            name_score = self._calculate_string_similarity(name1, name2)
+
+        # Property similarity
+        props1 = set(entity1.properties.keys())
+        props2 = set(entity2.properties.keys())
+
+        if not props1 or not props2:
+            prop_score = 0.0
+        else:
+            common = props1 & props2
+            total = props1 | props2
+            prop_score = len(common) / len(total) if total else 0.0
+
+        # Combine scores with weights
+        score = (name_score * 0.6 + prop_score * 0.2 + type_bonus)
+        return min(1.0, max(0.0, score))
+
+    def _calculate_string_similarity(self, s1: str, s2: str) -> float:
+        """Calculate similarity between two strings using character overlap.
+
+        Returns score between 0.0 and 1.0.
+        """
+        if not s1 or not s2:
+            return 0.0
+
+        # Character-level Jaccard similarity
+        set1 = set(s1.split())
+        set2 = set(s2.split())
+
+        if not set1 or not set2:
+            return 0.0
+
+        intersection = set1 & set2
+        union = set1 | set2
+
+        return len(intersection) / len(union) if union else 0.0
+
+    def find_potential_duplicates(
+        self,
+        entity_type: SupplyEntityType | None = None,
+        similarity_threshold: float = 0.8,
+    ) -> list[DuplicateGroup]:
+        """Find potential duplicate entities in the graph.
+
+        Args:
+            entity_type: Optional entity type to filter by
+            similarity_threshold: Minimum similarity score (0.0-1.0) to consider as duplicate
+
+        Returns:
+            List of DuplicateGroup objects, each containing entities that may be duplicates
+        """
+        candidates = list(self._entities.values())
+        if entity_type:
+            candidates = [e for e in candidates if e.type == entity_type]
+
+        duplicate_groups: dict[str, DuplicateGroup] = {}
+        processed: set[tuple[str, str]] = set()
+
+        for i, entity1 in enumerate(candidates):
+            for entity2 in candidates[i + 1:]:
+                # Skip if already processed
+                pair = tuple(sorted([entity1.id, entity2.id]))
+                if pair in processed:
+                    continue
+
+                similarity = self.calculate_entity_similarity(entity1, entity2)
+
+                if similarity >= similarity_threshold:
+                    processed.add(pair)
+
+                    # Check if either entity is already in a group
+                    found_group = None
+                    for group in duplicate_groups.values():
+                        if entity1.id in [e.id for e in group.entities]:
+                            found_group = group
+                            break
+                        if entity2.id in [e.id for e in group.entities]:
+                            found_group = group
+                            break
+
+                    if found_group:
+                        # Add to existing group
+                        found_group.entities.append(entity2)
+                        found_group.similarity_scores.append(similarity)
+                    else:
+                        # Create new group
+                        # Use the entity with lower ID as canonical for determinism
+                        canonical_id = entity1.id if entity1.id < entity2.id else entity2.id
+                        duplicate_groups[pair[0] + "_" + pair[1]] = DuplicateGroup(
+                            canonical_id=canonical_id,
+                            entities=[entity1, entity2],
+                            similarity_scores=[similarity, similarity],
+                        )
+
+        return list(duplicate_groups.values())
+
+    def merge_entities(
+        self,
+        entity_ids: list[str],
+        canonical_id: str | None = None,
+        preserve_properties: bool = True,
+    ) -> MergeResult:
+        """Merge multiple entities into one.
+
+        Args:
+            entity_ids: List of entity IDs to merge
+            canonical_id: ID to use for the merged entity (if None, uses first ID)
+            preserve_properties: If True, merge properties from all entities
+
+        Returns:
+            MergeResult with the merged entity and statistics
+        """
+        if len(entity_ids) < 2:
+            raise ValueError("At least 2 entities required for merge")
+
+        # Validate all entities exist
+        entities = []
+        for eid in entity_ids:
+            entity = self._entities.get(eid)
+            if not entity:
+                raise ValueError(f"Entity {eid} not found")
+            entities.append(entity)
+
+        # Determine canonical entity
+        if canonical_id and canonical_id in self._entities:
+            canonical = self._entities[canonical_id]
+        else:
+            canonical = entities[0]
+            canonical_id = canonical.id
+
+        # Collect all relations to preserve
+        all_relations: list[SupplyRelation] = []
+        for entity in entities:
+            all_relations.extend(self.get_outgoing_relations(entity.id))
+            all_relations.extend(self.get_incoming_relations(entity.id))
+
+        # Merge properties if requested
+        merged_properties = dict(canonical.properties)
+        if preserve_properties:
+            for entity in entities:
+                for key, value in entity.properties.items():
+                    if key not in merged_properties:
+                        merged_properties[key] = value
+                    elif merged_properties[key] != value:
+                        # Keep as list if different values
+                        existing = merged_properties[key]
+                        if not isinstance(existing, list):
+                            merged_properties[key] = [existing, value]
+                        elif value not in existing:
+                            merged_properties[key] = existing + [value]
+
+        # Create merged entity
+        merged_entity = SupplyEntity(
+            id=canonical_id,
+            type=canonical.type,
+            properties=merged_properties,
+            version=canonical.version + 1,
+        )
+
+        # Update graph: replace all entities with merged one
+        relations_preserved = 0
+        relations_removed = 0
+        updated_relations: list[SupplyRelation] = []
+
+        for rel in self._relations:
+            source_in_merge = rel.source_id in entity_ids
+            target_in_merge = rel.target_id in entity_ids
+
+            if source_in_merge and target_in_merge:
+                # Both in merge - remove (self-loop after merge)
+                relations_removed += 1
+            elif source_in_merge:
+                # Source in merge - update to canonical
+                updated_relations.append(SupplyRelation(
+                    source_id=canonical_id,
+                    target_id=rel.target_id,
+                    relation_type=rel.relation_type,
+                    properties=rel.properties,
+                    version=rel.version,
+                ))
+                relations_preserved += 1
+            elif target_in_merge:
+                # Target in merge - update to canonical
+                updated_relations.append(SupplyRelation(
+                    source_id=rel.source_id,
+                    target_id=canonical_id,
+                    relation_type=rel.relation_type,
+                    properties=rel.properties,
+                    version=rel.version,
+                ))
+                relations_preserved += 1
+            else:
+                # Neither in merge - keep as is
+                updated_relations.append(rel)
+
+        # Delete all source entities except canonical
+        for entity in entities:
+            if entity.id != canonical_id:
+                self.delete_entity(entity.id)
+
+        # Update canonical entity
+        self._entities[canonical_id] = merged_entity
+
+        # Update relations
+        self._relations = updated_relations
+
+        return MergeResult(
+            merged_entity=merged_entity,
+            source_ids=entity_ids,
+            relations_preserved=relations_preserved,
+            relations_removed=relations_removed,
+        )
+
+    def deduplicate(
+        self,
+        similarity_threshold: float = 0.8,
+        entity_type: SupplyEntityType | None = None,
+    ) -> list[MergeResult]:
+        """Automatically find and merge duplicate entities.
+
+        Args:
+            similarity_threshold: Minimum similarity to consider as duplicate
+            entity_type: Optional entity type to limit deduplication to
+
+        Returns:
+            List of MergeResult for each merge performed
+        """
+        duplicate_groups = self.find_potential_duplicates(
+            entity_type=entity_type,
+            similarity_threshold=similarity_threshold,
+        )
+
+        results: list[MergeResult] = []
+        merged_ids: set[str] = set()
+
+        for group in duplicate_groups:
+            # Skip if any entity already merged
+            entity_ids = [e.id for e in group.entities]
+            if any(eid in merged_ids for eid in entity_ids):
+                continue
+
+            try:
+                result = self.merge_entities(
+                    entity_ids=entity_ids,
+                    canonical_id=group.canonical_id,
+                )
+                results.append(result)
+                merged_ids.update(entity_ids)
+            except ValueError:
+                # Skip if merge fails
+                continue
+
+        return results
+
+    def get_normalized_entity_representatives(
+        self,
+        entity_type: SupplyEntityType | None = None,
+    ) -> list[SupplyEntity]:
+        """Get representative entities for each unique entity (after normalization).
+
+        Uses deduplication to find canonical representatives.
+        """
+        duplicates = self.find_potential_duplicates(
+            entity_type=entity_type,
+            similarity_threshold=0.8,
+        )
+
+        # Collect all entity IDs that have duplicates
+        duplicate_ids: set[str] = set()
+        for group in duplicates:
+            for entity in group.entities:
+                if entity.id != group.canonical_id:
+                    duplicate_ids.add(entity.id)
+
+        # Return all entities except those marked as duplicates
+        candidates = self.query_by_type(entity_type) if entity_type else list(self._entities.values())
+        return [e for e in candidates if e.id not in duplicate_ids]
 
 
 # Global instance
