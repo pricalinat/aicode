@@ -8,12 +8,14 @@ from multi_agent_system.knowledge.supply_ingestion import (
     SupplyGraphIngestionPipeline,
     BatchConfig,
     IngestionResult,
+    ChangeOperation,
 )
 from multi_agent_system.knowledge.supply_graph_database import SupplyGraphDatabase
 from multi_agent_system.knowledge.supply_graph_models import (
     SupplyEntity,
     SupplyEntityType,
     SupplyRelationType,
+    SupplyRelation,
 )
 
 
@@ -357,6 +359,177 @@ class TestSupplyGraphIngestionPipeline(unittest.TestCase):
         entity = self.db.get_entity("product_1")
         # Default normalizer trims whitespace but does not lowercase
         self.assertEqual(entity.properties["name"], "TEST PRODUCT")
+
+    def test_incremental_update_entity_partial(self):
+        """Test partial entity update."""
+        # First create entity
+        self.pipeline.ingest_product({
+            "id": "product_1",
+            "name": "Original Name",
+            "price": 100,
+        })
+
+        # Now do partial update
+        result = self.pipeline.incremental_update_entity(
+            {"id": "product_1", "price": 150},
+            SupplyEntityType.PRODUCT,
+            partial=True,
+        )
+
+        entity = self.db.get_entity("product_1")
+        self.assertEqual(entity.properties["price"], 150)
+        self.assertEqual(entity.properties["name"], "Original Name")  # Preserved
+        self.assertEqual(entity.version, 2)  # Version incremented
+        self.assertEqual(result.updated, 1)
+
+    def test_incremental_update_entity_full(self):
+        """Test full entity replacement."""
+        # First create entity
+        self.pipeline.ingest_product({
+            "id": "product_1",
+            "name": "Original Name",
+            "price": 100,
+        })
+
+        # Full update (replacement)
+        result = self.pipeline.incremental_update_entity(
+            {"id": "product_1", "name": "New Name", "description": "New desc"},
+            SupplyEntityType.PRODUCT,
+            partial=False,
+        )
+
+        entity = self.db.get_entity("product_1")
+        self.assertEqual(entity.properties["name"], "New Name")
+        self.assertEqual(entity.properties["description"], "New desc")
+        self.assertNotIn("price", entity.properties)  # Replaced
+
+    def test_incremental_update_new_entity(self):
+        """Test incremental update creates entity if not exists."""
+        result = self.pipeline.incremental_update_entity(
+            {"id": "product_new", "name": "New Product", "price": 200},
+            SupplyEntityType.PRODUCT,
+            partial=True,
+        )
+
+        entity = self.db.get_entity("product_new")
+        self.assertIsNotNone(entity)
+        self.assertEqual(entity.properties["name"], "New Product")
+        self.assertEqual(entity.version, 1)
+
+    def test_delete_entity_cascade(self):
+        """Test cascade delete of entity and relations."""
+        # Create related entities
+        self.pipeline.ingest_product({
+            "id": "product_1",
+            "name": "Test Product",
+            "category": "cat_1",
+        })
+        self.db.create_entity(SupplyEntity(
+            id="cat_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category"},
+        ))
+
+        # Add a relation
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="cat_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        # Delete cascade
+        result = self.pipeline.delete_entity_cascade("product_1")
+
+        # Entity should be deleted
+        self.assertIsNone(self.db.get_entity("product_1"))
+        # Relations should be deleted (count decreases)
+        self.assertGreater(result.deleted, 0)
+
+    def test_sync_incremental_upsert(self):
+        """Test sync_incremental for upsert operations."""
+        data = {
+            "products": {
+                "upsert": [
+                    {"id": "product_1", "name": "Product 1", "price": 100},
+                    {"id": "product_2", "name": "Product 2", "price": 200},
+                ]
+            }
+        }
+
+        result = self.pipeline.sync_incremental(data)
+
+        self.assertEqual(result.created, 2)
+        self.assertEqual(self.db.count(SupplyEntityType.PRODUCT), 2)
+
+    def test_sync_incremental_delete(self):
+        """Test sync_incremental for delete operations."""
+        # Create entity first
+        self.pipeline.ingest_product({
+            "id": "product_1",
+            "name": "To Delete",
+        })
+
+        data = {
+            "products": {
+                "delete": ["product_1"]
+            }
+        }
+
+        result = self.pipeline.sync_incremental(data)
+
+        self.assertEqual(result.deleted, 1)
+        self.assertIsNone(self.db.get_entity("product_1"))
+
+    def test_sync_incremental_update_since_timestamp(self):
+        """Test sync_incremental with since_timestamp."""
+        # Get timestamp BEFORE creating entity
+        old_timestamp = self.pipeline._get_timestamp()
+
+        # Create initial entity
+        self.pipeline.ingest_product({
+            "id": "product_1",
+            "name": "Original",
+            "price": 100,
+        })
+
+        # Update entity after the timestamp (using old_timestamp which is before creation)
+        data = {
+            "products": {
+                "upsert": [
+                    {"id": "product_1", "price": 150},
+                ]
+            }
+        }
+
+        result = self.pipeline.sync_incremental(data, since_timestamp=old_timestamp)
+
+        # Should update since entity was created after old_timestamp
+        entity = self.db.get_entity("product_1")
+        self.assertEqual(entity.properties["price"], 150)
+
+    def test_change_log_tracking(self):
+        """Test that changes are tracked in the change log."""
+        self.pipeline.ingest_product({"id": "p1", "name": "Product 1"})
+
+        log = self.pipeline.get_change_log()
+        self.assertGreater(len(log), 0)
+
+    def test_change_record_serialization(self):
+        """Test ChangeRecord to_dict serialization."""
+        from multi_agent_system.knowledge.supply_ingestion import ChangeRecord
+
+        record = ChangeRecord(
+            operation=ChangeOperation.CREATE,
+            entity_type="product",
+            entity_id="test_id",
+            timestamp="2024-01-01T00:00:00Z",
+            new_version=1,
+        )
+
+        d = record.to_dict()
+        self.assertEqual(d["operation"], "create")
+        self.assertEqual(d["entity_type"], "product")
+        self.assertEqual(d["new_version"], 1)
 
 
 if __name__ == "__main__":

@@ -124,6 +124,9 @@ class SupplyEntity:
     id: str
     type: SupplyEntityType
     properties: dict[str, Any] = field(default_factory=dict)
+    version: int = 1
+    created_at: str | None = None
+    updated_at: str | None = None
 
     @property
     def name(self) -> str:
@@ -139,6 +142,9 @@ class SupplyEntity:
             "id": self.id,
             "type": ENTITY_TYPE_MAPPING.get(self.type, self.type.value),
             "properties": self.properties,
+            "version": self.version,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
         }
 
     @classmethod
@@ -149,6 +155,9 @@ class SupplyEntity:
             id=data["id"],
             type=entity_type,
             properties=data.get("properties", {}),
+            version=data.get("version", 1),
+            created_at=data.get("created_at"),
+            updated_at=data.get("updated_at"),
         )
 
 
@@ -162,6 +171,9 @@ class SupplyRelation:
     target_id: str
     relation_type: SupplyRelationType
     properties: dict[str, Any] = field(default_factory=dict)
+    version: int = 1
+    created_at: str | None = None
+    updated_at: str | None = None
 
     @property
     def weight(self) -> float:
@@ -174,6 +186,9 @@ class SupplyRelation:
             "target_id": self.target_id,
             "relation_type": RELATION_TYPE_MAPPING.get(self.relation_type, self.relation_type.value),
             "properties": self.properties,
+            "version": self.version,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,
         }
 
     @classmethod
@@ -185,6 +200,9 @@ class SupplyRelation:
             target_id=data["target_id"],
             relation_type=rel_type,
             properties=data.get("properties", {}),
+            version=data.get("version", 1),
+            created_at=data.get("created_at"),
+            updated_at=data.get("updated_at"),
         )
 
 

@@ -7,7 +7,7 @@ Supports:
 - Entity normalization (name cleaning, standardization)
 - Entity deduplication (finding and merging duplicates)
 - Batch ingestion with transaction semantics
-- Incremental updates with change tracking
+- Incremental updates with change tracking and version control
 """
 
 from __future__ import annotations
@@ -15,6 +15,8 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from enum import Enum
 from typing import Any, Callable
 from collections import defaultdict
 
@@ -27,6 +29,13 @@ from .supply_graph_models import (
 )
 
 
+class ChangeOperation(Enum):
+    """Type of change operation."""
+    CREATE = "create"
+    UPDATE = "update"
+    DELETE = "delete"
+
+
 @dataclass
 class NormalizedEntity:
     """An entity with normalized properties for deduplication."""
@@ -36,13 +45,48 @@ class NormalizedEntity:
 
 
 @dataclass
+class ChangeRecord:
+    """A record of a single change operation."""
+    operation: ChangeOperation
+    entity_type: str
+    entity_id: str
+    timestamp: str
+    old_version: int | None = None
+    new_version: int | None = None
+    details: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "operation": self.operation.value,
+            "entity_type": self.entity_type,
+            "entity_id": self.entity_id,
+            "timestamp": self.timestamp,
+            "old_version": self.old_version,
+            "new_version": self.new_version,
+            "details": self.details,
+        }
+
+
+@dataclass
 class IngestionResult:
     """Result of an ingestion operation."""
     created: int = 0
     updated: int = 0
     skipped: int = 0
+    deleted: int = 0
     errors: list[str] = field(default_factory=list)
     duplicates_found: list[tuple[str, str]] = field(default_factory=list)  # (original_id, existing_id)
+    changes: list[ChangeRecord] = field(default_factory=list)
+
+    def add_change(self, change: ChangeRecord) -> None:
+        """Add a change record and update counters."""
+        self.changes.append(change)
+        if change.operation == ChangeOperation.CREATE:
+            self.created += 1
+        elif change.operation == ChangeOperation.UPDATE:
+            self.updated += 1
+        elif change.operation == ChangeOperation.DELETE:
+            self.deleted += 1
 
 
 @dataclass
@@ -227,7 +271,7 @@ class SupplyGraphIngestionPipeline:
         self.db = db or SupplyGraphDatabase()
         self.normalizer = normalizer or EntityNormalizer()
         self.deduplicator = deduplicator or EntityDeduplicator(self.normalizer)
-        self._change_log: list[dict[str, Any]] = []
+        self._change_log: list[ChangeRecord] = []
 
     def ingest_product(
         self,
@@ -279,14 +323,41 @@ class SupplyGraphIngestionPipeline:
                     result.skipped += 1
                     return result
 
+            timestamp = self._get_timestamp()
+
+            # Add timestamp to entity
+            entity.created_at = timestamp
+            entity.updated_at = timestamp
+
             # Create entity in graph
             try:
                 self.db.create_entity(entity, validate=False)
-                result.created += 1
+
+                # Track change (this also increments created count)
+                change = ChangeRecord(
+                    operation=ChangeOperation.CREATE,
+                    entity_type="product",
+                    entity_id=entity.id,
+                    timestamp=timestamp,
+                    new_version=1,
+                )
+                result.add_change(change)
+                self._change_log.append(change)
+
             except ValueError:
                 # Entity exists, update if configured
                 self.db.update_entity(entity, validate=False)
-                result.updated += 1
+
+                # Track change (this also increments updated count)
+                change = ChangeRecord(
+                    operation=ChangeOperation.UPDATE,
+                    entity_type="product",
+                    entity_id=entity.id,
+                    timestamp=timestamp,
+                    new_version=entity.version,
+                )
+                result.add_change(change)
+                self._change_log.append(change)
 
             # Create relations if configured
             if config.create_relations:
@@ -780,9 +851,377 @@ class SupplyGraphIngestionPipeline:
 
         return result
 
-    def get_change_log(self) -> list[dict[str, Any]]:
+    # Incremental Update Methods
+
+    def _get_timestamp(self) -> str:
+        """Get current ISO timestamp."""
+        return datetime.now(timezone.utc).isoformat()
+
+    def incremental_update_entity(
+        self,
+        entity_data: dict[str, Any],
+        entity_type: SupplyEntityType,
+        partial: bool = True,
+    ) -> IngestionResult:
+        """Incrementally update an entity.
+
+        Args:
+            entity_data: Entity data to update
+            entity_type: Type of entity
+            partial: If True, only update provided fields; if False, replace entire entity
+
+        Returns:
+            IngestionResult with change record
+        """
+        result = IngestionResult()
+        entity_id = entity_data.get("id")
+        if not entity_id:
+            result.errors.append("Entity ID required for incremental update")
+            return result
+
+        timestamp = self._get_timestamp()
+        existing = self.db.get_entity(entity_id)
+
+        if existing is None:
+            # Create new entity with version tracking
+            name = entity_data.get("name", entity_id)
+            if BatchConfig().normalize_names:
+                name = self.normalizer.normalize(name)
+
+            new_entity = SupplyEntity(
+                id=entity_id,
+                type=entity_type,
+                properties={
+                    "name": name,
+                    **{k: v for k, v in entity_data.items() if k not in ("id", "name")},
+                },
+                version=1,
+                created_at=timestamp,
+                updated_at=timestamp,
+            )
+
+            try:
+                self.db.create_entity(new_entity, validate=False)
+                change = ChangeRecord(
+                    operation=ChangeOperation.CREATE,
+                    entity_type=entity_type.value,
+                    entity_id=entity_id,
+                    timestamp=timestamp,
+                    new_version=1,
+                )
+                result.add_change(change)
+            except ValueError as e:
+                result.errors.append(f"Error creating entity: {e}")
+
+            return result
+
+        # Update existing entity
+        old_version = existing.version
+        new_version = old_version + 1
+
+        if partial:
+            # Merge properties - copy existing first
+            new_properties = existing.properties.copy()
+            # If entity_data has a "properties" key, merge that
+            if "properties" in entity_data:
+                new_properties.update(entity_data["properties"])
+            # Also update top-level fields that are in entity_data (except id)
+            for key, value in entity_data.items():
+                if key != "id":
+                    new_properties[key] = value
+        else:
+            # Replace entire properties
+            new_properties = entity_data.get("properties", entity_data.copy())
+            new_properties.pop("id", None)  # Remove id if present in properties
+
+        # Update entity
+        updated_entity = SupplyEntity(
+            id=entity_id,
+            type=entity_type,
+            properties=new_properties,
+            version=new_version,
+            created_at=existing.created_at or timestamp,
+            updated_at=timestamp,
+        )
+
+        try:
+            self.db.update_entity(updated_entity, validate=False)
+
+            # Record the change
+            change = ChangeRecord(
+                operation=ChangeOperation.UPDATE,
+                entity_type=entity_type.value,
+                entity_id=entity_id,
+                timestamp=timestamp,
+                old_version=old_version,
+                new_version=new_version,
+                details={"partial": partial},
+            )
+            result.add_change(change)
+
+        except Exception as e:
+            result.errors.append(f"Error updating entity {entity_id}: {e}")
+
+        return result
+
+    def incremental_update_relations(
+        self,
+        relations: list[dict[str, Any]],
+    ) -> IngestionResult:
+        """Incrementally update relations.
+
+        Handles creating new relations and updating existing ones.
+        """
+        result = IngestionResult()
+        timestamp = self._get_timestamp()
+
+        for rel_data in relations:
+            source_id = rel_data.get("source_id")
+            target_id = rel_data.get("target_id")
+            rel_type_str = rel_data.get("relation_type")
+
+            if not all([source_id, target_id, rel_type_str]):
+                result.errors.append("Relation missing required fields")
+                continue
+
+            try:
+                rel_type = SupplyRelationType(rel_type_str)
+            except ValueError:
+                result.errors.append(f"Invalid relation type: {rel_type_str}")
+                continue
+
+            # Check if relation exists
+            existing = None
+            for rel in self.db._relations:
+                if (rel.source_id == source_id and
+                    rel.target_id == target_id and
+                    rel.relation_type == rel_type):
+                    existing = rel
+                    break
+
+            if existing:
+                # Update existing relation
+                old_version = existing.version
+                new_version = old_version + 1
+
+                # Update properties
+                new_props = existing.properties.copy()
+                new_props.update(rel_data.get("properties", {}))
+
+                updated_rel = SupplyRelation(
+                    source_id=source_id,
+                    target_id=target_id,
+                    relation_type=rel_type,
+                    properties=new_props,
+                    version=new_version,
+                    created_at=existing.created_at or timestamp,
+                    updated_at=timestamp,
+                )
+
+                # Delete old, add new (simplest approach for in-memory)
+                self.db.delete_relation(source_id, target_id, rel_type)
+                self.db.create_relation(updated_rel, validate=False)
+
+                change = ChangeRecord(
+                    operation=ChangeOperation.UPDATE,
+                    entity_type="relation",
+                    entity_id=f"{source_id}->{target_id}",
+                    timestamp=timestamp,
+                    old_version=old_version,
+                    new_version=new_version,
+                )
+                result.add_change(change)
+            else:
+                # Create new relation
+                new_rel = SupplyRelation(
+                    source_id=source_id,
+                    target_id=target_id,
+                    relation_type=rel_type,
+                    properties=rel_data.get("properties", {}),
+                    version=1,
+                    created_at=timestamp,
+                    updated_at=timestamp,
+                )
+
+                try:
+                    self.db.create_relation(new_rel, validate=False)
+                    change = ChangeRecord(
+                        operation=ChangeOperation.CREATE,
+                        entity_type="relation",
+                        entity_id=f"{source_id}->{target_id}",
+                        timestamp=timestamp,
+                        new_version=1,
+                    )
+                    result.add_change(change)
+                except (ValueError, KeyError) as e:
+                    result.errors.append(f"Error creating relation: {e}")
+
+        return result
+
+    def delete_entity_cascade(
+        self,
+        entity_id: str,
+    ) -> IngestionResult:
+        """Delete an entity and all its relations.
+
+        Returns:
+            IngestionResult with delete count and change records
+        """
+        result = IngestionResult()
+        timestamp = self._get_timestamp()
+
+        entity = self.db.get_entity(entity_id)
+        if entity is None:
+            result.errors.append(f"Entity {entity_id} not found")
+            return result
+
+        # Delete all relations involving this entity first
+        relation_count = 0
+        for rel in list(self.db._relations):
+            if rel.source_id == entity_id or rel.target_id == entity_id:
+                relation_count += 1
+                change = ChangeRecord(
+                    operation=ChangeOperation.DELETE,
+                    entity_type="relation",
+                    entity_id=f"{rel.source_id}->{rel.target_id}",
+                    timestamp=timestamp,
+                )
+                result.add_change(change)
+
+        # Delete the entity
+        deleted = self.db.delete_entity(entity_id)
+        if deleted:
+            change = ChangeRecord(
+                operation=ChangeOperation.DELETE,
+                entity_type=entity.type.value,
+                entity_id=entity_id,
+                timestamp=timestamp,
+                old_version=entity.version,
+            )
+            result.add_change(change)
+
+        return result
+
+    def get_changes_since(
+        self,
+        since_timestamp: str,
+    ) -> list[ChangeRecord]:
+        """Get all changes since a given timestamp.
+
+        This requires the pipeline to track changes during ingestion.
+        """
+        return [
+            c for c in self._change_log
+            if c.timestamp > since_timestamp
+        ]
+
+    def sync_incremental(
+        self,
+        data: dict[str, Any],
+        since_timestamp: str | None = None,
+    ) -> IngestionResult:
+        """Synchronize the graph with incremental updates.
+
+        This method handles:
+        - New entities (CREATE)
+        - Updated entities (UPDATE)
+        - Deleted entities (DELETE)
+
+        Args:
+            data: Dictionary with entity updates, format:
+                {
+                    "products": {"upsert": [...], "delete": [...]},
+                    "services": {"upsert": [...], "delete": [...]},
+                    ...
+                }
+            since_timestamp: Only process changes since this timestamp
+
+        Returns:
+            IngestionResult with all changes
+        """
+        result = IngestionResult()
+        timestamp = self._get_timestamp()
+
+        # Map entity type strings to enum (supports both singular and plural)
+        type_map = {
+            "product": SupplyEntityType.PRODUCT,
+            "products": SupplyEntityType.PRODUCT,
+            "service": SupplyEntityType.SERVICE,
+            "services": SupplyEntityType.SERVICE,
+            "procedure": SupplyEntityType.PROCEDURE,
+            "procedures": SupplyEntityType.PROCEDURE,
+            "intent": SupplyEntityType.INTENT,
+            "intents": SupplyEntityType.INTENT,
+            "slot": SupplyEntityType.SLOT,
+            "slots": SupplyEntityType.SLOT,
+            "category": SupplyEntityType.CATEGORY,
+            "categories": SupplyEntityType.CATEGORY,
+            "brand": SupplyEntityType.BRAND,
+            "brands": SupplyEntityType.BRAND,
+            "supplier": SupplyEntityType.SUPPLIER,
+            "suppliers": SupplyEntityType.SUPPLIER,
+            "merchant": SupplyEntityType.MERCHANT,
+            "merchants": SupplyEntityType.MERCHANT,
+            "region": SupplyEntityType.REGION,
+            "regions": SupplyEntityType.REGION,
+            "channel": SupplyEntityType.CHANNEL,
+            "channels": SupplyEntityType.CHANNEL,
+        }
+
+        for entity_type_str, entity_updates in data.items():
+            if not isinstance(entity_updates, dict):
+                result.errors.append(f"Invalid format for {entity_type_str}")
+                continue
+
+            entity_type = type_map.get(entity_type_str)
+            if entity_type is None:
+                result.errors.append(f"Unknown entity type: {entity_type_str}")
+                continue
+
+            # Handle upserts
+            upserts = entity_updates.get("upsert", [])
+            for entity_data in upserts:
+                if since_timestamp:
+                    # Check if entity was updated after since_timestamp
+                    existing = self.db.get_entity(entity_data.get("id"))
+                    if existing and existing.updated_at and existing.updated_at <= since_timestamp:
+                        continue  # Skip unchanged entities
+
+                update_result = self.incremental_update_entity(
+                    entity_data,
+                    entity_type,
+                    partial=True,
+                )
+                result.created += update_result.created
+                result.updated += update_result.updated
+                result.errors.extend(update_result.errors)
+                result.changes.extend(update_result.changes)
+
+            # Handle deletes
+            delete_ids = entity_updates.get("delete", [])
+            for entity_id in delete_ids:
+                delete_result = self.delete_entity_cascade(entity_id)
+                result.deleted += delete_result.deleted
+                result.errors.extend(delete_result.errors)
+                result.changes.extend(delete_result.changes)
+
+        # Handle relation updates
+        if "relations" in data:
+            rel_result = self.incremental_update_relations(data["relations"])
+            result.created += rel_result.created
+            result.updated += rel_result.updated
+            result.errors.extend(rel_result.errors)
+            result.changes.extend(rel_result.changes)
+
+        return result
+
+    def get_change_log(self) -> list[ChangeRecord]:
         """Get the change log from last ingestion."""
         return self._change_log.copy()
+
+    def get_change_log_dicts(self) -> list[dict[str, Any]]:
+        """Get the change log as dictionaries."""
+        return [c.to_dict() for c in self._change_log.copy()]
 
     def clear_change_log(self) -> None:
         """Clear the change log."""
