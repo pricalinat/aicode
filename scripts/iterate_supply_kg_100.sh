@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_DIR="/Users/rrp/Documents/aicode"
+cd "$REPO_DIR"
+
+LOG="logs/iterate_supply_kg_100_$(date +%Y%m%d_%H%M%S).log"
+PROMPT_FILE="/tmp/claude_supply_round_prompt.txt"
+
+echo "[start] $(date)" | tee -a "$LOG"
+
+for i in $(seq 1 100); do
+  echo "[round $i] ===== $(date) =====" | tee -a "$LOG"
+
+  cat > "$PROMPT_FILE" <<EOF
+You are continuing iterative development on this repository toward the final goal: build a robust e-commerce + mini-program supply knowledge graph platform.
+
+Round: $i / 100
+
+Rules:
+- Make one meaningful, production-oriented improvement this round.
+- Prioritize runnable code and measurable progress over docs.
+- If blocked on direction, consult and implement ideas inspired by strong papers/systems (e.g., AliCoCo/AliCoCo2 style concepts, industrial KG best practices), then convert them into concrete code or tests.
+- Keep backward compatibility for existing arXiv features.
+- After edits, run relevant tests (at least targeted ones).
+- Output a concise summary: changed files, why it matters, run commands, test results, and next candidate step.
+
+Focus areas (pick highest impact not yet done):
+- KG schema quality & constraints
+- ingestion for product/service/procedure/intent/slot
+- entity normalization & dedup
+- relation confidence scoring
+- graph validation rules
+- retrieval/query APIs over KG
+- evaluation metrics and benchmark scripts
+- adapter for mini-program structured inputs
+- risk/policy tagging pipeline
+- incremental update pipeline
+- CI/test hardening for KG path
+EOF
+
+  set +e
+  claude -p --permission-mode dontAsk --dangerously-skip-permissions --output-format text "$(cat "$PROMPT_FILE")" 2>&1 | tee -a "$LOG"
+  CLAUDE_RC=${PIPESTATUS[0]}
+  set -e
+
+  if [[ $CLAUDE_RC -ne 0 ]]; then
+    echo "[round $i] claude exited with code $CLAUDE_RC" | tee -a "$LOG"
+  fi
+
+  set +e
+  PYTHONPATH=src python3 -m unittest discover -s tests -v 2>&1 | tee -a "$LOG"
+  TEST_RC=${PIPESTATUS[0]}
+  set -e
+  echo "[round $i] test_rc=$TEST_RC" | tee -a "$LOG"
+
+  if [[ -n "$(git status --porcelain)" ]]; then
+    git add -A
+    git commit -m "iter: supply kg round $i"
+    set +e
+    git push origin main 2>&1 | tee -a "$LOG"
+    PUSH_RC=${PIPESTATUS[0]}
+    set -e
+    echo "[round $i] push_rc=$PUSH_RC" | tee -a "$LOG"
+  else
+    echo "[round $i] no file changes; skip commit/push" | tee -a "$LOG"
+  fi
+done
+
+echo "[done] $(date)" | tee -a "$LOG"

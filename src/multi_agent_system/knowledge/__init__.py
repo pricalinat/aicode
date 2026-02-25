@@ -12,8 +12,24 @@ from .graph import (
     get_graph,
     set_graph,
 )
+from .supply_graph_database import (
+    CycleDetectedError,
+    GraphPath,
+    SupplyGraphDatabase,
+    ValidationError,
+    get_supply_graph,
+    set_supply_graph,
+)
+from .supply_graph_models import (
+    SupplyEntity,
+    SupplyEntityType,
+    SupplyGraph,
+    SupplyRelation,
+    SupplyRelationType,
+)
 
 __all__ = [
+    # Base graph
     "Entity",
     "EntityType",
     "GraphDatabase",
@@ -24,4 +40,17 @@ __all__ = [
     "RelationType",
     "get_graph",
     "set_graph",
+    # Supply graph models
+    "SupplyEntity",
+    "SupplyEntityType",
+    "SupplyGraph",
+    "SupplyRelation",
+    "SupplyRelationType",
+    # Supply graph database
+    "SupplyGraphDatabase",
+    "ValidationError",
+    "CycleDetectedError",
+    "GraphPath",
+    "get_supply_graph",
+    "set_supply_graph",
 ]
