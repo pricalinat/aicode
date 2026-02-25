@@ -1990,6 +1990,188 @@ class SupplyGraphDatabase:
         """
         return self._change_history.version
 
+    # Cycle Detection
+
+    def detect_cycles(
+        self,
+        relation_types: list[SupplyRelationType] | None = None,
+    ) -> list[list[str]]:
+        """Detect cycles in the graph.
+
+        Uses DFS to find all cycles in the graph. A cycle is a path
+        that starts and ends at the same entity.
+
+        Args:
+            relation_types: Optional list of relation types to consider.
+                          If None, all relations are considered.
+
+        Returns:
+            List of cycles, where each cycle is a list of entity IDs
+            forming a closed path.
+        """
+        cycles: list[list[str]] = []
+        visited: set[str] = set()
+
+        def dfs(
+            node: str,
+            path: list[str],
+            visited_in_path: set[str],
+        ) -> None:
+            """Recursive DFS to find cycles."""
+            visited_in_path.add(node)
+
+            # Get neighbors based on relation types
+            relations = self.get_outgoing_relations(node)
+            if relation_types:
+                relations = [r for r in relations if r.relation_type in relation_types]
+
+            for relation in relations:
+                neighbor = relation.target_id
+
+                if neighbor in visited_in_path:
+                    # Found a cycle - extract it
+                    cycle_start = path.index(neighbor)
+                    cycle = path[cycle_start:] + [neighbor]
+                    cycles.append(cycle)
+                elif neighbor not in visited:
+                    # Continue exploring
+                    path.append(neighbor)
+                    dfs(neighbor, path, visited_in_path)
+                    path.pop()
+
+            visited_in_path.remove(node)
+
+        # Start DFS from each unvisited node
+        for entity_id in self._entities:
+            if entity_id not in visited:
+                dfs(entity_id, [entity_id], set())
+
+        return cycles
+
+    def has_cycle(
+        self,
+        relation_types: list[SupplyRelationType] | None = None,
+    ) -> bool:
+        """Check if the graph has any cycles.
+
+        Args:
+            relation_types: Optional list of relation types to check.
+                          If None, all relations are considered.
+
+        Returns:
+            True if at least one cycle exists, False otherwise.
+        """
+        cycles = self.detect_cycles(relation_types)
+        return len(cycles) > 0
+
+    def get_cycles_for_entity(
+        self,
+        entity_id: str,
+        relation_types: list[SupplyRelationType] | None = None,
+    ) -> list[list[str]]:
+        """Find all cycles that include a specific entity.
+
+        Args:
+            entity_id: The entity to find cycles for
+            relation_types: Optional relation types to consider
+
+        Returns:
+            List of cycles (each cycle is a list of entity IDs)
+        """
+        all_cycles = self.detect_cycles(relation_types)
+        return [cycle for cycle in all_cycles if entity_id in cycle]
+
+    # Schema Validation
+
+    def validate_schema_constraints(
+        self,
+        entity_type: SupplyEntityType | None = None,
+    ) -> dict[str, list[str]]:
+        """Validate schema constraints for entities.
+
+        Checks for required relations based on entity type.
+        For example, products should have brand and category relations.
+
+        Args:
+            entity_type: Optional entity type to validate. If None, validates all.
+
+        Returns:
+            Dictionary mapping entity IDs to list of validation error messages
+        """
+        errors: dict[str, list[str]] = {}
+
+        # Define required relations by entity type
+        required_relations: dict[SupplyEntityType, list[tuple[str, SupplyRelationType, bool]]] = {
+            SupplyEntityType.PRODUCT: [
+                ("brand", SupplyRelationType.HAS_BRAND, False),
+                ("category", SupplyRelationType.BELONGS_TO, False),
+            ],
+            SupplyEntityType.SERVICE: [
+                ("category", SupplyRelationType.BELONGS_TO, False),
+            ],
+            SupplyEntityType.INTENT: [
+                ("service", SupplyRelationType.HAS_INTENT, True),
+            ],
+            SupplyEntityType.SLOT: [
+                ("intent", SupplyRelationType.HAS_SLOT, True),
+            ],
+        }
+
+        # Determine which entities to validate
+        entities_to_check: list[SupplyEntity] = []
+        if entity_type:
+            entities_to_check = self.query_by_type(entity_type)
+        else:
+            entities_to_check = list(self._entities.values())
+
+        for entity in entities_to_check:
+            entity_errors: list[str] = []
+
+            # Check required relations
+            reqs = required_relations.get(entity.type, [])
+            for rel_name, rel_type, is_incoming in reqs:
+                has_relation = False
+
+                if is_incoming:
+                    incoming = self.get_incoming_relations(entity.id, rel_type)
+                    has_relation = len(incoming) > 0
+                else:
+                    outgoing = self.get_outgoing_relations(entity.id, rel_type)
+                    has_relation = len(outgoing) > 0
+
+                if not has_relation:
+                    direction = "incoming" if is_incoming else "outgoing"
+                    entity_errors.append(
+                        f"Missing required {direction} relation: {rel_name} ({rel_type.value})"
+                    )
+
+            if entity_errors:
+                errors[entity.id] = entity_errors
+
+        return errors
+
+    def get_entities_missing_required_relations(
+        self,
+        entity_type: SupplyEntityType,
+    ) -> list[tuple[SupplyEntity, list[str]]]:
+        """Get entities missing required relations.
+
+        Args:
+            entity_type: The type of entity to check
+
+        Returns:
+            List of (entity, missing_relations) tuples
+        """
+        constraint_errors = self.validate_schema_constraints(entity_type)
+
+        results: list[tuple[SupplyEntity, list[str]]] = []
+        for entity_id, errors in constraint_errors.items():
+            entity = self.get_entity(entity_id)
+            if entity:
+                results.append((entity, errors))
+
+        return results
+
 
 # Global instance
 _global_supply_graph: SupplyGraphDatabase | None = None

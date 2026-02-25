@@ -2149,5 +2149,366 @@ class TestIncrementalUpdatePipeline(unittest.TestCase):
         self.assertEqual(len(results), 1)
 
 
+class TestCycleDetection(unittest.TestCase):
+    """Test cases for cycle detection in the graph."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+
+    def test_no_cycle_in_empty_graph(self):
+        """Test that empty graph has no cycles."""
+        has_cycle = self.db.has_cycle()
+        self.assertFalse(has_cycle)
+
+    def test_no_cycle_in_linear_graph(self):
+        """Test that linear chain has no cycles."""
+        # Create a -> b -> c -> d
+        for i, name in enumerate(["a", "b", "c", "d"]):
+            self.db.create_entity(SupplyEntity(
+                id=name,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": name},
+            ))
+
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="b",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="b", target_id="c",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="c", target_id="d",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        has_cycle = self.db.has_cycle()
+        self.assertFalse(has_cycle)
+
+    def test_detect_simple_cycle(self):
+        """Test detecting a simple cycle (a -> b -> a)."""
+        # Create a -> b -> a (cycle)
+        for name in ["a", "b"]:
+            self.db.create_entity(SupplyEntity(
+                id=name,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": name},
+            ))
+
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="b",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="b", target_id="a",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        has_cycle = self.db.has_cycle()
+        self.assertTrue(has_cycle)
+
+        cycles = self.db.detect_cycles()
+        self.assertGreater(len(cycles), 0)
+
+    def test_detect_triple_cycle(self):
+        """Test detecting a 3-node cycle."""
+        # Create a -> b -> c -> a
+        for name in ["a", "b", "c"]:
+            self.db.create_entity(SupplyEntity(
+                id=name,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": name},
+            ))
+
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="b",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="b", target_id="c",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="c", target_id="a",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        has_cycle = self.db.has_cycle()
+        self.assertTrue(has_cycle)
+
+        cycles = self.db.detect_cycles()
+        # Should find at least one cycle
+        self.assertGreater(len(cycles), 0)
+
+    def test_cycle_detection_filtered_by_relation_type(self):
+        """Test cycle detection with specific relation type filter."""
+        # Create a -> b (RELATED) -> a AND a -> c (HAS_BRAND)
+        for name in ["a", "b", "c"]:
+            self.db.create_entity(SupplyEntity(
+                id=name,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": name},
+            ))
+
+        # Cycle with RELATED_TO
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="b",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="b", target_id="a",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        # No cycle with HAS_BRAND
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="c",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        # Should have cycle when checking RELATED_TO
+        has_cycle_related = self.db.has_cycle([SupplyRelationType.RELATED_TO])
+        self.assertTrue(has_cycle_related)
+
+        # Should not have cycle when checking HAS_BRAND only
+        has_cycle_brand = self.db.has_cycle([SupplyRelationType.HAS_BRAND])
+        self.assertFalse(has_cycle_brand)
+
+    def test_get_cycles_for_entity(self):
+        """Test finding cycles containing a specific entity."""
+        # Create a -> b -> c -> a
+        for name in ["a", "b", "c"]:
+            self.db.create_entity(SupplyEntity(
+                id=name,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": name},
+            ))
+
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="b",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="b", target_id="c",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="c", target_id="a",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        # Entity 'a' should be in a cycle
+        cycles_a = self.db.get_cycles_for_entity("a")
+        self.assertGreater(len(cycles_a), 0)
+
+        # Entity 'x' is not in the graph, should return empty
+        cycles_x = self.db.get_cycles_for_entity("x")
+        self.assertEqual(len(cycles_x), 0)
+
+    def test_self_loop_is_cycle(self):
+        """Test that a self-loop (a -> a) is detected as a cycle."""
+        self.db.create_entity(SupplyEntity(
+            id="a",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "a"},
+        ))
+
+        # Self-loop
+        self.db.create_relation(SupplyRelation(
+            source_id="a", target_id="a",
+            relation_type=SupplyRelationType.RELATED_TO,
+        ))
+
+        has_cycle = self.db.has_cycle()
+        self.assertTrue(has_cycle)
+
+
+class TestSchemaValidation(unittest.TestCase):
+    """Test cases for schema validation of required relations."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+
+    def test_validate_empty_graph(self):
+        """Test schema validation on empty graph."""
+        errors = self.db.validate_schema_constraints()
+        self.assertEqual(len(errors), 0)
+
+    def test_product_without_required_relations(self):
+        """Test product missing brand and category relations."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(product)
+
+        errors = self.db.validate_schema_constraints(SupplyEntityType.PRODUCT)
+
+        self.assertIn("product_1", errors)
+        self.assertGreater(len(errors["product_1"]), 0)
+
+    def test_product_with_required_relations(self):
+        """Test product with brand and category relations passes."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Test Category"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(category)
+
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        errors = self.db.validate_schema_constraints(SupplyEntityType.PRODUCT)
+
+        # Should have no errors for product_1
+        self.assertNotIn("product_1", errors)
+
+    def test_service_without_category(self):
+        """Test service missing category relation."""
+        service = SupplyEntity(
+            id="service_1",
+            type=SupplyEntityType.SERVICE,
+            properties={"name": "Test Service"},
+        )
+        self.db.create_entity(service)
+
+        errors = self.db.validate_schema_constraints(SupplyEntityType.SERVICE)
+
+        self.assertIn("service_1", errors)
+
+    def test_service_with_category(self):
+        """Test service with category relation passes."""
+        service = SupplyEntity(
+            id="service_1",
+            type=SupplyEntityType.SERVICE,
+            properties={"name": "Test Service"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Test Category"},
+        )
+
+        self.db.create_entity(service)
+        self.db.create_entity(category)
+
+        self.db.create_relation(SupplyRelation(
+            source_id="service_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        errors = self.db.validate_schema_constraints(SupplyEntityType.SERVICE)
+
+        self.assertNotIn("service_1", errors)
+
+    def test_get_entities_missing_required_relations(self):
+        """Test getting entities missing required relations."""
+        # Create product without relations
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+
+        # Create product with relations
+        product2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product 2"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(product2)
+        self.db.create_entity(brand)
+        self.db.create_entity(category)
+
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        results = self.db.get_entities_missing_required_relations(
+            SupplyEntityType.PRODUCT
+        )
+
+        # Should only have product_1 as missing
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0][0].id, "product_1")
+
+    def test_validate_all_entity_types(self):
+        """Test validating all entity types at once."""
+        # Create entities of different types
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product"},
+        )
+        service = SupplyEntity(
+            id="service_1",
+            type=SupplyEntityType.SERVICE,
+            properties={"name": "Service"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(service)
+        self.db.create_entity(category)
+
+        errors = self.db.validate_schema_constraints()
+
+        # All three should have errors (missing required relations)
+        self.assertIn("product_1", errors)
+        self.assertIn("service_1", errors)
+        # Category doesn't have required relations defined
+        self.assertNotIn("category_1", errors)
+
+
 if __name__ == "__main__":
     unittest.main()
