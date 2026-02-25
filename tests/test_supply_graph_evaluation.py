@@ -413,6 +413,190 @@ class TestGraphMetrics(unittest.TestCase):
 
         self.assertEqual(metrics.isolated_entities, 1)
 
+    def test_entity_type_distribution(self):
+        """Test entity type distribution calculation."""
+        # Create products
+        for i in range(3):
+            entity = SupplyEntity(
+                id=f"product_{i}",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": f"Product {i}"},
+            )
+            self.db.create_entity(entity)
+
+        # Create categories
+        for i in range(2):
+            entity = SupplyEntity(
+                id=f"category_{i}",
+                type=SupplyEntityType.CATEGORY,
+                properties={"name": f"Category {i}"},
+            )
+            self.db.create_entity(entity)
+
+        metrics = self.evaluator.evaluate_graph_structure()
+
+        self.assertEqual(metrics.entity_type_distribution["product"], 3)
+        self.assertEqual(metrics.entity_type_distribution["category"], 2)
+
+    def test_relation_type_distribution(self):
+        """Test relation type distribution calculation."""
+        # Create entities
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(category)
+
+        # Create relations of different types
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        metrics = self.evaluator.evaluate_graph_structure()
+
+        self.assertEqual(metrics.relation_type_distribution["has_brand"], 1)
+        self.assertEqual(metrics.relation_type_distribution["belongs_to"], 2)
+
+    def test_evaluate_full_graph_with_relations(self):
+        """Test complete evaluation of graph with relations."""
+        # Create a more complete graph
+        category = SupplyEntity(
+            id="cat_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Electronics"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Apple"},
+        )
+        merchant = SupplyEntity(
+            id="merchant_1",
+            type=SupplyEntityType.MERCHANT,
+            properties={"name": "Store"},
+        )
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "iPhone", "price": 999},
+        )
+
+        for entity in [category, brand, merchant, product]:
+            self.db.create_entity(entity)
+
+        # Create multiple relations
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="cat_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="merchant_1",
+            target_id="product_1",
+            relation_type=SupplyRelationType.SELLS,
+        ))
+
+        result = self.evaluator.evaluate()
+
+        self.assertEqual(result.entity_quality.total_entities, 4)
+        self.assertEqual(result.relation_quality.total_relations, 3)
+        self.assertGreater(result.graph_metrics.density, 0)
+        self.assertIn("query_by_type_avg", result.performance.query_latency_ms)
+
+    def test_recommendations_with_empty_graph(self):
+        """Test recommendations for empty graph."""
+        recommendations = self.evaluator.get_recommendations()
+
+        # Empty graph should have recommendation about adding relations
+        self.assertTrue(any("relation" in r.lower() for r in recommendations))
+
+    def test_recommendations_with_connected_graph(self):
+        """Test recommendations for well-connected graph."""
+        # Create well-connected graph
+        for i in range(5):
+            entity = SupplyEntity(
+                id=f"entity_{i}",
+                type=SupplyEntityType.CATEGORY,
+                properties={"name": f"Entity {i}"},
+            )
+            self.db.create_entity(entity)
+
+        # Connect all entities
+        for i in range(4):
+            self.db.create_relation(SupplyRelation(
+                source_id=f"entity_{i}",
+                target_id=f"entity_{i+1}",
+                relation_type=SupplyRelationType.RELATED_TO,
+            ))
+
+        recommendations = self.evaluator.get_recommendations()
+
+        # Should have fewer recommendations for well-connected graph
+        self.assertIsInstance(recommendations, list)
+
+
+class TestBenchmarkPerformance(unittest.TestCase):
+    """Test cases for benchmark performance metrics."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+        self.benchmark = GraphBenchmark(self.db)
+
+    def test_benchmark_creates_entities(self):
+        """Test that benchmark creates expected number of entities."""
+        result = self.benchmark.run_benchmark(num_products=100)
+
+        # Should create multiple entities
+        self.assertGreater(result["graph_stats"]["total_entities"], 100)
+
+    def test_benchmark_performance_metrics(self):
+        """Test benchmark returns performance metrics."""
+        result = self.benchmark.run_benchmark(num_products=50)
+
+        # Should have performance metrics
+        self.assertIn("query_by_type_ms", result["performance"])
+        self.assertIn("search_ms", result["performance"])
+
+    def test_benchmark_quality_metrics(self):
+        """Test benchmark returns quality metrics."""
+        result = self.benchmark.run_benchmark(num_products=30)
+
+        # Should have quality metrics
+        self.assertIn("entity_completeness", result["quality"])
+        self.assertIn("relation_confidence", result["quality"])
+        self.assertIn("overall_score", result["quality"])
+
 
 if __name__ == "__main__":
     unittest.main()

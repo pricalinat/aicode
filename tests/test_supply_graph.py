@@ -1929,6 +1929,225 @@ class TestIncrementalUpdatePipeline(unittest.TestCase):
         self.assertEqual(len(history.events), 10)
         self.assertEqual(history.version, 20)
 
+    def test_query_by_properties_no_matches(self):
+        """Test query by properties with no matches."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1", "category": "electronics", "price": 100},
+        )
+        self.db.create_entity(product)
+
+        results = self.db.query_by_properties(
+            SupplyEntityType.PRODUCT,
+            {"category": "clothing", "price": 50},
+            match_all=True,
+        )
+
+        self.assertEqual(len(results), 0)
+
+    def test_advanced_search_with_confidence_threshold(self):
+        """Test advanced search with minimum confidence threshold."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Wireless Mouse", "description": "Bluetooth mouse"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Logitech"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+
+        # Create high confidence relation (HAS_BRAND has high weight)
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+            properties={"weight": 0.95},
+        ))
+
+        # Confidence for HAS_BRAND with one property is ~0.68, use threshold of 0.6
+        results = self.db.advanced_search(
+            "mouse",
+            entity_types=[SupplyEntityType.PRODUCT],
+            require_relations=[SupplyRelationType.HAS_BRAND],
+            min_confidence=0.6,
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+    def test_advanced_search_with_low_confidence_threshold(self):
+        """Test advanced search with low confidence returns results."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Unknown Product"},
+        )
+        self.db.create_entity(product)
+
+        # Search without any relations (low confidence)
+        results = self.db.advanced_search(
+            "unknown",
+            entity_types=[SupplyEntityType.PRODUCT],
+            require_relations=[SupplyRelationType.HAS_BRAND],  # Requires brand relation
+            min_confidence=0.7,
+        )
+
+        # Should not find results because product has no brand relation
+        self.assertEqual(len(results), 0)
+
+    def test_get_in_degree(self):
+        """Test getting in-degree of an entity."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        merchant = SupplyEntity(
+            id="merchant_1",
+            type=SupplyEntityType.MERCHANT,
+            properties={"name": "Merchant 1"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(merchant)
+
+        # Create relation from merchant to product (incoming to product)
+        self.db.create_relation(SupplyRelation(
+            source_id="merchant_1",
+            target_id="product_1",
+            relation_type=SupplyRelationType.SELLS,
+        ))
+
+        in_degree = self.db.get_in_degree("product_1")
+        self.assertEqual(in_degree, 1)
+
+    def test_get_out_degree(self):
+        """Test getting out-degree of an entity."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand 1"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category 1"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(category)
+
+        # Create relations from product (outgoing)
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        out_degree = self.db.get_out_degree("product_1")
+        self.assertEqual(out_degree, 2)
+
+    def test_count_relations_by_type(self):
+        """Test counting relations by type."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand 1"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category 1"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(category)
+
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        # Another HAS_BRAND
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        brand_count = self.db.count_relations(SupplyRelationType.HAS_BRAND)
+        category_count = self.db.count_relations(SupplyRelationType.BELONGS_TO)
+
+        self.assertEqual(brand_count, 2)
+        self.assertEqual(category_count, 1)
+
+    def test_query_with_relations_exact_match(self):
+        """Test query with exact relation matching."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand 1"},
+        )
+        supplier = SupplyEntity(
+            id="supplier_1",
+            type=SupplyEntityType.SUPPLIER,
+            properties={"name": "Supplier 1"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(supplier)
+
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="supplier_1",
+            target_id="product_1",
+            relation_type=SupplyRelationType.SUPPLIES,
+        ))
+
+        # Query with exact relation match
+        results = self.db.query_with_relations(
+            SupplyEntityType.PRODUCT,
+            required_relations=[
+                ("product_1", SupplyRelationType.HAS_BRAND, "brand_1"),
+                (None, SupplyRelationType.SUPPLIES, "product_1"),
+            ],
+        )
+
+        self.assertEqual(len(results), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
