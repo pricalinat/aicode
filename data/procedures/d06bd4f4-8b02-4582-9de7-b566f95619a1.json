@@ -1,0 +1,71 @@
+{
+  "id": "d06bd4f4-8b02-4582-9de7-b566f95619a1",
+  "name": "Code Review",
+  "domain": "software_engineering",
+  "description": "Perform comprehensive code review",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "395b4bf5",
+      "order": 1,
+      "action": "parse_code",
+      "description": "Parse and understand code structure",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Code AST/structure",
+      "error_handling": ""
+    },
+    {
+      "id": "0253a898",
+      "order": 2,
+      "action": "check_style",
+      "description": "Check code style and conventions",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Style violations list",
+      "error_handling": ""
+    },
+    {
+      "id": "714feb30",
+      "order": 3,
+      "action": "check_security",
+      "description": "Check for security vulnerabilities",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Security issues list",
+      "error_handling": ""
+    },
+    {
+      "id": "cbaa8ae1",
+      "order": 4,
+      "action": "analyze_complexity",
+      "description": "Analyze code complexity",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Complexity metrics",
+      "error_handling": ""
+    },
+    {
+      "id": "fe754cd0",
+      "order": 5,
+      "action": "suggest_improvements",
+      "description": "Suggest improvements and refactoring",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Improvement suggestions",
+      "error_handling": ""
+    }
+  ],
+  "prerequisites": [
+    "source_code"
+  ],
+  "outputs": [
+    "style_violations",
+    "security_issues",
+    "complexity",
+    "suggestions"
+  ],
+  "metadata": {},
+  "created_at": "2026-02-25T00:20:10.843371",
+  "updated_at": "2026-02-25T00:20:10.843372"
+}

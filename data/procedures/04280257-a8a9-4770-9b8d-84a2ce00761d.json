@@ -1,0 +1,72 @@
+{
+  "id": "04280257-a8a9-4770-9b8d-84a2ce00761d",
+  "name": "Research Paper Analysis",
+  "domain": "academic",
+  "description": "Analyze and extract key information from research papers",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "7aed62e1",
+      "order": 1,
+      "action": "extract_metadata",
+      "description": "Extract paper metadata (title, authors, year, venue)",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Paper metadata dictionary",
+      "error_handling": ""
+    },
+    {
+      "id": "bd13e3bb",
+      "order": 2,
+      "action": "extract_abstract",
+      "description": "Extract and summarize abstract",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Abstract summary",
+      "error_handling": ""
+    },
+    {
+      "id": "a9983202",
+      "order": 3,
+      "action": "extract_methods",
+      "description": "Identify and describe research methodology",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Methodology description",
+      "error_handling": ""
+    },
+    {
+      "id": "1265e6b2",
+      "order": 4,
+      "action": "extract_results",
+      "description": "Extract key results and findings",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Results summary",
+      "error_handling": ""
+    },
+    {
+      "id": "21646a6f",
+      "order": 5,
+      "action": "assess_quality",
+      "description": "Assess paper quality and validity",
+      "parameters": {},
+      "conditions": [],
+      "expected_output": "Quality assessment",
+      "error_handling": ""
+    }
+  ],
+  "prerequisites": [
+    "pdf_url or paper_text"
+  ],
+  "outputs": [
+    "metadata",
+    "summary",
+    "methodology",
+    "results",
+    "quality_score"
+  ],
+  "metadata": {},
+  "created_at": "2026-02-25T00:20:10.843231",
+  "updated_at": "2026-02-25T00:20:10.843232"
+}
