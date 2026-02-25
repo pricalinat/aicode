@@ -10,6 +10,8 @@ from typing import Any
 from ..core.agent import AgentResponse, BaseAgent
 from ..core.message import Message
 from ..knowledge.paper import Paper
+from .embedding import SentenceTransformerEmbedding
+from .hybrid_search import HybridPaperVectorStore, SmartQueryExpander
 from .semantic_search_agent import EmbeddingModel, SimpleHashEmbedding
 
 
@@ -106,31 +108,48 @@ class PaperRepository:
 
 
 class PaperVectorStore:
-    """Vector store for paper semantic search."""
+    """Vector store for paper semantic search with hybrid retrieval."""
 
-    def __init__(self, embedding_model: EmbeddingModel | None = None) -> None:
-        self.embedding_model = embedding_model or SimpleHashEmbedding()
-        self._vectors: dict[str, list[float]] = {}
-        self._papers: dict[str, Paper] = {}
+    def __init__(
+        self,
+        embedding_model: EmbeddingModel | None = None,
+        use_hybrid: bool = True,
+    ) -> None:
+        """Initialize paper vector store.
+
+        Args:
+            embedding_model: Embedding model (uses hybrid if None)
+            use_hybrid: Use hybrid search (semantic + keyword)
+        """
+        if use_hybrid:
+            self._hybrid_store = HybridPaperVectorStore(embedding_model)
+            self._legacy_mode = False
+        else:
+            self.embedding_model = embedding_model or SimpleHashEmbedding()
+            self._vectors: dict[str, list[float]] = {}
+            self._papers: dict[str, Paper] = {}
+            self._legacy_mode = True
 
     def add_paper(self, paper: Paper) -> None:
         """Add a paper to the vector store."""
-        # Generate text representation for embedding
-        text = self._paper_to_text(paper)
-
-        # Generate embedding
-        vector = self.embedding_model.embed(text)
-
-        # Store
-        self._vectors[paper.id] = vector
-        self._papers[paper.id] = paper
+        if not self._legacy_mode:
+            self._hybrid_store.add_paper(paper)
+        else:
+            # Legacy mode
+            text = self._paper_to_text(paper)
+            vector = self.embedding_model.embed(text)
+            self._vectors[paper.id] = vector
+            self._papers[paper.id] = paper
 
     def build_index(self, papers: list[Paper]) -> None:
         """Build index from list of papers."""
-        self._vectors.clear()
-        self._papers.clear()
-        for paper in papers:
-            self.add_paper(paper)
+        if not self._legacy_mode:
+            self._hybrid_store.build_index(papers)
+        else:
+            self._vectors.clear()
+            self._papers.clear()
+            for paper in papers:
+                self.add_paper(paper)
 
     def search(
         self,
@@ -138,35 +157,83 @@ class PaperVectorStore:
         top_k: int = 10,
         category: str | None = None,
         year: int | None = None,
+        expand_query: bool = True,
     ) -> list[tuple[Paper, float]]:
-        """Search for similar papers."""
-        # Generate query embedding
+        """Search for similar papers.
+
+        Args:
+            query: Search query
+            top_k: Number of results
+            category: Filter by category
+            year: Filter by year
+            expand_query: Expand query for better recall
+
+        Returns:
+            List of (Paper, score) tuples
+        """
+        if not self._legacy_mode:
+            if expand_query:
+                expander = SmartQueryExpander()
+                expanded = expander.expand(query)
+                # Search with expanded queries and merge results
+                return self._search_multiple_queries(expanded, top_k, category, year)
+            return self._hybrid_store.search(query, top_k, category, year)
+        else:
+            # Legacy mode
+            return self._search_legacy(query, top_k, category, year)
+
+    def _search_multiple_queries(
+        self,
+        queries: list[str],
+        top_k: int,
+        category: str | None,
+        year: int | None,
+    ) -> list[tuple[Paper, float]]:
+        """Search with multiple queries and merge results."""
+        all_results: dict[str, tuple[Paper, float]] = {}
+
+        for query in queries:
+            results = self._hybrid_store.search(query, top_k * 2, category, year)
+            for paper, score in results:
+                if paper.id in all_results:
+                    # Average scores if already exists
+                    existing_paper, existing_score = all_results[paper.id]
+                    all_results[paper.id] = (existing_paper, (existing_score + score) / 2)
+                else:
+                    all_results[paper.id] = (paper, score)
+
+        # Sort by score
+        sorted_results = sorted(all_results.values(), key=lambda x: x[1], reverse=True)
+        return sorted_results[:top_k]
+
+    def _search_legacy(
+        self,
+        query: str,
+        top_k: int,
+        category: str | None,
+        year: int | None,
+    ) -> list[tuple[Paper, float]]:
+        """Legacy search implementation."""
         query_vector = self.embedding_model.embed(query)
 
-        # Calculate similarities
         results = []
         for paper_id, vector in self._vectors.items():
             paper = self._papers[paper_id]
 
-            # Filter by category if specified
             if category and not paper.matches_category(category):
                 continue
-
-            # Filter by year if specified
             if year and not paper.matches_year(year):
                 continue
 
-            # Calculate cosine similarity
             similarity = self._cosine_similarity(query_vector, vector)
             results.append((paper, similarity))
 
-        # Sort by similarity (descending)
         results.sort(key=lambda x: x[1], reverse=True)
-
         return results[:top_k]
 
     def _cosine_similarity(self, a: list[float], b: list[float]) -> float:
         """Calculate cosine similarity between two vectors."""
+        import math
         dot_product = sum(ai * bi for ai, bi in zip(a, b))
         magnitude_a = math.sqrt(sum(ai * ai for ai in a))
         magnitude_b = math.sqrt(sum(bi * bi for bi in b))
@@ -185,6 +252,8 @@ class PaperVectorStore:
 
     def count(self) -> int:
         """Get number of papers in store."""
+        if not self._legacy_mode:
+            return self._hybrid_store.count()
         return len(self._vectors)
 
 
