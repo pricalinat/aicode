@@ -76,6 +76,69 @@ class GraphPath:
         return sum(r.weight for r in self.relations)
 
 
+class ChangeType(Enum):
+    """Types of changes that can be tracked."""
+    ENTITY_CREATED = "entity_created"
+    ENTITY_UPDATED = "entity_updated"
+    ENTITY_DELETED = "entity_deleted"
+    RELATION_CREATED = "relation_created"
+    RELATION_DELETED = "relation_deleted"
+
+
+@dataclass
+class ChangeEvent:
+    """A single change event in the graph."""
+    change_type: ChangeType
+    entity_id: str | None = None
+    relation: SupplyRelation | None = None
+    timestamp: str | None = None
+    user: str | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if self.timestamp is None:
+            from datetime import datetime, timezone
+            self.timestamp = datetime.now(timezone.utc).isoformat()
+
+
+@dataclass
+class ChangeHistory:
+    """Tracks all changes to the graph."""
+    events: list[ChangeEvent] = field(default_factory=list)
+    version: int = 0
+
+    def add_event(self, event: ChangeEvent) -> None:
+        """Add a change event to history."""
+        self.events.append(event)
+        self.version += 1
+
+    def get_entity_history(self, entity_id: str) -> list[ChangeEvent]:
+        """Get all changes for a specific entity."""
+        return [
+            e for e in self.events
+            if e.entity_id == entity_id
+        ]
+
+    def get_recent_changes(self, limit: int = 10) -> list[ChangeEvent]:
+        """Get the most recent changes."""
+        return self.events[-limit:]
+
+
+@dataclass
+class Transaction:
+    """A batch of operations to be applied atomically."""
+    operations: list[tuple[str, Any]] = field(default_factory=list)
+    _committed: bool = False
+
+    def add_operation(self, operation_type: str, data: Any) -> None:
+        """Add an operation to the transaction."""
+        self.operations.append((operation_type, data))
+
+    @property
+    def is_committed(self) -> bool:
+        return self._committed
+
+
 class SupplyGraphDatabase:
     """Graph database for supply knowledge graph.
 
@@ -89,6 +152,8 @@ class SupplyGraphDatabase:
         self._entity_index: dict[SupplyEntityType, list[str]] = {}
         self._entity_validation_rules: list[ValidationRule] = []
         self._relation_validation_rules: list[ValidationRule] = []
+        self._change_history: ChangeHistory = ChangeHistory()
+        self._current_transaction: Transaction | None = None
         self._initialize_validation_rules()
 
     def _initialize_validation_rules(self) -> None:
@@ -183,17 +248,34 @@ class SupplyGraphDatabase:
 
     def create_entity(self, entity: SupplyEntity, validate: bool = True) -> SupplyEntity:
         """Create a new entity in the graph."""
-        if validate:
-            errors = self._validate_entity(entity)
-            if errors:
-                raise ValidationError(f"Entity validation failed: {'; '.join(errors)}")
+        try:
+            if validate:
+                errors = self._validate_entity(entity)
+                if errors:
+                    raise ValidationError(f"Entity validation failed: {'; '.join(errors)}")
 
-        if entity.id in self._entities:
-            raise ValueError(f"Entity with id {entity.id} already exists")
+            if entity.id in self._entities:
+                raise ValueError(f"Entity with id {entity.id} already exists")
 
-        self._entities[entity.id] = entity
-        self._reindex_entity(entity)
-        return entity
+            self._entities[entity.id] = entity
+            self._reindex_entity(entity)
+
+            # Record change
+            self._record_entity_create(entity)
+
+            # Track in transaction if one is active
+            if self._current_transaction:
+                self._current_transaction.add_operation("create_entity", entity)
+
+            return entity
+        except (ValidationError, ValueError):
+            # Auto-rollback on error if in transaction
+            if self._current_transaction is not None:
+                try:
+                    self.rollback()
+                except RuntimeError:
+                    pass  # Transaction already ended
+            raise
 
     def get_entity(self, entity_id: str) -> SupplyEntity | None:
         """Get an entity by ID."""
@@ -201,38 +283,95 @@ class SupplyGraphDatabase:
 
     def update_entity(self, entity: SupplyEntity, validate: bool = True) -> SupplyEntity:
         """Update an existing entity."""
-        if validate:
-            errors = self._validate_entity(entity)
-            if errors:
-                raise ValidationError(f"Entity validation failed: {'; '.join(errors)}")
+        try:
+            if validate:
+                errors = self._validate_entity(entity)
+                if errors:
+                    raise ValidationError(f"Entity validation failed: {'; '.join(errors)}")
 
-        if entity.id not in self._entities:
-            raise ValueError(f"Entity with id {entity.id} not found")
+            if entity.id not in self._entities:
+                raise ValueError(f"Entity with id {entity.id} not found")
 
-        self._entities[entity.id] = entity
-        return entity
+            previous = self._entities[entity.id]
+
+            # Auto-increment version if not explicitly set higher
+            # Only increment if the entity version is at or below the stored version
+            # This handles the case where the entity is the same object as stored
+            if entity.version <= previous.version:
+                entity.version = previous.version + 1
+            # If entity.version > previous.version, it was already incremented (e.g., by upsert)
+            # Don't increment again
+
+            self._entities[entity.id] = entity
+
+            # Record change
+            self._record_entity_update(entity, previous)
+
+            # Track in transaction if one is active
+            if self._current_transaction:
+                self._current_transaction.add_operation("update_entity", {
+                    "entity_id": entity.id,
+                    "previous_entity": previous,
+                })
+
+            return entity
+        except (ValidationError, ValueError):
+            # Auto-rollback on error if in transaction
+            if self._current_transaction is not None:
+                try:
+                    self.rollback()
+                except RuntimeError:
+                    pass  # Transaction already ended
+            raise
 
     def delete_entity(self, entity_id: str) -> bool:
         """Delete an entity and all its relations."""
-        if entity_id not in self._entities:
-            return False
+        try:
+            if entity_id not in self._entities:
+                return False
 
-        # Delete all relations involving this entity
-        self._relations = [
-            r for r in self._relations
-            if r.source_id != entity_id and r.target_id != entity_id
-        ]
+            entity = self._entities[entity_id]
 
-        # Remove from index
-        entity = self._entities[entity_id]
-        if entity.type in self._entity_index:
-            self._entity_index[entity.type] = [
-                eid for eid in self._entity_index[entity.type]
-                if eid != entity_id
+            # Collect relations before deletion for potential rollback
+            affected_relations = [
+                r for r in self._relations
+                if r.source_id == entity_id or r.target_id == entity_id
             ]
 
-        del self._entities[entity_id]
-        return True
+            # Delete all relations involving this entity
+            self._relations = [
+                r for r in self._relations
+                if r.source_id != entity_id and r.target_id != entity_id
+            ]
+
+            # Remove from index
+            if entity.type in self._entity_index:
+                self._entity_index[entity.type] = [
+                    eid for eid in self._entity_index[entity.type]
+                    if eid != entity_id
+                ]
+
+            del self._entities[entity_id]
+
+            # Record change
+            self._record_entity_delete(entity)
+
+            # Track in transaction if one is active
+            if self._current_transaction:
+                self._current_transaction.add_operation("delete_entity", {
+                    "entity": entity,
+                    "relations": affected_relations,
+                })
+
+            return True
+        except (ValidationError, ValueError):
+            # Auto-rollback on error if in transaction
+            if self._current_transaction is not None:
+                try:
+                    self.rollback()
+                except RuntimeError:
+                    pass  # Transaction already ended
+            raise
 
     def create_relation(
         self,
@@ -240,19 +379,36 @@ class SupplyGraphDatabase:
         validate: bool = True,
     ) -> SupplyRelation:
         """Create a new relation in the graph."""
-        if validate:
-            errors = self._validate_relation(relation)
-            if errors:
-                raise ValidationError(f"Relation validation failed: {'; '.join(errors)}")
+        try:
+            if validate:
+                errors = self._validate_relation(relation)
+                if errors:
+                    raise ValidationError(f"Relation validation failed: {'; '.join(errors)}")
 
-        # Check entities exist
-        if relation.source_id not in self._entities:
-            raise ValueError(f"Source entity {relation.source_id} not found")
-        if relation.target_id not in self._entities:
-            raise ValueError(f"Target entity {relation.target_id} not found")
+            # Check entities exist
+            if relation.source_id not in self._entities:
+                raise ValueError(f"Source entity {relation.source_id} not found")
+            if relation.target_id not in self._entities:
+                raise ValueError(f"Target entity {relation.target_id} not found")
 
-        self._relations.append(relation)
-        return relation
+            self._relations.append(relation)
+
+            # Record change
+            self._record_relation_create(relation)
+
+            # Track in transaction if one is active
+            if self._current_transaction:
+                self._current_transaction.add_operation("create_relation", relation)
+
+            return relation
+        except (ValidationError, ValueError):
+            # Auto-rollback on error if in transaction
+            if self._current_transaction is not None:
+                try:
+                    self.rollback()
+                except RuntimeError:
+                    pass  # Transaction already ended
+            raise
 
     def delete_relation(
         self,
@@ -261,6 +417,15 @@ class SupplyGraphDatabase:
         relation_type: SupplyRelationType,
     ) -> bool:
         """Delete a relation."""
+        # Find the relation to delete (for recording)
+        deleted_relation = None
+        for r in self._relations:
+            if (r.source_id == source_id and
+                r.target_id == target_id and
+                r.relation_type == relation_type):
+                deleted_relation = r
+                break
+
         original_count = len(self._relations)
         self._relations = [
             r for r in self._relations
@@ -268,7 +433,18 @@ class SupplyGraphDatabase:
                     r.target_id == target_id and
                     r.relation_type == relation_type)
         ]
-        return len(self._relations) < original_count
+
+        deleted = len(self._relations) < original_count
+
+        # Record change if actually deleted
+        if deleted and deleted_relation:
+            self._record_relation_delete(deleted_relation)
+
+            # Track in transaction if one is active
+            if self._current_transaction:
+                self._current_transaction.add_operation("delete_relation", deleted_relation)
+
+        return deleted
 
     # Query Operations
 
@@ -1402,6 +1578,408 @@ class SupplyGraphDatabase:
         # Return all entities except those marked as duplicates
         candidates = self.query_by_type(entity_type) if entity_type else list(self._entities.values())
         return [e for e in candidates if e.id not in duplicate_ids]
+
+    # Incremental Update Pipeline
+
+    def begin_transaction(self) -> Transaction:
+        """Begin a new transaction for batch operations.
+
+        Returns:
+            A new Transaction object
+
+        Example:
+            db.begin_transaction()
+            db.create_entity(entity1)
+            db.create_entity(entity2)
+            db.create_relation(relation)
+            db.commit()
+        """
+        if self._current_transaction is not None:
+            raise RuntimeError("A transaction is already in progress")
+        self._current_transaction = Transaction()
+        return self._current_transaction
+
+    def commit(self) -> None:
+        """Commit the current transaction."""
+        if self._current_transaction is None:
+            raise RuntimeError("No transaction in progress")
+        self._current_transaction._committed = True
+        self._current_transaction = None
+
+    def rollback(self) -> None:
+        """Rollback the current transaction.
+
+        This will revert all operations performed since the transaction began.
+        """
+        if self._current_transaction is None:
+            raise RuntimeError("No transaction in progress")
+
+        # Reverse operations in LIFO order
+        for op_type, data in reversed(self._current_transaction.operations):
+            if op_type == "create_entity":
+                self._entities.pop(data.id, None)
+                # Remove from index
+                if data.type in self._entity_index:
+                    self._entity_index[data.type] = [
+                        eid for eid in self._entity_index[data.type]
+                        if eid != data.id
+                    ]
+            elif op_type == "update_entity":
+                # Restore previous version
+                self._entities[data["entity_id"]] = data["previous_entity"]
+            elif op_type == "delete_entity":
+                # Restore entity and its relations
+                self._entities[data["entity_id"]] = data["entity"]
+                self._reindex_entity(data["entity"])
+                for rel in data.get("relations", []):
+                    if rel not in self._relations:
+                        self._relations.append(rel)
+            elif op_type == "create_relation":
+                # Remove the relation
+                self._relations = [
+                    r for r in self._relations
+                    if not (r.source_id == data.source_id and
+                            r.target_id == data.target_id and
+                            r.relation_type == data.relation_type)
+                ]
+            elif op_type == "delete_relation":
+                # Restore the relation
+                self._relations.append(data)
+
+        self._current_transaction = None
+
+    def _record_entity_create(self, entity: SupplyEntity) -> None:
+        """Record entity creation in change history."""
+        event = ChangeEvent(
+            change_type=ChangeType.ENTITY_CREATED,
+            entity_id=entity.id,
+            metadata={"entity_type": entity.type.value},
+        )
+        self._change_history.add_event(event)
+
+    def _record_entity_update(self, entity: SupplyEntity, previous: SupplyEntity) -> None:
+        """Record entity update in change history."""
+        event = ChangeEvent(
+            change_type=ChangeType.ENTITY_UPDATED,
+            entity_id=entity.id,
+            metadata={
+                "entity_type": entity.type.value,
+                "previous_version": previous.version,
+                "new_version": entity.version,
+            },
+        )
+        self._change_history.add_event(event)
+
+    def _record_entity_delete(self, entity: SupplyEntity) -> None:
+        """Record entity deletion in change history."""
+        event = ChangeEvent(
+            change_type=ChangeType.ENTITY_DELETED,
+            entity_id=entity.id,
+            metadata={"entity_type": entity.type.value},
+        )
+        self._change_history.add_event(event)
+
+    def _record_relation_create(self, relation: SupplyRelation) -> None:
+        """Record relation creation in change history."""
+        event = ChangeEvent(
+            change_type=ChangeType.RELATION_CREATED,
+            relation=relation,
+            metadata={"relation_type": relation.relation_type.value},
+        )
+        self._change_history.add_event(event)
+
+    def _record_relation_delete(self, relation: SupplyRelation) -> None:
+        """Record relation deletion in change history."""
+        event = ChangeEvent(
+            change_type=ChangeType.RELATION_DELETED,
+            relation=relation,
+            metadata={"relation_type": relation.relation_type.value},
+        )
+        self._change_history.add_event(event)
+
+    def get_change_history(
+        self,
+        entity_id: str | None = None,
+        limit: int = 100,
+    ) -> ChangeHistory:
+        """Get the change history.
+
+        Args:
+            entity_id: Optional entity ID to filter changes
+            limit: Maximum number of events to return
+
+        Returns:
+            ChangeHistory object containing relevant events
+        """
+        if entity_id is None:
+            # Return all events limited
+            limited_history = ChangeHistory(
+                events=self._change_history.events[-limit:],
+                version=self._change_history.version,
+            )
+            return limited_history
+
+        # Filter for specific entity
+        entity_events = self._change_history.get_entity_history(entity_id)
+        return ChangeHistory(
+            events=entity_events[-limit:],
+            version=self._change_history.version,
+        )
+
+    def get_change_count(self) -> int:
+        """Get the total number of changes recorded."""
+        return self._change_history.version
+
+    def incrementally_update_entity(
+        self,
+        entity: SupplyEntity,
+        merge_properties: bool = True,
+    ) -> SupplyEntity:
+        """Incrementally update an entity, creating if not exists.
+
+        This method handles both create and update operations:
+        - If entity doesn't exist: creates it (like create_entity)
+        - If entity exists: merges properties and updates (like update_entity)
+
+        Args:
+            entity: The entity to update
+            merge_properties: If True, merge new properties with existing.
+                              If False, replace entirely.
+
+        Returns:
+            The updated entity
+        """
+        existing = self._entities.get(entity.id)
+
+        if existing is None:
+            # Create new entity
+            return self.create_entity(entity)
+
+        # Merge properties if requested
+        if merge_properties:
+            merged_properties = dict(existing.properties)
+            merged_properties.update(entity.properties)
+            entity.properties = merged_properties
+
+        # Let update_entity handle versioning - don't set it here
+        # This avoids the double-increment issue when entity is same object as stored
+        return self.update_entity(entity)
+
+    def batch_create_entities(
+        self,
+        entities: list[SupplyEntity],
+        validate: bool = True,
+    ) -> list[SupplyEntity]:
+        """Batch create multiple entities.
+
+        Args:
+            entities: List of entities to create
+            validate: Whether to validate entities
+
+        Returns:
+            List of created entities
+
+        Raises:
+            ValidationError: If any entity fails validation
+            ValueError: If any entity already exists
+        """
+        # Validate all first
+        if validate:
+            for entity in entities:
+                errors = self._validate_entity(entity)
+                if errors:
+                    raise ValidationError(f"Entity {entity.id} validation failed: {'; '.join(errors)}")
+
+        # Check for duplicates
+        existing_ids = [e.id for e in entities if e.id in self._entities]
+        if existing_ids:
+            raise ValueError(f"Entities already exist: {existing_ids}")
+
+        # Create all
+        created = []
+        for entity in entities:
+            self._entities[entity.id] = entity
+            self._reindex_entity(entity)
+            self._record_entity_create(entity)
+            created.append(entity)
+
+        return created
+
+    def batch_create_relations(
+        self,
+        relations: list[SupplyRelation],
+        validate: bool = True,
+    ) -> list[SupplyRelation]:
+        """Batch create multiple relations.
+
+        Args:
+            relations: List of relations to create
+            validate: Whether to validate relations
+
+        Returns:
+            List of created relations
+
+        Raises:
+            ValidationError: If any relation fails validation
+            ValueError: If any entity doesn't exist
+        """
+        # Validate all first
+        if validate:
+            for relation in relations:
+                errors = self._validate_relation(relation)
+                if errors:
+                    raise ValidationError(f"Relation validation failed: {'; '.join(errors)}")
+
+        # Check entities exist
+        for relation in relations:
+            if relation.source_id not in self._entities:
+                raise ValueError(f"Source entity {relation.source_id} not found")
+            if relation.target_id not in self._entities:
+                raise ValueError(f"Target entity {relation.target_id} not found")
+
+        # Create all
+        created = []
+        for relation in relations:
+            self._relations.append(relation)
+            self._record_relation_create(relation)
+            created.append(relation)
+
+        return created
+
+    def upsert_entity(
+        self,
+        entity: SupplyEntity,
+        merge_properties: bool = True,
+    ) -> tuple[SupplyEntity, bool]:
+        """Upsert an entity (update if exists, insert if new).
+
+        Args:
+            entity: The entity to upsert
+            merge_properties: If True, merge properties on update
+
+        Returns:
+            Tuple of (entity, created) where created is True if entity was newly created
+        """
+        existing = self._entities.get(entity.id)
+
+        if existing is None:
+            created_entity = self.create_entity(entity)
+            return created_entity, True
+
+        # Merge properties if requested
+        if merge_properties:
+            merged_properties = dict(existing.properties)
+            merged_properties.update(entity.properties)
+            entity.properties = merged_properties
+
+        # Let update_entity handle versioning - don't set it here
+        # This avoids the double-increment issue when entity is same object as stored
+        updated_entity = self.update_entity(entity)
+        return updated_entity, False
+
+    def apply_incremental_changes(
+        self,
+        entities_to_create: list[SupplyEntity] | None = None,
+        entities_to_update: list[SupplyEntity] | None = None,
+        entities_to_delete: list[str] | None = None,
+        relations_to_create: list[SupplyRelation] | None = None,
+        relations_to_delete: list[tuple[str, str, SupplyRelationType]] | None = None,
+    ) -> dict[str, Any]:
+        """Apply a batch of incremental changes to the graph.
+
+        This method performs all operations in a single transaction,
+        rolling back all if any operation fails.
+
+        Args:
+            entities_to_create: List of entities to create
+            entities_to_update: List of entities to update
+            entities_to_delete: List of entity IDs to delete
+            relations_to_create: List of relations to create
+            relations_to_delete: List of (source_id, target_id, relation_type) to delete
+
+        Returns:
+            Dictionary with counts of each operation type performed
+
+        Example:
+            result = db.apply_incremental_changes(
+                entities_to_create=[new_entity],
+                entities_to_update=[existing_entity],
+                entities_to_delete=["old_entity_id"],
+                relations_to_create=[new_relation],
+                relations_to_delete=[("source", "target", SupplyRelationType.HAS_BRAND)],
+            )
+        """
+        self.begin_transaction()
+
+        try:
+            results = {
+                "entities_created": 0,
+                "entities_updated": 0,
+                "entities_deleted": 0,
+                "relations_created": 0,
+                "relations_deleted": 0,
+            }
+
+            # Create entities
+            if entities_to_create:
+                for entity in entities_to_create:
+                    self.create_entity(entity)
+                    results["entities_created"] += 1
+
+            # Update entities
+            if entities_to_update:
+                for entity in entities_to_update:
+                    self.update_entity(entity)
+                    results["entities_updated"] += 1
+
+            # Delete entities
+            if entities_to_delete:
+                for entity_id in entities_to_delete:
+                    if self.delete_entity(entity_id):
+                        results["entities_deleted"] += 1
+
+            # Create relations
+            if relations_to_create:
+                for relation in relations_to_create:
+                    self.create_relation(relation)
+                    results["relations_created"] += 1
+
+            # Delete relations
+            if relations_to_delete:
+                for source_id, target_id, rel_type in relations_to_delete:
+                    if self.delete_relation(source_id, target_id, rel_type):
+                        results["relations_deleted"] += 1
+
+            self.commit()
+            return results
+
+        except Exception as e:
+            if self._current_transaction is not None:
+                try:
+                    self.rollback()
+                except RuntimeError:
+                    pass  # Transaction already ended
+            raise e
+
+    def get_entity_version(self, entity_id: str) -> int | None:
+        """Get the current version of an entity.
+
+        Args:
+            entity_id: The ID of the entity
+
+        Returns:
+            The version number, or None if entity doesn't exist
+        """
+        entity = self._entities.get(entity_id)
+        return entity.version if entity else None
+
+    def get_graph_version(self) -> int:
+        """Get the overall graph version (total changes).
+
+        Returns:
+            The total number of changes recorded
+        """
+        return self._change_history.version
 
 
 # Global instance

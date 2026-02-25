@@ -7,6 +7,9 @@ from multi_agent_system.knowledge.supply_graph_database import (
     ValidationError,
     DuplicateGroup,
     MergeResult,
+    ChangeType,
+    ChangeHistory,
+    Transaction,
 )
 from multi_agent_system.knowledge.supply_graph_models import (
     SupplyEntity,
@@ -1368,6 +1371,440 @@ class TestEntityNormalization(unittest.TestCase):
 
         # Should return 2 - one for Phone group, one for Tablet
         self.assertEqual(len(representatives), 2)
+
+
+class TestIncrementalUpdatePipeline(unittest.TestCase):
+    """Test cases for incremental update pipeline."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+
+    def test_change_history_records_entity_creation(self):
+        """Test that entity creation is recorded in change history."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        history = self.db.get_change_history()
+
+        self.assertEqual(len(history.events), 1)
+        self.assertEqual(history.events[0].change_type, ChangeType.ENTITY_CREATED)
+        self.assertEqual(history.events[0].entity_id, "product_1")
+
+    def test_change_history_records_entity_update(self):
+        """Test that entity update is recorded in change history."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        entity.properties["price"] = 99.99
+        self.db.update_entity(entity)
+
+        history = self.db.get_change_history()
+
+        self.assertEqual(len(history.events), 2)
+        self.assertEqual(history.events[1].change_type, ChangeType.ENTITY_UPDATED)
+
+    def test_change_history_records_entity_deletion(self):
+        """Test that entity deletion is recorded in change history."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+        self.db.delete_entity("product_1")
+
+        history = self.db.get_change_history()
+
+        self.assertEqual(len(history.events), 2)
+        self.assertEqual(history.events[1].change_type, ChangeType.ENTITY_DELETED)
+
+    def test_change_history_records_relation_creation(self):
+        """Test that relation creation is recorded in change history."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+
+        relation = SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        )
+        self.db.create_relation(relation)
+
+        history = self.db.get_change_history()
+
+        self.assertEqual(len(history.events), 3)
+        self.assertEqual(history.events[2].change_type, ChangeType.RELATION_CREATED)
+
+    def test_get_entity_version(self):
+        """Test getting entity version."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        version = self.db.get_entity_version("product_1")
+
+        self.assertEqual(version, 1)
+
+    def test_get_entity_version_increment(self):
+        """Test that version increments on update."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        entity.properties["price"] = 99.99
+        self.db.update_entity(entity)
+
+        version = self.db.get_entity_version("product_1")
+
+        self.assertEqual(version, 2)
+
+    def test_get_graph_version(self):
+        """Test getting overall graph version."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        version = self.db.get_graph_version()
+
+        self.assertEqual(version, 3)
+
+    def test_get_change_history_for_specific_entity(self):
+        """Test getting change history for a specific entity."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        entity.properties["price"] = 99.99
+        self.db.update_entity(entity)
+
+        history = self.db.get_change_history(entity_id="product_1")
+
+        self.assertEqual(len(history.events), 2)
+
+    def test_transaction_commit(self):
+        """Test committing a transaction."""
+        self.db.begin_transaction()
+
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        self.db.commit()
+
+        self.assertEqual(self.db.count(), 2)
+        self.assertEqual(self.db.count_relations(), 1)
+
+    def test_transaction_rollback(self):
+        """Test rolling back a transaction."""
+        self.db.begin_transaction()
+
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+
+        self.db.rollback()
+
+        self.assertEqual(self.db.count(), 0)
+        self.assertEqual(self.db.count_relations(), 0)
+
+    def test_transaction_rollback_on_error(self):
+        """Test that transaction is rolled back on error."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(product)
+
+        self.db.begin_transaction()
+
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+        self.db.create_entity(brand)
+
+        # Try to create a relation with non-existent entity
+        relation = SupplyRelation(
+            source_id="product_1",
+            target_id="nonexistent",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        )
+
+        with self.assertRaises(ValidationError):
+            self.db.create_relation(relation)
+
+        # Transaction should have been rolled back
+        self.assertEqual(self.db.count(), 1)  # Only product remains
+
+    def test_nested_transaction_raises_error(self):
+        """Test that nested transactions raise an error."""
+        self.db.begin_transaction()
+
+        with self.assertRaises(RuntimeError):
+            self.db.begin_transaction()
+
+    def test_upsert_new_entity(self):
+        """Test upserting a new entity."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+
+        result, created = self.db.upsert_entity(entity)
+
+        self.assertTrue(created)
+        self.assertEqual(self.db.count(), 1)
+
+    def test_upsert_existing_entity(self):
+        """Test upserting an existing entity."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        entity.properties["price"] = 99.99
+        result, created = self.db.upsert_entity(entity)
+
+        self.assertFalse(created)
+        self.assertEqual(result.version, 2)
+        self.assertEqual(result.properties["price"], 99.99)
+        self.assertEqual(result.properties["name"], "Test Product")
+
+    def test_incrementally_update_entity_create(self):
+        """Test incrementally updating a new entity."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+
+        result = self.db.incrementally_update_entity(entity)
+
+        self.assertEqual(self.db.count(), 1)
+        self.assertEqual(result.id, "product_1")
+
+    def test_incrementally_update_entity_update(self):
+        """Test incrementally updating an existing entity."""
+        entity = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Test Product"},
+        )
+        self.db.create_entity(entity)
+
+        entity.properties["price"] = 99.99
+        result = self.db.incrementally_update_entity(entity)
+
+        self.assertEqual(result.version, 2)
+        self.assertEqual(self.db.count(), 1)
+
+    def test_batch_create_entities(self):
+        """Test batch creating entities."""
+        entities = [
+            SupplyEntity(
+                id=f"product_{i}",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": f"Product {i}"},
+            )
+            for i in range(5)
+        ]
+
+        results = self.db.batch_create_entities(entities)
+
+        self.assertEqual(len(results), 5)
+        self.assertEqual(self.db.count(), 5)
+
+    def test_batch_create_relations(self):
+        """Test batch creating relations."""
+        # Create entities first
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category"},
+        )
+        self.db.batch_create_entities([product, brand, category])
+
+        # Create relations
+        relations = [
+            SupplyRelation(
+                source_id="product_1",
+                target_id="brand_1",
+                relation_type=SupplyRelationType.HAS_BRAND,
+            ),
+            SupplyRelation(
+                source_id="product_1",
+                target_id="category_1",
+                relation_type=SupplyRelationType.BELONGS_TO,
+            ),
+        ]
+
+        results = self.db.batch_create_relations(relations)
+
+        self.assertEqual(len(results), 2)
+        self.assertEqual(self.db.count_relations(), 2)
+
+    def test_apply_incremental_changes(self):
+        """Test applying incremental changes."""
+        # Create some base entities
+        self.db.create_entity(SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        ))
+
+        result = self.db.apply_incremental_changes(
+            entities_to_create=[
+                SupplyEntity(
+                    id="product_2",
+                    type=SupplyEntityType.PRODUCT,
+                    properties={"name": "Product 2"},
+                ),
+            ],
+            entities_to_update=[
+                SupplyEntity(
+                    id="product_1",
+                    type=SupplyEntityType.PRODUCT,
+                    properties={"name": "Updated Product 1"},
+                ),
+            ],
+        )
+
+        self.assertEqual(result["entities_created"], 1)
+        self.assertEqual(result["entities_updated"], 1)
+
+    def test_apply_incremental_changes_rollback(self):
+        """Test that incremental changes rollback on error."""
+        # Create a base entity
+        self.db.create_entity(SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        ))
+
+        with self.assertRaises(ValidationError):
+            self.db.apply_incremental_changes(
+                entities_to_create=[
+                    SupplyEntity(
+                        id="product_2",
+                        type=SupplyEntityType.PRODUCT,
+                        properties={"name": "Product 2"},
+                    ),
+                ],
+                relations_to_create=[
+                    SupplyRelation(
+                        source_id="product_1",
+                        target_id="nonexistent",
+                        relation_type=SupplyRelationType.HAS_BRAND,
+                    ),
+                ],
+            )
+
+        # Should have rolled back - only original entity remains
+        self.assertEqual(self.db.count(), 1)
+        self.assertEqual(self.db.count_relations(), 0)
+
+    def test_change_history_limit(self):
+        """Test getting limited change history."""
+        for i in range(20):
+            entity = SupplyEntity(
+                id=f"product_{i}",
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": f"Product {i}"},
+            )
+            self.db.create_entity(entity)
+
+        history = self.db.get_change_history(limit=10)
+
+        self.assertEqual(len(history.events), 10)
+        self.assertEqual(history.version, 20)
 
 
 if __name__ == "__main__":
