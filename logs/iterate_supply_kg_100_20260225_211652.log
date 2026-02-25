@@ -116,3 +116,140 @@ Ran 2 tests in 0.000s
 
 FAILED (errors=2)
 [round 1] test_rc=1
+To https://github.com/pricalinat/aicode.git
+   7ff6436..2b1d01a  main -> main
+[round 1] push_rc=0
+[round 2] ===== Wed Feb 25 21:24:41 CST 2026 =====
+## Summary
+
+### Round 2 Complete
+
+**Created new file:**
+- `src/multi_agent_system/knowledge/supply_ingestion.py` - Full ingestion pipeline for supply KG
+
+**Key features implemented:**
+1. **Entity Normalization** (`EntityNormalizer`)
+   - Unicode normalization (NFC)
+   - Whitespace trimming/collapsing
+   - Optional lowercase, punctuation removal
+   - Normalized key generation for deduplication
+
+2. **Entity Deduplication** (`EntityDeduplicator`)
+   - Finds duplicates against existing entities and within batches
+   - Multiple merge strategies (primary_wins, secondary_wins, merge)
+
+3. **Ingestion Pipeline** (`SupplyGraphIngestionPipeline`)
+   - Individual ingestors: `ingest_product`, `ingest_service`, `ingest_procedure`, `ingest_intent`, `ingest_slot`
+   - Generic ingestor for category, brand, supplier, merchant, region, channel
+   - Auto-creates relations during ingestion
+   - Batch ingestion with configurable batch size
+   - Full schema ingestion (ordered to handle dependencies)
+   - Dry-run mode for preview
+
+4. **Bug fix in supply_graph_database.py:**
+   - Fixed validation rules being incorrectly applied to both entities and relations
+   - Now properly separates entity validation rules from relation validation rules
+
+**Tests:**
+- Added `tests/test_supply_ingestion.py` with 20 tests
+- Fixed 2 existing tests in `tests/test_supply_graph.py`
+
+**Run commands:**
+```bash
+# Create venv and install deps
+python3 -m venv .venv && .venv/bin/pip install loguru
+
+# Run tests
+PYTHONPATH=src .venv/bin/python -m unittest tests.test_supply_ingestion tests.test_supply_graph -v
+```
+
+**Test results:**
+- 20 new ingestion tests: ALL PASS
+- 26 existing graph tests: ALL PASS
+
+**Next candidates for Round 3:**
+- Evaluation metrics and benchmark scripts for KG quality
+- Incremental update pipeline enhancements
+- Risk/policy tagging pipeline
+test_arxiv_agent (unittest.loader._FailedTest.test_arxiv_agent) ... ERROR
+test_supply_graph (unittest.loader._FailedTest.test_supply_graph) ... ERROR
+test_supply_ingestion (unittest.loader._FailedTest.test_supply_ingestion) ... ERROR
+
+======================================================================
+ERROR: test_arxiv_agent (unittest.loader._FailedTest.test_arxiv_agent)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_arxiv_agent
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/rrp/Documents/aicode/tests/test_arxiv_agent.py", line 3, in <module>
+    from multi_agent_system.agents import ArxivAgent
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/__init__.py", line 1, in <module>
+    from .core.agent import AgentResponse, BaseAgent
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/__init__.py", line 3, in <module>
+    from .orchestrator import Orchestrator
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/orchestrator.py", line 9, in <module>
+    from .tracing import TraceLevel, trace
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/tracing.py", line 10, in <module>
+    from loguru import logger
+ModuleNotFoundError: No module named 'loguru'
+
+
+======================================================================
+ERROR: test_supply_graph (unittest.loader._FailedTest.test_supply_graph)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_supply_graph
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/rrp/Documents/aicode/tests/test_supply_graph.py", line 5, in <module>
+    from multi_agent_system.knowledge.supply_graph_database import (
+    ...<2 lines>...
+    )
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/__init__.py", line 3, in <module>
+    from .core.orchestrator import Orchestrator
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/__init__.py", line 3, in <module>
+    from .orchestrator import Orchestrator
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/orchestrator.py", line 9, in <module>
+    from .tracing import TraceLevel, trace
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/tracing.py", line 10, in <module>
+    from loguru import logger
+ModuleNotFoundError: No module named 'loguru'
+
+
+======================================================================
+ERROR: test_supply_ingestion (unittest.loader._FailedTest.test_supply_ingestion)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_supply_ingestion
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/rrp/Documents/aicode/tests/test_supply_ingestion.py", line 5, in <module>
+    from multi_agent_system.knowledge.supply_ingestion import (
+    ...<5 lines>...
+    )
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/__init__.py", line 3, in <module>
+    from .core.orchestrator import Orchestrator
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/__init__.py", line 3, in <module>
+    from .orchestrator import Orchestrator
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/orchestrator.py", line 9, in <module>
+    from .tracing import TraceLevel, trace
+  File "/Users/rrp/Documents/aicode/src/multi_agent_system/core/tracing.py", line 10, in <module>
+    from loguru import logger
+ModuleNotFoundError: No module named 'loguru'
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+FAILED (errors=3)
+[round 2] test_rc=1

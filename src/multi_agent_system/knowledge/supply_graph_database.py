@@ -65,28 +65,29 @@ class SupplyGraphDatabase:
         self._entities: dict[str, SupplyEntity] = {}
         self._relations: list[SupplyRelation] = []
         self._entity_index: dict[SupplyEntityType, list[str]] = {}
-        self._validation_rules: list[ValidationRule] = []
+        self._entity_validation_rules: list[ValidationRule] = []
+        self._relation_validation_rules: list[ValidationRule] = []
         self._initialize_validation_rules()
 
     def _initialize_validation_rules(self) -> None:
         """Initialize default validation rules."""
 
         # Entity validation rules
-        self._validation_rules.append(ValidationRule(
+        self._entity_validation_rules.append(ValidationRule(
             name="entity_has_id",
             description="Entity must have a non-empty ID",
             validator=lambda e: bool(e.id and e.id.strip()),
             error_message="Entity ID cannot be empty",
         ))
 
-        self._validation_rules.append(ValidationRule(
+        self._entity_validation_rules.append(ValidationRule(
             name="entity_has_valid_type",
             description="Entity must have a valid type",
             validator=lambda e: isinstance(e.type, SupplyEntityType),
             error_message="Entity must have a valid SupplyEntityType",
         ))
 
-        self._validation_rules.append(ValidationRule(
+        self._entity_validation_rules.append(ValidationRule(
             name="product_has_name",
             description="Product entities must have a name",
             validator=lambda e: (
@@ -97,7 +98,7 @@ class SupplyGraphDatabase:
         ))
 
         # Relation validation rules
-        self._validation_rules.append(ValidationRule(
+        self._relation_validation_rules.append(ValidationRule(
             name="relation_has_valid_entities",
             description="Relation must reference existing entities",
             validator=lambda r: (
@@ -107,14 +108,14 @@ class SupplyGraphDatabase:
             error_message="Relation references non-existent entities",
         ))
 
-        self._validation_rules.append(ValidationRule(
+        self._relation_validation_rules.append(ValidationRule(
             name="relation_has_valid_type",
             description="Relation must have a valid type",
             validator=lambda r: isinstance(r.relation_type, SupplyRelationType),
             error_message="Relation must have a valid SupplyRelationType",
         ))
 
-        self._validation_rules.append(ValidationRule(
+        self._relation_validation_rules.append(ValidationRule(
             name="weight_in_valid_range",
             description="Relation weight must be between 0 and 1",
             validator=lambda r: 0.0 <= r.weight <= 1.0,
@@ -134,7 +135,7 @@ class SupplyGraphDatabase:
         Returns list of error messages (empty if valid).
         """
         errors = []
-        for rule in self._validation_rules:
+        for rule in self._entity_validation_rules:
             try:
                 if not rule.validator(entity):
                     errors.append(f"{rule.name}: {rule.error_message}")
@@ -148,7 +149,7 @@ class SupplyGraphDatabase:
         Returns list of error messages (empty if valid).
         """
         errors = []
-        for rule in self._validation_rules:
+        for rule in self._relation_validation_rules:
             try:
                 if not rule.validator(relation):
                     errors.append(f"{rule.name}: {rule.error_message}")

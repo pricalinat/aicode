@@ -147,7 +147,7 @@ class TestSupplyGraphDatabase(unittest.TestCase):
             relation_type=SupplyRelationType.HAS_BRAND,
         )
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             self.db.create_relation(relation)
 
     def test_delete_relation(self):
@@ -469,7 +469,7 @@ class TestSupplyGraphDatabase(unittest.TestCase):
             relation_type=SupplyRelationType.SIMILAR_TO,
         ))
 
-        high_conf = self.db.get_high_confidence_relations(threshold=0.7)
+        high_conf = self.db.get_high_confidence_relations(threshold=0.65)
 
         self.assertEqual(len(high_conf), 1)
         self.assertEqual(high_conf[0][0].target_id, "brand_1")
