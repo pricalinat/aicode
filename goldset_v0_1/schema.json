@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "goldset_v0_1 schema overview",
+  "type": "object",
+  "description": "This file documents record-level schema templates used by generator/validator.",
+  "definitions": {
+    "gold_ecom_record": {
+      "type": "object",
+      "required": ["id", "dataset", "domain", "query", "language", "product", "label"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^ecom_\\d{6}$"},
+        "dataset": {"const": "gold_ecom"},
+        "domain": {"const": "ecommerce"},
+        "query": {"type": "string"},
+        "language": {"const": "zh-CN"},
+        "product": {
+          "type": "object",
+          "required": ["title", "category_lv1", "category_lv2", "brand", "price", "attributes"]
+        },
+        "label": {
+          "type": "object",
+          "required": ["intent", "target_category", "price_range", "must_have", "exclude", "sort_by"]
+        }
+      }
+    },
+    "gold_miniapp_record": {
+      "type": "object",
+      "required": ["id", "dataset", "domain", "query", "language", "service", "label"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^miniapp_\\d{6}$"},
+        "dataset": {"const": "gold_miniapp"},
+        "domain": {"const": "miniapp_service"},
+        "query": {"type": "string"},
+        "language": {"const": "zh-CN"},
+        "service": {
+          "type": "object",
+          "required": ["category", "name", "city", "channel"]
+        },
+        "label": {
+          "type": "object",
+          "required": ["intent", "required_slots", "preconditions", "expected_action", "time_constraint"]
+        }
+      }
+    },
+    "challenge_record": {
+      "type": "object",
+      "required": [
+        "id",
+        "dataset",
+        "challenge_type",
+        "source_id",
+        "domain",
+        "language",
+        "base_query",
+        "perturbed_query",
+        "gold_intent"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "dataset": {"type": "string", "pattern": "^challenge_"},
+        "challenge_type": {"type": "string", "enum": ["confusion", "long_tail", "robustness", "adversarial"]},
+        "source_id": {"type": "string"},
+        "domain": {"type": "string", "enum": ["ecommerce", "miniapp_service"]},
+        "language": {"const": "zh-CN"},
+        "base_query": {"type": "string"},
+        "perturbed_query": {"type": "string"},
+        "gold_intent": {"type": "string"}
+      }
+    }
+  }
+}
