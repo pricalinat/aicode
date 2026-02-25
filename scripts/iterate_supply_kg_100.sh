@@ -43,25 +43,23 @@ Focus areas (pick highest impact not yet done):
 EOF
 
   set +e
-  # First try in safe mode (no yolo). Only escalate if permissions block progress.
-  CLAUDE_OUT=$(claude -p --permission-mode default --output-format text "$(cat "$PROMPT_FILE")" 2>&1)
+  # YOLO mode enabled by user preference: always run with dangerously-skip-permissions.
+  CLAUDE_OUT=$(claude -p --permission-mode dontAsk --dangerously-skip-permissions --output-format text "$(cat "$PROMPT_FILE")" 2>&1)
   CLAUDE_RC=$?
   echo "$CLAUDE_OUT" | tee -a "$LOG"
-
-  if [[ $CLAUDE_RC -ne 0 ]] && echo "$CLAUDE_OUT" | grep -Eqi "permission|blocked|PreToolUse|approval|cannot .*write|access denied"; then
-    echo "[round $i] permission-gated; retrying with dangerously-skip-permissions" | tee -a "$LOG"
-    CLAUDE_OUT=$(claude -p --permission-mode dontAsk --dangerously-skip-permissions --output-format text "$(cat "$PROMPT_FILE")" 2>&1)
-    CLAUDE_RC=$?
-    echo "$CLAUDE_OUT" | tee -a "$LOG"
-  fi
   set -e
 
   if [[ $CLAUDE_RC -ne 0 ]]; then
     echo "[round $i] claude exited with code $CLAUDE_RC" | tee -a "$LOG"
   fi
 
+  # Ensure isolated test env with required deps
+  if [[ ! -d .venv ]]; then
+    python3 -m venv .venv
+  fi
   set +e
-  PYTHONPATH=src python3 -m unittest discover -s tests -v 2>&1 | tee -a "$LOG"
+  .venv/bin/python -m pip install -q -U pip loguru >/dev/null 2>&1
+  PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v 2>&1 | tee -a "$LOG"
   TEST_RC=${PIPESTATUS[0]}
   set -e
   echo "[round $i] test_rc=$TEST_RC" | tee -a "$LOG"
