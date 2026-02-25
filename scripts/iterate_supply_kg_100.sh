@@ -9,7 +9,10 @@ PROMPT_FILE="/tmp/claude_supply_round_prompt.txt"
 
 echo "[start] $(date)" | tee -a "$LOG"
 
-for i in $(seq 1 100); do
+START_ROUND="${START_ROUND:-1}"
+END_ROUND="${END_ROUND:-100}"
+
+for i in $(seq "$START_ROUND" "$END_ROUND"); do
   echo "[round $i] ===== $(date) =====" | tee -a "$LOG"
 
   cat > "$PROMPT_FILE" <<EOF
@@ -40,8 +43,17 @@ Focus areas (pick highest impact not yet done):
 EOF
 
   set +e
-  claude -p --permission-mode dontAsk --dangerously-skip-permissions --output-format text "$(cat "$PROMPT_FILE")" 2>&1 | tee -a "$LOG"
-  CLAUDE_RC=${PIPESTATUS[0]}
+  # First try in safe mode (no yolo). Only escalate if permissions block progress.
+  CLAUDE_OUT=$(claude -p --permission-mode default --output-format text "$(cat "$PROMPT_FILE")" 2>&1)
+  CLAUDE_RC=$?
+  echo "$CLAUDE_OUT" | tee -a "$LOG"
+
+  if [[ $CLAUDE_RC -ne 0 ]] && echo "$CLAUDE_OUT" | grep -Eqi "permission|blocked|PreToolUse|approval|cannot .*write|access denied"; then
+    echo "[round $i] permission-gated; retrying with dangerously-skip-permissions" | tee -a "$LOG"
+    CLAUDE_OUT=$(claude -p --permission-mode dontAsk --dangerously-skip-permissions --output-format text "$(cat "$PROMPT_FILE")" 2>&1)
+    CLAUDE_RC=$?
+    echo "$CLAUDE_OUT" | tee -a "$LOG"
+  fi
   set -e
 
   if [[ $CLAUDE_RC -ne 0 ]]; then
