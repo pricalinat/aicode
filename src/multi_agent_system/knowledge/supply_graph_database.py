@@ -573,6 +573,250 @@ class SupplyGraphDatabase:
         self._relations.clear()
         self._entity_index.clear()
 
+    # Advanced Query APIs
+
+    def query_entities_matching_pattern(
+        self,
+        entity_type: SupplyEntityType,
+        required_relations: list[tuple[SupplyRelationType, SupplyEntityType | None, str]] | None = None,
+        property_filters: dict[str, Any] | None = None,
+    ) -> list[SupplyEntity]:
+        """Query entities matching a specific graph pattern.
+
+        Args:
+            entity_type: The type of entities to find
+            required_relations: List of (relation_type, target_type, direction) tuples.
+                direction can be 'out' (outgoing) or 'in' (incoming).
+                If target_type is None, any target type matches.
+            property_filters: Optional property key-value pairs to filter by
+
+        Returns:
+            List of entities matching the pattern
+
+        Example:
+            # Find products that have a brand and are supplied by a specific supplier
+            db.query_entities_matching_pattern(
+                entity_type=SupplyEntityType.PRODUCT,
+                required_relations=[
+                    (SupplyRelationType.HAS_BRAND, None, 'out'),
+                    (SupplyRelationType.SUPPLIES, SupplyEntityType.SUPPLIER, 'out'),
+                ]
+            )
+        """
+        candidates = self.query_by_type(entity_type)
+        results = []
+
+        for entity in candidates:
+            # Check property filters
+            if property_filters:
+                match = all(
+                    entity.properties.get(k) == v
+                    for k, v in property_filters.items()
+                )
+                if not match:
+                    continue
+
+            # Check required relations
+            if required_relations:
+                entity_relations = {
+                    'out': self.get_outgoing_relations(entity.id),
+                    'in': self.get_incoming_relations(entity.id),
+                }
+
+                all_match = True
+                for rel_type, target_type, direction in required_relations:
+                    relevant_rels = entity_relations.get(direction, [])
+                    has_match = False
+                    for r in relevant_rels:
+                        if r.relation_type == rel_type:
+                            if target_type is None:
+                                has_match = True
+                                break
+                            related_entity_id = r.target_id if direction == 'out' else r.source_id
+                            related_entity = self._entities.get(related_entity_id)
+                            if related_entity is not None and related_entity.type == target_type:
+                                has_match = True
+                                break
+                    if not has_match:
+                        all_match = False
+                        break
+
+                if not all_match:
+                    continue
+
+            results.append(entity)
+
+        return results
+
+    def get_entity_statistics(self) -> dict[str, Any]:
+        """Get comprehensive statistics about the graph.
+
+        Returns:
+            Dictionary with entity counts, relation counts, and graph metrics
+        """
+        stats = {
+            "total_entities": len(self._entities),
+            "total_relations": len(self._relations),
+            "entities_by_type": {},
+            "relations_by_type": {},
+            "avg_relations_per_entity": 0.0,
+            "entities_with_no_relations": 0,
+            "entities_with_high_confidence": 0,
+        }
+
+        # Count entities by type
+        for entity in self._entities.values():
+            type_name = entity.type.value
+            stats["entities_by_type"][type_name] = stats["entities_by_type"].get(type_name, 0) + 1
+
+        # Count relations by type
+        for relation in self._relations:
+            type_name = relation.relation_type.value
+            stats["relations_by_type"][type_name] = stats["relations_by_type"].get(type_name, 0) + 1
+
+        # Calculate average relations per entity
+        if self._entities:
+            relation_counts = []
+            for entity in self._entities.values():
+                out_count = len(self.get_outgoing_relations(entity.id))
+                in_count = len(self.get_incoming_relations(entity.id))
+                total = out_count + in_count
+                relation_counts.append(total)
+
+                if total == 0:
+                    stats["entities_with_no_relations"] += 1
+
+            stats["avg_relations_per_entity"] = sum(relation_counts) / len(relation_counts)
+
+        # Count entities with high confidence relations
+        high_conf_threshold = 0.7
+        for entity in self._entities.values():
+            outgoing = self.get_outgoing_relations(entity.id)
+            if any(self.calculate_relation_confidence(r) >= high_conf_threshold for r in outgoing):
+                stats["entities_with_high_confidence"] += 1
+
+        return stats
+
+    def find_similar_entities(
+        self,
+        entity_id: str,
+        max_results: int = 10,
+    ) -> list[tuple[SupplyEntity, float]]:
+        """Find entities similar to the given entity based on properties and relations.
+
+        Similarity is calculated based on:
+        - Shared relation types
+        - Shared property keys
+        - Same entity type (higher weight)
+
+        Args:
+            entity_id: The ID of the entity to find similar entities for
+            max_results: Maximum number of results to return
+
+        Returns:
+            List of (entity, similarity_score) tuples sorted by similarity
+        """
+        if entity_id not in self._entities:
+            return []
+
+        source_entity = self._entities[entity_id]
+        source_outgoing = self.get_outgoing_relations(entity_id)
+        source_incoming = self.get_incoming_relations(entity_id)
+
+        similarities: list[tuple[SupplyEntity, float]] = []
+
+        for entity in self._entities.values():
+            if entity.id == entity_id:
+                continue
+
+            score = 0.0
+
+            # Same type bonus
+            if entity.type == source_entity.type:
+                score += 0.3
+
+            # Compare outgoing relations
+            target_outgoing = self.get_outgoing_relations(entity.id)
+            source_out_types = set(r.relation_type for r in source_outgoing)
+            target_out_types = set(r.relation_type for r in target_outgoing)
+            shared_out = source_out_types & target_out_types
+            score += len(shared_out) * 0.1
+
+            # Compare incoming relations
+            target_incoming = self.get_incoming_relations(entity.id)
+            source_in_types = set(r.relation_type for r in source_incoming)
+            target_in_types = set(r.relation_type for r in target_incoming)
+            shared_in = source_in_types & target_in_types
+            score += len(shared_in) * 0.1
+
+            # Compare properties
+            source_props = set(source_entity.properties.keys())
+            target_props = set(entity.properties.keys())
+            shared_props = source_props & target_props
+            score += len(shared_props) * 0.05
+
+            # Cap score at 1.0
+            score = min(1.0, score)
+            similarities.append((entity, score))
+
+        # Sort by similarity score descending
+        similarities.sort(key=lambda x: x[1], reverse=True)
+        return similarities[:max_results]
+
+    def get_connected_entities(
+        self,
+        entity_id: str,
+        max_distance: int = 2,
+        relation_types: list[SupplyRelationType] | None = None,
+    ) -> dict[int, list[SupplyEntity]]:
+        """Get all entities connected to the given entity within max_distance hops.
+
+        Args:
+            entity_id: The ID of the starting entity
+            max_distance: Maximum number of hops to traverse
+            relation_types: Optional list of relation types to filter by
+
+        Returns:
+            Dictionary mapping distance to list of entities at that distance
+        """
+        if entity_id not in self._entities:
+            return {}
+
+        result: dict[int, list[SupplyEntity]] = {i: [] for i in range(1, max_distance + 1)}
+        visited: set[str] = {entity_id}
+
+        for distance in range(1, max_distance + 1):
+            current_level: set[str] = set()
+
+            # Get all entities at previous distance
+            if distance == 1:
+                prev_level = {entity_id}
+            else:
+                prev_level = {e.id for e in result[distance - 1]}
+
+            for prev_id in prev_level:
+                neighbors = self.get_neighbors(
+                    prev_id,
+                    relation_type=None if relation_types is None else relation_types[0] if relation_types else None,
+                    direction="both"
+                )
+
+                for neighbor in neighbors:
+                    if neighbor.id not in visited:
+                        # Filter by relation types if specified
+                        if relation_types:
+                            neighbor_rels = self.get_outgoing_relations(prev_id) + self.get_incoming_relations(prev_id)
+                            if any(r.relation_type in relation_types for r in neighbor_rels):
+                                current_level.add(neighbor.id)
+                                result[distance].append(neighbor)
+                        else:
+                            current_level.add(neighbor.id)
+                            result[distance].append(neighbor)
+
+            visited.update(current_level)
+
+        return result
+
 
 # Global instance
 _global_supply_graph: SupplyGraphDatabase | None = None

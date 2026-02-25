@@ -29,12 +29,16 @@ Rules:
 - Output a concise summary: changed files, why it matters, run commands, test results, and next candidate step.
 
 Focus areas (pick highest impact not yet done):
+- data closed-loop pipeline (collect -> generate/simulate -> train features -> evaluate -> feed back)
+- synthetic data generation for supply basics + user behavior logs/events
+- feature engineering pipeline from supply + behavior (for matching/ranking)
+- retrieval/query APIs over KG (high recall + precision)
+- bi-directional matching: user->supply and supply->user
 - KG schema quality & constraints
 - ingestion for product/service/procedure/intent/slot
 - entity normalization & dedup
 - relation confidence scoring
 - graph validation rules
-- retrieval/query APIs over KG
 - evaluation metrics and benchmark scripts
 - adapter for mini-program structured inputs
 - risk/policy tagging pipeline

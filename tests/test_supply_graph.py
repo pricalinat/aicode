@@ -624,5 +624,258 @@ class TestValidationRules(unittest.TestCase):
             self.db.create_relation(relation)
 
 
+class TestAdvancedQueryAPIs(unittest.TestCase):
+    """Test cases for advanced query APIs."""
+
+    def setUp(self):
+        """Set up test fixtures."""
+        self.db = SupplyGraphDatabase()
+        # Create test data
+        self._create_test_data()
+
+    def _create_test_data(self):
+        """Create test entities and relations."""
+        # Products
+        product1 = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Laptop", "price": 999.99},
+        )
+        product2 = SupplyEntity(
+            id="product_2",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Phone", "price": 699.99},
+        )
+        product3 = SupplyEntity(
+            id="product_3",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Tablet", "price": 499.99},
+        )
+
+        # Brands
+        brand1 = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "TechCorp"},
+        )
+        brand2 = SupplyEntity(
+            id="brand_2",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "OtherBrand"},
+        )
+
+        # Suppliers
+        supplier1 = SupplyEntity(
+            id="supplier_1",
+            type=SupplyEntityType.SUPPLIER,
+            properties={"name": "China Supply Co"},
+        )
+        supplier2 = SupplyEntity(
+            id="supplier_2",
+            type=SupplyEntityType.SUPPLIER,
+            properties={"name": "Local Supplier"},
+        )
+
+        # Category
+        category1 = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Electronics"},
+        )
+
+        # Services
+        service1 = SupplyEntity(
+            id="service_1",
+            type=SupplyEntityType.SERVICE,
+            properties={"name": "Repair Service"},
+        )
+
+        for entity in [product1, product2, product3, brand1, brand2, supplier1, supplier2, category1, service1]:
+            self.db.create_entity(entity)
+
+        # Relations
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1", target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2", target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_3", target_id="brand_2",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1", target_id="supplier_1",
+            relation_type=SupplyRelationType.SUPPLIES,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2", target_id="supplier_2",
+            relation_type=SupplyRelationType.SUPPLIES,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1", target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_2", target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="service_1", target_id="product_1",
+            relation_type=SupplyRelationType.PROVIDES_SERVICE,
+        ))
+
+    def test_query_entities_matching_pattern_basic(self):
+        """Test basic pattern matching query."""
+        # Find products that have a brand
+        results = self.db.query_entities_matching_pattern(
+            entity_type=SupplyEntityType.PRODUCT,
+            required_relations=[
+                (SupplyRelationType.HAS_BRAND, None, 'out'),
+            ],
+        )
+
+        self.assertEqual(len(results), 3)  # All 3 products have brands
+
+    def test_query_entities_matching_pattern_with_target_type(self):
+        """Test pattern matching with specific target type."""
+        # Find products that are supplied by a specific supplier
+        results = self.db.query_entities_matching_pattern(
+            entity_type=SupplyEntityType.PRODUCT,
+            required_relations=[
+                (SupplyRelationType.SUPPLIES, SupplyEntityType.SUPPLIER, 'out'),
+            ],
+        )
+
+        self.assertEqual(len(results), 2)  # product_1 and product_2 have suppliers
+
+    def test_query_entities_matching_pattern_property_filter(self):
+        """Test pattern matching with property filters."""
+        # Find products with price > 500
+        results = self.db.query_entities_matching_pattern(
+            entity_type=SupplyEntityType.PRODUCT,
+            property_filters={"price": 999.99},
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+    def test_query_entities_matching_pattern_combined(self):
+        """Test pattern matching with both relations and properties."""
+        # Find products that have brand AND belong to a category with price=999.99
+        results = self.db.query_entities_matching_pattern(
+            entity_type=SupplyEntityType.PRODUCT,
+            required_relations=[
+                (SupplyRelationType.HAS_BRAND, None, 'out'),
+                (SupplyRelationType.BELONGS_TO, SupplyEntityType.CATEGORY, 'out'),
+            ],
+            property_filters={"price": 999.99},
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+    def test_query_entities_matching_pattern_no_match(self):
+        """Test pattern matching with no matches."""
+        results = self.db.query_entities_matching_pattern(
+            entity_type=SupplyEntityType.PRODUCT,
+            required_relations=[
+                (SupplyRelationType.PROVIDES_SERVICE, None, 'out'),
+            ],
+        )
+
+        self.assertEqual(len(results), 0)
+
+    def test_get_entity_statistics(self):
+        """Test getting entity statistics."""
+        stats = self.db.get_entity_statistics()
+
+        self.assertEqual(stats["total_entities"], 9)
+        self.assertEqual(stats["total_relations"], 8)
+        self.assertIn("product", stats["entities_by_type"])
+        self.assertEqual(stats["entities_by_type"]["product"], 3)
+        self.assertIn("supplier", stats["entities_by_type"])
+        self.assertEqual(stats["entities_by_type"]["supplier"], 2)
+
+    def test_get_entity_statistics_relation_counts(self):
+        """Test relation statistics."""
+        stats = self.db.get_entity_statistics()
+
+        self.assertIn("has_brand", stats["relations_by_type"])
+        self.assertEqual(stats["relations_by_type"]["has_brand"], 3)
+        self.assertIn("supplies", stats["relations_by_type"])
+        self.assertEqual(stats["relations_by_type"]["supplies"], 2)
+
+    def test_get_entity_statistics_connected_entities(self):
+        """Test statistics about connected entities."""
+        stats = self.db.get_entity_statistics()
+
+        self.assertGreater(stats["avg_relations_per_entity"], 0)
+        # All test entities have relations, so this should be 0
+        self.assertEqual(stats["entities_with_no_relations"], 0)
+
+    def test_find_similar_entities(self):
+        """Test finding similar entities."""
+        # product_1 and product_2 share brand and category
+        similar = self.db.find_similar_entities("product_1", max_results=5)
+
+        self.assertGreater(len(similar), 0)
+        # Should find product_2 as similar (same brand, same category)
+        similar_ids = [e.id for e, _ in similar]
+        self.assertIn("product_2", similar_ids)
+
+    def test_find_similar_entities_not_found(self):
+        """Test finding similar entities for non-existent entity."""
+        similar = self.db.find_similar_entities("nonexistent")
+        self.assertEqual(len(similar), 0)
+
+    def test_find_similar_entities_excludes_self(self):
+        """Test that similar entities doesn't include the source entity."""
+        similar = self.db.find_similar_entities("product_1", max_results=10)
+        ids = [e.id for e, _ in similar]
+        self.assertNotIn("product_1", ids)
+
+    def test_get_connected_entities_distance_1(self):
+        """Test getting connected entities at distance 1."""
+        connected = self.db.get_connected_entities("product_1", max_distance=1)
+
+        self.assertIn(1, connected)
+        connected_ids = [e.id for e in connected[1]]
+        self.assertIn("brand_1", connected_ids)
+        self.assertIn("supplier_1", connected_ids)
+        self.assertIn("category_1", connected_ids)
+
+    def test_get_connected_entities_distance_2(self):
+        """Test getting connected entities at distance 2."""
+        connected = self.db.get_connected_entities("product_1", max_distance=2)
+
+        # Distance 1: brand_1, supplier_1, category_1
+        self.assertIn(1, connected)
+        # Distance 2: service_1 (via PROVIDES_SERVICE from service to product)
+        self.assertIn(2, connected)
+
+    def test_get_connected_entities_with_relation_filter(self):
+        """Test getting connected entities filtered by relation type."""
+        connected = self.db.get_connected_entities(
+            "product_1",
+            max_distance=1,
+            relation_types=[SupplyRelationType.HAS_BRAND],
+        )
+
+        self.assertIn(1, connected)
+        connected_ids = [e.id for e in connected[1]]
+        self.assertIn("brand_1", connected_ids)
+        # supplier_1 and category_1 should not be included
+        self.assertNotIn("supplier_1", connected_ids)
+        self.assertNotIn("category_1", connected_ids)
+
+    def test_get_connected_entities_not_found(self):
+        """Test getting connected entities for non-existent entity."""
+        connected = self.db.get_connected_entities("nonexistent", max_distance=2)
+        self.assertEqual(len(connected), 0)
+
+
 if __name__ == "__main__":
     unittest.main()
