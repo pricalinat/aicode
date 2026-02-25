@@ -138,6 +138,7 @@ src/multi_agent_system/knowledge/__init__.py
 src/multi_agent_system/knowledge/graph.py
 src/multi_agent_system/knowledge/paper.py
 src/multi_agent_system/knowledge/supply_graph_database.py
+src/multi_agent_system/knowledge/supply_graph_evaluation.py
 src/multi_agent_system/knowledge/supply_graph_models.py
 src/multi_agent_system/knowledge/supply_ingestion.py
 src/multi_agent_system/testing/__init__.py
@@ -146,4 +147,5 @@ src/multi_agent_system/testing/samples.py
 src/multi_agent_system/testing/test_assistant.py
 tests/test_arxiv_agent.py
 tests/test_supply_graph.py
+tests/test_supply_graph_evaluation.py
 tests/test_supply_ingestion.py

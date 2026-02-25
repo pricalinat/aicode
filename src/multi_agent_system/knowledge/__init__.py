@@ -20,6 +20,15 @@ from .supply_graph_database import (
     get_supply_graph,
     set_supply_graph,
 )
+from .supply_graph_evaluation import (
+    EntityQualityMetrics,
+    EvaluationResult,
+    GraphBenchmark,
+    GraphMetrics,
+    PerformanceMetrics,
+    RelationQualityMetrics,
+    SupplyGraphEvaluator,
+)
 from .supply_graph_models import (
     SupplyEntity,
     SupplyEntityType,
@@ -53,4 +62,12 @@ __all__ = [
     "GraphPath",
     "get_supply_graph",
     "set_supply_graph",
+    # Supply graph evaluation
+    "SupplyGraphEvaluator",
+    "GraphBenchmark",
+    "EntityQualityMetrics",
+    "RelationQualityMetrics",
+    "GraphMetrics",
+    "PerformanceMetrics",
+    "EvaluationResult",
 ]
