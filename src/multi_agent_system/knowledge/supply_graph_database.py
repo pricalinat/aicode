@@ -793,14 +793,16 @@ class SupplyGraphDatabase:
         target_id: str,
         max_length: int = 5,
     ) -> list[GraphPath]:
-        """Find all paths between two entities up to max_length."""
+        """Find all paths between two entities up to max_length.
+
+        Uses backtracking to find all simple paths (no repeated nodes).
+        """
         if source_id not in self._entities or target_id not in self._entities:
             return []
 
         paths: list[GraphPath] = []
-        visited: set[str] = set()
 
-        def dfs(current_id: str, path: GraphPath) -> None:
+        def dfs(current_id: str, path: GraphPath, visited: set[str]) -> None:
             if current_id == target_id:
                 paths.append(GraphPath(
                     entities=list(path.entities),
@@ -812,22 +814,29 @@ class SupplyGraphDatabase:
                 return
 
             for relation in self.get_outgoing_relations(current_id):
-                if relation.target_id in visited:
+                next_id = relation.target_id
+                if next_id in visited:
                     continue
 
-                visited.add(relation.target_id)
-                path.entities.append(self._entities[relation.target_id])
+                # Add to visited before recursing
+                visited.add(next_id)
+                path.entities.append(self._entities[next_id])
                 path.relations.append(relation)
 
-                dfs(relation.target_id, path)
+                dfs(next_id, path, visited)
 
+                # Backtrack: remove from visited and path
                 path.entities.pop()
                 path.relations.pop()
-                visited.remove(relation.target_id)
+                visited.remove(next_id)
 
-        visited.add(source_id)
-        path = GraphPath(entities=[self._entities[source_id]], relations=[])
-        dfs(source_id, path)
+        # Initialize with source in visited
+        visited = {source_id}
+        initial_path = GraphPath(
+            entities=[self._entities[source_id]],
+            relations=[]
+        )
+        dfs(source_id, initial_path, visited)
 
         return paths
 

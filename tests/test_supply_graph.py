@@ -409,6 +409,129 @@ class TestSupplyGraphDatabase(unittest.TestCase):
 
         self.assertIsNone(path)
 
+    def test_find_paths_multiple(self):
+        """Test finding multiple paths between entities.
+
+        Creates a diamond graph: source -> a -> target
+                              source -> b -> target
+
+        Should find 2 distinct paths.
+        """
+        # Create diamond graph: product -> (brand/merchant) -> category
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        brand = SupplyEntity(
+            id="brand_1",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Brand 1"},
+        )
+        merchant = SupplyEntity(
+            id="merchant_1",
+            type=SupplyEntityType.MERCHANT,
+            properties={"name": "Merchant 1"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Electronics"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(brand)
+        self.db.create_entity(merchant)
+        self.db.create_entity(category)
+
+        # Two paths to category: via brand and via merchant
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="brand_1",
+            relation_type=SupplyRelationType.HAS_BRAND,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="brand_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="product_1",
+            target_id="merchant_1",
+            relation_type=SupplyRelationType.SELLS,
+        ))
+        self.db.create_relation(SupplyRelation(
+            source_id="merchant_1",
+            target_id="category_1",
+            relation_type=SupplyRelationType.BELONGS_TO,
+        ))
+
+        paths = self.db.find_paths("product_1", "category_1", max_length=5)
+
+        # Should find 2 paths
+        self.assertEqual(len(paths), 2)
+
+        # Each path should have length 2
+        for path in paths:
+            self.assertEqual(path.length, 2)
+
+    def test_find_paths_max_length(self):
+        """Test find_paths respects max_length parameter."""
+        # Create a longer chain: a -> b -> c -> d -> e
+        entities = ["a", "b", "c", "d", "e"]
+        for e in entities:
+            self.db.create_entity(SupplyEntity(
+                id=e,
+                type=SupplyEntityType.PRODUCT,
+                properties={"name": e},
+            ))
+
+        # Create chain
+        for i in range(len(entities) - 1):
+            self.db.create_relation(SupplyRelation(
+                source_id=entities[i],
+                target_id=entities[i + 1],
+                relation_type=SupplyRelationType.RELATED_TO,
+            ))
+
+        # Find paths from a to e with max_length=2
+        paths = self.db.find_paths("a", "e", max_length=2)
+
+        # Should find no paths (minimum path length is 4)
+        self.assertEqual(len(paths), 0)
+
+        # Find paths with max_length=5
+        paths = self.db.find_paths("a", "e", max_length=5)
+
+        # Should find 1 path
+        self.assertEqual(len(paths), 1)
+        self.assertEqual(paths[0].length, 4)
+
+    def test_find_paths_no_path(self):
+        """Test find_paths when no path exists."""
+        product = SupplyEntity(
+            id="product_1",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Product 1"},
+        )
+        category = SupplyEntity(
+            id="category_1",
+            type=SupplyEntityType.CATEGORY,
+            properties={"name": "Category 1"},
+        )
+
+        self.db.create_entity(product)
+        self.db.create_entity(category)
+
+        paths = self.db.find_paths("product_1", "category_1")
+
+        self.assertEqual(len(paths), 0)
+
+    def test_find_paths_nonexistent_entities(self):
+        """Test find_paths with nonexistent entities."""
+        paths = self.db.find_paths("nonexistent1", "nonexistent2")
+        self.assertEqual(len(paths), 0)
+
     def test_calculate_relation_confidence(self):
         """Test calculating relation confidence."""
         product = SupplyEntity(
