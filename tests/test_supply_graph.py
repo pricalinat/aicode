@@ -877,5 +877,208 @@ class TestAdvancedQueryAPIs(unittest.TestCase):
         self.assertEqual(len(connected), 0)
 
 
+class TestMultiCriteriaQueries(unittest.TestCase):
+    """Test cases for multi-criteria query API."""
+
+    def setUp(self):
+        """Set up test fixtures with sample data."""
+        self.db = SupplyGraphDatabase()
+
+        # Create products with various properties
+        products = [
+            ("product_1", "iPhone 15", 999.99, "electronics", "Apple"),
+            ("product_2", "Samsung Galaxy", 899.99, "electronics", "Samsung"),
+            ("product_3", "MacBook Pro", 1999.99, "electronics", "Apple"),
+            ("product_4", "Nike Air Max", 149.99, "clothing", "Nike"),
+            ("product_5", "Adidas Shoes", 129.99, "clothing", "Adidas"),
+        ]
+
+        for pid, name, price, category, brand in products:
+            entity = SupplyEntity(
+                id=pid,
+                type=SupplyEntityType.PRODUCT,
+                properties={
+                    "name": name,
+                    "price": price,
+                    "category": category,
+                    "brand": brand,
+                },
+            )
+            self.db.create_entity(entity)
+
+        # Create categories
+        for i, cat in enumerate(["electronics", "clothing"]):
+            entity = SupplyEntity(
+                id=f"category_{i}",
+                type=SupplyEntityType.CATEGORY,
+                properties={"name": cat},
+            )
+            self.db.create_entity(entity)
+
+    def test_query_by_properties_match_all(self):
+        """Test query with AND (match_all=True)."""
+        results = self.db.query_by_properties(
+            SupplyEntityType.PRODUCT,
+            {"brand": "Apple", "category": "electronics"},
+            match_all=True,
+        )
+
+        self.assertEqual(len(results), 2)
+        ids = [e.id for e in results]
+        self.assertIn("product_1", ids)
+        self.assertIn("product_3", ids)
+
+    def test_query_by_properties_match_any(self):
+        """Test query with OR (match_all=False)."""
+        results = self.db.query_by_properties(
+            SupplyEntityType.PRODUCT,
+            {"brand": "Apple"},
+            match_all=False,
+        )
+
+        self.assertEqual(len(results), 2)
+        ids = [e.id for e in results]
+        self.assertIn("product_1", ids)
+        self.assertIn("product_3", ids)
+
+    def test_query_by_property_range(self):
+        """Test query by numeric property range."""
+        # Price between 100 and 500
+        results = self.db.query_by_property_range(
+            SupplyEntityType.PRODUCT,
+            "price",
+            min_value=100,
+            max_value=500,
+        )
+
+        self.assertEqual(len(results), 2)
+        ids = [e.id for e in results]
+        self.assertIn("product_4", ids)  # Nike Air Max: 149.99
+        self.assertIn("product_5", ids)  # Adidas Shoes: 129.99
+
+    def test_query_by_property_range_no_min(self):
+        """Test query with no minimum value."""
+        results = self.db.query_by_property_range(
+            SupplyEntityType.PRODUCT,
+            "price",
+            max_value=200,
+        )
+
+        # product_4 (149.99), product_5 (129.99) are <= 200
+        self.assertEqual(len(results), 2)
+        ids = [e.id for e in results]
+        self.assertIn("product_4", ids)
+        self.assertIn("product_5", ids)
+
+    def test_query_by_property_range_no_max(self):
+        """Test query with no maximum value."""
+        results = self.db.query_by_property_range(
+            SupplyEntityType.PRODUCT,
+            "price",
+            min_value=1000,
+        )
+
+        # product_3 (1999.99) is >= 1000; product_1 (999.99) is NOT >= 1000
+        self.assertEqual(len(results), 1)
+        ids = [e.id for e in results]
+        self.assertIn("product_3", ids)
+
+    def test_advanced_search_with_type_filter(self):
+        """Test advanced search with entity type filter."""
+        results = self.db.advanced_search(
+            "phone",
+            entity_types=[SupplyEntityType.PRODUCT],
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+    def test_advanced_search_with_property_filters(self):
+        """Test advanced search with property filters."""
+        results = self.db.advanced_search(
+            "phone",
+            property_filters={"brand": "Apple"},
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+    def test_advanced_search_no_results(self):
+        """Test advanced search with no matches."""
+        results = self.db.advanced_search(
+            "xyznonexistent",
+            entity_types=[SupplyEntityType.PRODUCT],
+        )
+
+        self.assertEqual(len(results), 0)
+
+    def test_count_by_type(self):
+        """Test count by entity type."""
+        counts = self.db.count_by_type()
+
+        self.assertEqual(counts[SupplyEntityType.PRODUCT], 5)
+        self.assertEqual(counts[SupplyEntityType.CATEGORY], 2)
+
+    def test_get_entities_with_most_relations(self):
+        """Test getting entities with most relations."""
+        # First add some relations
+        product = self.db.get_entity("product_1")
+        brand = SupplyEntity(
+            id="brand_test",
+            type=SupplyEntityType.BRAND,
+            properties={"name": "Test Brand"},
+        )
+        self.db.create_entity(brand)
+
+        # Add multiple relations to product_1
+        for i in range(5):
+            supplier = SupplyEntity(
+                id=f"supplier_{i}",
+                type=SupplyEntityType.SUPPLIER,
+                properties={"name": f"Supplier {i}"},
+            )
+            self.db.create_entity(supplier)
+            self.db.create_relation(SupplyRelation(
+                source_id="product_1",
+                target_id=f"supplier_{i}",
+                relation_type=SupplyRelationType.SUPPLIES,
+            ))
+
+        top_entities = self.db.get_entities_with_most_relations(limit=3)
+
+        self.assertEqual(len(top_entities), 3)
+        self.assertEqual(top_entities[0][0].id, "product_1")
+        self.assertEqual(top_entities[0][1], 5)  # degree
+
+    def test_query_with_relations_min_relations(self):
+        """Test query requiring minimum number of relations."""
+        # Add relations to product_1
+        for i in range(3):
+            supplier = SupplyEntity(
+                id=f"supplier_rel_{i}",
+                type=SupplyEntityType.SUPPLIER,
+                properties={"name": f"Supplier {i}"},
+            )
+            self.db.create_entity(supplier)
+            self.db.create_relation(SupplyRelation(
+                source_id="product_1",
+                target_id=f"supplier_rel_{i}",
+                relation_type=SupplyRelationType.SUPPLIES,
+            ))
+
+        # Query entities with at least 2 relations
+        results = self.db.query_with_relations(
+            entity_type=SupplyEntityType.PRODUCT,
+            min_relations=2,
+        )
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].id, "product_1")
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
 if __name__ == "__main__":
     unittest.main()

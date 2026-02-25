@@ -299,6 +299,248 @@ class SupplyGraphDatabase:
 
         return results
 
+    # Multi-Criteria Query API
+
+    def query_by_properties(
+        self,
+        entity_type: SupplyEntityType | None,
+        properties: dict[str, Any],
+        match_all: bool = True,
+    ) -> list[SupplyEntity]:
+        """Query entities by multiple property values.
+
+        Args:
+            entity_type: Optional entity type to filter by
+            properties: Dictionary of property key-value pairs to match
+            match_all: If True, all properties must match (AND).
+                       If False, at least one must match (OR).
+
+        Returns:
+            List of matching entities
+        """
+        results = []
+        for entity in self._entities.values():
+            if entity_type and entity.type != entity_type:
+                continue
+
+            if match_all:
+                # AND: all properties must match
+                if all(
+                    entity.properties.get(k) == v
+                    for k, v in properties.items()
+                ):
+                    results.append(entity)
+            else:
+                # OR: at least one property must match
+                if any(
+                    entity.properties.get(k) == v
+                    for k, v in properties.items()
+                ):
+                    results.append(entity)
+        return results
+
+    def query_by_property_range(
+        self,
+        entity_type: SupplyEntityType | None,
+        property_key: str,
+        min_value: float | None = None,
+        max_value: float | None = None,
+    ) -> list[SupplyEntity]:
+        """Query entities by numeric property range.
+
+        Args:
+            entity_type: Optional entity type to filter by
+            property_key: The property key to check
+            min_value: Minimum value (inclusive), None for no minimum
+            max_value: Maximum value (inclusive), None for no maximum
+
+        Returns:
+            List of entities with property in range
+        """
+        results = []
+        for entity in self._entities.values():
+            if entity_type and entity.type != entity_type:
+                continue
+
+            value = entity.properties.get(property_key)
+            if value is None:
+                continue
+
+            # Try to compare as numbers
+            try:
+                num_value = float(value)
+                if min_value is not None and num_value < min_value:
+                    continue
+                if max_value is not None and num_value > max_value:
+                    continue
+                results.append(entity)
+            except (TypeError, ValueError):
+                # Not a numeric value, skip
+                continue
+        return results
+
+    def query_with_relations(
+        self,
+        entity_type: SupplyEntityType | None,
+        required_relations: list[tuple[str, SupplyRelationType, str]] | None = None,
+        min_relations: int = 0,
+    ) -> list[SupplyEntity]:
+        """Query entities that have specific relations.
+
+        Args:
+            entity_type: Optional entity type to filter by
+            required_relations: List of (source_id, relation_type, target_id) tuples.
+                              Can use None for wildcard matching.
+            min_relations: Minimum number of relations the entity must have
+
+        Returns:
+            List of entities matching the relation criteria
+        """
+        results = []
+        for entity in self._entities.values():
+            if entity_type and entity.type != entity_type:
+                continue
+
+            # Check minimum relations
+            outgoing = self.get_outgoing_relations(entity.id)
+            incoming = self.get_incoming_relations(entity.id)
+            total_relations = len(outgoing) + len(incoming)
+
+            if total_relations < min_relations:
+                continue
+
+            # Check required relations
+            if required_relations:
+                matched = False
+                for src, rel_type, tgt in required_relations:
+                    for relation in self._relations:
+                        src_match = src is None or relation.source_id == src
+                        tgt_match = tgt is None or relation.target_id == tgt
+                        rel_match = rel_type is None or relation.relation_type == rel_type
+                        if src_match and tgt_match and rel_match:
+                            matched = True
+                            break
+                    if not matched:
+                        break
+
+                if not matched:
+                    continue
+
+            results.append(entity)
+        return results
+
+    def advanced_search(
+        self,
+        text: str,
+        entity_types: list[SupplyEntityType] | None = None,
+        property_filters: dict[str, Any] | None = None,
+        min_confidence: float | None = None,
+        require_relations: list[SupplyRelationType] | None = None,
+    ) -> list[SupplyEntity]:
+        """Advanced search with multiple criteria.
+
+        Args:
+            text: Text to search in name and description
+            entity_types: List of entity types to include
+            property_filters: Additional property filters to apply
+            min_confidence: Minimum confidence score for related relations
+            require_relations: Entity must have at least one of these relation types
+
+        Returns:
+            List of matching entities
+        """
+        text_lower = text.lower()
+        results = []
+
+        for entity in self._entities.values():
+            # Filter by entity type
+            if entity_types and entity.type not in entity_types:
+                continue
+
+            # Text search
+            name_match = text_lower in entity.name.lower()
+            desc_match = entity.description and text_lower in entity.description.lower()
+
+            if not name_match and not desc_match:
+                # Also check properties for text
+                prop_match = False
+                for v in entity.properties.values():
+                    if isinstance(v, str) and text_lower in v.lower():
+                        prop_match = True
+                        break
+                if not prop_match:
+                    continue
+
+            # Property filters
+            if property_filters:
+                if not all(
+                    entity.properties.get(k) == v
+                    for k, v in property_filters.items()
+                ):
+                    continue
+
+            # Relation requirements
+            if require_relations:
+                outgoing = self.get_outgoing_relations(entity.id)
+                incoming = self.get_incoming_relations(entity.id)
+                all_relations = outgoing + incoming
+
+                has_required = any(
+                    r.relation_type in require_relations
+                    for r in all_relations
+                )
+                if not has_required:
+                    continue
+
+                # Check confidence if specified
+                if min_confidence is not None:
+                    confidences = [
+                        self.calculate_relation_confidence(r)
+                        for r in all_relations
+                        if r.relation_type in require_relations
+                    ]
+                    if confidences and max(confidences) < min_confidence:
+                        continue
+
+            results.append(entity)
+        return results
+
+    def count_by_type(self) -> dict[SupplyEntityType, int]:
+        """Get count of entities by type.
+
+        Returns:
+            Dictionary mapping entity type to count
+        """
+        counts: dict[SupplyEntityType, int] = {}
+        for entity in self._entities.values():
+            counts[entity.type] = counts.get(entity.type, 0) + 1
+        return counts
+
+    def get_entities_with_most_relations(
+        self,
+        entity_type: SupplyEntityType | None = None,
+        limit: int = 10,
+    ) -> list[tuple[SupplyEntity, int]]:
+        """Get entities with the most relations.
+
+        Args:
+            entity_type: Optional filter by entity type
+            limit: Maximum number of entities to return
+
+        Returns:
+            List of (entity, degree) tuples sorted by degree descending
+        """
+        entities_with_degree = []
+
+        for entity in self._entities.values():
+            if entity_type and entity.type != entity_type:
+                continue
+            degree = self.get_degree(entity.id)
+            entities_with_degree.append((entity, degree))
+
+        entities_with_degree.sort(key=lambda x: x[1], reverse=True)
+        return entities_with_degree[:limit]
+
     # Graph Traversal
 
     def get_neighbors(
