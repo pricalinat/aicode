@@ -1,0 +1,242 @@
+[
+  {
+    "supply_id": "supply_000",
+    "name": "Electronics Offer 0",
+    "category": "electronics",
+    "merchant_id": "merchant_00",
+    "region": "CN",
+    "price": 48.66,
+    "quality_score": 0.561,
+    "risk_level": "high",
+    "tags": [
+      "electronics",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_001",
+    "name": "Home Offer 1",
+    "category": "home",
+    "merchant_id": "merchant_01",
+    "region": "US",
+    "price": 51.46,
+    "quality_score": 0.652,
+    "risk_level": "high",
+    "tags": [
+      "home",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_002",
+    "name": "Food Offer 2",
+    "category": "food",
+    "merchant_id": "merchant_02",
+    "region": "EU",
+    "price": 46.81,
+    "quality_score": 0.784,
+    "risk_level": "medium",
+    "tags": [
+      "food",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_003",
+    "name": "Apparel Offer 3",
+    "category": "apparel",
+    "merchant_id": "merchant_03",
+    "region": "CN",
+    "price": 29.19,
+    "quality_score": 0.832,
+    "risk_level": "medium",
+    "tags": [
+      "apparel",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_004",
+    "name": "Services Offer 4",
+    "category": "services",
+    "merchant_id": "merchant_04",
+    "region": "US",
+    "price": 55.08,
+    "quality_score": 0.893,
+    "risk_level": "high",
+    "tags": [
+      "services",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_005",
+    "name": "Electronics Offer 5",
+    "category": "electronics",
+    "merchant_id": "merchant_05",
+    "region": "EU",
+    "price": 60.0,
+    "quality_score": 0.57,
+    "risk_level": "low",
+    "tags": [
+      "electronics",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_006",
+    "name": "Home Offer 6",
+    "category": "home",
+    "merchant_id": "merchant_00",
+    "region": "CN",
+    "price": 54.97,
+    "quality_score": 0.672,
+    "risk_level": "medium",
+    "tags": [
+      "home",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_007",
+    "name": "Food Offer 7",
+    "category": "food",
+    "merchant_id": "merchant_01",
+    "region": "US",
+    "price": 40.26,
+    "quality_score": 0.791,
+    "risk_level": "low",
+    "tags": [
+      "food",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_008",
+    "name": "Apparel Offer 8",
+    "category": "apparel",
+    "merchant_id": "merchant_02",
+    "region": "EU",
+    "price": 56.61,
+    "quality_score": 0.86,
+    "risk_level": "low",
+    "tags": [
+      "apparel",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_009",
+    "name": "Services Offer 9",
+    "category": "services",
+    "merchant_id": "merchant_03",
+    "region": "CN",
+    "price": 76.54,
+    "quality_score": 0.892,
+    "risk_level": "medium",
+    "tags": [
+      "services",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_010",
+    "name": "Electronics Offer 10",
+    "category": "electronics",
+    "merchant_id": "merchant_04",
+    "region": "US",
+    "price": 52.87,
+    "quality_score": 0.559,
+    "risk_level": "medium",
+    "tags": [
+      "electronics",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_011",
+    "name": "Home Offer 11",
+    "category": "home",
+    "merchant_id": "merchant_05",
+    "region": "EU",
+    "price": 84.29,
+    "quality_score": 0.69,
+    "risk_level": "medium",
+    "tags": [
+      "home",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_012",
+    "name": "Food Offer 12",
+    "category": "food",
+    "merchant_id": "merchant_00",
+    "region": "CN",
+    "price": 59.99,
+    "quality_score": 0.756,
+    "risk_level": "high",
+    "tags": [
+      "food",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_013",
+    "name": "Apparel Offer 13",
+    "category": "apparel",
+    "merchant_id": "merchant_01",
+    "region": "US",
+    "price": 69.73,
+    "quality_score": 0.798,
+    "risk_level": "medium",
+    "tags": [
+      "apparel",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_014",
+    "name": "Services Offer 14",
+    "category": "services",
+    "merchant_id": "merchant_02",
+    "region": "EU",
+    "price": 95.47,
+    "quality_score": 0.932,
+    "risk_level": "medium",
+    "tags": [
+      "services",
+      "demo",
+      "offline"
+    ]
+  },
+  {
+    "supply_id": "supply_015",
+    "name": "Electronics Offer 15",
+    "category": "electronics",
+    "merchant_id": "merchant_03",
+    "region": "CN",
+    "price": 66.78,
+    "quality_score": 0.569,
+    "risk_level": "medium",
+    "tags": [
+      "electronics",
+      "demo",
+      "offline"
+    ]
+  }
+]

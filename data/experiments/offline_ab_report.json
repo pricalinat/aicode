@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "ndcg@5": 1.0,
+    "recall@5": 0.625,
+    "coverage": 0.8333333333333334
+  },
+  "treatment": {
+    "ndcg@5": 0.8110314039719176,
+    "recall@5": 0.625,
+    "coverage": 0.8333333333333334
+  },
+  "delta": {
+    "ndcg@5": -0.18896859602808236,
+    "recall@5": 0.0
+  },
+  "proxy": {
+    "conversion": 0.19169329073482427,
+    "attribution": {
+      "attributed_revenue": 1587.323,
+      "by_channel": {
+        "search": 914.91,
+        "mini_program": 672.4129999999999,
+        "recommendation": 0.0
+      }
+    }
+  }
+}

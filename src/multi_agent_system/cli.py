@@ -3,9 +3,20 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 
 from .agents import ArxivAgent, PaperSearchAgent
+from .closed_loop import (
+    FeatureStore,
+    FeedbackLoop,
+    SyntheticSupplyGenerator,
+    SyntheticUserBehaviorGenerator,
+)
 from .core import Message, Orchestrator
+from .experiments import OfflineABRunner
+from .knowledge.supply_graph_database import SupplyGraphDatabase
+from .knowledge.supply_graph_models import SupplyEntity, SupplyEntityType
+from .matching import DualMatcher
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -73,6 +84,22 @@ def build_parser() -> argparse.ArgumentParser:
     # Clear command - clear all saved papers
     clear_parser = subparsers.add_parser("clear", help="Clear all saved papers")
 
+    # Offline closed-loop demo
+    closed_loop_parser = subparsers.add_parser(
+        "build-closed-loop-demo", help="Build offline synthetic closed-loop demo data"
+    )
+    closed_loop_parser.add_argument("--seed", type=int, default=42)
+    closed_loop_parser.add_argument("--supplies", type=int, default=16)
+    closed_loop_parser.add_argument("--users", type=int, default=10)
+
+    dual_parser = subparsers.add_parser(
+        "run-dual-matching-demo", help="Run bidirectional matching demo"
+    )
+    dual_parser.add_argument("--top-k", type=int, default=5)
+
+    ab_parser = subparsers.add_parser("run-offline-ab", help="Run offline A/B experiment")
+    ab_parser.add_argument("--report-name", default="offline_ab_report.json")
+
     return parser
 
 
@@ -121,6 +148,12 @@ def main() -> int:
         return count_papers(args)
     elif args.command == "clear":
         return clear_papers(args)
+    elif args.command == "build-closed-loop-demo":
+        return build_closed_loop_demo(args)
+    elif args.command == "run-dual-matching-demo":
+        return run_dual_matching_demo(args)
+    elif args.command == "run-offline-ab":
+        return run_offline_ab(args)
     else:
         parser.print_help()
         return 1
@@ -272,6 +305,103 @@ def clear_papers(args) -> int:
         return 1
 
     print(json.dumps({"message": "All papers cleared"}, ensure_ascii=False))
+    return 0
+
+
+def _build_closed_loop(seed: int = 42, supplies: int = 16, users: int = 10) -> dict:
+    supply_gen = SyntheticSupplyGenerator(seed=seed)
+    generated = supply_gen.generate(num_supplies=supplies, num_users=users)
+    behavior_gen = SyntheticUserBehaviorGenerator(seed=seed + 1)
+    events = behavior_gen.generate(generated["users"], generated["supplies"], days=2)
+
+    features = FeatureStore().build(generated["supplies"], events)
+
+    data_dir = Path("data")
+    data_dir.mkdir(parents=True, exist_ok=True)
+    (data_dir / "synthetic_supply.json").write_text(
+        json.dumps(generated["supplies"], ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    (data_dir / "synthetic_users.json").write_text(
+        json.dumps(generated["users"], ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    (data_dir / "synthetic_events.json").write_text(
+        json.dumps(events, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    (data_dir / "feature_store_snapshot.json").write_text(
+        json.dumps(list(features.values()), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    return {
+        "supplies": generated["supplies"],
+        "users": generated["users"],
+        "events": events,
+        "features": features,
+    }
+
+
+def build_closed_loop_demo(args) -> int:
+    artifact = _build_closed_loop(seed=args.seed, supplies=args.supplies, users=args.users)
+    print(json.dumps({"message": "closed-loop demo built", "events": len(artifact["events"])}, ensure_ascii=False))
+    return 0
+
+
+def run_dual_matching_demo(args) -> int:
+    artifact = _build_closed_loop()
+    db = SupplyGraphDatabase()
+
+    for s in artifact["supplies"]:
+        db.create_entity(SupplyEntity(id=s["supply_id"], type=SupplyEntityType.PRODUCT, properties=s), validate=False)
+    for u in artifact["users"]:
+        db.create_entity(SupplyEntity(id=u["user_id"], type=SupplyEntityType.USER, properties=u), validate=False)
+
+    matcher = DualMatcher(db=db, feature_map=artifact["features"])
+    user_id = artifact["users"][0]["user_id"]
+    supply_id = artifact["supplies"][0]["supply_id"]
+
+    result = {
+        "for_user": matcher.match_supply_for_user(user_id, {"top_k": args.top_k}),
+        "for_supply": matcher.match_users_for_supply(supply_id, {"top_k": args.top_k}),
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def run_offline_ab(args) -> int:
+    artifact = _build_closed_loop()
+    users = artifact["users"]
+    supplies = [s["supply_id"] for s in artifact["supplies"]]
+
+    baseline = {u["user_id"]: supplies[:5] for u in users}
+    treatment = {u["user_id"]: supplies[1:6] for u in users}
+    relevance = {
+        u["user_id"]: {sid: (1.0 if sid in supplies[:3] else 0.2) for sid in supplies[:8]}
+        for u in users
+    }
+    order_value_map = {s["supply_id"]: float(s.get("price", 0.0)) for s in artifact["supplies"]}
+
+    runner = OfflineABRunner(output_dir=Path("data/experiments"))
+    report = runner.run(
+        baseline=baseline,
+        treatment=treatment,
+        relevance=relevance,
+        events=artifact["events"],
+        order_value_map=order_value_map,
+        report_name=args.report_name,
+    )
+
+    feedback = {
+        sid: {
+            "reward": report["proxy"]["conversion"],
+            "risk_violation": 0.0,
+        }
+        for sid in artifact["features"].keys()
+    }
+    updated = FeedbackLoop().apply(artifact["features"], feedback)
+    (Path("data") / "feature_store_after_feedback.json").write_text(
+        json.dumps(list(updated.values()), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
 
 

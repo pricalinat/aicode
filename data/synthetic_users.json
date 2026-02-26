@@ -1,0 +1,102 @@
+[
+  {
+    "user_id": "user_000",
+    "tier": "new",
+    "preferred_categories": [
+      "home",
+      "food"
+    ],
+    "risk_tolerance": "low",
+    "region": "CN"
+  },
+  {
+    "user_id": "user_001",
+    "tier": "active",
+    "preferred_categories": [
+      "food",
+      "apparel"
+    ],
+    "risk_tolerance": "medium",
+    "region": "US"
+  },
+  {
+    "user_id": "user_002",
+    "tier": "vip",
+    "preferred_categories": [
+      "apparel",
+      "services"
+    ],
+    "risk_tolerance": "high",
+    "region": "EU"
+  },
+  {
+    "user_id": "user_003",
+    "tier": "new",
+    "preferred_categories": [
+      "services",
+      "electronics"
+    ],
+    "risk_tolerance": "low",
+    "region": "CN"
+  },
+  {
+    "user_id": "user_004",
+    "tier": "active",
+    "preferred_categories": [
+      "electronics",
+      "home"
+    ],
+    "risk_tolerance": "medium",
+    "region": "US"
+  },
+  {
+    "user_id": "user_005",
+    "tier": "vip",
+    "preferred_categories": [
+      "home",
+      "food"
+    ],
+    "risk_tolerance": "high",
+    "region": "EU"
+  },
+  {
+    "user_id": "user_006",
+    "tier": "new",
+    "preferred_categories": [
+      "food",
+      "apparel"
+    ],
+    "risk_tolerance": "low",
+    "region": "CN"
+  },
+  {
+    "user_id": "user_007",
+    "tier": "active",
+    "preferred_categories": [
+      "apparel",
+      "services"
+    ],
+    "risk_tolerance": "medium",
+    "region": "US"
+  },
+  {
+    "user_id": "user_008",
+    "tier": "vip",
+    "preferred_categories": [
+      "services",
+      "electronics"
+    ],
+    "risk_tolerance": "high",
+    "region": "EU"
+  },
+  {
+    "user_id": "user_009",
+    "tier": "new",
+    "preferred_categories": [
+      "electronics",
+      "home"
+    ],
+    "risk_tolerance": "low",
+    "region": "CN"
+  }
+]
