@@ -17,6 +17,7 @@ from .experiments import OfflineABRunner
 from .knowledge.supply_graph_database import SupplyGraphDatabase
 from .knowledge.supply_graph_models import SupplyEntity, SupplyEntityType
 from .matching import DualMatcher
+from .reporting import ReportFormat, ReportGenerator, ReportType
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -100,6 +101,13 @@ def build_parser() -> argparse.ArgumentParser:
     ab_parser = subparsers.add_parser("run-offline-ab", help="Run offline A/B experiment")
     ab_parser.add_argument("--report-name", default="offline_ab_report.json")
 
+    # Generate report command
+    gen_report_parser = subparsers.add_parser("generate-report", help="Generate a report")
+    gen_report_parser.add_argument("--type", required=True, choices=["test_analysis", "kg_health", "benchmark", "experiment"], help="Report type")
+    gen_report_parser.add_argument("--format", default="markdown", choices=["markdown", "json", "html"], help="Output format")
+    gen_report_parser.add_argument("--input", required=True, help="Input JSON file with report data")
+    gen_report_parser.add_argument("--output", help="Output file (default: stdout)")
+
     return parser
 
 
@@ -152,6 +160,8 @@ def main() -> int:
         return build_closed_loop_demo(args)
     elif args.command == "run-dual-matching-demo":
         return run_dual_matching_demo(args)
+    elif args.command == "generate-report":
+        return generate_report(args)
     elif args.command == "run-offline-ab":
         return run_offline_ab(args)
     else:
@@ -407,3 +417,52 @@ def run_offline_ab(args) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+def generate_report(args) -> int:
+    """Generate a report from input data."""
+    # Read input JSON file
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print(json.dumps({"error": f"Input file not found: {args.input}"}, ensure_ascii=False))
+        return 1
+
+    try:
+        data = json.loads(input_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(json.dumps({"error": f"Invalid JSON: {e}"}, ensure_ascii=False))
+        return 1
+
+    # Map report type
+    type_map = {
+        "test_analysis": ReportType.TEST_ANALYSIS,
+        "kg_health": ReportType.KG_HEALTH,
+        "benchmark": ReportType.BENCHMARK,
+        "experiment": ReportType.EXPERIMENT,
+    }
+    format_map = {
+        "markdown": ReportFormat.MARKDOWN,
+        "json": ReportFormat.JSON,
+        "html": ReportFormat.HTML,
+    }
+
+    report_type = type_map[args.type]
+    output_format = format_map[args.format]
+
+    # Generate report
+    generator = ReportGenerator()
+    output = generator.generate(
+        report_type=report_type,
+        data=data,
+        format=output_format,
+    )
+
+    # Write output
+    if args.output:
+        output_path = Path(args.output)
+        output_path.write_text(output, encoding="utf-8")
+        print(json.dumps({"message": f"Report written to {args.output}"}, ensure_ascii=False))
+    else:
+        print(output)
+
+    return 0
