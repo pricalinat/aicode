@@ -1,5 +1,57 @@
-
 # Python cache
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Logs
 logs/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large binaries)
+*.pdf
+*.zip
+*.tar.gz
+*.mp4
+*.mp3
+
+# Model files
+*.h5
+*.pkl
+*.pth
+*.onnx
+
+# Papers data
+data/papers/
+data/models/
+
+# Backups
+*.bak
+*~
+
+# Environment
+.env
+.env.local
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build
+dist/
+build/
+*.egg-info/
