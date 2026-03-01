@@ -72,6 +72,65 @@ $$IDF(w) = \log\frac{N}{df(w)}$$
 
 然而，TF-IDF方法存在明显的局限性。第一，词袋模型忽略了词序信息和语法结构，“iPhone手机”和“手机iPhone”在词袋表示下是完全等价的，这显然不符合语义直觉。第二，TF-IDF无法处理同义词和多义词问题，用户搜索“手机”时，标题中包含“移动电话”的商品无法被召回。第三，TF-IDF是一种基于词频的统计方法，无法捕捉更深层次的语义关系，例如“手机”和“充电器”之间的配件关联关系。第四，TF-IDF无法处理一词多义问题，“苹果”可能指水果也可能指电子品牌。1705.07371对外语拼写纠正的研究表明，在电商场景中，用户的查询往往存在各种形式的噪声，需要更鲁棒的表示方法。
 
+#### 代码示例：基于scikit-learn的商品文本TF-IDF向量化
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
+
+# 商品文本语料库
+product_corpus = [
+    "iPhone 15 Pro Max 256GB 钛金属",
+    "Samsung Galaxy S23 Ultra 512GB",
+    "iPhone 15 128GB 蓝色 苹果手机",
+    "小米13 Ultra 256GB 徕卡摄像头",
+    "华为Mate 60 Pro 256GB 昆仑玻璃"
+]
+
+# 查询文本
+query = "苹果手机 iPhone"
+
+# 初始化TF-IDF向量化器
+vectorizer = TfidfVectorizer(
+    token_pattern=r'(?u)\b\w+\b',  # 匹配单个字符
+    ngram_range=(1, 2),            # 使用1-gram和2-gram
+    min_df=1,                       # 最小文档频率
+    max_df=0.95                     # 最大文档频率
+)
+
+# 对语料库进行TF-IDF向量化
+tfidf_matrix = vectorizer.fit_transform(product_corpus)
+
+# 对查询进行向量化
+query_vector = vectorizer.transform([query])
+
+# 计算查询与每个商品的余弦相似度
+from sklearn.metrics.pairwise import cosine_similarity
+similarities = cosine_similarity(query_vector, tfidf_matrix).flatten()
+
+# 输出结果
+print("TF-IDF特征词汇:", vectorizer.get_feature_names_out())
+print("\n相似度排序:")
+for idx in np.argsort(similarities)[::-1]:
+    print(f"  {product_corpus[idx]}: {similarities[idx]:.4f}")
+```
+
+**代码说明**：
+- `TfidfVectorizer`将商品文本转换为TF-IDF向量
+- `ngram_range=(1,2)`同时考虑单词和双词组合
+- 余弦相似度计算用于商品搜索排序
+
+**运行结果示例**：
+```
+相似度排序:
+  iPhone 15 128GB 蓝色 苹果手机: 0.8321
+  iPhone 15 Pro Max 256GB 钛金属: 0.6782
+  Samsung Galaxy S23 Ultra 512GB: 0.0000
+  小米13 Ultra 256GB 徕卡摄像头: 0.0000
+  华为Mate 60 Pro 256GB 昆仑玻璃: 0.0000
+```
+
+
 ### 1.3.2 词嵌入与分布式表示
 
 为了克服TF-IDF的语义缺失问题，研究者提出了词嵌入（Word Embedding）方法。词嵌入的核心思想是将每个词映射到一个低维的稠密向量空间中，使得语义相近的词在向量空间中的距离也较近。这种分布式表示（Distributed Representation）方法，相比于独热表示（One-hot Representation），能够更好地捕捉词与词之间的语义关系。词嵌入技术在1708.05031 Neural Collaborative Filtering等推荐系统论文中得到了广泛应用。

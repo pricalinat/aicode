@@ -87,6 +87,74 @@ $$w_{t+1} = w_t - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$$
 
 其中，$g_t$是当前梯度，$m_t$是一阶矩估计（类似动量），$v_t$是二阶矩估计，$\beta_1$和$\beta_2$是衰减系数，通常设置为0.9和0.999。
 
+#### 代码示例：使用PyTorch实现商品分类神经网络
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
+
+# 定义简单的商品分类神经网络
+class ProductClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim, num_classes):
+        super(ProductClassifier, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=0)
+        self.fc1 = nn.Linear(embed_dim, hidden_dim)
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(0.3)
+        self.fc2 = nn.Linear(hidden_dim, num_classes)
+    
+    def forward(self, x):
+        # x: (batch_size, seq_len)
+        embedded = self.embedding(x)  # (batch_size, seq_len, embed_dim)
+        pooled = embedded.mean(dim=1)  # 平均池化 (batch_size, embed_dim)
+        hidden = self.fc1(pooled)
+        hidden = self.relu(hidden)
+        hidden = self.dropout(hidden)
+        output = self.fc2(hidden)
+        return output
+
+# 超参数
+VOCAB_SIZE = 10000
+EMBED_DIM = 128
+HIDDEN_DIM = 256
+NUM_CLASSES = 10
+LEARNING_RATE = 0.001
+
+# 创建模型
+model = ProductClassifier(VOCAB_SIZE, EMBED_DIM, HIDDEN_DIM, NUM_CLASSES)
+print(f"模型参数数量: {sum(p.numel() for p in model.parameters()):,}")
+
+# 使用Adam优化器
+optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-5)
+
+# 损失函数
+criterion = nn.CrossEntropyLoss()
+
+# 模拟训练步骤
+batch_size = 32
+seq_length = 20
+dummy_input = torch.randint(1, VOCAB_SIZE, (batch_size, seq_length))
+dummy_labels = torch.randint(0, NUM_CLASSES, (batch_size,))
+
+# 前向传播
+outputs = model(dummy_input)
+loss = criterion(outputs, dummy_labels)
+
+# 反向传播
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+
+print(f"训练损失: {loss.item():.4f}")
+```
+
+**代码说明**：
+- `ProductClassifier`是一个简单的商品分类模型，包含嵌入层、全连接层和Dropout
+- 使用Adam优化器，设置学习率0.001和权重衰减防止过拟合
+- 训练流程：前向传播 → 计算损失 → 反向传播 → 参数更新
+
 ### 2.2.4 循环神经网络与序列建模
 
 循环神经网络（Recurrent Neural Network, RNN）是处理序列数据的经典模型。RNN的核心思想是在时间步之间传递隐藏状态，从而捕捉序列中的时序依赖关系。RNN的前向传播可以表示为：
