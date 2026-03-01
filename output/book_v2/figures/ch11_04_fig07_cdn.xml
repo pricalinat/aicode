@@ -1,0 +1,16 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"User --> "CDN: Edge - US"
+"User --> "CDN: Edge - EU"
+"User --> "CDN: Edge - Asia"
+"CDN --> "Origin: Server"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

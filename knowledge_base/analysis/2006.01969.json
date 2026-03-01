@@ -1,0 +1,14 @@
+{
+  "paper_id": "2006.01969",
+  "title": "Rel Entity Linker",
+  "category": "product_matching",
+  "year": 2020,
+  "timestamp": "2026-03-01T14:29:19.217659",
+  "summary": "The paper presents REL, the Radboud Entity Linker, an open source entity linking toolkit designed to be modular, up to date with newer Wikipedia versions, and efficient enough for practical deployment. It argues that many existing open source linkers are hard to update, rely on external services, focus on short text, or lag behind newer neural approaches, creating a gap between research progress and usable systems. REL is offered both as a Python package and as a web API, with accompanying scripts intended to make updating to newer Wikipedia dumps straightforward.\n\nREL follows a standard pipeline with three main components: mention detection, candidate selection, and entity disambiguation, with an explicit design choice to separate mention detection from disambiguation so components can be swapped depending on recall and throughput needs. Mention detection uses a named entity recognition model (Flair) by default, but is described as replaceable with alternatives such as spaCy or dictionary based methods. Candidate selection combines a mention entity prior derived from Wikipedia hyperlink counts and the CrossWiki corpus, plus a YAGO based probability, and adds context based candidates using similarity between local context and entity embeddings learned with Wikipedia2Vec; entity disambiguation builds on the Ment-norm approach, combining local compatibility with a document level coherence model and producing calibrated confidence estimates.\n\nEvaluation is reported on the GERBIL platform against systems such as DBpedia Spotlight, WAT, TagMe, and a referenced state of the art end to end neural linker, using both entity linking and disambiguation metrics. The paper reports that REL generally outperforms well established toolkits by a large margin and is competitive with the referenced state of the art on a substantial portion of datasets, while also highlighting differences between two REL configurations tied to different Wikipedia versions and embedding resources. Efficiency measurements on AIDA-B documents show that mention detection dominates runtime and benefits most from GPU acceleration, while disambiguation is less sensitive; the authors suggest further speedups by replacing the mention detection component and note future plans to train REL for linking entities in queries.\n\n*Design for sufficient throughput; reporting 700ms for an average document of 300 words.*\n\n*REL also does not require GPU during inference.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

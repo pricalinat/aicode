@@ -1,0 +1,14 @@
+{
+  "paper_id": "2401.07030",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:59:29.541011",
+  "summary": "This paper proves well-posedness for steady, compressible **subsonic** 3D Euler flows in a **finite cylinder** with **arbitrary smooth cross section**. The authors establish **existence and uniqueness** of solutions in the Sobolev space **H3** close to a constant 1D background state, under boundary data that prescribe at the entrance the **normal momentum**, **vorticity component**, **Bernoulli quantity**, and **entropy**, and at the exit the **normal momentum**, together with a slip condition on the wall. The main theorem (Theorem 1.1) gives a smallness condition on a perturbation parameter σ ensuring a unique subsonic solution and an **H3 stability estimate** bounding the solution’s distance from the background by **Cσ**.\n\nA core contribution is the analytic framework that combines a **deformation curl decomposition** of the steady Euler system with **separation of variables** techniques to handle regularity near the intersections of entrance and exit with the cylinder wall, which are problematic for general cross sections. The Euler system is reformulated into transport equations for Bernoulli and entropy, algebraic relations for vorticity components, and a coupled elliptic type **deformation curl system** for the velocity. The paper develops Sobolev and trace tools tailored to cylinders, then constructs solutions via an **iteration and contraction mapping** in a small H3 neighborhood, solving sequentially for Bernoulli and entropy, then vorticity, then velocity using a div curl system and a potential formulation with eigenfunction expansions on the cross section.\n\n*We establish the existence and uniqueness of subsonic flows in the Sobolev space by prescribing the normal component of the momentum, the vorticity, the entropy, the Bernoullis quantity at the entrance.*  \n\n*One of the key points in the analysis is to utilize the deformation curl decomposition for the steady Euler system introduced in [17] to deal with the hyperbolic and elliptic modes.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

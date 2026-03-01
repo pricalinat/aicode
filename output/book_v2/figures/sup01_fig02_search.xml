@@ -1,0 +1,15 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Linear --> "O(n)"
+"Binary --> "O(log: n)"
+"Hash --> "O(1)"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

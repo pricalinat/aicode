@@ -1,0 +1,14 @@
+{
+  "paper_id": "2005.08591",
+  "title": "Product Insights",
+  "category": "ecommerce_evaluation",
+  "year": 2020,
+  "timestamp": "2026-03-01T14:01:55.886972",
+  "summary": "This paper studies how people use general web search for product related needs, using Bing query logs from the first week of September 2019. It finds that product searches are far more common than older estimates: applying a learned product query detector to 1 million queries yields about 149,579 product related queries, suggesting roughly 15 to 17 percent of web queries are about products. The authors then build a taxonomy of product search intents and train models to automatically label intent, enabling large scale behavioral analysis by intent.\n\nTo separate product queries from non product queries, the work uses distant supervision signals from search results and product category knowledge to create large training sets, then represents query text and clicked URLs with pretrained Word2Vec embeddings. A multi layer perceptron performs best for product query detection in cross validation, reaching about 84 percent F1. For intent labeling, the authors sample diverse queries by clustering with LDA over query text plus clicked URL and snippet context, then manually annotate 1,500 samples; annotators achieve substantial agreement with Fleiss kappa 0.79. The resulting product intent taxonomy extends the classic informational, navigational, transactional framing with two product specific intents: comparison and support.\n\n- Product intent categories used in this study: informational, navigational, transactional, comparison, support, plus a not product related bucket discovered during annotation.\n- Intent classification uses query log features such as click count, query length, snippet token count, unique domain count, and query to URL token overlap, alongside query and URL embeddings; linear SVM performs best with about 77 percent accuracy and 78 percent overall F1.\n- Downstream analysis defines success as last click dwell time over 30 seconds and shows navigational queries have the highest success rate at 77.28 percent, while comparison is least successful; transactional is most popular at 51.03 percent of product queries, followed by navigational at 25.71 percent.\n- Session co occurrence patterns suggest a funnel: many transactional queries are preceded by comparison (56 percent), comparison is often followed by informational (41 percent), and support is often followed by informational (33 percent) and transactional (36 percent), consistent with troubleshooting leading to learning or replacement.\n\n*approximately 15% of all search queries in the web are product searches*  \n\n*Transactional queries are the most popular whereas Navigational queries have the highest rate of success*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

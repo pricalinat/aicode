@@ -1,0 +1,17 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+Request --> (Cache: Hit?)
+(Cache --> "Return: Cached Data"
+(Cache --> "(Query: Database)"
+"(Query --> "Store: in Cache"
+"Store --> "Return: Cached Data"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

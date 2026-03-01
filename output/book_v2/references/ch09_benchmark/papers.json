@@ -1,0 +1,23 @@
+[
+  {
+    "filename": "1811.00457_test_roll.pdf",
+    "arxiv_id": "1811.00457",
+    "title": "test roll",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch09_benchmark"
+  },
+  {
+    "filename": "2407.03037_Vision_GUI_Testing.pdf",
+    "arxiv_id": "2407.03037",
+    "title": "Vision GUI Testing",
+    "category": "mini_program_service",
+    "chapter": "ch09_benchmark"
+  },
+  {
+    "filename": "2409.05808_AI_Powered_Testing.pdf",
+    "arxiv_id": "2409.05808",
+    "title": "AI Powered Testing",
+    "category": "mini_program_service",
+    "chapter": "ch09_benchmark"
+  }
+]

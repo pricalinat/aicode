@@ -1,0 +1,10 @@
+flowchart TB
+    X --> P1[投影h次]
+    P1 --> H1[Head1]
+    P1 --> H2[Head2]
+    P1 --> Hh[Headh]
+    
+    H1 --> C[拼接]
+    H2 --> C
+    Hh --> C
+    C --> O[线性输出]

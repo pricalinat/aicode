@@ -1,0 +1,125 @@
+<mxGraphModel dx="1414" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    
+    <!-- Title -->
+    <mxCell id="title1" value="供给分类体系图&#xa;Supply Classification System" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="400" y="20" width="400" height="50" as="geometry" />
+    </mxCell>
+    
+    <!-- Root -->
+    <mxCell id="root" value="供给&#xa;Supply" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="520" y="100" width="120" height="60" as="geometry" />
+    </mxCell>
+    
+    <!-- Physical Goods -->
+    <mxCell id="physical" value="实物商品&#xa;Physical Goods" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="200" y="220" width="120" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="consumable" value="消耗品&#xa;Consumables" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="80" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="durable" value="耐用品&#xa;Durable Goods" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="210" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="food" value="食品生鲜&#xa;Food &amp; Fresh" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="340" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    
+    <!-- Services -->
+    <mxCell id="service" value="服务提供&#xa;Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;strokeColor=#1565C0;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="500" y="220" width="120" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="consulting" value="咨询服务&#xa;Consulting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#2196F3;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="420" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="maintenance" value="维保服务&#xa;Maintenance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#2196F3;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="540" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="education" value="教育服务&#xa;Education" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#2196F3;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="660" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="entertainment" value="娱乐服务&#xa;Entertainment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#2196F3;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="780" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    
+    <!-- Digital Content -->
+    <mxCell id="digital" value="数字内容&#xa;Digital Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#6A1B9A;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="880" y="220" width="120" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="software" value="软件应用&#xa;Software" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="840" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="media" value="媒体内容&#xa;Media Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="960" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="data" value="数据产品&#xa;Data Products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#9C27B0;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="1080" y="310" width="100" height="40" as="geometry" />
+    </mxCell>
+    
+    <!-- Hybrid Forms -->
+    <mxCell id="hybrid" value="混合形态&#xa;Hybrid Forms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#C62828;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="320" y="380" width="120" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="device" value="硬件+服务&#xa;Device+Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#F44336;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="260" y="460" width="100" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="membership" value="会员权益&#xa;Membership" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#F44336;" vertex="1" parent="1">
+      <mxGeometry as="geometry" x="400" y="460" width="100" height="40" as="geometry" />
+    </mxCell>
+    
+    <!-- Arrows -->
+    <mxCell id="arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="root" target="physical">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="root" target="service">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="root" target="digital">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="physical" target="consumable">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="physical" target="durable">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="physical" target="food">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="service" target="consulting">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="service" target="maintenance">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="service" target="education">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr10" style="edgeStyle=orthogonalEdgeStyle;rounded=Loop=1;0;orthogonaljettySize=auto;html=1;" edge="1" parent="1" source="service" target="entertainment">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="digital" target="software">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="digital" target="media">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="digital" target="data">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hybrid" target="device">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="hybrid" target="membership">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="physical" target="hybrid">
+      <mxGeometry as="geometry" />
+    </mxCell>
+    <mxCell id="arr17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="service" target="hybrid">
+      <mxGeometry as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

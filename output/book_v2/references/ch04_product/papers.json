@@ -1,0 +1,1927 @@
+[
+  {
+    "filename": "2507.09423_item_centric_cold_start.pdf",
+    "arxiv_id": "2507.09423",
+    "title": "item centric cold start",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2405.13025_llm_fairness_ecommerce.pdf",
+    "arxiv_id": "2405.13025",
+    "title": "llm fairness ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.13773_optimized_ml_retail.pdf",
+    "arxiv_id": "2410.13773",
+    "title": "optimized ml retail",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2302.03328_rl_multitask.pdf",
+    "arxiv_id": "2302.03328",
+    "title": "rl multitask",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2209.12212_long_seq_ctr.pdf",
+    "arxiv_id": "2209.12212",
+    "title": "long seq ctr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.05974_contrastive_cvr.pdf",
+    "arxiv_id": "2307.05974",
+    "title": "contrastive cvr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2007.05216_dynamic_pricing.pdf",
+    "arxiv_id": "2007.05216",
+    "title": "dynamic pricing",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2402.10091_text_based_matching.pdf",
+    "arxiv_id": "2402.10091",
+    "title": "text based matching",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.02698_marl_pricing.pdf",
+    "arxiv_id": "2507.02698",
+    "title": "marl pricing",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2010.14013_item_selection_cold_start.pdf",
+    "arxiv_id": "2010.14013",
+    "title": "item selection cold start",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1903.04254_large_scale_categorization.pdf",
+    "arxiv_id": "1903.04254",
+    "title": "large scale categorization",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.11939_retail_demand_forecasting.pdf",
+    "arxiv_id": "2308.11939",
+    "title": "retail demand forecasting",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.14626_conversational_rec_ecommerce.pdf",
+    "arxiv_id": "2310.14626",
+    "title": "conversational rec ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1905.09248_long_seq_ctr.pdf",
+    "arxiv_id": "1905.09248",
+    "title": "long seq ctr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1904.01933_bundle_recommendation.pdf",
+    "arxiv_id": "1904.01933",
+    "title": "bundle recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1906.00091_dlrm.pdf",
+    "arxiv_id": "1906.00091",
+    "title": "dlrm",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2103.12982_jd_pairwise_ranking.pdf",
+    "arxiv_id": "2103.12982",
+    "title": "jd pairwise ranking",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2006.02282_personalized_semantic检索.pdf",
+    "arxiv_id": "2006.02282",
+    "title": "personalized semantic检索",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.05763_information_discovery_ecommerce.pdf",
+    "arxiv_id": "2410.05763",
+    "title": "information discovery ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.06021_hierarchical_query.pdf",
+    "arxiv_id": "2403.06021",
+    "title": "hierarchical query",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1703.02344_visual_recommendation.pdf",
+    "arxiv_id": "1703.02344",
+    "title": "visual recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2106.12657_extreme_multilabel.pdf",
+    "arxiv_id": "2106.12657",
+    "title": "extreme multilabel",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2510.13359_visual_recommendation_vlm.pdf",
+    "arxiv_id": "2510.13359",
+    "title": "visual recommendation vlm",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2309.17164_retail_786k.pdf",
+    "arxiv_id": "2309.17164",
+    "title": "retail 786k",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.11518_kuaisearch.pdf",
+    "arxiv_id": "2602.11518",
+    "title": "kuaisearch",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2211.11583_daemon_gnn.pdf",
+    "arxiv_id": "2211.11583",
+    "title": "daemon gnn",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2407.21364_pmt_rec.pdf",
+    "arxiv_id": "2407.21364",
+    "title": "pmt rec",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.01308_masked_sequence_basket.pdf",
+    "arxiv_id": "2308.01308",
+    "title": "masked sequence basket",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2005.08591_product_insights.pdf",
+    "arxiv_id": "2005.08591",
+    "title": "product insights",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2006.05639_lifelong_seq_behavior.pdf",
+    "arxiv_id": "2006.05639",
+    "title": "lifelong seq behavior",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2008.09689_bert_ecommerce_search.pdf",
+    "arxiv_id": "2008.09689",
+    "title": "bert ecommerce search",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2005.14171_user_behavior_retrieval.pdf",
+    "arxiv_id": "2005.14171",
+    "title": "user behavior retrieval",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.12829_llm_ecommerce_recommendation.pdf",
+    "arxiv_id": "2410.12829",
+    "title": "llm ecommerce recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.01638_multilevel_category.pdf",
+    "arxiv_id": "2403.01638",
+    "title": "multilevel category",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2406.06925_nonautoregressive_bundle.pdf",
+    "arxiv_id": "2406.06925",
+    "title": "nonautoregressive bundle",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2503.09223_lref_ecommerce_search.pdf",
+    "arxiv_id": "2503.09223",
+    "title": "lref ecommerce search",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2111.06070_explainable_sentiment_amazon.pdf",
+    "arxiv_id": "2111.06070",
+    "title": "explainable sentiment amazon",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2008.00727_deep_bayesian_bandits.pdf",
+    "arxiv_id": "2008.00727",
+    "title": "deep bayesian bandits",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2302.06355_nlq_ecommerce.pdf",
+    "arxiv_id": "2302.06355",
+    "title": "nlq ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2210.03915_short_text_pretraining.pdf",
+    "arxiv_id": "2210.03915",
+    "title": "short text pretraining",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2202.02098_supervised_contrastive.pdf",
+    "arxiv_id": "2202.02098",
+    "title": "supervised contrastive",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2305.14725_ameli_multimodal_el.pdf",
+    "arxiv_id": "2305.14725",
+    "title": "ameli multimodal el",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.20773_cold_start_rag.pdf",
+    "arxiv_id": "2505.20773",
+    "title": "cold start rag",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1902.07243_gnn_social_recommendation.pdf",
+    "arxiv_id": "1902.07243",
+    "title": "gnn social recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2112.02006_user_click_modelling.pdf",
+    "arxiv_id": "2112.02006",
+    "title": "user click modelling",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.05874_llm_product_classification.pdf",
+    "arxiv_id": "2408.05874",
+    "title": "llm product classification",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1706.05730_item_cold_start_dl.pdf",
+    "arxiv_id": "1706.05730",
+    "title": "item cold start dl",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2312.15282_causal_forecasting.pdf",
+    "arxiv_id": "2312.15282",
+    "title": "causal forecasting",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.17732_gnn_gmvo.pdf",
+    "arxiv_id": "2310.17732",
+    "title": "gnn gmvo",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2102.07098_product_relevance.pdf",
+    "arxiv_id": "2102.07098",
+    "title": "product relevance",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1806.08211_cr_prediction.pdf",
+    "arxiv_id": "1806.08211",
+    "title": "cr prediction",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2003.13230_AliCoCo.pdf",
+    "arxiv_id": "2003.13230",
+    "title": "AliCoCo",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.00693_ecommerce_ranking_factor.pdf",
+    "arxiv_id": "1803.00693",
+    "title": "ecommerce ranking factor",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1905.13131_market_basket_prediction.pdf",
+    "arxiv_id": "1905.13131",
+    "title": "market basket prediction",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2301.03147_lookalike_customers.pdf",
+    "arxiv_id": "2301.03147",
+    "title": "lookalike customers",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2510.01229_enhancing_rerankers.pdf",
+    "arxiv_id": "2510.01229",
+    "title": "enhancing rerankers",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1910.07099_entire_space_cvr.pdf",
+    "arxiv_id": "1910.07099",
+    "title": "entire space cvr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2402.13587_multimodal_ict_ecommerce.pdf",
+    "arxiv_id": "2402.13587",
+    "title": "multimodal ict ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2103.12982_jd_deep_ranking.pdf",
+    "arxiv_id": "2103.12982",
+    "title": "jd deep ranking",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1702.07158_next_basket_tars.pdf",
+    "arxiv_id": "1702.07158",
+    "title": "next basket tars",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2001.07853_contextual_bandits_payment.pdf",
+    "arxiv_id": "2001.07853",
+    "title": "contextual bandits payment",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2501.07365_multimodal_semantic_retrieval.pdf",
+    "arxiv_id": "2501.07365",
+    "title": "multimodal semantic retrieval",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2012.07553_ner_ecommerce.pdf",
+    "arxiv_id": "2012.07553",
+    "title": "ner ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2407.21026_ecommerce_recommendation.pdf",
+    "arxiv_id": "2407.21026",
+    "title": "ecommerce recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.20013_cross_platform_categorization.pdf",
+    "arxiv_id": "2508.20013",
+    "title": "cross platform categorization",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2512.04009_comparison_shopping.pdf",
+    "arxiv_id": "2512.04009",
+    "title": "comparison shopping",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.16237_llm_reranking.pdf",
+    "arxiv_id": "2507.16237",
+    "title": "llm reranking",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.04257_robustness_ecommerce_ranking.pdf",
+    "arxiv_id": "2403.04257",
+    "title": "robustness ecommerce ranking",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.11655_spelling_correction_rag.pdf",
+    "arxiv_id": "2410.11655",
+    "title": "spelling correction rag",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2509.14985_prism_hybrid.pdf",
+    "arxiv_id": "2509.14985",
+    "title": "prism hybrid",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2404.11343_llm_cf_recommendation.pdf",
+    "arxiv_id": "2404.11343",
+    "title": "llm cf recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.12779_llm_ecommerce_applications.pdf",
+    "arxiv_id": "2408.12779",
+    "title": "llm ecommerce applications",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1905.00052_personalized_ranking.pdf",
+    "arxiv_id": "1905.00052",
+    "title": "personalized ranking",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2009.08950_implicit_cf.pdf",
+    "arxiv_id": "2009.08950",
+    "title": "implicit cf",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.02760_llm_ecommerce_recommendation.pdf",
+    "arxiv_id": "2403.02760",
+    "title": "llm ecommerce recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2504.08738_ai_sentiment_ecommerce.pdf",
+    "arxiv_id": "2504.08738",
+    "title": "ai sentiment ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.00710_rl_to_rank_ecommerce.pdf",
+    "arxiv_id": "1803.00710",
+    "title": "rl to rank ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.12524_hakes_vector_database.pdf",
+    "arxiv_id": "2505.12524",
+    "title": "hakes vector database",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2006.05639_lifelong_sequence.pdf",
+    "arxiv_id": "2006.05639",
+    "title": "lifelong sequence",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1903.04263_ltr_ecommerce.pdf",
+    "arxiv_id": "1903.04263",
+    "title": "ltr ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.15930_centrality_aware.pdf",
+    "arxiv_id": "2410.15930",
+    "title": "centrality aware",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.16492_llm_semantic_search_conversational.pdf",
+    "arxiv_id": "2601.16492",
+    "title": "llm semantic search conversational",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2312.03217_rethinking_ecommerce_search.pdf",
+    "arxiv_id": "2312.03217",
+    "title": "rethinking ecommerce search",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.11733_vlm_ecommerce.pdf",
+    "arxiv_id": "2602.11733",
+    "title": "vlm ecommerce",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1812.05774_multilevel_categorization.pdf",
+    "arxiv_id": "1812.05774",
+    "title": "multilevel categorization",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.19345_ecommerce_classification.pdf",
+    "arxiv_id": "2403.19345",
+    "title": "ecommerce classification",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2502.20196_chinese_ecomqa.pdf",
+    "arxiv_id": "2502.20196",
+    "title": "chinese ecomqa",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2311.15110_relevance_feedback.pdf",
+    "arxiv_id": "2311.15110",
+    "title": "relevance feedback",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.08906_bundle_causation.pdf",
+    "arxiv_id": "2408.08906",
+    "title": "bundle causation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.20753_dl_gbdt_ltr.pdf",
+    "arxiv_id": "2507.20753",
+    "title": "dl gbdt ltr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2404.09091_semantic_product_id.pdf",
+    "arxiv_id": "2404.09091",
+    "title": "semantic product id",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.03869_semantic_equivalence.pdf",
+    "arxiv_id": "2308.03869",
+    "title": "semantic equivalence",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2109.14233_next_basket_reality_check.pdf",
+    "arxiv_id": "2109.14233",
+    "title": "next basket reality check",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2305.11744_refit.pdf",
+    "arxiv_id": "2305.11744",
+    "title": "refit",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.19394_lightsage.pdf",
+    "arxiv_id": "2310.19394",
+    "title": "lightsage",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1705.07371_spelling_correction_foreign_lang.pdf",
+    "arxiv_id": "1705.07371",
+    "title": "spelling correction foreign lang",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.15893_online_matching_bandit.pdf",
+    "arxiv_id": "2307.15893",
+    "title": "online matching bandit",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.15217_multi_attribution_cvr.pdf",
+    "arxiv_id": "2508.15217",
+    "title": "multi attribution cvr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1707.07835_semantic_query_segmentation.pdf",
+    "arxiv_id": "1707.07835",
+    "title": "semantic query segmentation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.02294_beyond_accuracy_gnn.pdf",
+    "arxiv_id": "2310.02294",
+    "title": "beyond accuracy gnn",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.11593_multimodal_product_matching.pdf",
+    "arxiv_id": "2403.11593",
+    "title": "multimodal product matching",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2304.04377_vision_language_pretraining.pdf",
+    "arxiv_id": "2304.04377",
+    "title": "vision language pretraining",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2103.00800_query_rewriting_cycle.pdf",
+    "arxiv_id": "2103.00800",
+    "title": "query rewriting cycle",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2406.02135_interaction_relevance.pdf",
+    "arxiv_id": "2406.02135",
+    "title": "interaction relevance",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2406.18938_federated_multiscenario.pdf",
+    "arxiv_id": "2406.18938",
+    "title": "federated multiscenario",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2006.02282_personalized_semantic_retrieval.pdf",
+    "arxiv_id": "2006.02282",
+    "title": "personalized semantic retrieval",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1907.00937_amazon_semantic_search.pdf",
+    "arxiv_id": "1907.00937",
+    "title": "amazon semantic search",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.15267_next_user_cold_start.pdf",
+    "arxiv_id": "2506.15267",
+    "title": "next user cold start",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2112.13753_metacvr.pdf",
+    "arxiv_id": "2112.13753",
+    "title": "metacvr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2203.15542_contextualized_feedback.pdf",
+    "arxiv_id": "2203.15542",
+    "title": "contextualized feedback",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2309.06882_promap.pdf",
+    "arxiv_id": "2309.06882",
+    "title": "promap",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.05941_ml_retail_forecasting.pdf",
+    "arxiv_id": "2506.05941",
+    "title": "ml retail forecasting",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2008.08180_semantic_product_matching.pdf",
+    "arxiv_id": "2008.08180",
+    "title": "semantic product matching",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2312.07482_retail_classification.pdf",
+    "arxiv_id": "2312.07482",
+    "title": "retail classification",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2006.00556_personalized_item_frequency.pdf",
+    "arxiv_id": "2006.00556",
+    "title": "personalized item frequency",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2104.11760_deepcat.pdf",
+    "arxiv_id": "2104.11760",
+    "title": "deepcat",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2303.15870_multi_granularity_matching.pdf",
+    "arxiv_id": "2303.15870",
+    "title": "multi granularity matching",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2108.04468_end2end_behavior.pdf",
+    "arxiv_id": "2108.04468",
+    "title": "end2end behavior",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.21368_real_time_recommendation.pdf",
+    "arxiv_id": "2506.21368",
+    "title": "real time recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.00210_reic_intent_classification.pdf",
+    "arxiv_id": "2506.00210",
+    "title": "reic intent classification",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.16432_ssl_cvr.pdf",
+    "arxiv_id": "2401.16432",
+    "title": "ssl cvr",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2405.10835_multi_scenario.pdf",
+    "arxiv_id": "2405.10835",
+    "title": "multi scenario",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.14059_gnn_recommendation.pdf",
+    "arxiv_id": "2508.14059",
+    "title": "gnn recommendation",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.02215_amazon_query_understanding.pdf",
+    "arxiv_id": "2408.02215",
+    "title": "amazon query understanding",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2501.03228_lightgnn.pdf",
+    "arxiv_id": "2501.03228",
+    "title": "lightgnn",
+    "category": "product_matching",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.11939_retail_forecasting.pdf",
+    "arxiv_id": "2308.11939",
+    "title": "retail forecasting",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1504.03068_review_mining.pdf",
+    "arxiv_id": "1504.03068",
+    "title": "review mining",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1901.06274_review_ranking.pdf",
+    "arxiv_id": "1901.06274",
+    "title": "review ranking",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1210.7056_selective_transfer.pdf",
+    "arxiv_id": "1210.7056",
+    "title": "selective transfer",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1801.07030_offline_ab_recsys.pdf",
+    "arxiv_id": "1801.07030",
+    "title": "offline ab recsys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.15267_next_user.pdf",
+    "arxiv_id": "2506.15267",
+    "title": "next user",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2106.00762_ab_two_sided.pdf",
+    "arxiv_id": "2106.00762",
+    "title": "ab two sided",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.02430_WebCoderBench.pdf",
+    "arxiv_id": "2601.02430",
+    "title": "WebCoderBench",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2209.07663_monolith.pdf",
+    "arxiv_id": "2209.07663",
+    "title": "monolith",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.02630_Agentic_Ecommerce_Evaluation.pdf",
+    "arxiv_id": "2508.02630",
+    "title": "Agentic Ecommerce Evaluation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.00719_rankdcg.pdf",
+    "arxiv_id": "1803.00719",
+    "title": "rankdcg",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.15196_EcomScriptBench.pdf",
+    "arxiv_id": "2505.15196",
+    "title": "EcomScriptBench",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.17287_ecommerce_recsys_ml.pdf",
+    "arxiv_id": "2506.17287",
+    "title": "ecommerce recsys ml",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.20745_ShoppingMMLU.pdf",
+    "arxiv_id": "2410.20745",
+    "title": "ShoppingMMLU",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.04571_matthew_effect.pdf",
+    "arxiv_id": "2307.04571",
+    "title": "matthew effect",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2312.16695_gnn_session.pdf",
+    "arxiv_id": "2312.16695",
+    "title": "gnn session",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2306.16425_cctl.pdf",
+    "arxiv_id": "2306.16425",
+    "title": "cctl",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.19345_product_classification.pdf",
+    "arxiv_id": "2403.19345",
+    "title": "product classification",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.05763_Information_Discovery_Ecommerce.pdf",
+    "arxiv_id": "2410.05763",
+    "title": "Information Discovery Ecommerce",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.02839_DeepShop.pdf",
+    "arxiv_id": "2506.02839",
+    "title": "DeepShop",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1805.09023_item_cold_start.pdf",
+    "arxiv_id": "1805.09023",
+    "title": "item cold start",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2212.13910_recsys_ecommerce.pdf",
+    "arxiv_id": "2212.13910",
+    "title": "recsys ecommerce",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.10677_offpolicy_ab.pdf",
+    "arxiv_id": "2506.10677",
+    "title": "offpolicy ab",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.16060_position_bias.pdf",
+    "arxiv_id": "2307.16060",
+    "title": "position bias",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2003.02769_bayesian_ab.pdf",
+    "arxiv_id": "2003.02769",
+    "title": "bayesian ab",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2005.08591_product_insights.pdf",
+    "arxiv_id": "2005.08591",
+    "title": "product insights",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.04266_ShoppingBench.pdf",
+    "arxiv_id": "2508.04266",
+    "title": "ShoppingBench",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1806.07296_ecommerce_neural_ranking.pdf",
+    "arxiv_id": "1806.07296",
+    "title": "ecommerce neural ranking",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.11998_economic_recsys.pdf",
+    "arxiv_id": "2308.11998",
+    "title": "economic recsys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2005.14171_ubr4ctr.pdf",
+    "arxiv_id": "2005.14171",
+    "title": "ubr4ctr",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2502.15990_llm_query_product_labeling.pdf",
+    "arxiv_id": "2502.15990",
+    "title": "llm query product labeling",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.20773_cold_start_rag.pdf",
+    "arxiv_id": "2505.20773",
+    "title": "cold start rag",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.09587_session_eval.pdf",
+    "arxiv_id": "1803.09587",
+    "title": "session eval",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1906.11431_serendipity_user.pdf",
+    "arxiv_id": "1906.11431",
+    "title": "serendipity user",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2202.10462_ctr_advertising.pdf",
+    "arxiv_id": "2202.10462",
+    "title": "ctr advertising",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1706.05730_item_cold_start_dl.pdf",
+    "arxiv_id": "1706.05730",
+    "title": "item cold start dl",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2306.05118_multi_objective_rerank.pdf",
+    "arxiv_id": "2306.05118",
+    "title": "multi objective rerank",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2009.05794_open_ctr.pdf",
+    "arxiv_id": "2009.05794",
+    "title": "open ctr",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2106.08274_price_optimization.pdf",
+    "arxiv_id": "2106.08274",
+    "title": "price optimization",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.02294_gnn_diversity.pdf",
+    "arxiv_id": "2310.02294",
+    "title": "gnn diversity",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2212.13910_ecommerce_recsys.pdf",
+    "arxiv_id": "2212.13910",
+    "title": "ecommerce recsys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.17460_llm_product_search.pdf",
+    "arxiv_id": "2409.17460",
+    "title": "llm product search",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.12315_AgenticShop.pdf",
+    "arxiv_id": "2602.12315",
+    "title": "AgenticShop",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.11733_VLM_ecommerce_understanding.pdf",
+    "arxiv_id": "2602.11733",
+    "title": "VLM ecommerce understanding",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2412.14161_TheAgentCompany.pdf",
+    "arxiv_id": "2412.14161",
+    "title": "TheAgentCompany",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1904.04096_amazon_sentiment.pdf",
+    "arxiv_id": "1904.04096",
+    "title": "amazon sentiment",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2503.09223_lref_ecommerce.pdf",
+    "arxiv_id": "2503.09223",
+    "title": "lref ecommerce",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.06258_ecommerce_experiments.pdf",
+    "arxiv_id": "1803.06258",
+    "title": "ecommerce experiments",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.02514_whole_page_optimization.pdf",
+    "arxiv_id": "2602.02514",
+    "title": "whole page optimization",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.16492_llm_semantic_search.pdf",
+    "arxiv_id": "2601.16492",
+    "title": "llm semantic search",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1706.02093_cascade_ranking.pdf",
+    "arxiv_id": "1706.02093",
+    "title": "cascade ranking",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.05639_ECom-Bench.pdf",
+    "arxiv_id": "2507.05639",
+    "title": "ECom-Bench",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1910.07099_esmm_cvr.pdf",
+    "arxiv_id": "1910.07099",
+    "title": "esmm cvr",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2206.12858_recsys_eval_libraries.pdf",
+    "arxiv_id": "2206.12858",
+    "title": "recsys eval libraries",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2405.05606_ecommerce_search.pdf",
+    "arxiv_id": "2405.05606",
+    "title": "ecommerce search",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1302.2318_search_metrics.pdf",
+    "arxiv_id": "1302.2318",
+    "title": "search metrics",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2502.20196_chinese_ecomqa.pdf",
+    "arxiv_id": "2502.20196",
+    "title": "chinese ecomqa",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2309.15646_cold_warm_net.pdf",
+    "arxiv_id": "2309.15646",
+    "title": "cold warm net",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.21698_E-comIQ-ZH_ecommerce_poster_benchmark.pdf",
+    "arxiv_id": "2602.21698",
+    "title": "E-comIQ-ZH ecommerce poster benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.08906_bundle_causation.pdf",
+    "arxiv_id": "2408.08906",
+    "title": "bundle causation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2108.04468_user_behavior_ctr.pdf",
+    "arxiv_id": "2108.04468",
+    "title": "user behavior ctr",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2405.02156_diversity_recommendation.pdf",
+    "arxiv_id": "2405.02156",
+    "title": "diversity recommendation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1901.07555_popularity_re-ranking.pdf",
+    "arxiv_id": "1901.07555",
+    "title": "popularity re-ranking",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.14352_bundle_fairness.pdf",
+    "arxiv_id": "2507.14352",
+    "title": "bundle fairness",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.13024_WebMall.pdf",
+    "arxiv_id": "2508.13024",
+    "title": "WebMall",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1907.00400_conversion_prediction.pdf",
+    "arxiv_id": "1907.00400",
+    "title": "conversion prediction",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2210.17187_ecommerce_metric_changes.pdf",
+    "arxiv_id": "2210.17187",
+    "title": "ecommerce metric changes",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.12593_moregin.pdf",
+    "arxiv_id": "2401.12593",
+    "title": "moregin",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2305.11755_visual_explainability.pdf",
+    "arxiv_id": "2305.11755",
+    "title": "visual explainability",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2202.06466_explainable_eval.pdf",
+    "arxiv_id": "2202.06466",
+    "title": "explainable eval",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2510.13359_VLM_ecommerce_recommendation.pdf",
+    "arxiv_id": "2510.13359",
+    "title": "VLM ecommerce recommendation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2108.06367_multi_objective_tutorial.pdf",
+    "arxiv_id": "2108.06367",
+    "title": "multi objective tutorial",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1703.00556_cro_evolutionary.pdf",
+    "arxiv_id": "1703.00556",
+    "title": "cro evolutionary",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2010.14013_user_cold_start.pdf",
+    "arxiv_id": "2010.14013",
+    "title": "user cold start",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2511.22978_ShoppingComp.pdf",
+    "arxiv_id": "2511.22978",
+    "title": "ShoppingComp",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1908.08328_business_value_recsys.pdf",
+    "arxiv_id": "1908.08328",
+    "title": "business value recsys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2602.15682_User_Centric_Agent.pdf",
+    "arxiv_id": "2602.15682",
+    "title": "User Centric Agent",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2008.08180_semantic_product_matching.pdf",
+    "arxiv_id": "2008.08180",
+    "title": "semantic product matching",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2210.10309_multi_objective_recsys.pdf",
+    "arxiv_id": "2210.10309",
+    "title": "multi objective recsys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.11632_human_centric_eval.pdf",
+    "arxiv_id": "2401.11632",
+    "title": "human centric eval",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1607.06182_streaming_recommender.pdf",
+    "arxiv_id": "1607.06182",
+    "title": "streaming recommender",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1809.03186_online_offline_ecom.pdf",
+    "arxiv_id": "1809.03186",
+    "title": "online offline ecom",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2406.19425_inventory_stochastic.pdf",
+    "arxiv_id": "2406.19425",
+    "title": "inventory stochastic",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.08128_efficient_ab.pdf",
+    "arxiv_id": "2505.08128",
+    "title": "efficient ab",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.02215_amazon_query_understanding.pdf",
+    "arxiv_id": "2408.02215",
+    "title": "amazon query understanding",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2511.22978_shopping_comp.pdf",
+    "arxiv_id": "2511.22978",
+    "title": "shopping comp",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2412.16516_HammerBench.pdf",
+    "arxiv_id": "2412.16516",
+    "title": "HammerBench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2505.04759_ZeroShot_App_Review.pdf",
+    "arxiv_id": "2505.04759",
+    "title": "ZeroShot App Review",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2412.14161_paper.pdf",
+    "arxiv_id": "2412.14161",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2311.11382_Security_MiniApps.pdf",
+    "arxiv_id": "2311.11382",
+    "title": "Security MiniApps",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.12941_paper.pdf",
+    "arxiv_id": "2409.12941",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.07030_paper.pdf",
+    "arxiv_id": "2401.07030",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.11085_ToolBench.pdf",
+    "arxiv_id": "2403.11085",
+    "title": "ToolBench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2308.15272_AutoDroid.pdf",
+    "arxiv_id": "2308.15272",
+    "title": "AutoDroid",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.11085_paper.pdf",
+    "arxiv_id": "2403.11085",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2402.07938_Large_Language_User_Interfaces.pdf",
+    "arxiv_id": "2402.07938",
+    "title": "Large Language User Interfaces",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2411.13547_ToolScan.pdf",
+    "arxiv_id": "2411.13547",
+    "title": "ToolScan",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2510.18170_AgentChangeBench.pdf",
+    "arxiv_id": "2510.18170",
+    "title": "AgentChangeBench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.20453_MCP_Bench.pdf",
+    "arxiv_id": "2508.20453",
+    "title": "MCP Bench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.09306_paper.pdf",
+    "arxiv_id": "2601.09306",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.03218_MiniScope_Privacy.pdf",
+    "arxiv_id": "2401.03218",
+    "title": "MiniScope Privacy",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2411.13547_paper.pdf",
+    "arxiv_id": "2411.13547",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2106.08274_paper.pdf",
+    "arxiv_id": "2106.08274",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2407.12821_AutoFlow.pdf",
+    "arxiv_id": "2407.12821",
+    "title": "AutoFlow",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.06426_NC-Bench.pdf",
+    "arxiv_id": "2601.06426",
+    "title": "NC-Bench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.16789_paper.pdf",
+    "arxiv_id": "2307.16789",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2109.10665_paper.pdf",
+    "arxiv_id": "2109.10665",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2305.14725_paper.pdf",
+    "arxiv_id": "2305.14725",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2307.04644_paper.pdf",
+    "arxiv_id": "2307.04644",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2507.05639_paper.pdf",
+    "arxiv_id": "2507.05639",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2412.03446_Text2Workflow.pdf",
+    "arxiv_id": "2412.03446",
+    "title": "Text2Workflow",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2208.06150_paper.pdf",
+    "arxiv_id": "2208.06150",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2405.07437_paper.pdf",
+    "arxiv_id": "2405.07437",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2203.15542_paper.pdf",
+    "arxiv_id": "2203.15542",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.01063_Mobile_App_Review.pdf",
+    "arxiv_id": "2408.01063",
+    "title": "Mobile App Review",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.17460_paper.pdf",
+    "arxiv_id": "2409.17460",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2306.05118_paper.pdf",
+    "arxiv_id": "2306.05118",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.03797_NESTful.pdf",
+    "arxiv_id": "2409.03797",
+    "title": "NESTful",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.13738_NLP4PBM_Process_Extraction.pdf",
+    "arxiv_id": "2409.13738",
+    "title": "NLP4PBM Process Extraction",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2302.08092_paper.pdf",
+    "arxiv_id": "2302.08092",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.11703_LLM_API_Classification.pdf",
+    "arxiv_id": "2409.11703",
+    "title": "LLM API Classification",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2510.21244_VoiceAgentEval.pdf",
+    "arxiv_id": "2510.21244",
+    "title": "VoiceAgentEval",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2401.12593_paper.pdf",
+    "arxiv_id": "2401.12593",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2407.11005_paper.pdf",
+    "arxiv_id": "2407.11005",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2309.01431_paper.pdf",
+    "arxiv_id": "2309.01431",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.00920_paper.pdf",
+    "arxiv_id": "2409.00920",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.02294_paper.pdf",
+    "arxiv_id": "2310.02294",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2311.09008_End_to_End_TOD.pdf",
+    "arxiv_id": "2311.09008",
+    "title": "End to End TOD",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2406.12045_paper.pdf",
+    "arxiv_id": "2406.12045",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2312.11190_VisionTasker.pdf",
+    "arxiv_id": "2312.11190",
+    "title": "VisionTasker",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.04327_ProMoAI_Process_Modeling.pdf",
+    "arxiv_id": "2403.04327",
+    "title": "ProMoAI Process Modeling",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2408.07720_Process_Mining_AI_Agents.pdf",
+    "arxiv_id": "2408.07720",
+    "title": "Process Mining AI Agents",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2010.04295_Widget_Captioning.pdf",
+    "arxiv_id": "2010.04295",
+    "title": "Widget Captioning",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2210.02663_Mobile_UI_Semantic_Understanding.pdf",
+    "arxiv_id": "2210.02663",
+    "title": "Mobile UI Semantic Understanding",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2502.10050_paper.pdf",
+    "arxiv_id": "2502.10050",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2310.03481_paper.pdf",
+    "arxiv_id": "2310.03481",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2508.02630_paper.pdf",
+    "arxiv_id": "2508.02630",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2410.05763_paper.pdf",
+    "arxiv_id": "2410.05763",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2409.00920_ToolACE.pdf",
+    "arxiv_id": "2409.00920",
+    "title": "ToolACE",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2601.08118_MirrorBench.pdf",
+    "arxiv_id": "2601.08118",
+    "title": "MirrorBench",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2403.07714_paper.pdf",
+    "arxiv_id": "2403.07714",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2511.05820_WAR-Re_Web_API_Recommendation.pdf",
+    "arxiv_id": "2511.05820",
+    "title": "WAR-Re Web API Recommendation",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "1803.06966_Polyglot_Semantic_Parsing.pdf",
+    "arxiv_id": "1803.06966",
+    "title": "Polyglot Semantic Parsing",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2506.09902_PersonaLens.pdf",
+    "arxiv_id": "2506.09902",
+    "title": "PersonaLens",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2407.11418_LOTUS_Semantic_Operators.pdf",
+    "arxiv_id": "2407.11418",
+    "title": "LOTUS Semantic Operators",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2306.05685_paper.pdf",
+    "arxiv_id": "2306.05685",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2304.04377_paper.pdf",
+    "arxiv_id": "2304.04377",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2509.11079_Difficulty_Aware_Orchestration.pdf",
+    "arxiv_id": "2509.11079",
+    "title": "Difficulty Aware Orchestration",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2112.11176_TODS_Performance_Quality.pdf",
+    "arxiv_id": "2112.11176",
+    "title": "TODS Performance Quality",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  },
+  {
+    "filename": "2012.07553_paper.pdf",
+    "arxiv_id": "2012.07553",
+    "title": "paper",
+    "category": "mini_program_service",
+    "chapter": "ch04_product"
+  }
+]

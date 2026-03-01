@@ -1,0 +1,12 @@
+@startuml
+title 深度排序模型
+skinparam shadowing false
+
+"查询特征" --> "Query编码"
+"商品特征" --> "商品编码"
+"Query编码" --> "特征交互"
+"商品编码" --> "特征交互"
+"特征交互" --> "DNN排序"
+"DNN排序" --> "排序分数"
+"排序分数" --> "最终排序"
+@enduml

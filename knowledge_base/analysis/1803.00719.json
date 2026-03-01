@@ -1,0 +1,14 @@
+{
+  "paper_id": "1803.00719",
+  "title": "Rankdcg",
+  "category": "ecommerce_evaluation",
+  "year": 2018,
+  "timestamp": "2026-03-01T13:51:22.756473",
+  "summary": "# RankDCG: A Rank-Ordering Evaluation Measure\n\nThis paper introduces RankDCG, a novel evaluation measure for ranking problems that addresses significant shortcomings in existing metrics like Kendall's τ, Average Precision, and nDCG. The authors identify a specific type of ranking problem common in real-world applications—such as user ranking in recommendation systems—where all elements are relevant, rank values are discrete and non-normal, and multiple elements can share the same rank (ties). Existing evaluation measures fail to properly handle these scenarios, producing inconsistent lower bounds, inappropriate cost functions, and inability to deal with tied elements. *The paper proposes four criteria that any effective ranking measure should satisfy: correctly work with multiple ties, address non-normal rank value distribution, emphasize correct ordering of high-rank elements, and produce consistent and meaningful scoring range.*\n\nThe core innovation of RankDCG is a modification of the popular nDCG algorithm that resolves these issues. The measure uses a mapping function that assigns unique ranks based on rank subgroups rather than raw rank values, and employs a reversed mapping function for the discounting factor to eliminate scoring differences from permutations within element subgroups. The final normalized formula divides the adjusted DCG score by the range between maximum and minimum possible scores, ensuring consistent lower bounds. The authors experiment with four different cost functions on a constructed dataset L=[9,4,4,2,2,2,1,1,1,1] containing multiple ties and non-normal distribution, demonstrating that only RankDCG satisfies all four criteria.\n\nExperimental results on both constructed and real data (Reddit user ranking based on comment karma) confirm that RankDCG outperforms conventional measures. On constructed data, Kendall's τ and RankDCG are the only measures that properly handle multiple ties, but RankDCG additionally produces the most accurate cost function for emphasizing rare high-rank elements and provides consistent evaluation scores with meaningful bounds. *In the worst-case ordering (reversed list), only RankDCG produces a comprehensive score of 0.0, while other measures produce confusing or inconsistent results.* The measure also handles real-world scenarios where ranking algorithms may overpredict high ranks, returning scores higher than 1.0 with other measures but remaining consistent with RankDCG. The authors release a Python implementation publicly available on GitHub.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

@@ -1,0 +1,20 @@
+@startuml
+title TransE模型原理
+skinparam shadowing false
+
+"头实体 --> "+"
+"关系 --> "+"
+"+" --> "≈"
+"≈" --> "尾实体: t"
+"(iPhone15, --> "向量学习"
+"1-1关系: 良好"[1-1关系: 良好]
+"1-N关系: 可能有问题"[1-N关系: 可能有问题]
+"N-1关系: 可能有问题"[N-1关系: 可能有问题]
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

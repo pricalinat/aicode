@@ -1,0 +1,191 @@
+[
+  {
+    "filename": "2412.01837_llm_product_kg.pdf",
+    "arxiv_id": "2412.01837",
+    "title": "llm product kg",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2006.01969_rel_entity_linker.pdf",
+    "arxiv_id": "2006.01969",
+    "title": "rel entity linker",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2402.13750_llm_inferential_kg.pdf",
+    "arxiv_id": "2402.13750",
+    "title": "llm inferential kg",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2601.05192_lela_entity_linking.pdf",
+    "arxiv_id": "2601.05192",
+    "title": "lela entity linking",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2509.14267_graph_rag_ecommerce.pdf",
+    "arxiv_id": "2509.14267",
+    "title": "graph rag ecommerce",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2412.11500_intention_KG.pdf",
+    "arxiv_id": "2412.11500",
+    "title": "intention KG",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2009.11684_AliMe_KG.pdf",
+    "arxiv_id": "2009.11684",
+    "title": "AliMe KG",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2002.11143_entity_linking_kg.pdf",
+    "arxiv_id": "2002.11143",
+    "title": "entity linking kg",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2403.03008_kg_context_llm.pdf",
+    "arxiv_id": "2403.03008",
+    "title": "kg context llm",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2105.05881_graphsage_product.pdf",
+    "arxiv_id": "2105.05881",
+    "title": "graphsage product",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2105.00388_billion_scale_pkgm.pdf",
+    "arxiv_id": "2105.00388",
+    "title": "billion scale pkgm",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2112.08589_kg_embedding_ecommerce.pdf",
+    "arxiv_id": "2112.08589",
+    "title": "kg embedding ecommerce",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2105.02978_multilingual_graph.pdf",
+    "arxiv_id": "2105.02978",
+    "title": "multilingual graph",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2203.00964_pkgm_pretained.pdf",
+    "arxiv_id": "2203.00964",
+    "title": "pkgm pretained",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2203.00964_pkgm.pdf",
+    "arxiv_id": "2203.00964",
+    "title": "pkgm",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2410.21237_hierarchical_kg_images.pdf",
+    "arxiv_id": "2410.21237",
+    "title": "hierarchical kg images",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2006.00575_neural_entity_linking_survey.pdf",
+    "arxiv_id": "2006.00575",
+    "title": "neural entity linking survey",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "1911.12481_product_kg_embedding.pdf",
+    "arxiv_id": "1911.12481",
+    "title": "product kg embedding",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2504.05310_grit_graph_recall.pdf",
+    "arxiv_id": "2504.05310",
+    "title": "grit graph recall",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2305.09858_kg_completion_ecommerce_llm.pdf",
+    "arxiv_id": "2305.09858",
+    "title": "kg completion ecommerce llm",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2508.04032_serendipity_llm_kg.pdf",
+    "arxiv_id": "2508.04032",
+    "title": "serendipity llm kg",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2502.01555_brand_entity_linking.pdf",
+    "arxiv_id": "2502.01555",
+    "title": "brand entity linking",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2503.15990_eckg_benchmark.pdf",
+    "arxiv_id": "2503.15990",
+    "title": "eckg benchmark",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2305.07633_zeroshot_kg_recommendation.pdf",
+    "arxiv_id": "2305.07633",
+    "title": "zeroshot kg recommendation",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2511.11017_ai_agent_kg_construction.pdf",
+    "arxiv_id": "2511.11017",
+    "title": "ai agent kg construction",
+    "category": "product_matching",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2512.21799_kg20c.pdf",
+    "arxiv_id": "2512.21799",
+    "title": "kg20c",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch03_knowledge_graph"
+  },
+  {
+    "filename": "2404.03164_kg4receval.pdf",
+    "arxiv_id": "2404.03164",
+    "title": "kg4receval",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch03_knowledge_graph"
+  }
+]

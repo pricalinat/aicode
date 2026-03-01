@@ -1,0 +1,14 @@
+{
+  "paper_id": "2111.06070",
+  "title": "Explainable Sentiment Amazon",
+  "category": "product_matching",
+  "year": 2021,
+  "timestamp": "2026-03-01T14:41:26.310339",
+  "summary": "The paper presents a sentence-level sentiment analysis system for Amazon product reviews with an emphasis on explaining model decisions via attention. It builds a Bi-LSTM with a self-attention layer and reports up to 96.0% accuracy, then interprets predictions by inspecting attention-weight distributions within individual sentences and by aggregating attention over frequent aspect terms. *The model has an accuracy of up to 96%.* *We find that the aspect terms have the same or even more attention weights than the sentimental words in sentences.*\n\nExperiments focus on the Amazon Musical Instruments Reviews dataset with 10,261 reviews, using reviewText as input and overall ratings as labels, split 70% train and 30% test. Preprocessing removes non-alphabetic symbols, lowercases tokens, and removes stopwords via NLTK. For aspect interpretability, the authors compute TF-IDF scores and select the top 160 high-frequency nouns as an aspect-term set, aiming to avoid manual aspect labeling.\n\nThe modeling section combines multiple ideas: it defines sentiment weights from lexicons (WordNet and SentiWordNet) by averaging their scores and averaging across parts of speech for a word, then uses those weights to scale word vectors; it also discusses embeddings, stating BERT is used for word embeddings while later listing Word2Vec vectorization parameters. Hyperparameter sweeps choose 8 epochs, batch size 32 (even though 38 performed best but used too much memory), and dropout 0.4, yielding accuracy 96.0%, precision 96.0%, recall 99.9%, and F1 97.9%. Baseline comparisons report Naive Bayes at 84.4% accuracy and LSTM at 95.1% accuracy, and the interpretability results highlight that high-attention aspect terms such as fender and pedal tend to outweigh strongly sentimental words such as great and nice; the conclusion also cautions that extremely high recall can be misleading on biased datasets with very few negatives.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

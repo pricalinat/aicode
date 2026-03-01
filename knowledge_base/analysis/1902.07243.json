@@ -1,0 +1,14 @@
+{
+  "paper_id": "1902.07243",
+  "title": "Gnn Social Recommendation",
+  "category": "product_matching",
+  "year": 2019,
+  "timestamp": "2026-03-01T14:49:28.081814",
+  "summary": "The paper proposes GraphRec, a graph neural network framework for social recommendation focused on rating prediction. It treats social recommendation data as two coupled graphs: a user item graph that includes both interactions and explicit opinions via rating values, and a user user social graph that encodes social relations with varying tie strength. The core goal is to learn better user and item latent factors by jointly modeling both graphs and then predict missing ratings.\n\nGraphRec is organized into three main components: user modeling, item modeling, and rating prediction. In user modeling, it learns an item space user factor from the user item graph and a social space user factor from the social graph, then combines them with an MLP to form the final user representation. It introduces opinion embeddings for discrete rating levels and uses MLP based fusion to create opinion aware interaction representations, then applies attention based aggregation to address heterogeneity:\n- Item attention to weight a users interacted items differently when forming item space user factors\n- Social attention to weight different social neighbors differently to reflect heterogeneous social tie strengths\n- User attention to weight different users differently when aggregating user item interactions to form item latent factors\nTraining uses a squared error objective over observed ratings, with RMSprop optimization, dropout to reduce overfitting, and early stopping based on validation RMSE.\n\nExperiments are reported on two real world datasets, Ciao and Epinions, both with 1 to 5 ratings and associated social links. GraphRec is compared against matrix factorization baselines and neural approaches including DeepSoR and a GNN based baseline GCMC plus social network information, using MAE and RMSE as evaluation metrics; the results table shows GraphRec achieving the lowest errors across both datasets under 60 percent and 80 percent training splits. Ablation studies show that removing social network information or removing opinion information degrades performance, and removing attention mechanisms generally hurts, supporting the claim that modeling opinions and heterogeneous influence matters; an embedding size study shows performance improving up to a moderate size and then degrading at very large size due to increased complexity.\n\n*Our method GraphRec consistently outperforms all the baseline methods.*\n\n*opinion information plays a crucial role in the improvement of our model performance.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

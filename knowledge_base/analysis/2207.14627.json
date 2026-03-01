@@ -1,0 +1,14 @@
+{
+  "paper_id": "2207.14627",
+  "title": "Dialog State Tracking Survey",
+  "category": "mini_program_service",
+  "year": 2022,
+  "timestamp": "2026-03-01T13:54:22.450248",
+  "summary": "# Survey of Recent Dialogue State Tracking Approaches\n\nThis paper presents a comprehensive survey of dialogue state tracking (DST), a crucial component in task-oriented dialogue systems that identifies user needs at each conversation turn by updating a representation of constraints and requests as slot-value pairs. The authors examine the evolution from traditional POMDP-based statistical approaches to modern neural methods, with the text-to-text paradigm emerging as the dominant approach in recent years. DST directly informs the downstream dialogue policy to predict next actions such as asking for clarification or querying a database.\n\n## Datasets and Evaluation\n\nThe survey covers major DST datasets including MultiWOZ (the current main benchmark with 7 domains and over 8,000 dialogues), Schema-Guided Dialogue (SGD) with 16 domains designed for domain independence, and several multilingual and multimodal variants. Evaluation primarily relies on joint goal accuracy (JGA), which measures exact matches across all slots, and slot accuracy, which evaluates individual slot predictions. The authors note that recent datasets are primarily text-based with no consideration for noisy speech inputs, causing slot filling and DST to be studied separately despite their original integration in spoken dialogue systems.\n\n## Recent Advances and Challenges\n\nSignificant progress in 2021-2022 includes modeling slot relationships through graph attention networks, adapting pretrained language models like BERT to dialogue domains through continued pretraining, and using prompt-based methods to address unseen domains. The best-performing models on MultiWOZ 2.1 achieve around 60% JGA using approaches like TripPy combined with data augmentation and curriculum learning. However, the authors argue that critical aspects remain underexplored: models struggle with generalizing to new domains with different slot distributions, robustness to realistic input variations is understudied, and most datasets lack conversational depth since utterances can often be parsed in isolation. They propose three key research directions: improving generalizability to handle unseen domains, enhancing robustness against input variations, and ensuring relevance to real-world deployment scenarios where fixed slot-value representations may be insufficient.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

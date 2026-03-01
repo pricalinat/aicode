@@ -1,0 +1,7 @@
+flowchart TD
+    Input[投入] --> Prod[生产]
+    Prod --> Out[产出]
+    Out --> Dist[分配]
+    Dist --> Cons[消费]
+    
+    Prod -->|反馈| Input

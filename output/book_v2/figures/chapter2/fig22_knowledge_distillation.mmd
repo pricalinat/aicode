@@ -1,0 +1,5 @@
+flowchart TB
+    T[教师模型] --> S[学生模型]
+    T --> L[ logits]
+    L --> KL[KL散度]
+    S --> KL

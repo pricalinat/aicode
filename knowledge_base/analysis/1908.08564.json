@@ -1,0 +1,14 @@
+{
+  "paper_id": "1908.08564",
+  "title": "Intent Refinement",
+  "category": "ecommerce_evaluation",
+  "year": 2019,
+  "timestamp": "2026-03-01T13:55:03.486475",
+  "summary": "This paper addresses two fundamental problems in e-commerce search: identifying the terms in a query that represent the user's product intent, and bridging the vocabulary gap between query terms and product descriptions. The authors leverage historical query reformulation logs from a major e-commerce retailer to develop distant-supervised approaches that learn which terms are most important for expressing product intent. The key insight is that term importance is context-dependent—the same term can have different significance depending on the other words in the query.\n\nThe authors propose two models. The Contextual Term-Weighting (CTW) model predicts a weight for each term in a query indicating its importance toward defining the product intent, using bidirectional GRUs to encode the query context. The Contextual Query Refinement (CQR) model suggests additional terms not present in the original query that better represent the product intent, framed as a multilabel classification problem. Both models exploit the fact that reformulated queries (where users successfully find products) retain the important terms from the original query.\n\nExperiments on a dataset of 722,235 query pairs show that CTW achieves a 3% improvement in Mean Reciprocal Rank (MRR) over BM25F baseline, which is significant given the retailer's catalog of millions of products. *The relative performance gain of CTW over the non-contextual baseline in predicting important terms is 6.7%.* For query refinement, CQR outperforms the baseline with a 3.4% relative gain in average precision.\n\nThe qualitative analysis demonstrates that contextual information is crucial—terms like \"orbit\" can refer to either a garden hose brand or chewing gum, and only by considering surrounding context can the model correctly identify the product intent. The approaches are particularly valuable for tail queries (rare or cold-start queries) where historical engagement data is unavailable, and these queries constitute a significant portion of e-commerce search traffic.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

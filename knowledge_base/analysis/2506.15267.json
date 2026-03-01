@@ -1,0 +1,14 @@
+{
+  "paper_id": "2506.15267",
+  "title": "Next User",
+  "category": "ecommerce_evaluation",
+  "year": 2025,
+  "timestamp": "2026-03-01T13:47:41.873575",
+  "summary": "# Summary: Next-User Retrieval for Cold-Start Recommendations\n\nThis paper presents Next-User Retrieval, a novel generative framework developed by ByteDance researchers to address the item cold-start problem in Douyin's short-video recommendation system. The core innovation involves predicting the next user most likely to interact with a cold-start item by modeling the sequential relationships among users who have already engaged with it, rather than relying on traditional item ID features that are ineffective for new items lacking interaction history.\n\nThe methodology employs a transformer-based encoder-decoder architecture with several key technical components: sequential user ID embeddings filtered for positive interactions (likes and comments), prefix prompt embeddings incorporating item features like ID and category, a learnable [CLS] token to bridge the feature domain gap between sequential users and real requesting users, and causal attention mechanisms to capture unidirectional user relationships. The training utilizes three complementary loss functions—a contrastive loss that transforms next-user prediction into similarity-based representation learning compatible with HNSW retrieval, a cross-entropy loss leveraging exposure-only samples without interactions, and an auxiliary loss to enhance sequential user representation learning.\n\nThe effectiveness was validated through extensive experiments in Douyin's production environment. Offline results demonstrated significant improvements over traditional lookalike methods, with Recall@Top20 reaching 0.4100 (a 27.20% relative improvement over traditional lookalike) and Recall@Top50 at 0.5859. Online A/B tests conducted with 10% of users over at least one week showed meaningful gains: +0.0142% in daily active users and +0.1144% in publications, representing substantial impact given Douyin's 600+ million daily active users. The system has been successfully integrated into Douyin's main recommendation pipeline, demonstrating practical scalability for industrial deployment.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

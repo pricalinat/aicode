@@ -1,0 +1,14 @@
+{
+  "paper_id": "2404.03164",
+  "title": "Kg4Receval",
+  "category": "ecommerce_evaluation",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:52:41.165721",
+  "summary": "# Summary: KG4RecEval - Does Knowledge Graph Really Matter for Recommender Systems?\n\nThis paper from Zhejiang University and collaborators challenges the widely held assumption that knowledge graphs (KGs) necessarily improve recommender system accuracy. The authors propose an evaluation framework called KG4RecEval with a novel metric KGER (KG Utilization Efficiency in Recommendation) to systematically measure how much KGs actually contribute to recommendation performance.\n\n## Core Research Questions and Findings\n\nThe study investigates five key questions across four real-world datasets (MovieLens-1M, Amazon-Books, Book-Crossing, Last.FM) and ten state-of-the-art KG-based recommender systems. The results reveal striking counter-intuitive findings: removing the KG entirely, randomly distorting knowledge facts, or decreasing knowledge quantity does not necessarily degrade recommendation accuracy. Even for cold-start users—where KGs are theoretically most valuable—the same pattern holds. The research shows that KGs often contribute less than expected, with recommendation accuracy sometimes improving after KG removal or distortion.\n\n## Methodology and Metrics\n\nThe authors designed experiments covering knowledge removal (replacing KG with user-item interaction graphs), random distortion (replacing entities and relations with random alternatives), and knowledge decrease (deleting facts, entities, or relations at various ratios). They measured performance using MRR, Hit Ratio, NDCG, Precision, and Recall. The KGER metric quantifies efficiency by comparing accuracy changes relative to knowledge reduction, with negative values indicating the KG actually harms performance.\n\n## Practical Implications\n\nThe study finds that different models exploit KGs with varying effectiveness. RippleNet and KGRec demonstrate higher KG utilization through attention mechanisms that filter useless facts. The authors suggest treating KGs as directed graphs rather than undirected, separating KG and interaction processing, and distinguishing useful from irrelevant knowledge. They also note that knowledge authenticity matters slightly more for normal users while knowledge amount matters slightly more for cold-start users.\n\n*With more knowledge randomly distorted or decreased, the recommendation accuracy of a KG-based RS does not necessarily decrease*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

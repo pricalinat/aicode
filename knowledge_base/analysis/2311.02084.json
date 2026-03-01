@@ -1,0 +1,14 @@
+{
+  "paper_id": "2311.02084",
+  "title": "Item Embedding",
+  "category": "product_matching",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:52:47.040000",
+  "summary": "The PDF presents ITEm, an unsupervised single-stream image text embedding model designed for eCommerce products, where both product images and titles matter but titles often dominate. The core problem is learning a global joint embedding that does not collapse to the most informative modality, which can hurt cases where images are equally or more important. ITEm extends a BERT-style transformer to encode image patches and title tokens together, producing a global embedding from the final layer CLS representation for retrieval and classification.\n\nThe method pre-trains on a large internal dataset called ITOP, built from online product listings and organized with a hierarchical taxonomy. ITOP includes an index set of 1,101,396 products spanning 15 meta categories and 1,275 leaf categories, plus a query set of 5,000 products used for an extremely similar product search benchmark where distractors are hard and often from the same leaf category. ITEm is trained with five objectives: image text matching, masked language modeling, masked image modeling, and two new global-information objectives that force the CLS embedding to reconstruct masked tokens or patches using positional embeddings, aiming to summarize both modalities rather than relying on local representations.\n\n*We present an image-text embedding model (ITEm), an unsupervised learning method that is designed to better attend to image and text modalities.*\n\n*From our observation, titles contain more dominant information than images for most products.*\n\nExperiments evaluate two downstream tasks: same product recommendation via retrieval over the full index set, and leaf category prediction where pre-trained models are fine-tuned. Reported results show ITEm outperforming strong unimodal baselines (ResNet50 for images, RoBERTa for titles) and a CLIP baseline, with especially large gains on the fine-grained same product recommendation task, indicating improved cross-modal retrieval sensitivity. The paper also details dataset construction and annotation for match vs not-a-match using pre-ranking and multi-rater review, notes training implementation in fairseq with BERT-base-like settings, and includes ethical considerations about anonymous user data and compliance, plus a statement that the dataset is not planned for unrestricted public release while expressing interest in public-dataset evaluation later.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

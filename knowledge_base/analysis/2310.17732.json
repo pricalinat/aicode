@@ -1,0 +1,14 @@
+{
+  "paper_id": "2310.17732",
+  "title": "Gnn Gmvo",
+  "category": "product_matching",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:52:08.197237",
+  "summary": "This paper introduces GNN-GMVO, a graph neural network architecture for similar item recommendation that explicitly balances relevance with revenue by directly optimizing a Gross Merchandise Value related objective. The core idea is that standard GNN recommenders often optimize relevance metrics but are not designed to maximize business outcomes like GMV, and that large scale item graphs also suffer from noisy, heterogeneous item item relations. *Similar item recommendation is a critical task in the e-Commerce industry*.\n\nKey technical contributions are:\n- A price aware decoder that scales an embedding similarity score by a function of item prices, controlled by a trade off parameter λ, so higher priced but still similar items can be ranked higher.\n- A customized edge construction approach to better isolate similarity relations from other relations like complementarity, using user interaction signals (co view, view then bought, co purchase) and a threshold rule to form graph edges while reducing noise from complementary items.\n- Practical training and inference details for GCN and GAT variants, including alternative loss options (binary cross entropy for link prediction and a max margin ranking loss), plus a cold item strategy that connects new or low traffic items to the nearest neighbor based on initial embeddings to avoid isolated nodes. Initial node features come from a pre trained Universal Sentence Encoder embedding of item text fields.\n\nExperiments are reported on a proprietary Walmart dataset and two public Amazon categories, evaluating ranking relevance with NDCG and monetization with expected GMV at K. On Walmart, the reported best trade off is around λ = 0.1, improving both NDCG@8 and EGMV@8 versus the deployed benchmark SIRB, and the ablation shows that very large λ values can reduce relevance and eventually hurt EGMV. On Amazon All Beauty, NDCG@4 stays essentially flat while EGMV@4 improves for moderate λ (GCN-GMVO reaches 2.02 at λ = 0.8 vs 1.95 at λ = 0), and on Video Games the best EGMV is achieved by GAT-GMVO at λ = 0.05 (6.76 vs 6.67 at λ = 0). *Setting λ = 0.1 achieves both high NDCG and EGMV scores, which translates to increasing both relevance and expected GMV in our test sets.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

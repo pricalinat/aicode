@@ -1,0 +1,23 @@
+@startuml
+title 商品分类层次结构
+skinparam shadowing false
+
+"电子产品" --> "智能手机"
+"电子产品" --> "电脑"
+"智能手机" --> "5G手机"
+"智能手机" --> "4G手机"
+"智能手机" --> "折叠屏"
+"电脑" --> "轻薄本"
+"电脑" --> "游戏本"
+"电脑" --> "台式机"
+"5G手机" --> "iPhone15"
+"5G手机" --> "华为Mate60"
+"轻薄本" --> "MacBook: Air"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

@@ -1,0 +1,14 @@
+@startuml
+title Wide&Deep模型架构
+skinparam shadowing false
+
+"输入特征" --> "Wide部分"
+"输入特征" --> "Deep部分"
+"Wide部分" --> "线性组合"
+"Deep部分" --> "特征Embedding"
+"特征Embedding" --> "全连接层"
+"全连接层" --> "隐藏层"
+"隐藏层" --> "Deep输出"
+"线性组合" --> "最终输出"
+"Deep输出" --> "最终输出"
+@enduml

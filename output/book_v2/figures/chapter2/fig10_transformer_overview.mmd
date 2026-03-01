@@ -1,0 +1,10 @@
+flowchart TB
+    A[Transformer] --> E[Encoder]
+    A --> D[Decoder]
+    
+    E --> E1[Multi-Head Attention]
+    E1 --> E2[FFN]
+    
+    D --> D1[Masked MHA]
+    D1 --> D2[Cross Attention]
+    D2 --> D3[FFN]

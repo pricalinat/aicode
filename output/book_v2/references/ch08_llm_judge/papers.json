@@ -1,0 +1,65 @@
+[
+  {
+    "filename": "2402.08831_eCellm.pdf",
+    "arxiv_id": "2402.08831",
+    "title": "eCellm",
+    "category": "product_matching",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2508.17994_retail_sentiment_llm.pdf",
+    "arxiv_id": "2508.17994",
+    "title": "retail sentiment llm",
+    "category": "product_matching",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2510.09347_llp_llm_pricing.pdf",
+    "arxiv_id": "2510.09347",
+    "title": "llp llm pricing",
+    "category": "product_matching",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2601.01997_chatgpt_diversity.pdf",
+    "arxiv_id": "2601.01997",
+    "title": "chatgpt diversity",
+    "category": "product_matching",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2601.09306_OnDevice_LLM_RecSys.pdf",
+    "arxiv_id": "2601.09306",
+    "title": "OnDevice LLM RecSys",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2601.01997_chatgpt_diversity.pdf",
+    "arxiv_id": "2601.01997",
+    "title": "chatgpt diversity",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2402.07367_LLM_Privacy_Leak.pdf",
+    "arxiv_id": "2402.07367",
+    "title": "LLM Privacy Leak",
+    "category": "mini_program_service",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2407.18540_Text_to_Process_LLM.pdf",
+    "arxiv_id": "2407.18540",
+    "title": "Text to Process LLM",
+    "category": "mini_program_service",
+    "chapter": "ch08_llm_judge"
+  },
+  {
+    "filename": "2402.07938_LLM_User_Interfaces.pdf",
+    "arxiv_id": "2402.07938",
+    "title": "LLM User Interfaces",
+    "category": "mini_program_service",
+    "chapter": "ch08_llm_judge"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "paper_id": "1307.3336",
+  "title": "Opinion Mining Survey",
+  "category": "ecommerce_evaluation",
+  "year": 2013,
+  "timestamp": "2026-03-01T13:49:29.282201",
+  "summary": "# Opinion Mining and Analysis: A Survey\n\nThis survey paper, published in the International Journal on Natural Language Computing in June 2013, examines the techniques developed for opinion mining—also known as sentiment analysis—which has become increasingly important due to the vast amount of opinion-rich web resources such as discussion forums, review sites, and blogs. The authors analyze key tasks including sentiment classification at document, sentence, and feature levels, focusing particularly on product reviews where the main challenge is producing summaries based on product features and attributes.\n\nThe paper explores three primary data sources for opinion mining: blogs from the blogosphere, review sites like Amazon and CNET, and micro-blogging platforms such as Twitter. Machine learning approaches form the backbone of sentiment classification, encompassing supervised methods like Naïve Bayes and Support Vector Machines, unsupervised methods like clustering, and semi-supervised techniques that combine labelled and unlabelled data. The authors detail how the Expectation Maximization (EM) algorithm can be used to improve parameter estimates by augmenting training data, and explain evaluation metrics including entropy, purity, precision, and recall.\n\nSeveral tools for opinion mining are surveyed, including Red Opal for feature-based product scoring, Opinion Observer for visualizing product opinions graphically, Review Seer for automated aggregation, and Web Fountain which uses sentiment lexicons and pattern databases. The paper concludes that limited work exists on grouping synonym features and clustering, and suggests future directions including applying EM-based Naïve Bayesian methods for feature-based opinion summarization, using OpenNLP for natural language processing tasks, and employing semi-supervised learning for similarity checks between extracted keywords and dictionary entries. *The main challenge in this area is the sentiment classification in which the sentiment may be a judgement, mood or evaluation of an object.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

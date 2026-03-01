@@ -1,0 +1,14 @@
+{
+  "paper_id": "2211.11583",
+  "title": "Daemon Gnn",
+  "category": "product_matching",
+  "year": 2022,
+  "timestamp": "2026-03-01T14:36:14.714199",
+  "summary": "This paper tackles related product recommendation in e-commerce as a directed node recommendation problem: given a query product, recommend top-k products likely to be bought together, while handling asymmetry in relationships, selection bias in historical purchases, and cold-start items. It proposes DAEMON, a direction-aware graph neural network that learns dual embeddings per product, a source embedding for querying and a target embedding for retrieval, so relevance is inherently asymmetric. *We propose DAEMON, Direction AwarE Graph Neural Network MOdel for Node recommendation.*\n\nDAEMON builds a directed product graph using co-purchase edges and co-view edges derived from anonymized browse logs, and it treats these edge types differently during neighborhood aggregation. In the forward pass, source representations aggregate information from out-neighbors target representations for co-purchases plus out-neighbors source representations for co-views; target representations aggregate from in-neighbors in the analogous way, across multiple GNN layers with normalization. Training uses an asymmetric loss that (1) increases co-purchase likelihood versus negative samples, (2) explicitly penalizes incorrect reverse-direction scores for one-way co-purchase edges to capture asymmetry, and (3) pulls both source and target embeddings together for co-view pairs, supporting transitive patterns that help mitigate selection bias and enabling cold-start recommendations by linking new products to similar warm-start items via catalog metadata features.\n\nExperiments use two large sampled Amazon marketplace graphs with roughly 2 to 5.5 million nodes and 14 to 32 million edges, with 75 to 80 percent directed edges and input feature dimensions of 384 or 512; implementation uses DGL and PyTorch with minibatch and neighborhood sampling, and FAISS for nearest-neighbor retrieval. Offline results report substantial gains over competitive directed-graph baselines on node recommendation (30 to 160 percent improvements in HitRate and MRR) and link prediction (AUC gains on existence and direction), while noting scalability failures for some baselines at this scale. It also evaluates cold-start and selection-bias settings on the full heterogeneous graph, showing DAEMON outperforming an R-GCN baseline when leveraging co-view edges appropriately, and an online A/B test in two marketplaces over four weeks reports large lifts in sales and profit with statistical significance. *We run the experiments for 4 weeks and observe +170% improvement on product sales and +190% improvement on profit gain.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

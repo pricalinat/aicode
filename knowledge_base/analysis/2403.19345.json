@@ -1,0 +1,14 @@
+{
+  "paper_id": "2403.19345",
+  "title": "Product Classification",
+  "category": "ecommerce_evaluation",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:59:38.864703",
+  "summary": "This paper surveys how intelligent product classification and personalized recommendation address information overload in e-commerce, then proposes a concrete recommendation approach aimed at an eBay-like marketplace. It contrasts traditional commodity classification, which organizes items using mostly static attributes like category, brand, and price, with recommendation systems that personalize results using user behavior signals such as browsing, cart additions, searches, and purchases. The authors argue that e-commerce recommendations demand higher precision than news or content because conversion is costlier and wrong suggestions directly reduce clicks and purchases, while also increasing operational burden for real-time data processing.\n\nIt outlines common recommendation paradigms and where they are applied, then focuses on major challenges that e-commerce systems must handle:\n- Data privacy and security constraints tied to heavy reliance on user data\n- Algorithmic bias and fairness risks that can amplify discrimination\n- Scalability pressures as users, items, and computation grow\n- Cold start for new users, new items, and niche scenarios where history is sparse\n\nThe proposed system uses BERT to embed product text into vectors and then applies a nearest neighbor method to retrieve similar items for recommendations. Method details include adapting BERT training ideas to commerce via masked language modeling on item titles and a next purchase prediction task built from session co-purchases with random negatives, then embedding combined product text after preprocessing steps like filling missing descriptions with empty strings, normalizing whitespace, lowercasing, and merging selected text fields into a single text column. The experimental framing references a CRISP-DM workflow, uses MAP@12 as the main metric, and supplements this with manual checks that compare a customer’s purchase history to the recommended item types; the paper also includes an example of structured output predictions by customer_id and argues the approach is operationally usable and scalable, with an added claim of potential environmental benefit from fewer unnecessary returns and related transport emissions.\n\n*Success in this project will be measured by the Mean Average Precision (MAP@12) metric.*\n\n*the types of products recommended were highly consistent with eBay users' purchase preferences.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

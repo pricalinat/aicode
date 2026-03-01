@@ -1,0 +1,7 @@
+flowchart LR
+    h -->|向量| hm
+    r -->|矩阵| rm
+    t -->|向量| tm
+    hm --> mm[×] --> rm
+    rm --> mm
+    mm --> tm --> score[评分]

@@ -1,0 +1,14 @@
+{
+  "paper_id": "2307.02046",
+  "title": "Llm Recommender Survey",
+  "category": "product_matching",
+  "year": 2023,
+  "timestamp": "2026-03-01T13:41:47.377207",
+  "summary": "# Summary\n\nThis survey paper provides a comprehensive review of how Large Language Models (LLMs) are transforming Recommender Systems (RecSys). The authors examine three primary paradigms for integrating LLMs into recommendation tasks: pre-training, fine-tuning, and prompting. The paper addresses the limitations of traditional deep neural network-based recommendation methods, including their difficulty in understanding user interests effectively, capturing textual side information, generalizing to unseen scenarios, and performing complex multi-step reasoning. LLMs like ChatGPT and GPT-4 have demonstrated remarkable capabilities in language understanding, generation, generalization, and reasoning that can potentially address these challenges.\n\nThe survey categorizes LLM-based recommender systems into two main representation types: ID-based methods that use discrete identifiers for users and items, and textual side information-enhanced methods that leverage item descriptions, user reviews, and profiles. The authors detail various pre-training tasks such as Masked Behavior Prediction and Next K Behavior Prediction, with methods like PTUM, M6, and P5 implementing these approaches. For fine-tuning, the paper covers both full-model fine-tuning and parameter-efficient methods like LoRA, with implementations such as TallRec and LLaRA showing effectiveness on single GPUs.\n\nThe prompting paradigm receives extensive coverage, examining conventional prompting, In-context Learning (ICL), Chain-of-thought (CoT) reasoning, hard/soft prompt tuning, and instruction tuning. The paper categorizes existing works into three integration approaches: LLMs acting as recommenders directly, bridging LLMs with conventional RecSys, and LLM-based autonomous agents simulating user behaviors. Notable methods include Chat-Rec for conversational recommendations and RecAgent for user behavior simulation.\n\nThe authors discuss critical challenges including hallucination mitigation, trustworthiness dimensions (safety, fairness, explainability, privacy), vertical domain-specific LLMs for specialized applications, efficient user/item indexing strategies, computational efficiency of fine-tuning, and data augmentation techniques using LLMs. The survey concludes that while significant progress has been made, LLM-enhanced recommender systems remain in early stages, calling for more systematic research in this rapidly evolving field.\n\n*Recent studies indicated that LLMs can lead to the emergence of remarkable capabilities as the parameters continue to scale up with a larger training corpus.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

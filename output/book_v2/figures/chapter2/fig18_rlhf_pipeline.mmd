@@ -1,0 +1,8 @@
+flowchart TD
+    A[RLHF] --> S[SFT监督微调]
+    S --> R[奖励模型]
+    R --> P[PPO强化学习]
+    
+    S -->|微调| S1
+    R -->|学习偏好| R1
+    P -->|优化| P1

@@ -1,0 +1,184 @@
+[
+  {
+    "filename": "1908.08564_intent_refinement.pdf",
+    "arxiv_id": "1908.08564",
+    "title": "intent refinement",
+    "category": "product_matching",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2208.06150_pretraining_intent_detection.pdf",
+    "arxiv_id": "2208.06150",
+    "title": "pretraining intent detection",
+    "category": "product_matching",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2110.08241_intent_based_collections.pdf",
+    "arxiv_id": "2110.08241",
+    "title": "intent based collections",
+    "category": "product_matching",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2410.01627_intent_detection_llm.pdf",
+    "arxiv_id": "2410.01627",
+    "title": "intent detection llm",
+    "category": "product_matching",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "1908.08564_intent_refinement.pdf",
+    "arxiv_id": "1908.08564",
+    "title": "intent refinement",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2501.00791_Generative_AI_Chatbot_Dataset.pdf",
+    "arxiv_id": "2501.00791",
+    "title": "Generative AI Chatbot Dataset",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2502.17321_Dialog_Workflow_Extraction.pdf",
+    "arxiv_id": "2502.17321",
+    "title": "Dialog Workflow Extraction",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2308.06657_WeChat_Record_Replay.pdf",
+    "arxiv_id": "2308.06657",
+    "title": "WeChat Record Replay",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2207.10573_AI_Chatbot_Customer_Service.pdf",
+    "arxiv_id": "2207.10573",
+    "title": "AI Chatbot Customer Service",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "1206.5582_Web_Service_Discovery.pdf",
+    "arxiv_id": "1206.5582",
+    "title": "Web Service Discovery",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2212.09523_Customer_Service_NLP.pdf",
+    "arxiv_id": "2212.09523",
+    "title": "Customer Service NLP",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2403.04656_CoT_Dialog_State_Tracking.pdf",
+    "arxiv_id": "2403.04656",
+    "title": "CoT Dialog State Tracking",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2510.22143_OlaBench_Customer_Service.pdf",
+    "arxiv_id": "2510.22143",
+    "title": "OlaBench Customer Service",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2306.08391_WeChat_Privacy.pdf",
+    "arxiv_id": "2306.08391",
+    "title": "WeChat Privacy",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "1704.04579_Chatbot_Evaluation.pdf",
+    "arxiv_id": "1704.04579",
+    "title": "Chatbot Evaluation",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2212.09946_Dialog2API.pdf",
+    "arxiv_id": "2212.09946",
+    "title": "Dialog2API",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2409.18568_Customer_Service_Chatbot.pdf",
+    "arxiv_id": "2409.18568",
+    "title": "Customer Service Chatbot",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2409.07829_UI_Automation_WeChat.pdf",
+    "arxiv_id": "2409.07829",
+    "title": "UI Automation WeChat",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2308.04624_Chatbot_Benchmark.pdf",
+    "arxiv_id": "2308.04624",
+    "title": "Chatbot Benchmark",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2602.07086_RAG_SQL_API.pdf",
+    "arxiv_id": "2602.07086",
+    "title": "RAG SQL API",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2207.13211_Intent_Slot_Survey.pdf",
+    "arxiv_id": "2207.13211",
+    "title": "Intent Slot Survey",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2404.14415_Domain_Adaptation_Intent.pdf",
+    "arxiv_id": "2404.14415",
+    "title": "Domain Adaptation Intent",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2005.11014_Intent_Mining.pdf",
+    "arxiv_id": "2005.11014",
+    "title": "Intent Mining",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "1901.01538_REST_API_Test_Generation.pdf",
+    "arxiv_id": "1901.01538",
+    "title": "REST API Test Generation",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2602.08322_Multi_Intent_Slot_Filling.pdf",
+    "arxiv_id": "2602.08322",
+    "title": "Multi Intent Slot Filling",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  },
+  {
+    "filename": "2207.13211_Intent_Slot_Datasets_Survey.pdf",
+    "arxiv_id": "2207.13211",
+    "title": "Intent Slot Datasets Survey",
+    "category": "mini_program_service",
+    "chapter": "ch05_service"
+  }
+]

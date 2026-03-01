@@ -1,0 +1,14 @@
+{
+  "paper_id": "2403.03008",
+  "title": "Kg Context Llm",
+  "category": "product_matching",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:45:17.588711",
+  "summary": "This paper proposes a way to generate more precise, learner-relevant explanations for learning recommendations by using a knowledge graph as a factual context source for an LLM prompt. The core idea is to constrain and steer GPT-4 toward curated, curriculum-aligned information drawn from structured relations and metadata in the graph, reducing hallucinations and irrelevant filler while keeping explanations understandable and pedagogically meaningful. *reducing the risk of model hallucinations, and safeguarding against wrong or imprecise information, while maintaining an application-intended learning context.*\n\nMethodologically, the authors build a knowledge graph from educational materials using a four-level taxonomy: learning goals, courses, topics, and open educational resources, treating the last three as learning objects when needed. They enrich context for each recommended learning path by extracting four information types from the graph: curriculum hierarchy placement, semantic similarity links between learning objects (via a text-mining similarity pipeline and thresholding), densely connected communities around recommended objects, and supporting metadata from connected objects. This context is turned into prompt text alongside task-focused instructions, role guidance such as answering as a teacher, and needed terminology definitions, with domain experts involved in prompt engineering and template design.\n\nEvaluation combines automated overlap metrics and human feedback. Quantitatively, they use Rouge-1, Rouge-2, Rouge-L, and Rouge-Lsum to compare candidate explanations against reference texts built from human-authored metadata and reflections, using 52 reference samples from 10 learning-path recommendations and holding generated length constant for fairness. Qualitatively, a user study with eight learners and five domain experts reports higher acceptance for contextualized explanations and less irrelevant text, with the contextualized explanation quality reaching 4.7 out of 5; experts also note key limitations, especially that phrasing affects meaning and that high-level reflection tailored to a learners real context still benefits from human mentoring. *the quality of the contextualized explanation reached 4.7/5.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

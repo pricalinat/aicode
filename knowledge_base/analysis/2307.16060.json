@@ -1,0 +1,14 @@
+{
+  "paper_id": "2307.16060",
+  "title": "Position Bias",
+  "category": "ecommerce_evaluation",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:01:14.808653",
+  "summary": "This paper studies position bias in eCommerce sponsored search, where items shown higher in the ranking get more attention and clicks regardless of true relevance. The authors argue this bias contaminates training data and creates a feedback loop that makes ranking models increasingly unfair while also distorting both click-through rate CTR and conversion rate CVR predictions. Their main contribution is a multi-task framework that jointly predicts CTR and CVR while explicitly mitigating position bias, rather than treating debiasing as a single-task CTR problem.\n\nThe paper proposes two models: Position Aware Click-Conversion PACC and a neural variant PACC via Position Embedding PACC-PE. Both rely on a sequential view of user actions: an item must be seen before it can be clicked, and clicked before it can be purchased, then decompose probabilities to separate position-driven visibility from feature-driven relevance. PACC represents position effects as a probability of being seen based only on position, while PACC-PE learns richer product-specific position information as an embedding and uses attention-based transfer between the CTR and CVR towers; both include a restriction loss that encourages predicted CVR not to exceed predicted CTR.\n\nExperiments use a large real-world Walmart sponsored ads dataset with strong position bias 4.2M training samples, 1.1M validation, and 7.5M test. Across ranking metrics including weighted MRR, MRR, AUC, and position-wise AUC, PACC-PE is reported to significantly improve CVR ranking effectiveness over baselines like PAL, AITM, and DMT, while maintaining competitive CTR performance; it also shows smaller prediction changes when swapping item positions, indicating reduced sensitivity to rank position. The analysis highlights that PACC-PE mitigates bias across positions and can vary bias by item even at the same position, which the authors describe as more flexible and informative than PACC.\n\n*Position bias is the tendency of users to pay greater attention to higher-ranked items, regardless of their actual relevance to the query.*\n\n*PACC-PE outperforms PACC in ranking effectiveness and position debias due to the rich information by modeling product-specific position information as embedding.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

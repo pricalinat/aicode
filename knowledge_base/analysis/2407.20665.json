@@ -1,0 +1,14 @@
+{
+  "paper_id": "2407.20665",
+  "title": "Powerful Ab Metrics",
+  "category": "ecommerce_evaluation",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:55:35.360863",
+  "summary": "# Summary: Powerful A/B-Testing Metrics and Where to Find Them\n\nThis paper presents a methodology for evaluating the utility of A/B testing metrics in recommender systems by leveraging historical experiment data from large-scale short-video platforms ShareChat and Moj. The authors argue that while North Star metrics (like revenue or long-term growth) are used to determine experiment success, supporting metrics play a crucial role in decision-making when North Star measurements are statistically insignificant. The core insight is that platforms running dozens of experiments simultaneously generate valuable information about metric performance that can be systematically analyzed to improve future decision-making.\n\nThe authors classify past experiments into three categories: known outcomes where variant A significantly outperforms B, unknown outcomes with inconclusive North Star results, and A/A experiments where variants are identical. They then measure key properties of evaluation metrics including z-scores, type-I errors (false positives from A/A tests), type-II errors (false negatives from known and unknown outcomes), and type-III errors (sign errors where metrics disagree with the North Star). This classification enables quantification of each error type for any metric of interest, providing a data-driven framework for metric validation.\n\nThe empirical results demonstrate significant practical improvements: using a combination of DAU, Engagers, and TimeSpent metrics with Bonferroni correction can reduce type-II errors by 35% at a 95% confidence level, or equivalently reduce necessary sample size by a factor of 3.5 while maintaining constant statistical power. The authors validated that these three metrics incur no type-III errors in their historical data, making them suitable for decision-making. This work provides a pipeline that helps platforms increase experimental velocity by identifying metrics with high statistical power for evaluation purposes.\n\nOlivier Jeunen, the lead author, is a Lead Applied Scientist at ShareChat with a PhD from the University of Antwerp and previous positions at Amazon, Spotify, Facebook, and Criteo. The paper contributes to the broader literature on variance reduction in A/B testing, proxy metric identification, and learning optimal metrics from past experiments.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

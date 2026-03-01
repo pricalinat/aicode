@@ -1,0 +1,15 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Fully --> "O(n×m)"
+"Convolutional" --> "O(k²×c×f)"
+"Attention" --> "O(n²×d)"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

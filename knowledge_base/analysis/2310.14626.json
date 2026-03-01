@@ -1,0 +1,14 @@
+{
+  "paper_id": "2310.14626",
+  "title": "Conversational Rec Ecommerce",
+  "category": "product_matching",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:35:14.815812",
+  "summary": "This paper studies how to combine conversational recommender systems and large language models for E-commerce pre-sales dialogue, where a system must both understand user needs and recommend suitable products. It argues these components are complementary: CRSs can leverage structured product knowledge for accurate recommendation, while LLMs produce fluent, context-aware responses but lack domain-specific product grounding after generic fine-tuning. *We find that collaborations between CRS and LLM can be very effective in some cases.*\n\nIt proposes and evaluates two collaboration directions on the real-world U-NEED dataset of 7,698 annotated pre-sales dialogues across five categories, framed as four tasks: pre-sales dialogue understanding, user needs elicitation, user needs-based recommendation, and pre-sales dialogue generation. The two collaboration methods are:  \n- CRS assisting LLM: add CRS predictions into the LLM instruction and input during fine-tuning, including ranked recommendation lists for recommendation tasks  \n- LLM assisting CRS: feed LLM predictions into CRS training via enhanced prompts and, for recommendation, incorporate the LLM-predicted product representation into the CRS scoring  \nExperiments use two LLMs, ChatGLM-6B and Chinese-Alpaca-7B, fine-tuned with LoRA, plus two UniMIND-based CRSs with different encoders, and evaluate with precision, recall, F1, Hit and MRR variants, Distinct-1, and human relevance and informativeness judgments.\n\nResults show collaboration is most consistently helpful for understanding, elicitation, and recommendation, while effects on dialogue generation are marginal. LLMs are strong at dialogue understanding and can improve further with a good CRS, but weaker CRSs can inject noise and reduce LLM performance; category differences also matter. For user needs elicitation, the best outcomes often come from mixing ChatGLM with a strong CRS, while some CRS-to-Chinese-Alpaca pairings perform poorly, indicating sensitivity to both base model and fine-tuning data. For recommendation, LLMs can look competitive when the candidate set is small, and LLM assisting CRS improves CRS metrics on average, while CRSs can rescue very poor LLM recommendation performance in some domains; for generation, CRSs tend to be more relevant and informative, and Chinese-Alpaca tends to produce more diverse responses. *Collaborations between LLMs and CRSs show marginal effects on pre-sales dialogue generation.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

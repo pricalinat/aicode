@@ -1,0 +1,17 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"User" --> "AI: Agent"
+"AI --> "Perceive"
+"Perceive" --> "Think/Reason"
+"Think/Reason" --> "Act"
+"Act" --> "Environment"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

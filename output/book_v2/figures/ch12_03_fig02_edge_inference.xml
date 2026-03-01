@@ -1,0 +1,16 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Input --> "Edge: Device"
+"Edge --> "Local: Inference"
+"Local --> "Fast: Response"
+"Local --> "Cloud: Offload"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

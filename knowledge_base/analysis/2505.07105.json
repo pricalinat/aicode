@@ -1,0 +1,14 @@
+{
+  "paper_id": "2505.07105",
+  "title": "Walmart Bert Relevance",
+  "category": "product_matching",
+  "year": 2025,
+  "timestamp": "2026-03-01T14:40:29.262861",
+  "summary": "This paper describes a production-focused knowledge distillation framework to improve Walmart.com e-commerce search relevance for tail queries, where latency constraints make real-time large language model inference impractical. The authors fine-tune a 7B-parameter cross-encoder teacher LLM on human editorial judgments using soft targets, then distill its ranking behavior into a low-latency BERTBase cross-encoder student. The key idea is to scale student training by labeling large volumes of previously unlabeled query-item pairs from search logs with the teacher’s predictions, allowing the student to learn from far more data than human labeling alone can provide.\n\nMethodologically, the teacher is trained as a single-output classifier on concatenated query and rich item text, including item description, using soft labels mapped from a 5-point guideline into targets {1, 0.5, 0}. The student omits item descriptions to meet serving latency, concatenating query with item attributes (title, product type, brand, color, gender) using distinct separator tokens, and learns via an extended Margin-MSE objective: it matches teacher-predicted score margins across all item pairs per query, eliminating the need for true labels during distillation. Training data scales from 6M human-judged pairs to 50M, 110M, and 170M teacher-labeled pairs; offline results show Margin-MSE outperforms pointwise cross-entropy for distillation, and student performance improves with more augmented data, reaching parity with or slightly exceeding the teacher on NDCG while remaining far smaller.\n\nResults include both offline and online validation. Offline, Mistral-7B is the strongest teacher on the golden tail test set, and the best student variant trained on the largest teacher-labeled data achieves sizable gains over the prior production baseline on recall-at-fixed-precision and NDCG. Online, the distilled feature is deployed as a dominant re-ranking signal for tail traffic (with precompute and caching for frequent query-item pairs and TensorRT optimizations for runtime), and shows improved relevance and engagement: manual evaluation reports NDCG@5 lift +1.07% and NDCG@10 lift +0.87%, interleaving shows ATC@40 lift 0.06%, and a two-week AB test from August 26 to September 9, 2024 reports +0.8% ATC rate per session, +1.2% ATC rate per visitor, -0.6% abandonment, and -1.1% clicks before ATC.\n\n*with enough augmented data, the student model can outperform the teacher model.*\n\n*Our cross-encoder based student model has been deployed in Oct 2024 as the most dominant feature in the current production system*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

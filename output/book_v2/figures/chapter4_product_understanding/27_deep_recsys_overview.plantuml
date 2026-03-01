@@ -1,0 +1,17 @@
+@startuml
+title 深度推荐模型总览
+skinparam shadowing false
+
+"深度推荐模型" --> "Embedding+MLP"
+"深度推荐模型" --> "Wide&Deep"
+"深度推荐模型" --> "DeepFM"
+"深度推荐模型" --> "DIN"
+"深度推荐模型" --> "DIEN"
+"Embedding+MLP" --> "特征Embedding"
+"Wide&Deep" --> "Wide部分"
+"Wide&Deep" --> "Deep部分"
+"DeepFM" --> "FM组件"
+"DeepFM" --> "Deep组件"
+"DIN" --> "注意力机制"
+"DIEN" --> "序列建模"
+@enduml

@@ -190,3 +190,51 @@ allowed, reason = budget.check_budget("user123", 0.5)
 - 当前为离线仿真，不包含真实线上流量分配、延迟反馈和高并发保障。
 - OCR/PDF 解析默认是 stub；接入真实服务需注入对应函数。
 - A/B 与归因为离线近似模型，用于框架验证，不等价于线上因果实验。
+
+### 7) 评测报告生成模块（V2 新增）
+
+`src/multi_agent_system/reporting/` 提供可复用的报告生成框架：
+
+- **报告类型**: TEST_ANALYSIS, KG_HEALTH, BENCHMARK, EXPERIMENT
+- **输出格式**: MARKDOWN, JSON, HTML
+
+```python
+from multi_agent_system.reporting import (
+    ReportGenerator,
+    ReportType,
+    ReportFormat,
+)
+
+# 创建测试分析报告
+generator = ReportGenerator()
+output = generator.create_test_analysis_report(
+    test_results={
+        "passed": 8,
+        "failed": 2,
+        "details": [{"name": "test_1", "passed": True}],
+    },
+    output_format=ReportFormat.MARKDOWN
+)
+print(output)
+
+# 创建 KG 健康报告
+output = generator.create_kg_health_report(
+    health_data={
+        "node_count": 100,
+        "edge_count": 500,
+        "health_score": 85,
+    },
+    output_format=ReportFormat.HTML
+)
+```
+
+CLI 用法：
+
+```bash
+# 生成测试分析报告
+python -m multi_agent_system.cli generate-report \
+  --type test_analysis \
+  --format markdown \
+  --input test_results.json \
+  --output report.md
+```

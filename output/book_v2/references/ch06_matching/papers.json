@@ -1,0 +1,37 @@
+[
+  {
+    "filename": "2004.00584_deep_entity_matching.pdf",
+    "arxiv_id": "2004.00584",
+    "title": "deep entity matching",
+    "category": "product_matching",
+    "chapter": "ch06_matching"
+  },
+  {
+    "filename": "2403.17344_entity_matching_llm.pdf",
+    "arxiv_id": "2403.17344",
+    "title": "entity matching llm",
+    "category": "product_matching",
+    "chapter": "ch06_matching"
+  },
+  {
+    "filename": "2308.00721_deep_active_deduplication.pdf",
+    "arxiv_id": "2308.00721",
+    "title": "deep active deduplication",
+    "category": "product_matching",
+    "chapter": "ch06_matching"
+  },
+  {
+    "filename": "2509.15858_multimodal_deduplication.pdf",
+    "arxiv_id": "2509.15858",
+    "title": "multimodal deduplication",
+    "category": "product_matching",
+    "chapter": "ch06_matching"
+  },
+  {
+    "filename": "2202.01546_queryER_deduplication.pdf",
+    "arxiv_id": "2202.01546",
+    "title": "queryER deduplication",
+    "category": "product_matching",
+    "chapter": "ch06_matching"
+  }
+]

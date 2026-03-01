@@ -1,0 +1,14 @@
+{
+  "paper_id": "1703.00556",
+  "title": "Cro Evolutionary",
+  "category": "ecommerce_evaluation",
+  "year": 2017,
+  "timestamp": "2026-03-01T14:03:30.433117",
+  "summary": "This paper presents Sentient Ascend, an automated conversion rate optimization system that uses evolutionary computation to improve web interface designs beyond what manual A/B testing and limited multivariate testing can practically explore. The core claim is that web pages have large combinatorial design spaces with hard-to-predict element interactions, and that an evolutionary search can discover effective combinations while running live, parallel evaluations with real users. The authors report substantial gains in deployed settings, including a detailed case study where the best evolved design materially outperformed a hand-optimized control.\n\n*Ascend can therefore be seen as an approach to massively multivariate conversion optimization, based on a massively parallel interactive evolution.* The method starts from a designer-defined search space of page elements and allowed values, then represents each candidate design as a genome and applies crossover and mutation to generate new candidates. To limit the real cost of exploration, the initial population is derived from the control by systematic one-change variants, and traffic allocation follows an age-layering-like approach where candidates get a small maturity age of interactions first and poor performers are eliminated early while stronger designs accrue more evidence. Because many candidates can be tested simultaneously across incoming traffic, the system can progress with weaker statistical evidence than classic significance-gated testing, aiming to evaluate only thousands of designs rather than exhaustively testing millions or more.\n\nThe case study optimizes a media site interface that routes users to online education programs, run on desktop traffic from September through November 2016. Designers specified nine elements with two to nine values each for 381,024 possible combinations; evolution ran 60 days across four generations, testing 111 candidates using 599,008 user interactions, starting from an initial population of 37 control-derived variants. The control converted at 5.61%, while the best evolved candidate was estimated at 8.22% (46.6% better) and then independently confirmed via an Optimizely A/B test at a 43.5% lift with greater than 99% significance; the paper attributes much of the lift to discovered color and call-to-action interactions that were difficult to anticipate manually. *After 60 days of evolution with 599,008 user interactions, a design for the search widget was found that converted 46.6% better than the control.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

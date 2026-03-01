@@ -1,0 +1,14 @@
+{
+  "paper_id": "2405.07437",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:02:16.664857",
+  "summary": "This paper surveys how to evaluate Retrieval-Augmented Generation systems and why evaluation is unusually hard: RAG combines a retrieval pipeline that depends on large, dynamic knowledge sources with an LLM generation stage that can be opaque and task-dependent. It frames the core evaluation problem as needing to assess retrieval quality, generation quality, and the end-to-end system jointly, because component scores alone can miss how retrieval and generation interact. *The interplay between the retrieval and generation components means that the entire system’s performance cannot be fully understood by evaluating each component in isolation.*\n\nThe main contribution is an analysis framework called A Unified Evaluation Process of RAG or Auepora, organized around three benchmark design questions that map to three modules: what to evaluate as targets, how to evaluate as datasets, and how to measure as metrics. Targets are derived from pairings between evaluable outputs and ground truths, leading to retrieval targets such as relevance of retrieved documents to the query and accuracy against candidate sets, and generation targets such as response relevance to the query, faithfulness to retrieved documents, and correctness against reference answers. It also catalogs common additional requirements that many benchmarks include beyond core retrieval and generation, including latency, diversity, noise robustness, negative rejection, and counterfactual robustness. *Evaluating the whole RAG system introduces additional complexities.*\n\nUsing Auepora, the paper compares a set of recent tools and benchmarks and summarizes their focus areas, datasets, and metrics. It notes that some benchmarks reuse established QA resources like Natural Questions, HotpotQA, FEVER, and SuperGLUE tasks, while others generate new data from sources like news or time-varying domain content to better test real-world dynamics and reduce reliance on model training knowledge. For metrics, it contrasts traditional retrieval measures like accuracy, precision, recall at k, MRR, and MAP with generation measures like ROUGE, BLEU, and BERTScore, alongside human evaluation and the growing practice of using an LLM judge for automated scoring; it highlights open issues with judge alignment, consistent rubrics, and cost, and argues for more RAG-specific benchmarks that cover multi-hop and multi-document settings, structured outputs, hallucination behaviors, robustness, latency, and diversity while staying practical under limited compute.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

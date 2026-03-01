@@ -1,0 +1,43 @@
+# 三层理解模型（识别-理解-推理）
+## Three-layer Understanding Model: Recognition-Understanding-Reasoning
+
+```mermaid
+flowchart LR
+    subgraph LAYER1["第一层：识别 / Layer 1: Recognition"]
+        A1["视觉识别<br/>Visual Recognition"]
+        A2["文本解析<br/>Text Parsing"]
+        A3["结构提取<br/>Structure Extraction"]
+        A4["属性标注<br/>Attribute Tagging"]
+    end
+    
+    subgraph LAYER2["第二层：理解 / Layer 2: Understanding"]
+        B1["语义理解<br/>Semantic Understanding"]
+        B2["上下文关联<br/>Context Association"]
+        B3["意图识别<br/>Intent Recognition"]
+        B4["质量评估<br/>Quality Assessment"]
+    end
+    
+    subgraph LAYER3["第三层：推理 / Layer 3: Reasoning"]
+        C1["因果推理<br/>Causal Reasoning"]
+        C2["类比推理<br/>Analogical Reasoning"]
+        C3["跨域迁移<br/>Cross-domain Transfer"]
+        C4["创新生成<br/>Innovation Generation"]
+    end
+    
+    LAYER1 --> LAYER2
+    LAYER2 --> LAYER3
+    
+    A1 --- B1
+    A2 --- B2
+    A3 --- B3
+    A4 --- B4
+    
+    B1 --- C1
+    B2 --- C2
+    B3 --- C3
+    B4 --- C4
+    
+    style LAYER1 fill:#ffcdd2,color:#000
+    style LAYER2 fill:#fff9c4,color:#000
+    style LAYER3 fill:#c8e6c9,color:#000
+```

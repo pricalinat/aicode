@@ -1,0 +1,15 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Device/IoT" --> "Edge: Node"
+"Edge --> "Regional: Edge"
+"Regional --> "Central: Cloud"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

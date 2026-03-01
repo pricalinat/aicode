@@ -1,0 +1,72 @@
+[
+  {
+    "filename": "2601.20316_LessIsMore_Benchmark.pdf",
+    "arxiv_id": "2601.20316",
+    "title": "LessIsMore Benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2509.07253_ir_benchmark.pdf",
+    "arxiv_id": "2509.07253",
+    "title": "ir benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2407.20665_powerful_ab_metrics.pdf",
+    "arxiv_id": "2407.20665",
+    "title": "powerful ab metrics",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "1802.00323_metric_correlation.pdf",
+    "arxiv_id": "1802.00323",
+    "title": "metric correlation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2512.01179_ctr_benchmark.pdf",
+    "arxiv_id": "2512.01179",
+    "title": "ctr benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2602.21698_E-comIQ-ZH_poster_benchmark.pdf",
+    "arxiv_id": "2602.21698",
+    "title": "E-comIQ-ZH poster benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2402.03915_learning_metrics.pdf",
+    "arxiv_id": "2402.03915",
+    "title": "learning metrics",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2503.22458_Conversational_Agent_Evaluation.pdf",
+    "arxiv_id": "2503.22458",
+    "title": "Conversational Agent Evaluation",
+    "category": "mini_program_service",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2503.22458_MultiTurn_Agent_Evaluation.pdf",
+    "arxiv_id": "2503.22458",
+    "title": "MultiTurn Agent Evaluation",
+    "category": "mini_program_service",
+    "chapter": "ch07_evaluation"
+  },
+  {
+    "filename": "2602.21337_CommonGround_Benchmark.pdf",
+    "arxiv_id": "2602.21337",
+    "title": "CommonGround Benchmark",
+    "category": "mini_program_service",
+    "chapter": "ch07_evaluation"
+  }
+]

@@ -1,0 +1,9 @@
+flowchart TB
+    A[KG嵌入] --> T[翻译模型]
+    A --> B[双线性模型]
+    A --> N[神经网络]
+    
+    T --> TE[TransE/H/R]
+    B --> D[DistMult]
+    B --> C[ComplEx]
+    N --> CV[ConvE]

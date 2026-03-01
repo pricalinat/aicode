@@ -1,0 +1,14 @@
+{
+  "paper_id": "2405.05606",
+  "title": "Ecommerce Search",
+  "category": "ecommerce_evaluation",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:49:09.358832",
+  "summary": "# Optimizing E-commerce Search: Toward a Generalizable and Rank-Consistent Pre-Ranking Model\n\nThis paper presents GRACE (Generalizable and RAnk-ConsistEnt Pre-Ranking Model), a novel pre-ranking model developed by researchers at JD.com to address two critical challenges in e-commerce search systems: rank consistency with downstream ranking models and generalization to long-tail items. The pre-ranking phase serves as a lightweight filter that selects top candidates from billions of products before passing them to the more expensive ranking model, making its effectiveness crucial for overall system performance.\n\nThe proposed approach tackles rank consistency by introducing binary classification tasks that predict whether a product falls within the top-k positions as determined by the ranking model, using position information from online logs without modifying existing training data. For generalization, the model combines hash ID embeddings with attribute-based representations (brand, shop, category) and employs contrastive learning with pre-trained GNN embeddings through InfoNCE loss, enabling effective scaling to billions of items without significant storage overhead. The hash ID initialization specifically addresses the problem of duplicate representations for products sharing attributes like brand or shop.\n\nExperimental results demonstrate significant improvements across both offline metrics and online A/B testing. The model achieved a 0.749% increase in AUC compared to the PLE baseline, outperforming both MMoE and distillation approaches. In online deployment on JD.com's platform with tens of millions of daily active users, GRACE delivered a 1.28% conversion rate improvement and 1.62% gross merchandise value increase. Notably, for long-tail items representing approximately 10% of traffic, the improvements were even more pronounced at 2.89% CVR and 10.37% GMV, validating the generalization capabilities. The recall@k metrics showed enhancements ranging from 3.50% to 4.43%, with the largest gains in recall@3 and recall@10 that matter most for the front-end display of 10 products per page. The model was deployed in production at the end of 2022.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

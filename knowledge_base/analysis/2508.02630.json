@@ -1,0 +1,14 @@
+{
+  "paper_id": "2508.02630",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2025,
+  "timestamp": "2026-03-01T14:01:49.370326",
+  "summary": "The paper studies how autonomous AI shopping agents choose products in online marketplaces and argues that agent-mediated commerce will behave differently from human shopping. It introduces ACES, an Agentic e-CommercE Simulator that pairs a provider-agnostic buyer agent with a fully programmable mock storefront so researchers can randomize layouts, rankings, attributes, and badges to causally measure choice behavior rather than score task accuracy.\n\nUsing ACES, the authors find that agent choices can become highly concentrated on a few modal products, creating visibility and concentration risks for sellers that differ from typical human preference dispersion. Market shares are strongly model-dependent and can swing dramatically after model upgrades, effectively creating demand shocks without any catalog changes. Agents show large, model-specific position biases that can even flip direction across model generations, undermining any universal notion that the top-ranked item is best; these effects persist even in headless API-style settings that provide only ranked structured data, and they are not reliably removed by simple prompting. *Ranking matters—and how it matters is highly model-dependent.* *Simple prompt engineering leaves largely unaffected position effects.*\n\nThe paper also measures how agents respond to product attributes and platform levers via randomized trials and conditional logit models: agents generally prefer lower prices, higher ratings, and more reviews, but sensitivity magnitudes vary sharply by model. A paid promotion label tends to reduce selection probability holding position fixed, while a platform endorsement badge produces large positive lifts; scarcity labels are weak or inconsistent. On the supply side, a simple seller agent that makes query-conditional title or description tweaks can sometimes produce large, statistically significant market-share gains, but effects are heterogeneous and can backfire for some models, motivating continuous auditing. The authors conclude that ongoing, provider-agnostic monitoring infrastructure like ACES is needed for platform design, seller strategy, and governance, and they note code and datasets released for replication.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

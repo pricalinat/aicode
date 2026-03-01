@@ -1,0 +1,21 @@
+@startuml
+title 实体对齐流程图
+skinparam shadowing false
+
+"知识图谱1<br/>KG-A" --> "预处理<br/>属性标准化"
+"知识图谱2<br/>KG-B" --> "预处理<br/>属性标准化"
+"预处理<br/>属性标准化" --> "分块: Blocking"
+"预处理<br/>属性标准化" --> "分块: Blocking"
+"分块 --> "相似度匹配<br/>BERT/向量"
+"相似度匹配<br/>BERT/向量" --> "规则过滤"
+"规则过滤" --> "对齐"
+"对齐" --> "(实体对)"
+"(实体对)" --> "实体合并"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

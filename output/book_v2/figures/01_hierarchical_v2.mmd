@@ -1,0 +1,36 @@
+flowchart TB
+    subgraph INPUT["Input Layer"]
+        A["Raw Supply"]
+        B["Product Info"]
+        C["Service Description"]
+    end
+    
+    subgraph PROCESS["Processing Layer"]
+        D["Data Cleaning"]
+        E["Feature Extraction"]
+        F["Semantic Encoding"]
+    end
+    
+    subgraph OUTPUT["Output Layer"]
+        G["Supply Vector"]
+        H["Knowledge Graph"]
+        I["Understanding Model"]
+    end
+    
+    subgraph APP["Application Layer"]
+        J["Intelligent Matching"]
+        K["Quality Evaluation"]
+        L["Personalization"]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    F --> I
+    G --> J
+    H --> K
+    I --> L

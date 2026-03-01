@@ -1,0 +1,14 @@
+{
+  "paper_id": "1805.09023",
+  "title": "Item Cold Start",
+  "category": "ecommerce_evaluation",
+  "year": 2018,
+  "timestamp": "2026-03-01T14:00:32.774505",
+  "summary": "This paper tackles the item cold-start problem in recommender systems, where a new item has no historical ratings and standard collaborative filtering cannot estimate preferences reliably. It argues that item attributes alone can be misleading because similar attributes do not guarantee similar user response, so the system should actively request a small number of targeted ratings to learn quickly while keeping user burden and fairness in mind. *Experimental results on two real-world datasets show the superiority of our proposed method over traditional methods.*\n\nThe proposed framework combines item attributes with active learning, using Factorization Machines to model both a classification task of whether a user will rate the new item and a regression task of what rating the user would give. It selects a batch of users to request ratings from by optimizing four criteria in a single integer quadratic programming objective, with tradeoff weights:\n- Willingness: pick users with high predicted probability of providing feedback for the new item  \n- Diversity: pick users whose attribute-based predicted ratings are spread out to reduce bias  \n- Objectivity: favor users whose past ratings align with item average quality signals  \n- Representativeness: pick users similar to unselected users so feedback generalizes well  \n*Directly solving this integer quadratic programming (IQP) problem is NP-hard.* The paper relaxes the selection problem to convex forms and uses an iterative method to obtain a practical solution, then retrains a rating predictor by combining prior ratings data with the newly acquired feedback ratings.\n\nIt also introduces a dynamic active learning budget for handling a batch of new items, allocating more rating requests to items that are both likely to be rated and more controversial as estimated from model signals, rather than using a fixed budget per item. Experiments on Movielens-IMDB and Amazon evaluate both active-learning-phase user experience metrics (percentage of feedback ratings and average selecting times) and prediction/top-N recommendation metrics (RMSE, MAE, Precision, Recall, NDCG), comparing against hybrid recommenders and several active learning baselines. The two proposed variants, FMFC and FMFC-DB, achieve the best overall prediction and ranking performance, with ablations showing each criterion helps and analysis showing how increasing the weight on willingness improves feedback rate but can reduce prediction accuracy, reflecting an exploitation versus exploration tradeoff.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "paper_id": "2410.05763",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:03:04.041651",
+  "summary": "This PDF is a long-form survey of information discovery in e-commerce, organizing how modern platforms help people find products and services through search, recommendation, and language-based interfaces. It frames the domain as distinct from web search because product data is heavily structured or semi-structured, classic web signals like hyperlinks are often absent, and success is tied to business outcomes like conversion and revenue rather than relevance alone. *Information discovery in e-commerce refers to the process by which users engage with relevant products or services based on their specific needs*.\n\nThe survey is structured around five major research directions, each grounded in the platform interface and user behavior signals that e-commerce uniquely provides. It covers e-commerce presentations and content components such as search results, recommendation modules, product titles, product descriptions, QA pairs, and user reviews, then links these to modeling tasks: user behavior modeling and profiling, product search matching and ranking, recommender system retrieval and ranking pipelines, and product-aware QA and dialogue systems. *Information discovery is increasingly a mixed initiative scenario, where users and e-commerce platforms take turns*.\n\nAcross these areas, it repeatedly emphasizes practical constraints and evaluation: sparse and heterogeneous feedback (clicks, add-to-cart, purchases, dwell time, post-click actions), multi-objective optimization (CTR, CVR, GMV and revenue-aware metrics, engagement and stickiness), and the need to debias observational logs. It highlights emerging trends including multimodal search and recommendation, conversational search and conversational recommendation, graph learning for user and item representations, generative retrieval that outputs document identifiers directly, and beyond-accuracy concerns such as fairness, trustworthiness against spam and misinformation, explainability, privacy risks, and the difficulty of evaluating interactive agents at scale. The appendices compile many benchmark datasets by topic (interfaces, user modeling, search, recommendation, QA and dialogues) and the references provide an extensive bibliography spanning classic IR and recommender methods through deep learning and large language model approaches.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

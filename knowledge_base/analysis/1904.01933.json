@@ -1,0 +1,14 @@
+{
+  "paper_id": "1904.01933",
+  "title": "Bundle Recommendation",
+  "category": "product_matching",
+  "year": 2019,
+  "timestamp": "2026-03-01T13:42:08.936019",
+  "summary": "## Summary\n\nThis research paper addresses the personalized bundle list recommendation problem, where the goal is to recommend a list of product bundles to customers in e-commerce settings. The authors propose a novel Bundle Generation Network (BGN) that decomposes the problem into quality and diversity components using determinantal point processes (DPPs). The approach represents the first attempt to tackle bundle list recommendation through sequence generation, integrating neural networks with DPP selection to produce high-quality and diversified bundle recommendations.\n\nThe key innovation of BGN lies in its feature-aware softmax, which addresses the inadequate representation problem of traditional seq2seq models in bundle recommendation scenarios. Unlike conventional softmax that only considers item_id in its weight matrix, the feature-aware softmax dynamically incorporates multiple features such as user ID, item ID, and category ID. Additionally, the authors introduce a masked beam search mechanism to control bundle size distribution and prevent duplicated items within bundles, which is crucial for practical e-commerce applications where larger bundles may be needed for promotional purposes.\n\nExtensive experiments were conducted on four datasets: two synthetic Amazon datasets (Electro and Clothe) generated from co-purchase records, the Steam dataset extracted from video game distributions, and the Taobao dataset from a real-world online bundle service. BGN significantly outperformed state-of-the-art methods, achieving a 16% average precision improvement over the best competitors while maintaining the highest diversity across all four datasets. The model also demonstrated a 3.85x improvement in response time compared to the best competing methods, making it suitable for real-time recommendation systems. The hyperparameter λ allows practitioners to balance between precision and diversity based on business requirements.\n\n*the decreases precision along with the growth of diversity as we expected*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

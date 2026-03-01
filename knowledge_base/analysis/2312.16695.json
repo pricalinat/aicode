@@ -1,0 +1,14 @@
+{
+  "paper_id": "2312.16695",
+  "title": "Gnn Session",
+  "category": "ecommerce_evaluation",
+  "year": 2023,
+  "timestamp": "2026-03-01T13:56:38.368983",
+  "summary": "# Summary: Performance Comparison of GNN-based Session Recommendation\n\nThis paper presents a systematic evaluation of eight recent Graph Neural Network (GNN) models for session-based recommendation, comparing them against simpler baseline approaches under identical conditions.\n\n## Key Findings\n\nThe study reveals a surprising result: **simple baseline models outperform all GNN models in terms of Mean Reciprocal Rank (MRR)**, which was the optimization criterion. The baselines (STAN, VSTAN, SR, and SFSKNN) consistently achieved the highest MRR scores across three commonly used datasets (RSC15, DIGI, and RETAIL). Only in certain configurations did GNN-based models show advantages in Hit Rate, particularly for the DIGI dataset.\n\nThe researchers identified several methodological issues that explain these findings. First, most published papers fail to include well-tuned simple baselines, instead comparing new neural models only against other recent neural approaches. Second, embedding size—a crucial hyperparameter—is often fixed rather than tuned, leading to unfair comparisons. Third, random seed selection can dramatically affect results, with variations of up to 30% in accuracy observed across different seeds. Finally, some researchers tune hyperparameters on test data rather than validation sets, producing overly optimistic results.\n\n## Model Performance Details\n\nAmong the eight GNN models evaluated (SR-GNN, TAGNN, GCE-GNN, COTREC, GNRWW, FLCSP, CM-HGNN, and MGS), no single model consistently outperformed others across datasets. Some models that claimed state-of-the-art performance in their original papers performed very poorly in this evaluation, with MRR values more than 50% lower than the best models. The simple k-NN based approaches achieved comparable or better accuracy while requiring significantly less computational resources—k-NN models have no training phase, while GNN models like GCE-GNN required approximately 19 hours per training run on the DIGI dataset.\n\n## Implications\n\nThe authors argue that the field shows limited genuine progress, citing their analysis of 34 recent papers from top-tier venues where none considered models like SFSKNN or VSTAN as baselines. They conclude that there is ample room for improvement in session-based recommendation research, particularly in properly tuning baselines and exploring side information (such as item categories, prices) that current GNN models do not fully exploit. Future work should examine transformer-based models, which may show more substantial improvements over baselines.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

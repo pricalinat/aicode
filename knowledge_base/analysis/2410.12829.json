@@ -1,0 +1,14 @@
+{
+  "paper_id": "2410.12829",
+  "title": "Llm Ecommerce Recommendation",
+  "category": "product_matching",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:40:06.922120",
+  "summary": "This paper studies how large language models can improve personalized recommendations in e-commerce, focusing on weaknesses of traditional recommenders with large-scale, multi-dimensional data, deep user needs, sparsity, and cold start. It proposes an LLM-based recommendation framework and reports consistent gains across key metrics, attributing improvements to deeper semantic understanding of user comments and product descriptions plus use of contextual signals for more dynamic recommendations. *the precision of the LLM model is improved from 0.75 to 0.82, the recall rate is increased from 0.68 to 0.77*.\n\nThe design centers on a three-layer framework (data, model, application) and a hybrid scoring approach that combines traditional methods and an LLM: `R(u,i) = α·f_trad(u,i) + β·f_LLM(u,i) + γ·f_hybrid(u,i)`. It details content-based recommendation via cosine similarity between user and item feature vectors, collaborative filtering via user similarity and observed ratings, and an LLM score computed from user and product representations, then combined with tunable weights. Data collection covers user behavior, product attributes, and context; preprocessing includes cleaning, normalization, and feature extraction to produce user interest vectors and product feature vectors. *LLM effectively captures the implicit needs of users through deep semantic understanding of user comments and product description data*.\n\nExperiments use a real e-commerce dataset described as about 500,000 user behavior records, about 50,000 products with detailed descriptions, and more than 100,000 user comments, with an environment including Ubuntu 20.04 LTS, Intel Xeon Gold 6230, NVIDIA Tesla V100, 256 GB RAM, PyTorch 1.9.0, Python 3.8, and a pretrained BERT base model. The paper describes training strategies such as multi-task learning (including intent recognition and sentiment analysis) and a loss design that adds a diversity constraint term `L = L_main + λ·L_diversity` to avoid overly uniform recommendations. It concludes that the LLM-based approach improves accuracy and diversity (including a reported 41.2 percent diversity increase from 0.34 to 0.48, plus CTR from 0.56 to 0.63), and suggests future work combining LLMs with deep reinforcement learning and adversarial learning to improve adaptability and robustness.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

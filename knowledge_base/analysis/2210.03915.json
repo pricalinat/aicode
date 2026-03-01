@@ -1,0 +1,14 @@
+{
+  "paper_id": "2210.03915",
+  "title": "Short Text Pretraining",
+  "category": "product_matching",
+  "year": 2022,
+  "timestamp": "2026-03-01T14:44:07.917728",
+  "summary": "## Summary\n\nThis paper targets E-commerce query understanding, where user queries are short and masking-based pre-training like masked language modeling can remove most context, sometimes altering intent. To address this, it proposes Extended Token Classification (ETC), a short-text pre-training task that extends queries rather than masking them, aiming to preserve meaning while still providing a strong self-supervised learning signal.\n\n*Instead of masking the input text, our approach extends the input by inserting tokens via a generator network,* ETC inserts one or more `[MASK]` tokens into a query, uses a pre-trained masked language model as a generator to fill them, then trains a discriminator to label each token in the extended sequence as original or generated. The approach is designed to be efficient for short text by turning pre-training into an easier binary classification over all tokens, ensuring every sample contributes even when insertion probability is low, and reducing the chance that training corruptions change query intent.\n\nExperiments use an in-domain corpus of 1 billion queries with a multilingual setup covering 14 languages and a compact Transformer encoder (12 layers, 79M parameters) for latency constraints. Across five downstream tasks (NER with 12 E-commerce entity types, media query identification, help query identification, adult query identification, and spelling error correction), ETC outperforms open-domain multilingual baselines and in-domain MLM and ELECTRA-style training, with statistically significant gains in the main results. *ETC uniformly outperform MLM across all languages.* The paper also reports that MLM fine-tuning performance saturates around 1.5M steps while ETC continues improving, and few-shot NER experiments show ETC helps most at the smallest data setting. An ethical impact section states the work uses internal data without customer identity and claims ETC does not introduce or amplify bias, with no customer or seller specific data disclosed.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

@@ -1,0 +1,16 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Dev" --> "Canary: 1%"
+"Canary --> "Alpha: 10%"
+"Alpha --> "Beta: 50%"
+"Beta --> "General: Availability"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

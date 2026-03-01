@@ -1,0 +1,12 @@
+@startuml
+title DST模型架构
+skinparam shadowing false
+
+"对话历史编码" --> "RNN/LSTM"
+"当前轮输入" --> "RNN/LSTM"
+"RNN/LSTM" --> "状态更新"
+"状态更新" --> "记忆网络"
+"记忆网络" --> "状态表示"
+"状态表示" --> "槽位预测"
+"槽位预测" --> "意图预测"
+@enduml

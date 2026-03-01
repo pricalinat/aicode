@@ -1,0 +1,14 @@
+{
+  "paper_id": "2212.09946",
+  "title": "Dialog2Api",
+  "category": "mini_program_service",
+  "year": 2022,
+  "timestamp": "2026-03-01T14:00:02.528933",
+  "summary": "Dialog2API proposes a task-oriented dialogue paradigm where a single conversational model both talks with the user and generates executable programs that call a predefined set of APIs. The goal is to expand functionality and make dialogues feel more natural than schema-bound slot filling or rigid semantic parsing, by grounding code generation in API documentation and optionally a few annotated example dialogues. *We introduce a new paradigm for task-oriented dialogue  – Dialog2API – to greatly expand the functionality and provide seamless dialogue experience.*\n\nThe paper formalizes each user turn as two predictions: a program for the user goal and a natural-language agent response, with the execution environment returning results or errors that feed back into the conversation. Dialogue state is represented as a stack of programs, where each program is tied to a sub-goal and has one of three statuses: drafting for incomplete or revisable code, final for code that is executed immediately and cannot be revised, and abandoned when the goal is dropped. The design supports goal revision by requiring the model to regenerate the full updated program, allows placeholders for missing parameters, and introduces conversational exceptions such as out-of-scope requests or ambiguity that must be handled through responses and sometimes raised errors. *We represent the dialogue state with a stack of programs.*\n\nFor evaluation, the authors argue exact code match is inappropriate and introduce execution match ratio, which checks whether executing the predicted programs yields the same deterministic environment signature as the reference, using turn-level success to approximate dialogue experience; they also report BLEU for responses and a code edit distance measure under teacher forcing. They build a dataset of 100 AWS S3 dialogues with turn-level program annotations, averaging about 10.5 turns per dialogue and 2.7 goals, covering 10 common S3 APIs, and split it into 46 training and 54 testing dialogues with no overlapping goals. In in-context learning baselines, adding in-domain examples and API documents improves performance, with the best reported setting reaching 33 percent EMR for the strongest model tested, while qualitative analysis highlights common failures like minor code mistakes, hallucinated file-extension changes, and mismatches between generated responses and the intended program behavior.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

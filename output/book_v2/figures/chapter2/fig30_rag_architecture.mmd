@@ -1,0 +1,6 @@
+flowchart TB
+    RAG[检索增强] --> Ret[检索]
+    Ret --> DB[向量数据库]
+    RAG --> Gen[生成]
+    DB --> Gen
+    Gen --> Out[最终输出]

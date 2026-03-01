@@ -1,0 +1,14 @@
+{
+  "paper_id": "2106.08274",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2021,
+  "timestamp": "2026-03-01T13:47:49.280350",
+  "summary": "This paper addresses the problem of an online retailer who dynamically adjusts retail prices to maximize expected revenue when future demand is uncertain. The authors introduce an Elasticity-based Demand Forecasting (EDF) system that models the relationship between retail price and demand, estimates the demand function, and predicts future demand and revenue for any given price point. Price elasticity of demand serves as the core economic measure, defined as the percentage change in demand divided by the percentage change in price, typically negative when demand decreases as price increases.\n\nThe EDF system consists of four major components: data storage, data preparation, model processing, and prediction. Data storage includes product description, historical transaction, product market value, model-related, and prediction data. The data preparation component handles product eligibility screening, preprocessing (aggregation, missing data handling, normalization, outlier detection), and feature extraction. The model incorporates multiple factors: retail price, competitive indicator (comparing the retailer's price to competitors), holiday/weekend binary features, long-term trend, seasonality, and autoregressive effects from previous sales. The demand model uses a logarithmic form where log(y_t/y˜) = β_x log(x_t/x˜) + β_c c_t + β_h h_t + β_w w_t + µ_t + s_t + ε_t.\n\nFor revenue optimization, the authors formulate a discrete-time problem over a finite horizon with discrete price levels. The optimization maximizes total expected revenue while enforcing a minimum sell through rate constraint that controls remaining inventory at the end of the period. The sell through rate measures total sales divided by starting inventory. Computational experiments on a single product over an eight-week planning horizon demonstrate that as the minimum sell through rate increases, the optimal retail price decreases, leading to lower revenue but better inventory management. For seasonal products sold during holiday seasons, retailers prefer lower remaining inventory and thus lower prices, while those focused on revenue maximization without inventory concerns should set higher prices.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

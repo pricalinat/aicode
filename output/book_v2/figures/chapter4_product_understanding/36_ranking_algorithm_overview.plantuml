@@ -1,0 +1,11 @@
+@startuml
+title 搜索排序算法演进
+skinparam shadowing false
+
+"搜索排序" --> "规则排序"
+"规则排序" --> "TF-IDF排序"
+"TF-IDF排序" --> "BM25排序"
+"BM25排序" --> "LTR排序"
+"LTR排序" --> "深度学习排序"
+"深度学习排序" --> "语义排序"
+@enduml

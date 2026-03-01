@@ -1,0 +1,14 @@
+{
+  "paper_id": "2510.22143",
+  "title": "Olabench Customer Service",
+  "category": "mini_program_service",
+  "year": 2025,
+  "timestamp": "2026-03-01T13:55:06.060057",
+  "summary": "It looks like you've shared a research paper about OLAMIND (a customer service LLM system) and OLABENCH (a benchmark), but the text appears to have formatting issues - many words are running together without spaces.\n\nCould you clarify what you'd like me to help with? For example:\n\n1. **Summarize** the key contributions and findings of this paper?\n2. **Extract specific information** about a particular aspect (e.g., the training methodology, evaluation results, reward functions)?\n3. **Answer specific questions** about the OLAMIND system based on this content?\n4. **Something else**?\n\nThe paper discusses:\n- A three-stage training pipeline (Cold-Start → Stage-1 RL → Stage-2 RL)\n- A customer service benchmark (OLABENCH) with dimensions like Dialogue Quality, Policy Compliance, Tool Calling, Risk, and Hallucination\n- GRPO-based reinforcement learning with rubric-aware rewards\n- Online A/B testing results showing improvements in resolution rate and reduced human takeover rate\n\nPlease let me know what specific information you need.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

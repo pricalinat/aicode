@@ -1,0 +1,4 @@
+flowchart LR
+    Q[量化] --> FP32 --> INT8
+    Q --> PTQ[后训练量化]
+    Q --> QAT[量化感知训练]

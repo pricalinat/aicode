@@ -1,0 +1,14 @@
+{
+  "paper_id": "2409.12941",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:59:16.105946",
+  "summary": "## Summary\n\nThis paper introduces FRAMES, a unified, end-to-end evaluation benchmark for retrieval-augmented generation systems that jointly measures factuality, retrieval, and reasoning in realistic multi-document settings. The authors argue existing RAG evaluations are fragmented because they test components in isolation, then present FRAMES as a single framework that stresses multi-hop integration, constraint satisfaction, and correct synthesis across multiple retrieved sources.\n\n*FRAMES (Factuality, Retrieval, And reasoning MEasurement Set) is an evaluation set of 824 questions designed to provide an end-to-end evaluation of Retrieval Augmented Generation (RAG) systems.* The dataset is built from Wikipedia and requires combining information from multiple articles per question, with questions spanning diverse topics and reasoning demands. FRAMES labels questions by reasoning types including numerical reasoning, tabular reasoning, multiple constraints, temporal reasoning, and post-processing, and many questions combine multiple types. Dataset statistics emphasize multi-document difficulty: questions require 2 to 15 Wikipedia articles, with roughly 36 percent needing two articles, about 35 percent needing three, and about 16 percent needing four.\n\nThe paper also reports empirical results showing substantial headroom for current models and the importance of multi-step retrieval. In single-step settings, naive prompting performs poorly, while adding BM25-retrieved documents improves accuracy; providing all gold articles as an oracle prompt gives an upper bound. For example, Gemini-Pro-1.5-0514 scores 0.408 with naive prompting, rises to 0.452 with BM25 retrieval at 2 documents and 0.474 at 4 documents, and reaches 0.729 with oracle context. The authors then evaluate a multi-step pipeline where the model iteratively generates search queries and augments context using BM25 over a Wikipedia dump, finding that better search planning and more iterations raise performance, with the best reported multi-step configuration reaching 0.66 and approaching the oracle upper bound. *We achieved the best performance of 0.66 with the combination of (k,n,n_docs)=(5,5,10)*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

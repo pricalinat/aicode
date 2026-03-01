@@ -1,0 +1,12 @@
+@startuml
+title API发现与匹配
+skinparam shadowing false
+
+"用户query" --> "意图理解"
+"意图理解" --> "API候选"
+"API候选" --> "API排序"
+"API排序" --> "Top-API"
+"API排序" --> "相似度计算"
+"相似度计算" --> "语义匹配"
+"语义匹配" --> "API选择"
+@enduml

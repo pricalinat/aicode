@@ -1,0 +1,12 @@
+@startuml
+title 流式处理架构
+skinparam shadowing false
+
+"用户行为日志" --> "消息队列"
+"消息队列" --> "Flink流处理"
+"Flink流处理" --> "实时特征计算"
+"实时特征计算" --> "特征存储"
+"特征存储" --> "Redis"
+"Redis" --> "在线推理"
+"在线推理" --> "实时推荐"
+@enduml

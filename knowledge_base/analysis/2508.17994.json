@@ -1,0 +1,14 @@
+{
+  "paper_id": "2508.17994",
+  "title": "Retail Sentiment Llm",
+  "category": "product_matching",
+  "year": 2025,
+  "timestamp": "2026-03-01T14:29:50.806188",
+  "summary": "This paper introduces ABSA-Retail-Corpus, a manually annotated dataset for aspect-based sentiment analysis focused on brick and mortar retail store reviews from Google Maps. It contains 10,814 multilingual reviews annotated with eight aspect categories and their sentiment, producing 16,994 aspect labels, and is positioned as a rare large multilingual resource in a space dominated by English-only datasets. The work also provides an LLM baseline by evaluating GPT-4 and LLaMA-3 on the dataset using prompt-engineered, structured outputs.\n\n*The results show both models achieving over 85% accuracy, while GPT-4 outperforms LLaMA-3 overall with regard to all relevant metrics.* The authors scraped 24,361 reviews via Apify and then filtered out entries with only star ratings, keeping only review text plus limited metadata such as country, city, timestamp, and stars while omitting personal identifiers. They added automatic language labels using Google Translate API via googletrans (ISO-639 codes) and converted publication time to ISO-8601; the final corpus spans reviews written from 2012 to 2024, across nine European countries and 45 languages, with an average review length of 121 characters.\n\nAnnotation uses eight aspect categories: Product, Service, Brand, Price, Store, Online, Return, General, each labeled with positive, neutral, or negative sentiment; a custom labeling tool supported viewing, translation to English, sentiment selection, and saving. Inter-annotator agreement was assessed on 10 percent of the data, yielding Krippendorff alpha 0.71, and analysis shows 44.7 percent of reviews contain more than one aspect (1.6 aspects per review on average). Service is the most frequent aspect (6,065 reviews) and Online the least (51), sentiments are mostly positive overall, and Return is the only category dominated by negative sentiment; neutral labels are uncommon. In experiments, GPT-4 (via Azure OpenAI) generally leads across precision, recall, F1, and accuracy, while LLaMA-3 (70B Instruct via Hugging Face with quantization) shows characteristic errors such as keyword-driven false aspect detection and confusion between broad Brand and General statements; the paper also discusses practical cost considerations, ethics around using public reviews without identifiable data, and limitations from rapid model turnover, constrained fine-tuning, subjectivity in manual labeling, and potential non-generalizability of the fixed aspect set.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

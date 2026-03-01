@@ -1,0 +1,16 @@
+@startuml
+title GPT系列演进
+skinparam shadowing false
+
+"GPT-1<br/>2018<br/>117M参数<br/>无监督预训练<br/>+有监督微调" --> "GPT-2<br/>2019<br/>1.5B参数<br/>Zero-shot<br/>多任务学习"
+"GPT-2<br/>2019<br/>1.5B参数<br/>Zero-shot<br/>多任务学习" --> "GPT-3<br/>2020<br/>175B参数<br/>Few-shot<br/>上下文学习"
+"GPT-3<br/>2020<br/>175B参数<br/>Few-shot<br/>上下文学习" --> "GPT-3<br/>2020<br/>175B参数<br/>Few-shot<br/>上下文学习"."GPT-3.5<br/>2022<br/+RLHF<br/>指令微调<br/>ChatGPT"
+"GPT-3<br/>2020<br/>175B参数<br/>Few-shot<br/>上下文学习"."GPT-3.5<br/>2022<br/+RLHF<br/>指令微调<br/>ChatGPT" --> "GPT-4<br/>2023<br/>多模态<br/>RLHF<br/>Agent能力"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

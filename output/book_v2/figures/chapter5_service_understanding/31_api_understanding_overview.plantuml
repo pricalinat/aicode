@@ -1,0 +1,12 @@
+@startuml
+title API理解流程总览
+skinparam shadowing false
+
+"用户需求" --> "API识别"
+"API识别" --> "API匹配"
+"API匹配" --> "参数映射"
+"参数映射" --> "API调用"
+"API调用" --> "结果处理"
+"结果处理" --> "响应生成"
+"API文档理解" --> "API识别"
+@enduml

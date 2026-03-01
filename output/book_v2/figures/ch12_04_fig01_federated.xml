@@ -1,0 +1,19 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Central --> "Client: 1"
+"Central --> "Client: 2"
+"Client --> "Gradients"
+"Client --> "Gradients"
+"Gradients" --> "Aggregate"
+"Gradients" --> "Aggregate"
+"Aggregate" --> "Update: Model"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

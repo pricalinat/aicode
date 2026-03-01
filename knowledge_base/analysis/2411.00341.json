@@ -1,0 +1,14 @@
+{
+  "paper_id": "2411.00341",
+  "title": "Bundle Survey",
+  "category": "ecommerce_evaluation",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:56:44.655659",
+  "summary": "# Summary\n\nThis survey paper provides a comprehensive review of bundle recommendation systems, which recommend sets of items (bundles) to users rather than individual items. The authors propose a taxonomy that classifies bundle recommendation into two main categories: discriminative bundle recommendation (recommending existing bundles) and generative bundle recommendation (creating new bundles). The paper systematically reviews representation learning methods including factorization models, attention mechanisms, and graph neural networks, along with learning strategies (unified, separate, and cooperative) and interaction modeling techniques such as inner product, distance modeling, and neural networks.\n\nThe survey covers 30 datasets across 11 application domains including music playlists, book lists, movie lists, fashion outfits, meals, travel packages, drug packages, and service packages. It summarizes evaluation metrics for accuracy, ranking quality, diversity, and ranking exposure, and presents reproducibility experiments comparing graph-based and CF-based models on datasets like Youshu, NetEase, and iFashion. Key findings show that cooperative learning across bundle and item views, enabled by contrastive learning and knowledge distillation, significantly improves performance.\n\nThe paper identifies four major challenges and future research directions: representation learning in non-Euclidean spaces (e.g., hyperbolic space) to better model tree-like interaction structures; addressing data sparsity and cold-start issues through multimodal information and LLMs; user intent-aware dynamic bundle generation leveraging large language models; and developing responsible bundle recommender systems that mitigate popularity bias and ensure fairness. The authors note that recent advances in LLMs offer promising opportunities for bundle recommendation through improved item representations and generative bundle construction.\n\n*Bundle recommendation extends traditional item recommendation to a set of items likely to interest a user when considered together* and has become critical in e-commerce, entertainment, and travel for enhancing user satisfaction and driving business value through cross-selling and up-selling opportunities.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

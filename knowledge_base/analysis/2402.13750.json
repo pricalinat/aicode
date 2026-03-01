@@ -1,0 +1,14 @@
+{
+  "paper_id": "2402.13750",
+  "title": "Llm Inferential Kg",
+  "category": "product_matching",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:34:43.274934",
+  "summary": "This paper proposes LLM-KERec, an industrial recommendation system that uses a large language model to infer complementary relationships between product concepts and inject that knowledge into a conventional recall to rank pipeline. The goal is to improve complementary recommendations and handle intent transitions and cold start more robustly than systems driven mainly by historical exposure and click logs, while avoiding the cost of using an LLM directly in online inference at scale. *we propose a novel Large Language Model based Complementary Knowledge Enhanced Recommendation System (LLM-KERec).*  \n\nThe system first builds a unified entity layer across items and user billing behavior: experts maintain a large entity dictionary that is updated weekly, and a BERT-CRF extractor maps item text and bill text to standardized entities. It then constructs a complementary knowledge graph by generating candidate entity pairs with a popularity segmented strategy to control LLM cost and improve coverage, and uses prompt engineered LLM reasoning to label whether entity A is likely followed by purchasing entity B, with an automatic daily incremental update to track shifting popularity. *Our method continuously adjusts the weights of graph edges based on real exposure samples of complementary item pairs,* by training an Entity Entity Item weight decision model that corrects LLM edges using real exposure click feedback, and adds a complementary recall route plus ranking feature injection so downstream rankers see more complementary candidates despite exposure bias.\n\nExperiments use three proprietary Alipay marketing scenarios with offline AUC evaluation and online A B tests over a month on 10 percent traffic, comparing against common baselines such as DNN, Wide and Deep, DCN, ESMM, PLE, and Masknet, including variants augmented with an item item graph. Offline results show consistent click and conversion AUC gains across all three datasets, and online tests report statistically significant improvements, including higher coupon conversions in two coupon scenarios and higher GMV in the goods scenario, with additional ablations attributing gains to both the complementary recall route and the E E I ranking module. The paper also compares LLM choices for graph construction via manual ratings of sampled entity pairs and finds Claude 2 produces higher quality complementary links than ChatGPT 3.5 and ChatGLM 2, while noting that weaker models can produce overly imaginative pairings.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

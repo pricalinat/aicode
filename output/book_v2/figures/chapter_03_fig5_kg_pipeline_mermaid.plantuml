@@ -1,0 +1,17 @@
+@startuml
+title 知识图谱构建流水线
+skinparam shadowing false
+
+"数据源<br/>商品信息/用户评论<br/>外部知识库" --> "知识抽取<br/>NER/RE/AE"
+"知识抽取<br/>NER/RE/AE" --> "知识融合<br/>实体对齐/链接<br/>冲突消解"
+"知识融合<br/>实体对齐/链接<br/>冲突消解" --> "知识推理<br/>规则推理/嵌入推理"
+"知识推理<br/>规则推理/嵌入推理" --> "知识存储<br/>图数据库"
+"知识存储<br/>图数据库" --> "API服务<br/>查询/推理"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

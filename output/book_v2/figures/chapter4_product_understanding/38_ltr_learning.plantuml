@@ -1,0 +1,14 @@
+@startuml
+title LTR学习排序
+skinparam shadowing false
+
+"查询-文档对" --> "特征提取"
+"特征提取" --> "排序模型训练"
+"排序模型训练" --> "Pointwise"
+"排序模型训练" --> "Pairwise"
+"排序模型训练" --> "Listwise"
+"Pointwise" --> "排序模型"
+"Pairwise" --> "排序模型"
+"Listwise" --> "排序模型"
+"排序模型" --> "文档排序"
+@enduml

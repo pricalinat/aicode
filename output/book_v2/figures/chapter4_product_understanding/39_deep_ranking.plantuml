@@ -1,0 +1,13 @@
+@startuml
+title 深度学习排序模型
+skinparam shadowing false
+
+"查询文本" --> "查询Encoder"
+"文档文本" --> "文档Encoder"
+"查询Encoder" --> "交互层"
+"文档Encoder" --> "交互层"
+"交互层" --> "特征融合"
+"特征融合" --> "DNN排序"
+"DNN排序" --> "排序分数"
+"排序分数" --> "文档列表"
+@enduml

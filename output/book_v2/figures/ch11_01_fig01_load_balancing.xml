@@ -1,0 +1,19 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+Client --> "Load: Balancer"
+"Load --> "Server: 1"
+"Load --> "Server: 2"
+"Load --> "Server: 3"
+"Server --> "(Primary: DB)"
+"Server --> "(Primary: DB)"
+"Server --> "(Primary: DB)"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

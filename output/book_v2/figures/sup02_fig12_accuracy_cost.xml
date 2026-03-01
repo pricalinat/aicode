@@ -1,0 +1,15 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"High --> "High: Cost"
+"Low --> "Lower: Accuracy"
+"Trade-off --> "Find: Optimal"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

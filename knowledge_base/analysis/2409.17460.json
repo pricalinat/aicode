@@ -1,0 +1,14 @@
+{
+  "paper_id": "2409.17460",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:03:49.327788",
+  "summary": "This paper studies how to improve e-commerce product search ranking when there is no clean gold standard for relevance labels. It splits ranking relevance into two parts: content-based relevance, meaning how well product attributes match the query, and engagement-based relevance, meaning how users interact with items in a search event. The core proposal is to use large language models to infer content relevance for query product pairs, then combine it with logged engagement signals to train a learning-to-rank model that better prioritizes truly relevant items.\n\n*We decompose ranking relevance into content-based and engagement-based aspects.* The authors formalize labels as a product of engagement relevance and a transformed content relevance score, where content relevance is produced by a fine-tuned Mistral 7B model trained on in-house human judgments. They then apply a sigmoid transformation to the LLM score to polarize midrange values and create a guardrail effect: items with clearly low content relevance are pushed down, clearly high ones are pushed up, and engagement plays a larger role within the flattened extremes. For features, they also add LLM-driven dense content signals via a moderate-size BERT cross-encoder, chosen to limit inference latency compared to larger LLMs.\n\nEmpirically, they train one baseline and six variants on Walmart.com search traffic and evaluate content relevance offline with human ratings using NDCG@10, plus engagement online with interleaved tests using ATC@40. Key results: combining LLM-based content labels with cross-encoder features produces the first meaningful content lift, and sigmoid transforms further increase content gains but expose a trade-off with engagement when the sigmoid is shifted. Offline NDCG@10 changes vs baseline are +0.41 percent for adding cross-encoder features only, +0.11 percent for LLM labels only, +1.35 percent for combining both, +1.72 percent with a centered sigmoid, +3.96 percent with a more rigorous high-content threshold, and -0.26 percent with a more relaxed threshold; online ATC@40 changes are near zero for the non-shifted setups, -0.79 percent for the rigorous threshold, and +1.04 percent for the relaxed threshold. A SHAP-based analysis ties these patterns to feature importance: LLM-enriched labels and stronger polarization make the cross-encoder content feature more influential, which can improve content relevance while relatively downweighting engagement features, explaining the observed trade-off.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

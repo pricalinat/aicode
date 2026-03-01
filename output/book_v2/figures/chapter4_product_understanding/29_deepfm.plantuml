@@ -1,0 +1,16 @@
+@startuml
+title DeepFM模型架构
+skinparam shadowing false
+
+"输入特征" --> "FM部分"
+"输入特征" --> "Deep部分"
+"FM部分" --> "一阶特征"
+"FM部分" --> "二阶特征交互"
+"一阶特征" --> "FM输出"
+"二阶特征交互" --> "FM输出"
+"Deep部分" --> "Embedding"
+"Embedding" --> "全连接层"
+"全连接层" --> "Deep输出"
+"FM输出" --> "最终输出"
+"Deep输出" --> "最终输出"
+@enduml

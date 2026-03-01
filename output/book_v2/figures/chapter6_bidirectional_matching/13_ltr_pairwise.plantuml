@@ -1,0 +1,11 @@
+@startuml
+title Pairwise排序方法
+skinparam shadowing false
+
+"样本对" --> "特征提取"
+"特征提取" --> "相对排序预测"
+"相对排序预测" --> "pairwise损失"
+"pairwise损失" --> "模型优化"
+"模型优化" --> "排序模型"
+"排序模型" --> "排序结果"
+@enduml

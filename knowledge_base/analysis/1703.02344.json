@@ -1,0 +1,14 @@
+{
+  "paper_id": "1703.02344",
+  "title": "Deep Learning Visual Recommendation",
+  "category": "ecommerce_evaluation",
+  "year": 2017,
+  "timestamp": "2026-03-01T13:55:07.556878",
+  "summary": "This paper presents an end-to-end deep learning solution for large-scale visual recommendation and search at Flip e-commerce companykart, India's largest. The core problem addressed is enabling users to discover fashion products through visual similarity rather than just text-based searches, which is particularly important in fashion where buying decisions are heavily influenced by product appearance. The system handles a catalog of over 50 million fashion products with 100,000 hourly updates and processes 2,000 queries per second.\n\nThe authors propose VisNet, a unified CNN architecture combining a 16-layer VGG network with parallel shallow convolution layers to capture both high-level semantic concepts (like garment type) and low-level visual details (like stripe spacing and color patterns). They employ a triplet-based deep ranking paradigm where each training sample consists of a query image, a more similar positive image, and a less similar negative image, trained using hinge loss to pull similar items closer in the embedding space while pushing dissimilar items apart. Training data is generated semi-automatically using basic image similarity scorers focusing on color histograms, pattern recognition, and pre-trained AlexNet features, with human vetting to ensure quality.\n\nThe model significantly outperforms state-of-the-art approaches on the Exact Street2Shop dataset, achieving an average improvement of approximately 13.5% in recall-at-20 across product categories. Ablation studies show that VGG-16 outperforms AlexNet by around 7%, and the addition of shallow layers provides an additional 3% improvement. The system also incorporates an object localization network based on Faster R-CNN to automatically detect and crop regions of interest in user-uploaded \"wild\" images, eliminating the need for manual bounding box specification.\n\nFor production deployment, the authors built a horizontally scalable system using Apache Storm for real-time ingestion, a Feature Vector service for embedding extraction on CPU clusters, and a MapReduce-based k-Nearest-Neighbor engine optimized through dimensionality reduction (from 4096-d to 512-d embeddings), incremental updates, and metadata-based search space pruning. The visual recommendation module demonstrated substantial business impact, achieving a conversion rate of 26% compared to 8-10% for other recommendation approaches. The system was also extended to address cold-start problems in collaborative filtering and to detect near-duplicate product listings in the marketplace.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

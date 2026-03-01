@@ -1,0 +1,14 @@
+{
+  "paper_id": "1904.04096",
+  "title": "Amazon Sentiment",
+  "category": "ecommerce_evaluation",
+  "year": 2019,
+  "timestamp": "2026-03-01T13:59:10.670661",
+  "summary": "This February 2019 IJSCAI paper studies whether Amazon.com review text aligns with the star rating a user submits, focusing on the small but consequential cases where a positive-sounding review has a low rating or a negative-sounding review has a high rating. The authors propose a sentiment classification pipeline that can flag likely mismatches at submission time, aiming to reduce user confusion and protect the integrity of aggregate product ratings. *Our study employs sentiment analysis to evaluate the compatibility of Amazon.com reviews with their corresponding ratings.*\n\nThe method converts each review into a fixed-length vector using paragraph vectors, then adds product-level and temporal context by grouping review vectors by product and sorting them by review time to form sequences. A recurrent neural network with gated recurrent unit learns a 128-dimensional product embedding from each product sequence, intended to capture product qualities and how reviews evolve over time; this product embedding is concatenated with the 300-dimensional review embedding and fed into a support vector machine that predicts sentiment class. Key implementation details include: preprocessing to remove hyperlinks, normalize spacing, expand informal contractions, and tokenize punctuation; using the paragraph vector distributed memory variant; GRU training with dropout 0.25, Adam optimization, categorical cross entropy loss, and 128 hidden units; and a web service that takes review text, assigned rating, and product id, then warns the reviewer when the predicted sentiment class conflicts with the rating class.\n\nExperiments use roughly 3.5 million Amazon reviews (with rating, product id, helpfulness, reviewer id, title, time, and text) and evaluate SVM performance with 10-fold cross-validation under two feature sets. With review embeddings only, the reported averages are precision 0.5861, recall 0.4085, and accuracy 81.29 percent; adding product embeddings raises these to precision 0.5945, recall 0.4252, and accuracy 81.82 percent, which the authors interpret as evidence that product information is a useful feature for sentiment analysis and mismatch detection. They conclude by suggesting future work to incorporate user information, noting that different users may be systematically more lenient or more critical in their ratings. *Inclusion of product embedding increases the accuracy to 81.82 percent.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

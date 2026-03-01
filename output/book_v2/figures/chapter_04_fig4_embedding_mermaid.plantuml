@@ -1,0 +1,23 @@
+@startuml
+title 商品向量表示模型
+skinparam shadowing false
+
+"商品多模态信息" --> "编码器"
+"文本" --> "BERT/SBERT"
+"图像" --> "CLIP/ViT"
+"结构" --> "GraphSAGE/GAT"
+"BERT/SBERT" --> "特征融合"
+"CLIP/ViT" --> "特征融合"
+"GraphSAGE/GAT" --> "特征融合"
+"特征融合" --> "商品向量表示"
+"商品向量表示" --> "对比学习<br/>SimCLR"
+"商品向量表示" --> "三元组学习<br/>度量学习"
+"商品向量表示" --> "掩码语言模型"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

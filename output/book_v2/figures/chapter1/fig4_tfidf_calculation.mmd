@@ -1,0 +1,8 @@
+flowchart TD
+    A[文档集合] --> B[计算TF]
+    B --> C[计算IDF]
+    C --> D[TF × IDF]
+    D --> E[特征向量]
+    
+    B -->|词频| B1[tf(d,t) = count(t)/|d|]
+    C -->|逆文档频率| C1[idf(t) = log(N/doc_freq(t))]

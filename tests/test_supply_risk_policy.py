@@ -189,6 +189,21 @@ class TestRiskPolicyTagger(unittest.TestCase):
         # Should have at least 2 tags (expensive + alcohol)
         self.assertGreaterEqual(count, 2)
 
+    def test_apply_automatic_tags_is_idempotent_for_existing_tags(self):
+        """Applying automatic tags twice should only count newly added tags."""
+        entity = SupplyEntity(
+            id="repeat_eval_product",
+            type=SupplyEntityType.PRODUCT,
+            properties={"name": "Repeat Eval", "price": 20000, "category": "electronics"},
+        )
+        self.db.create_entity(entity)
+
+        first_count = self.tagger.apply_automatic_tags(entity_id="repeat_eval_product")
+        second_count = self.tagger.apply_automatic_tags(entity_id="repeat_eval_product")
+
+        self.assertEqual(first_count, 1)
+        self.assertEqual(second_count, 0)
+
     def test_generate_compliance_report(self):
         """Test compliance report generation."""
         # Create products that trigger rules

@@ -1,0 +1,14 @@
+{
+  "paper_id": "2601.05192",
+  "title": "Lela Entity Linking",
+  "category": "product_matching",
+  "year": 2026,
+  "timestamp": "2026-03-01T13:43:15.954534",
+  "summary": "You've shared a portion of an academic paper about **LELA** (Language Model Entity Linking Approach) - a method for zero-shot entity linking using Large Language Models. The paper covers:\n\n- **Approach**: A coarse-to-fine entity linking method combining retrieval, reranking, and LLM-based candidate selection\n- **Benchmarks**: Tests on ZESHEL, GLADIS (acronym disambiguation), ESCO (skills taxonomy), and Wikipedia-based datasets\n- **Key Results**: LELA outperforms true zero-shot competitors and achieves competitive results compared to fine-tuned approaches\n\nWhat would you like me to help with? For example:\n- Summarize specific sections\n- Extract key findings or tables\n- Compare LELA with other methods mentioned\n- Help organize or analyze this content\n- Something else related to your knowledge base",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

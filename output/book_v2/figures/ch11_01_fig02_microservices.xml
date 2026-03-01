@@ -1,0 +1,18 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"API --> "Auth: Service"
+"API --> "Order: Service"
+"API --> "Payment: Service"
+"API --> "Inventory: Service"
+"Order --> "Message: Queue"
+"Message --> "Notification: Service"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

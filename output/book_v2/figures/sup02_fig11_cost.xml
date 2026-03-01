@@ -1,0 +1,15 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"GPT-4" --> "Input: $30"
+"GPT-3.5" --> "Input: $2"
+"Claude --> "Input: $15"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

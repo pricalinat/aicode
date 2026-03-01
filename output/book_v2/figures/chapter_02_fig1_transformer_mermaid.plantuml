@@ -1,0 +1,23 @@
+@startuml
+title Transformer架构图
+skinparam shadowing false
+
+"Input --> "Encoder: Stack<br/>N=6 layers"
+"Encoder --> "Decoder: Stack<br/>N=6 layers"
+"Decoder --> "Linear<br/>+: Softmax Output"
+"Multi-Head --> "Add: & Norm"
+"Add --> "Feed: Forward Network"
+"Feed --> "Add: & Norm"
+"Masked --> "Add: & Norm"
+"Add --> "Cross: Attention"
+"Cross --> "Add: & Norm"
+"Add --> "Feed: Forward Network"
+"Feed --> "Add: & Norm"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

@@ -1,0 +1,14 @@
+{
+  "paper_id": "1906.11431",
+  "title": "Serendipity User",
+  "category": "ecommerce_evaluation",
+  "year": 2019,
+  "timestamp": "2026-03-01T13:49:43.074447",
+  "summary": "This is not the actual PDF content of the paper, but rather an arXiv web page notice indicating that this version of the paper (arXiv identifier 1906.11431) has been **withdrawn** and is unavailable. The page displays the standard arXiv header with Cornell University branding and indicates that the withdrawn paper cannot be accessed. The abstract page may still contain information about the original submission.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

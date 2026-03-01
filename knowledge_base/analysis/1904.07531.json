@@ -1,0 +1,14 @@
+{
+  "paper_id": "1904.07531",
+  "title": "Bert Ranking",
+  "category": "product_matching",
+  "year": 2019,
+  "timestamp": "2026-03-01T14:51:40.393549",
+  "summary": "This paper investigates how to best use pre-trained BERT for ranking, and why it succeeds on some ranking tasks but not others. It evaluates four BERT-based rankers on two benchmarks: MS MARCO passage re-ranking, which is question answering oriented, and TREC WebTrack ad hoc document ranking over ClueWeb, which is more keyword-search oriented. The central finding is a sharp split: interaction-style BERT re-rankers deliver very large gains on MS MARCO, but do not beat strong feature-based learning-to-rank on TREC ad hoc, where a click-trained neural ranker performs best.\n\nThe authors compare representation-based use of BERT versus interaction-based use, and test variants that combine signals from multiple BERT layers or add additional translation-style matching on top of BERT embeddings. BERT Rep, which embeds query and document separately and scores with cosine similarity, performs near random, supporting the claim that BERT is not effective as a pure dual-encoder representation model for this setting. The simplest interaction approach, BERT Last-Int that feeds query and document together and uses the final CLS embedding, is the strongest and consistently beats more complex BERT combinations on MS MARCO, suggesting it is hard to substantially reshape pre-trained BERT with limited fine-tuning. On ClueWeb, even BERT models further pre-trained on MS MARCO ranking labels fail to significantly surpass learning-to-rank, while Conv-KNRM trained on Bing click logs clearly leads, implying that the pre-training signal needed for ad hoc relevance differs from surrounding-context language modeling.\n\nThe analysis section probes what BERT learns when fine-tuned for passage re-ranking. Attention studies show BERT heavily relies on marker tokens such as CLS and SEP to separate the two sequences, and stopwords absorb large attention mass without affecting effectiveness, acting like an attention sink. Term influence experiments show BERT produces more extreme scores, with a small number of highly influential terms often dominating the final relevance decision; these influential terms tend to be exact matches or close paraphrases of the query terms, unlike the looser relevance cues preferred by click-trained Conv-KNRM.\n\n*BERT is an interaction-based matching model and is not suggested to be used as a representation model.*\n\n*terms in each document that determine the majority of BERTs ranking scores; removing them significantly changes the ranking score*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

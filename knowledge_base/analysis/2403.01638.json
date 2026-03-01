@@ -1,0 +1,14 @@
+{
+  "paper_id": "2403.01638",
+  "title": "Multilevel Category",
+  "category": "product_matching",
+  "year": 2024,
+  "timestamp": "2026-03-01T14:40:42.590034",
+  "summary": "This paper studies multi-level product category prediction in retail by framing it as short-text classification, comparing LSTM-based models against a BERT-based approach. Using a large Brazilian Portuguese retail dataset, it evaluates how preprocessing, Brazilian word embeddings, data augmentation, and focal loss affect performance when predicting hierarchy levels such as segment, category, subcategory, and product name. The central finding is that BERT generally performs better at finer-grained labels, while LSTM can be competitive at higher-level labels, especially after targeted improvements.\n\nThe dataset contains 153,445 items from the Brazilian market with fields including item name and hierarchical labels, spanning 6 segments, 70 categories, 153 subcategories, and 715 product names. The methodology follows a structured pipeline: cleaning and normalization, exploratory analysis, train validation test splitting, optional data augmentation, model training with hyperparameter tuning, and evaluation using F1 macro as the sole metric. Preprocessing includes lowercasing, special-character removal, whitespace cleanup, handling measurement patterns with regex, and dropping a very small fraction of missing rows under 0.1 percent; augmentation adds roughly 30,000 records via web scraping and harmonization to improve class coverage.\n\nTwo neural approaches are implemented: an LSTM model built in TensorFlow Keras using spatial dropout and bidirectional layers with Portuguese embeddings from the NILC repository, and a transformer model based on BERTimbau Base implemented with Hugging Face Transformers. Baseline results with cross-entropy show LSTM performance varying by embedding choice, with GloVe 100 typically best among tested embeddings, and BERT improving notably on the more granular labels. With data augmentation and focal loss, both models improve substantially, and BERT with focal loss plus augmentation reaches the best reported scores across all levels, including strong gains on product prediction.\n\n*The BERT model, with an F1 Macro Score of up to 99% for segments, 96% for categories and subcategories and 93% for name products, outperformed LSTM in more detailed categories.*\n\n*The collection of additional data significantly increased the original dataset, adding approximately 30,000 records.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

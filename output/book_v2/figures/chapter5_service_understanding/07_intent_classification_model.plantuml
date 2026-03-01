@@ -1,0 +1,12 @@
+@startuml
+title 意图分类模型
+skinparam shadowing false
+
+"query文本" --> "Embedding层"
+"Embedding层" --> "BERT编码器"
+"BERT编码器" --> "意图分类层"
+"意图分类层" --> "意图概率分布"
+"意图概率分布" --> "Top-K意图"
+"意图概率分布" --> "意图置信度"
+"语义特征" --> "意图分类层"
+@enduml

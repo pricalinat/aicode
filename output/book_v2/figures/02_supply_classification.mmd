@@ -1,0 +1,32 @@
+# 供给分类体系图
+## Supply Classification System
+
+```mermaid
+flowchart TB
+    ROOT["供给 / Supply"] --> PHYSICAL["实物商品 / Physical Goods"]
+    ROOT --> SERVICE["服务提供 / Services"]
+    ROOT --> DIGITAL["数字内容 / Digital Content"]
+    ROOT --> HYBRID["混合形态 / Hybrid Forms"]
+    
+    PHYSICAL --> CONSUMABLE["消耗品 / Consumables"]
+    PHYSICAL --> DURABLE["耐用品 / Durable Goods"]
+    PHYSICAL --> FOOD["食品生鲜 / Food & Fresh"]
+    
+    SERVICE --> CONSULTING["咨询服务 / Consulting"]
+    SERVICE --> MAINTENANCE["维保服务 / Maintenance"]
+    SERVICE --> EDUCATION["教育服务 / Education"]
+    SERVICE --> ENTERTAINMENT["娱乐服务 / Entertainment"]
+    
+    DIGITAL --> SOFTWARE["软件应用 / Software"]
+    DIGITAL --> MEDIA["媒体内容 / Media Content"]
+    DIGITAL --> DATA["数据产品 / Data Products"]
+    
+    HYBRID --> DEVICE["硬件+服务 / Device+Service"]
+    HYBRID --> MEMBERSHIP["会员权益 / Membership"]
+    
+    style ROOT fill:#ff9800,color:#000
+    style PHYSICAL fill:#4caf50,color:#000
+    style SERVICE fill:#2196f3,color:#000
+    style DIGITAL fill:#9c27b0,color:#000
+    style HYBRID fill:#f44336,color:#000
+```

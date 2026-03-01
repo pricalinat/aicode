@@ -1,0 +1,10 @@
+flowchart TB
+    subgraph BERT
+        B[BERT] --> B1[双向Attention]
+        B1 --> B2[MLM预训练]
+    end
+    
+    subgraph GPT
+        G[GPT] --> G1[单向Attention]
+        G1 --> G2[自回归生成]
+    end

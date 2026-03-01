@@ -371,8 +371,24 @@ class RiskPolicyTagger:
 
         Returns number of new tags applied.
         """
-        results = self.evaluate_policies(entity_id=entity_id)
-        return len([r for r in results if r.risk_tag is not None])
+        if entity_id is not None:
+            before_counts = {entity_id: len(self._risk_tags.get(entity_id, []))}
+        else:
+            before_counts = {
+                eid: len(tags) for eid, tags in self._risk_tags.items()
+            }
+
+        self.evaluate_policies(entity_id=entity_id)
+
+        if entity_id is not None:
+            after_count = len(self._risk_tags.get(entity_id, []))
+            return max(0, after_count - before_counts.get(entity_id, 0))
+
+        total_new_tags = 0
+        for eid, tags in self._risk_tags.items():
+            before_count = before_counts.get(eid, 0)
+            total_new_tags += max(0, len(tags) - before_count)
+        return total_new_tags
 
     def generate_compliance_report(
         self,

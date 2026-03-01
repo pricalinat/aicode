@@ -1,0 +1,14 @@
+{
+  "paper_id": "2304.09282",
+  "title": "Deep Learning Cf",
+  "category": "product_matching",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:50:30.556838",
+  "summary": "This paper is a focused survey of deep learning methods applied specifically to collaborative filtering recommender systems, motivated by information overload and the limits of traditional CF under sparse data and cold start. It positions itself as narrower than prior deep learning recommender surveys by concentrating on CF-based systems and using that focus to identify which deep architectures are most used, where gaps remain, and which datasets dominate the literature.\n\nIt first reviews recommender system families (content-based, collaborative filtering, hybrid) and then explains CF mechanics with a worked user–item matrix example: computing user similarity (Jaccard similarity, cosine similarity, and Pearson correlation coefficient), selecting a Top-N neighborhood via k-nearest neighbors, and predicting ratings via neighborhood aggregation. It highlights key CF challenges: sparsity (limited ratings or interactions), cold start (new users or items), and grey sheep users (atypical tastes that do not match others), and it summarizes common mitigation ideas such as using trust propagation, social or demographic/context data, and linked open data sources.\n\nThe survey then catalogs deep learning architectures used for CF, emphasizing two dominant families and giving briefer coverage to others. Key takeaways include:\n- Most common CF deep models: restricted Boltzmann machines and autoencoders, frequently used for unsupervised feature extraction and dimensionality reduction that fit sparse user–item matrices.\n- Less-studied directions in CF: RNNs, CNNs, MLPs, deep belief networks, attentional networks, and GAN-based recommenders appear comparatively rarely in the reviewed CF-focused studies.\n- Dataset concentration: MovieLens is reported as the most frequently used dataset across the reviewed deep CF papers, with Netflix and a long tail of other datasets used far less often; the paper also notes a peak in publication count around 2016 among the reviewed works.\n\n*Autoencoders and Restricted Boltzmann Machine (RBM) are the most popular deep learning architecture for building collaborative filtering-based recommender systems.*\n\n*MovieLens is the most common dataset in building collaborative filtering-based recommender systems that used deep learning architectures.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

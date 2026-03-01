@@ -1,0 +1,10 @@
+flowchart TB
+    Ali[AliCoCo] --> Data[数据层]
+    Ali --> Build[构建层]
+    Ali --> Serve[服务层]
+    
+    Data --> User[用户行为]
+    Data --> Product[商品]
+    
+    Build --> Concept[概念]
+    Build --> Rel[关系]

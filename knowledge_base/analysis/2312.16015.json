@@ -1,0 +1,14 @@
+{
+  "paper_id": "2312.16015",
+  "title": "Recsys Eval Survey",
+  "category": "ecommerce_evaluation",
+  "year": 2023,
+  "timestamp": "2026-03-01T14:02:08.605980",
+  "summary": "This paper surveys how to evaluate recommendation systems in a holistic way, arguing that evaluation should go beyond technical accuracy because recommendations affect user satisfaction and business outcomes. It organizes evaluation into five metric families and emphasizes that metric choice is contextual, with trade-offs where improving one dimension can harm another. *The performance of recommendation systems is multi-dimensional and cannot be encapsulated by a single metric.*\n\nThe survey breaks down the metric families and gives definitions, formulas, and guidance on when each is appropriate:\n- Similarity metrics for content-based and collaborative filtering, including cosine, Euclidean, Jaccard, Hamming, Manhattan, Chebyshev, adjusted cosine, Pearson correlation, and Spearman rank correlation, plus a use case summary table.\n- Candidate generation metrics aimed at balancing relevance with exploration and avoiding overload, focusing on novelty, diversity (including intra-list diversity), serendipity, catalog coverage, and distributional coverage (often via entropy), with a use case summary table.\n- Predictive metrics for rating or preference prediction accuracy, covering RMSE, MAE, MSE, MAPE, R2, and explained variance, including notes on interpretability pitfalls such as MAPE with very small actual values.\n- Ranking metrics for top-K ordered recommendation quality, including MRR, ARHR@k, nDCG@K, Precision@k, Recall@k, F1@K, average recall and precision at K, and MAP, with scenario guidance.\n\nIt also discusses business metrics that connect recommender performance to outcomes such as CTR and downstream adoption or conversion proxies (for example Long CTR and Take rate), as well as sales, revenue, sales distribution shifts, engagement, retention, and the difficulty of attribution. The paper reports experiments across MovieLens 100k, 1m, and 10m and Amazon Electronics plus Movies and TV, presenting tables comparing similarity measures and showing candidate generation metrics trends with dataset scale, plus predictive and ranking results for multiple algorithms (including ALS, SVD, and others like NCF, BPR, BiVAE, LightGCN). The conclusion argues that real value depends heavily on user feedback and online validation and highlights A/B testing as the bridge between model metrics and business impact. *A/B testing emerges as an essential tool, bridging the gap between ML model predictions and tangible business outcomes.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

@@ -1,0 +1,317 @@
+[
+  {
+    "filename": "2102.12029_product_embedding_theory.pdf",
+    "arxiv_id": "2102.12029",
+    "title": "product embedding theory",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2011.02260_gnn_recommender_survey.pdf",
+    "arxiv_id": "2011.02260",
+    "title": "gnn recommender survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2304.04330_pretrained_embeddings_ecommerce.pdf",
+    "arxiv_id": "2304.04330",
+    "title": "pretrained embeddings ecommerce",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2504.07567_image_embedding_ecommerce.pdf",
+    "arxiv_id": "2504.07567",
+    "title": "image embedding ecommerce",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2307.02046_llm_recommender_survey.pdf",
+    "arxiv_id": "2307.02046",
+    "title": "llm recommender survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2307.04644_fairness_diversity_survey.pdf",
+    "arxiv_id": "2307.04644",
+    "title": "fairness diversity survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2102.06156_personalized_embedding_ebay.pdf",
+    "arxiv_id": "2102.06156",
+    "title": "personalized embedding ebay",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2412.03581_ecommerce_ltr_survey.pdf",
+    "arxiv_id": "2412.03581",
+    "title": "ecommerce ltr survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2311.02084_item_embedding.pdf",
+    "arxiv_id": "2311.02084",
+    "title": "item embedding",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2109.12843_gnn_rec_survey.pdf",
+    "arxiv_id": "2109.12843",
+    "title": "gnn rec survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2405.12442_concept_recommendation_llm.pdf",
+    "arxiv_id": "2405.12442",
+    "title": "concept recommendation llm",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2306.04833_etsy_unified_embedding.pdf",
+    "arxiv_id": "2306.04833",
+    "title": "etsy unified embedding",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2411.00341_bundle_survey.pdf",
+    "arxiv_id": "2411.00341",
+    "title": "bundle survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2407.21022_retrieval_survey.pdf",
+    "arxiv_id": "2407.21022",
+    "title": "retrieval survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2506.17287_recommender_systems_survey.pdf",
+    "arxiv_id": "2506.17287",
+    "title": "recommender systems survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2407.13699_recsys_survey.pdf",
+    "arxiv_id": "2407.13699",
+    "title": "recsys survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2305.19860_llm_recommendation_survey.pdf",
+    "arxiv_id": "2305.19860",
+    "title": "llm recommendation survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2106.09297_taobao_embedding.pdf",
+    "arxiv_id": "2106.09297",
+    "title": "taobao embedding",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2302.03525_deep_recsys_survey.pdf",
+    "arxiv_id": "2302.03525",
+    "title": "deep recsys survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2412.01378_dnn_cf_survey.pdf",
+    "arxiv_id": "2412.01378",
+    "title": "dnn cf survey",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2112.05677_concept_representation_learning.pdf",
+    "arxiv_id": "2112.05677",
+    "title": "concept representation learning",
+    "category": "product_matching",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "1405.2584_sentiment_survey.pdf",
+    "arxiv_id": "1405.2584",
+    "title": "sentiment survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2302.04473_multimodal_recommender_survey.pdf",
+    "arxiv_id": "2302.04473",
+    "title": "multimodal recommender survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2311.11250_sentiment_survey.pdf",
+    "arxiv_id": "2311.11250",
+    "title": "sentiment survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2307.04644_fairness_diversity_survey.pdf",
+    "arxiv_id": "2307.04644",
+    "title": "fairness diversity survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2412.03581_ecommerce_ltr_survey.pdf",
+    "arxiv_id": "2412.03581",
+    "title": "ecommerce ltr survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "1307.3336_opinion_mining_survey.pdf",
+    "arxiv_id": "1307.3336",
+    "title": "opinion mining survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2503.14110_cross_domain_survey.pdf",
+    "arxiv_id": "2503.14110",
+    "title": "cross domain survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2411.00341_bundle_survey.pdf",
+    "arxiv_id": "2411.00341",
+    "title": "bundle survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "1804.11192_explainable_survey.pdf",
+    "arxiv_id": "1804.11192",
+    "title": "explainable survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2208.06265_trustworthy_survey.pdf",
+    "arxiv_id": "2208.06265",
+    "title": "trustworthy survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2504.07567_Image_Embedding_Benchmark.pdf",
+    "arxiv_id": "2504.07567",
+    "title": "Image Embedding Benchmark",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2302.08092_product_qa_survey.pdf",
+    "arxiv_id": "2302.08092",
+    "title": "product qa survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "1902.04864_session_survey.pdf",
+    "arxiv_id": "1902.04864",
+    "title": "session survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2109.10665_rl_recommender_survey.pdf",
+    "arxiv_id": "2109.10665",
+    "title": "rl recommender survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2312.16015_recsys_eval_survey.pdf",
+    "arxiv_id": "2312.16015",
+    "title": "recsys eval survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2308.01118_popularity_bias_survey.pdf",
+    "arxiv_id": "2308.01118",
+    "title": "popularity bias survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2202.02757_fashion_recommender_survey.pdf",
+    "arxiv_id": "2202.02757",
+    "title": "fashion recommender survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2212.14464_diversity_survey.pdf",
+    "arxiv_id": "2212.14464",
+    "title": "diversity survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2308.04929_ab_testing_survey.pdf",
+    "arxiv_id": "2308.04929",
+    "title": "ab testing survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2502.10050_LLM_Agent_RecSys_Survey.pdf",
+    "arxiv_id": "2502.10050",
+    "title": "LLM Agent RecSys Survey",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2311.16789_Dialogue_Systems_Survey.pdf",
+    "arxiv_id": "2311.16789",
+    "title": "Dialogue Systems Survey",
+    "category": "mini_program_service",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2207.14627_Dialog_State_Tracking_Survey.pdf",
+    "arxiv_id": "2207.14627",
+    "title": "Dialog State Tracking Survey",
+    "category": "mini_program_service",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2507.21504_LLM_Agent_Eval_Survey.pdf",
+    "arxiv_id": "2507.21504",
+    "title": "LLM Agent Eval Survey",
+    "category": "mini_program_service",
+    "chapter": "ch01_foundation"
+  },
+  {
+    "filename": "2410.06011_Text_to_SQL_Survey.pdf",
+    "arxiv_id": "2410.06011",
+    "title": "Text to SQL Survey",
+    "category": "mini_program_service",
+    "chapter": "ch01_foundation"
+  }
+]

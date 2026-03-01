@@ -1,0 +1,6 @@
+flowchart LR
+    E[embedding] --> D[Dense]
+    E --> S[Sparse]
+    
+    D --> V[Word2Vec/BERT]
+    S --> T[TF-IDF/BM25]

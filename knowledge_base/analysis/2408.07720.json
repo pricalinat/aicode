@@ -1,0 +1,14 @@
+{
+  "paper_id": "2408.07720",
+  "title": "Process Mining Ai Agents",
+  "category": "mini_program_service",
+  "year": 2024,
+  "timestamp": "2026-03-01T13:59:02.592123",
+  "summary": "The paper argues that current process mining uses of large language models work well for simple tasks but often fail on complex, multi-step analyses that require reliable computation plus careful interpretation. To address this, it proposes using an AI-Based Agents Workflow, or AgWf, that decomposes a user goal into smaller AI-based tasks and pairs them with deterministic tools from process mining libraries, aiming to improve overall answer quality rather than reproducibility.\n\nAgWf is formalized as a workflow over strings with two kinds of components: deterministic tools and non-deterministic AI-based tasks, including a non-deterministic tool-selection step. The paper illustrates this with running examples where different textual abstractions of an event log, such as directly-follows graphs and process variants, are computed by tools and then interpreted by specialized tasks, with an ensemble task synthesizing a final response. It compares alternative implementations for fairness or bias detection, claiming that multi-task workflows with separated responsibilities and complementary abstractions are more effective than one-shot prompting.\n\nIt also categorizes task roles useful in process mining pipelines, including prompt optimizers, ensembles, routers, evaluators, and output improvers, and discusses practical implementation using the CrewAI Python framework with agents defined as an LLM plus a role-specific system prompt. Two example workflows are described: a fairness assessment pipeline using code generation plus tool-driven comparisons stored in workflow memory, and a root cause analysis pipeline that adds scoring and evaluation steps. Future directions include automatic workflow definition by an orchestrating model, keeping humans in the loop via clarification requests, better evaluation of individual task quality and multi-agent collaboration, and improved maturity of orchestration frameworks.\n\n*In this paper, we propose the application of the AI-Based Agents Workflow (AgWf) paradigm [10] in the PM context.*\n\n*AgWf(s) combine deterministic functions (called tools) and non-deterministic functions (AI-based tasks) to take the best of the two worlds:*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

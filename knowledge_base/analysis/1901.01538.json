@@ -1,0 +1,14 @@
+{
+  "paper_id": "1901.01538",
+  "title": "Rest Api Test Generation",
+  "category": "mini_program_service",
+  "year": 2019,
+  "timestamp": "2026-03-01T14:02:20.074498",
+  "summary": "Andrea Arcuri presents a white-box, fully automated approach for generating integration tests for RESTful APIs, aimed at helping service developers who have access to the source code. The technique generates sequences of HTTP requests and uses an evolutionary algorithm to optimize for two main goals: higher code coverage and fault finding, with server-side 5xx HTTP responses treated as a practical automated oracle for likely bugs.\n\nThe approach is implemented in an open-source tool called EvoMaster, which combines runtime code instrumentation with search-based test generation. Key elements include retrieving the API surface from a Swagger JSON description, instrumenting the service to measure statement coverage and branch-distance style heuristics, and exporting those metrics over a dedicated REST endpoint so the test generator can run in a separate process and remain language-agnostic in principle. Tests are evolved as whole test suites with archiving of tests that newly cover targets, and the tool outputs self-contained JUnit tests (Java or Kotlin) that start the service on an ephemeral port, reset state between tests, and assert primarily on returned HTTP status codes.\n\nIn an empirical study on three non-trivial services (two open source and one industrial), 30 runs per system with a fixed evaluation budget produced compact final suites that uncovered many distinct 5xx cases; manual analysis determined 38 real bugs across the subjects, while also showing a coverage gap versus existing handwritten tests. Generated statement coverage ranged from 18 to 41 percent, compared to 43 to 82 percent for the manual suites, and the paper attributes the shortfall mainly to hard-to-satisfy string constraints plus limited ability to reason about or manipulate database state and external service dependencies. The discussion and conclusion emphasize future work on better string handling, incorporating database and external service interactions into the search process, and extending the instrumentation library concept beyond the JVM to other common service platforms.\n\n*Our novel technique automatically found 38 real faults in the analyzed web services.*\n\n*String constraints, accesses to databases and external web services are the current main impediments.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "paper_id": "1903.04254",
+  "title": "Large Scale Categorization",
+  "category": "product_matching",
+  "year": 2019,
+  "timestamp": "2026-03-01T14:34:13.792594",
+  "summary": "This paper tackles large scale product categorization for ecommerce as an extreme multi class text problem with millions of products and several thousand leaf classes, complicated by a non stationary catalog and taxonomy, highly variable data quality, and the fact that each product has only a small, category dependent subset of tens of thousands of possible structured attributes. The authors compare hierarchical, taxonomy guided classifiers against single step flat deep learning models, and argue that flat models can be both more accurate and operationally simpler for low latency inference at scale.\n\nThey evaluate two flat architectures that treat each unstructured field separately, then combine the resulting representations into a single product signature: a Multi CNN with multiple filter widths per attribute and max pooling, and a Multi LSTM with per attribute bidirectional LSTMs and an optional second level LSTM over attribute encodings. A central contribution is a scalable way to use structured attributes by converting attribute name and value pairs into one unstructured token sequence, inserting a separator token between attributes, and extracting features with CNN filters so the model can learn from both attribute presence and attribute values without per attribute feature engineering or per attribute embedding tables.\n\n*We combine all the structured attributes associated with the product in an unstructured fashion.*  \n*While concatenating the structured attribute names and values together, it is beneficial to use a separator token between two attributes.*\n\nExperiments use about 25 million labeled examples across roughly 6000 leaf product types, with stratified splits and oversampling to ensure at least 200 samples per low support class, and training with SGD plus cosine restarts. Reported top 1 accuracy improves from 70 percent for the hierarchical logistic regression baseline to about 90 percent for flat Multi CNN or Multi LSTM using unstructured text, and rises to about 92 percent when adding the structured attribute CNN block, a gain of roughly 2.7 percentage points; the separator token also measurably helps. They also describe deployment as GPU backed microservices with Redis based microbatching, and conclude that large diverse training data, careful taxonomy design, and the structured attributes as text approach together drive robust gains, with Multi CNN favored for speed and parallelism.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

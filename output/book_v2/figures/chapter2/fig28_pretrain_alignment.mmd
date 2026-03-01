@@ -1,0 +1,5 @@
+flowchart LR
+    PA[预训练对齐] --> PT[预训练]
+    PT --> RL[RLHF]
+    RL --> DPO[DPO]
+    DPO --> SFT[+SFT]

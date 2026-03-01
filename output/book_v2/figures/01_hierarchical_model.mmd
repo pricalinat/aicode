@@ -1,0 +1,46 @@
+# 供给理解的层次化模型架构图
+## Hierarchical Model Architecture for Supply Understanding
+
+```mermaid
+flowchart TB
+    subgraph INPUT["输入层 / Input Layer"]
+        A["原始供给 / Raw Supply"]
+        B["商品信息 / Product Info"]
+        C["服务描述 / Service Description"]
+    end
+    
+    subgraph PROCESS["处理层 / Processing Layer"]
+        D["数据清洗 / Data Cleaning"]
+        E["特征提取 / Feature Extraction"]
+        F["语义编码 / Semantic Encoding"]
+    end
+    
+    subgraph OUTPUT["输出层 / Output Layer"]
+        G["供给向量 / Supply Vector"]
+        H["知识图谱 / Knowledge Graph"]
+        I["理解模型 / Understanding Model"]
+    end
+    
+    subgraph APPLICATION["应用层 / Application Layer"]
+        J["智能匹配 / Intelligent Matching"]
+        K["质量评估 / Quality Evaluation"]
+        L["个性化推荐 / Personalization"]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    F --> I
+    G --> J
+    H --> K
+    I --> L
+    
+    style INPUT fill:#e1f5fe
+    style PROCESS fill:#fff3e0
+    style OUTPUT fill:#e8f5e9
+    style APPLICATION fill:#fce4ec
+```

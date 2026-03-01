@@ -1,0 +1,10 @@
+flowchart TB
+    subgraph 分类
+        C[CLS] --> FC[Linear] --> C1[输出]
+    end
+    subgraph 序列标注
+        S[每个token] --> FC2[Linear] --> S1[标签]
+    end
+    subgraph 问答
+        Q[开始/结束位置] --> FC3[Linear] --> Q1[位置]
+    end

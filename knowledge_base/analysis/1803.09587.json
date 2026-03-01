@@ -1,0 +1,14 @@
+{
+  "paper_id": "1803.09587",
+  "title": "Session Eval",
+  "category": "ecommerce_evaluation",
+  "year": 2018,
+  "timestamp": "2026-03-01T13:48:30.628674",
+  "summary": "This paper presents a comprehensive evaluation of session-based recommendation algorithms across multiple domains. The authors compare simple baseline methods, nearest-neighbor techniques, recurrent neural networks (specifically GRU4Rec), and factorization-based approaches using e-commerce, music, and news datasets.\n\nThe key finding is that simpler methods often perform as well as or better than complex deep learning approaches. The session-based k-nearest-neighbor method consistently ranked among the top performers across datasets, while GRU4Rec—despite being a popular RNN-based approach—did not substantially outperform simpler baselines. Simple sequential rules also proved surprisingly competitive, often matching or exceeding more sophisticated factorization methods like FISM and Fossil.\n\nThe research reveals that factorization-based methods designed for long-term user profiles performed poorly in pure session-based scenarios, suggesting they are not well-suited for anonymous user settings. The authors argue that there is substantial room for improvement in developing more sophisticated session-based algorithms, and they advocate for using simple methods as mandatory baselines in future research.\n\nThe computational analysis shows that simple methods require minimal training time (under 3 minutes) compared to deep learning approaches (6-8 hours), while maintaining competitive accuracy. This suggests practitioners should consider simpler approaches before deploying complex models.\n\nThe authors conclude that future work should focus on developing models that better leverage sequential information beyond just the most recent events, and they provide their code online to enable reproducible research on this important practical problem.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

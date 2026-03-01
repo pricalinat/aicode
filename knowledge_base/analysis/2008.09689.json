@@ -1,0 +1,14 @@
+{
+  "paper_id": "2008.09689",
+  "title": "Bert Ecommerce Search",
+  "category": "product_matching",
+  "year": 2020,
+  "timestamp": "2026-03-01T14:39:15.725642",
+  "summary": "This paper describes a practical approach to improving e-commerce non-default search ranking, where results are intentionally sorted by factors like price or sales and can surface irrelevant items near the top. The authors propose a two-stage system: first, a high-recall candidate selection step based on refined query and title keyword matching; second, a relevance classifier using BERT-Large fine-tuned on human-labeled query and item title pairs. They report strong competition results in the SIGIR 2019 High accuracy recall task, placing 1st in the supervised phase and 2nd in the final phase under F1-based metrics.\n\nThe coarse recall stage applies standard NLP preprocessing for term matching, including tokenization, stopword removal, stemming, and synonym expansion. On the challenge data, they start from 899k items and 150 queries that form about 150 million query item pairs, then reduce scoring to about 5 million pairs after recall filtering. For ranking, they fine-tune a pretrained BERT model as a binary classifier using the [CLS] pooled representation passed to a simple classifier, and they also explore enhancements like a second-phase MLP head and score averaging ensembles across multiple BERT variants.\n\nA major focus is scalability: they parallelize prediction across multiple GPUs and multiple hosts, using NFS-mounted shared storage and orchestration that launches jobs via ssh so worker machines contribute CPU ingestion plus GPU forward passes while writing outputs back centrally. They also build a TensorFlow C++ tokenization custom op to tokenize on the fly and avoid maintaining multiple pre-tokenized tf.Example copies for different models. Experiments show incremental gains from whole word masking and small MLP heads, with ensembles performing best, while adding price and breadcrumb text yields modest improvements and an ImageNet-style Inception V3 image model performs far worse than text-based BERT and does not help ensembles.\n\n*In this work, we propose a two-stage ranking scheme, which first recalls wide range of candidate items through refined query title keyword matching.*\n\n*After the coarse-grained item recall process, we eliminated the candidate pairs to approximately 5 millions.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

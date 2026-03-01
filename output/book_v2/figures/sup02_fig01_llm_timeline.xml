@@ -1,0 +1,16 @@
+@startuml
+title Diagram
+skinparam shadowing false
+
+"Year" --> "2020: GPT-3"
+"Year" --> "2021: Codex"
+"Year" --> "2022: ChatGPT"
+"Year" --> "2023: GPT-4"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

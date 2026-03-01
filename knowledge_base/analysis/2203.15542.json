@@ -1,0 +1,14 @@
+{
+  "paper_id": "2203.15542",
+  "title": "Paper",
+  "category": "mini_program_service",
+  "year": 2022,
+  "timestamp": "2026-03-01T14:02:46.903720",
+  "summary": "This paper argues that click-through rate prediction in e-commerce search is limited when models only learn from positive feedback like clicks, because the user’s full intent is expressed within a sequence of search result pages that include both clicked and skipped items and the surrounding page context. It introduces Contextualized Page-wise Feedback, where each historical page is treated as a structured unit containing the exposed items plus the user’s interactions, so models can capture intra-page context effects and inter-page interest evolution as a user browses.\n\nThe proposed model, RACP Recurrent Attention over Contextualized Page sequence, uses a hierarchical design: an embedding layer for user, query, and item features; an intra-page context-aware attention module that weights items within each page using item features, feedback type, and page-context features; an inter-page interest backtracking layer that updates each earlier page’s attention query using a backward gated recurrent process to denoise and refine intent based on later pages; and a page-level aggregation module to form a final session interest vector for CTR prediction via an MLP with a standard log-loss objective. The method is positioned against prior sequential CTR models that use only click sequences or model clicked and unclicked behaviors separately, emphasizing that page structure and the interaction between positive and negative feedback within the same page are key signals.\n\nExperiments on a public dataset and a large industrial Taobao dataset show RACP outperforming baselines including NCF, DeepFM, YoutubeNet, DIN, DFN, and DSTN, with the largest gains attributed to modeling page-wise structure and the backtracking mechanism. Ablation studies report performance drops when removing action types, excluding either clicked or unclicked items, splitting clicks and non-clicks into separate sequences, removing interest backtracking, or flattening pages into a single long sequence, supporting the necessity of both intra-page context and inter-page dynamics. The paper also reports an online Taobao Search A/B test over 7 days with statistically significant improvements in order count and GMV, and provides a case study where attention weights align with item and page relevance to the target item, suggesting interpretability.\n\n*We conduct extensive experiments on both public dataset and production dataset.*\n\n*RACP has been deployed online successfully in Taobao Search.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

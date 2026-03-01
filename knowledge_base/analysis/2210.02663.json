@@ -1,0 +1,14 @@
+{
+  "paper_id": "2210.02663",
+  "title": "Mobile Ui Semantic Understanding",
+  "category": "mini_program_service",
+  "year": 2022,
+  "timestamp": "2026-03-01T14:00:20.886061",
+  "summary": "This paper targets better semantic understanding of mobile app screens to improve accessibility and automation, motivated by the scale of visual impairment worldwide and persistent gaps in mobile app labeling. It introduces an enhanced, human-annotated extension of the RICO mobile UI dataset, aiming to make UI elements easier to identify and describe, especially for screen-reader and voice-driven interactions. The release includes a large set of new annotations, plus baseline models that generalize to unseen apps.\n\nThe dataset adds three main annotation types on RICO screenshots, emphasizing direct human-labeled bounding boxes rather than relying only on noisy or incomplete view hierarchies.  \n- **IconShape**: bounding boxes and labels for the most frequent 77 icon appearance classes, created to address missing or misaligned labels and increase coverage (including many icons missed by earlier automatic labeling).  \n- **IconSemantics**: semantic labels that distinguish identical-looking icons with different functions, built around 12 icon shapes subdivided into 38 semantic categories, with an OTHER label for uncovered long-tail meanings.  \n- **LabelAssociation**: links between UI elements (icons, text fields, check boxes, radio buttons) and nearby text labels, reflecting that a substantial minority of elements have associated text, but that rule-based view-hierarchy heuristics and OCR proximity matching perform poorly, making the task non-trivial.\n\nBaseline experiments compare object detection and bounding-box classification setups using image-only vs multimodal inputs (image, OCR, and view hierarchy attributes). For object detection, Transformer-based DETR variants outperform Faster R-CNN and CenterNet on icon shape and semantics, while classification models benefit from view hierarchy attributes and show limited gains from OCR. The paper also highlights a sizable performance gap between bounding-box classification (assuming good boxes) and full object detection, and frames the work as enabling practical applications like improved accessibility label suggestion in developer tools, better voice control, and screen summarization.\n\n*We conducted several experiments to investigate the effectiveness of various deep learning approaches for solving the tasks presented in Sec-tion 3.*  \n\n*DETR models achieve an mAP@0.5IOU of 77.94% on the test set vs 72.50% for CenterNet models on IconShape task.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

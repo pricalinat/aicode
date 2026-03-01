@@ -1,0 +1,14 @@
+{
+  "paper_id": "2506.17287",
+  "title": "Ecommerce Recsys Ml",
+  "category": "ecommerce_evaluation",
+  "year": 2025,
+  "timestamp": "2026-03-01T13:52:54.169000",
+  "summary": "This paper presents a systematic literature review (SLR) analyzing 38 publications from 2013 to 2025 to evaluate machine learning methods used in e-commerce recommendation systems. The researchers from Lodz University of Technology examined studies from IEEE Xplore, ScienceDirect, and ACM Digital Library, focusing on collaborative filtering, content-based filtering, hybrid models, deep learning, and reinforcement learning approaches. The review addressed four key research questions regarding ML effectiveness, implementation challenges, hybrid system advantages, and emerging trends.\n\nThe analysis identified collaborative filtering as the most frequently employed method, appearing in 9 of the reviewed studies, followed by content-based filtering and hybrid methods. Hybrid approaches emerged as superior to traditional methods because they combine the strengths of multiple algorithms to address diverse user needs and complex datasets. Deep learning and reinforcement learning are emerging as promising but less common techniques due to their computational complexity and high resource requirements.\n\nThe review highlighted several critical challenges in implementing e-commerce recommendation systems: the cold start problem (addressed through hybrid approaches using demographics and product categories), data sparsity (mitigated by combining explicit and implicit feedback), accuracy versus diversity trade-offs, and scalability concerns. Privacy issues were also identified as significant, with hybrid systems offering solutions through anonymized or aggregated data handling.\n\nPerformance metrics such as accuracy, precision, recall, F1-score, MAE, and RMSE were reported across studies, though direct comparisons proved difficult due to varying datasets and optimization approaches. The paper emphasizes that while hybrid recommendation systems offer improved precision and relevance, they require substantial infrastructure and careful attention to scalability and complexity. Future research should prioritize addressing cold-start issues, scalability problems, and ethical concerns including data privacy and fairness in machine learning-based recommendation systems.",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/claude/sonnet",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

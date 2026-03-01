@@ -1,0 +1,11 @@
+@startuml
+title MMR多样性算法
+skinparam shadowing false
+
+"候选商品" --> "相关度计算"
+"相关度计算" --> "与已选商品相似度"
+"与已选商品相似度" --> "MMR得分"
+"MMR得分" --> "商品选择"
+"商品选择" --> "重复选择"
+"lambda参数" --> "MMR得分"
+@enduml

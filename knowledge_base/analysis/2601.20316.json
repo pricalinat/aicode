@@ -1,0 +1,14 @@
+{
+  "paper_id": "2601.20316",
+  "title": "Less is More: Benchmarking LLM-Based Recommendation Agents",
+  "category": "ecommerce_evaluation",
+  "year": 2026,
+  "timestamp": "2026-03-01T16:43:38.006701",
+  "summary": "# Less is More: Benchmarking LLM-Based Recommendation Agents\n\nThis paper systematically investigates the relationship between context length and recommendation quality in LLM-based recommendation systems. The key finding challenges the \"more context is better\" paradigm.\n\n## Research Question\nDoes providing more user purchase history improve LLM-based product recommendation quality?\n\n## Methodology\n- Dataset: REGEN (Office Products)\n- Models: GPT-4o-mini, DeepSeek-V3, Qwen2.5-72B, Gemini 2.5 Flash\n- Context lengths: 5, 10, 15, 25, 50 items\n\n## Key Findings\n\n### 1. Flat Quality Curves\n- All four models show NO significant quality improvement as context length increases from 5 to 50 items\n- Quality scores remain in 0.17-0.23 range with overlapping confidence intervals\n- This pattern holds across models from four different providers\n\n### 2. Cost Implications\n- Token usage increases 8× when moving from 5 to 50 items\n- Quality remains unchanged\n- Potential cost savings: up to 88% by using minimal context\n\n### 3. Latency Analysis\n- Model-specific patterns observed\n- Qwen2.5-72B maintains stable, fast latency (4.11-4.39s)\n- Gemini 2.5 Flash shows increasing latency with context length\n\n## Why Doesn't More Context Help?\n1. \"Lost in the Middle\" phenomenon - LLMs struggle with middle context\n2. Recency bias - recent purchases are more predictive\n3. Signal saturation - additional items add noise\n4. Task difficulty - inherent ceiling on prediction accuracy\n\n## Practical Recommendations\n1. Use minimal context (5-10 items) for cost-effective recommendations\n2. For latency-sensitive: Qwen2.5-72B\n3. For cost-sensitive: GPT-4o-mini with 10-15 items\n\n## Limitations\n- Single domain (Office Products)\n- Simple prompt template\n- Modest absolute quality scores (0.17-0.23)\n\n*This finding challenges assumptions in the recommendation community and provides evidence-based guidelines for deploying cost-effective LLM-based recommendation systems.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

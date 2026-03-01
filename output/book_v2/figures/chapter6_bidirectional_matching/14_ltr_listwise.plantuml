@@ -1,0 +1,11 @@
+@startuml
+title Listwise排序方法
+skinparam shadowing false
+
+"文档列表" --> "整体特征"
+"整体特征" --> "列表排序"
+"列表排序" --> "Listwise损失"
+"Listwise损失" --> "排序模型"
+"排序模型" --> "排序结果"
+"序列建模" --> "列表排序"
+@enduml

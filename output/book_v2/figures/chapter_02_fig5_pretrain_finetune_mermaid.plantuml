@@ -1,0 +1,18 @@
+@startuml
+title 预训练 vs 微调对比
+skinparam shadowing false
+
+"大规模无标注数据" --> "自监督学习<br/>MLM/NSP/CLM"
+"自监督学习<br/>MLM/NSP/CLM" --> "通用预训练模型<br/>BERT/GPT"
+"预训练模型" --> "特定任务数据"
+"特定任务数据" --> "任务适配层"
+"任务适配层" --> "任务微调"
+"通用预训练模型<br/>BERT/GPT" --> "预训练模型"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

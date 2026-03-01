@@ -1,0 +1,14 @@
+{
+  "paper_id": "2510.13359",
+  "title": "Vlm Ecommerce Recommendation",
+  "category": "ecommerce_evaluation",
+  "year": 2025,
+  "timestamp": "2026-03-01T14:01:44.405399",
+  "summary": "This paper reports a production deployment at Mercari of a vision-language model based image encoder for visually similar item recommendations, aimed at helping users discover relevant products when text descriptions are inconsistent or missing standard identifiers. The authors fine-tune SigLIP on Mercari product image-title pairs and show that the resulting embeddings improve both offline ranking metrics and online business KPIs compared with the prior CNN based encoder.\n\nThe system follows a standard visual similarity pipeline: encode each item image into a vector, then retrieve nearest neighbors from a large vector index via approximate nearest neighbor search. They fine-tune multilingual SigLIP, pre-trained on WebLI, using one million image-title pairs sampled from listings created April 29 to July 29, 2024, after excluding reserved listings where titles often do not describe images; training runs for 5 epochs with batch size 256 and learning rate 5e-5 on NVIDIA L4 GPUs. Offline evaluation on historical impression and tap logs compares fine-tuned SigLIP against an ImageNet pretrained MobileNetV2 encoder, reporting gains of 9.1 percent in nDCG@5 (0.607 to 0.662) and 15.7 percent in Precision@1 (0.356 to 0.412).\n\nFor deployment efficiency, they compress 768 dimensional SigLIP embeddings to 128 dimensions using PCA fit on 20 million item embeddings, reducing storage by about 83 percent while keeping most quality gains, with nDCG@5 dropping from 0.662 to 0.647 but still exceeding the MobileNetV2 baseline. The production architecture uses an asynchronous embedding generation and indexing pipeline, and a real-time retrieval service that fetches the query items precomputed embedding, runs ANN search, then applies rule based filtering on price outliers and re-ranking by category similarity. In an online A/B test on the product detail page visually similar items module, the SigLIP plus PCA treatment improves click-through rate by 50 percent and conversion rate by 14 percent over the MobileNetV2 control, supporting the claim that VLM based encoders can capture fine grained and cross category visual similarities that translate into engagement and purchase lift.\n\n*In the online A/B test, the click-through rate improved by 50% whereas the conversion rate improved by 14% compared with the existing model.*\n\n*To improve deployment efficiency, we reduced the SigLIP embedding dimension from 768 to 128 using PCA fit on 20 million product embeddings.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

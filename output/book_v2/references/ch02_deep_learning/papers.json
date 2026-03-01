@@ -1,0 +1,156 @@
+[
+  {
+    "filename": "2310.04878_hybrid_gnn_bert.pdf",
+    "arxiv_id": "2310.04878",
+    "title": "hybrid gnn bert",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2505.07105_walmart_bert_relevance.pdf",
+    "arxiv_id": "2505.07105",
+    "title": "walmart bert relevance",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2510.11056_llm_bert_relevance.pdf",
+    "arxiv_id": "2510.11056",
+    "title": "llm bert relevance",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2304.09282_deep_learning_cf.pdf",
+    "arxiv_id": "2304.09282",
+    "title": "deep learning cf",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1904.07531_bert_ranking.pdf",
+    "arxiv_id": "1904.07531",
+    "title": "bert ranking",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1904.04096_deep_learning_sentiment_amazon.pdf",
+    "arxiv_id": "1904.04096",
+    "title": "deep learning sentiment amazon",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2010.06467_pretrained_transformers_ranking.pdf",
+    "arxiv_id": "2010.06467",
+    "title": "pretrained transformers ranking",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1805.03687_ecommerce_reviews_rnn.pdf",
+    "arxiv_id": "1805.03687",
+    "title": "ecommerce reviews rnn",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2010.10442_bert2dnn.pdf",
+    "arxiv_id": "2010.10442",
+    "title": "bert2dnn",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2112.01810_siamese_bert.pdf",
+    "arxiv_id": "2112.01810",
+    "title": "siamese bert",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1901.04085_passage_reranking_bert.pdf",
+    "arxiv_id": "1901.04085",
+    "title": "passage reranking bert",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2310.03481_personalized_transformer_reranking.pdf",
+    "arxiv_id": "2310.03481",
+    "title": "personalized transformer reranking",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1409.2944_collaborative_deep_learning.pdf",
+    "arxiv_id": "1409.2944",
+    "title": "collaborative deep learning",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2202.05317_bert_multitask.pdf",
+    "arxiv_id": "2202.05317",
+    "title": "bert multitask",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1908.10084_sentence_bert.pdf",
+    "arxiv_id": "1908.10084",
+    "title": "sentence bert",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1708.05031_neural_cf.pdf",
+    "arxiv_id": "1708.05031",
+    "title": "neural cf",
+    "category": "product_matching",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2102.07831_neuralndcg.pdf",
+    "arxiv_id": "2102.07831",
+    "title": "neuralndcg",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "1703.02344_deep_learning_visual_recommendation.pdf",
+    "arxiv_id": "1703.02344",
+    "title": "deep learning visual recommendation",
+    "category": "ecommerce_evaluation",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2306.06624_RestGPT.pdf",
+    "arxiv_id": "2306.06624",
+    "title": "RestGPT",
+    "category": "mini_program_service",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2304.07061_DroidBot_GPT.pdf",
+    "arxiv_id": "2304.07061",
+    "title": "DroidBot GPT",
+    "category": "mini_program_service",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2411.10670_IntentGPT.pdf",
+    "arxiv_id": "2411.10670",
+    "title": "IntentGPT",
+    "category": "mini_program_service",
+    "chapter": "ch02_deep_learning"
+  },
+  {
+    "filename": "2308.06165_Task_Conditioned_BERT.pdf",
+    "arxiv_id": "2308.06165",
+    "title": "Task Conditioned BERT",
+    "category": "mini_program_service",
+    "chapter": "ch02_deep_learning"
+  }
+]

@@ -1,0 +1,24 @@
+@startuml
+title BERT预训练流程
+skinparam shadowing false
+
+subgraph "Task 1: "MLM Loss""
+"输入: --> "随机掩盖15%token"
+"随机掩盖15%token" --> "预测位置]
+"预测[MASK" --> "MLM: Loss"
+subgraph "Task 2: "NSP Loss""
+"输入: --> "Sentence: A"
+"输入: --> "Sentence: B"
+"Sentence --> "判断B是否为A的下一句"
+"判断B是否为A的下一句" --> "NSP: Loss"
+"MLM --> "MLM: + NSP<br/>联合训练"
+"NSP --> "MLM: + NSP<br/>联合训练"
+"MLM --> "BERT: Pre-trained Model"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================

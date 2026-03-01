@@ -1,0 +1,14 @@
+{
+  "paper_id": "2510.11056",
+  "title": "Llm Bert Relevance",
+  "category": "product_matching",
+  "year": 2025,
+  "timestamp": "2026-03-01T14:41:58.778006",
+  "summary": "This paper targets query service relevance prediction for e-commerce search under tight latency constraints, where LLMs are too slow and lightweight BERT-style rankers lack deep reasoning and domain knowledge. It proposes a two-stage reasoning then distilling framework: first build a domain-adapted reasoning LLM that can produce both relevance labels and reasoning chains from search logs, then distill that capability into a small deployment model without requiring reasoning text at inference. *Query-service relevance prediction in e-commerce search systems faces strict latency requirements that prevent the direct application of Large Language Models (LLMs).*\n\nStage 1 creates the teacher via a three-step pipeline: domain-adaptive continued pre-training on a multi-task corpus built from search logs (7 million examples across seven task types such as query understanding, service understanding, pointwise and pairwise relevance), supervised fine-tuning on 45,000+ human-annotated query service samples with reasoning chains, and preference optimization using GRPO guided by a multi-dimensional reward model. The reward model scores outputs on five expert-annotated dimensions from 0 to 4: query understanding, service understanding, business rule compliance, reasoning consistency, and answer correctness, and the final RL reward combines process and label rewards with weighted coefficients.\n\nStage 2 introduces Contrastive Reasoning Self-Distillation, training a 6-layer Chinese BERT using two input views of the same model: a teacher configuration with query, service, reason and a student configuration with only query, service. It jointly optimizes (1) classification loss on both views with a down-weighted teacher term and (2) an in-batch InfoNCE contrastive alignment loss that pulls each student [CLS] representation toward its paired reasoning-augmented [CLS] while pushing against other samples. Key results include:\n- Teacher ablations: domain adaptation and weighted reward GRPO improve the reasoning LLM, reaching Macro F1 0.7174 versus much lower general-purpose LLM baselines.\n- Distillation: CRSD Full achieves Accuracy 0.7761, Macro F1 0.7076, Weighted F1 0.7583, outperforming label-only and prior embedding-alignment baselines; ablations show removing reasoning or using random reasoning hurts performance.\n- Online A/B test in Meituan search ads over two weeks shows lifts of +0.91% AdCTR, +1.06% AdCVR, +0.40% GTV, +0.11% UVCTR, +0.18% PVCTR, plus a reported 30.5 percentage point reduction in bad case rate in manual review. *Our final distilled model, CRSD Full, achieves a Macro F1 of 0.7076.*",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

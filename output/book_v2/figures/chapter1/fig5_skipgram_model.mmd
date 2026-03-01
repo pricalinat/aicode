@@ -1,0 +1,18 @@
+flowchart LR
+    subgraph Input
+        I[中心词] 
+    end
+    subgraph Hidden
+        H[投影层]
+    end
+    subgraph Output
+        O1[w(t-2)]
+        O2[w(t-1)]
+        O3[w(t+1)]
+        O4[w(t+2)]
+    end
+    
+    I --> H --> O1
+    H --> O2
+    H --> O3
+    H --> O4

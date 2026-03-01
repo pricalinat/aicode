@@ -1,0 +1,14 @@
+{
+  "paper_id": "2601.16492",
+  "title": "LLM-based Semantic Search for Conversational Queries in E-commerce",
+  "category": "ecommerce_evaluation",
+  "year": 2026,
+  "timestamp": "2026-03-01T16:44:42.137264",
+  "summary": "# LLM-based Semantic Search for Conversational Queries in E-commerce\n\nThis paper presents an LLM-based framework for semantic search in e-commerce that handles conversational, requirement-rich queries.\n\n## Core Innovation\nThe framework combines two signals:\n1. Dense semantic similarity (embeddings)\n2. Constraint satisfaction (structured filters)\n\nKey insight: Use LLM-generated synthetic data to overcome limited labeled training data.\n\n## Technical Components\n\n### 1. Embedding Component\n- Model: multi-qa-MiniLM-L6-cos-v1 (balance of latency and quality)\n- Synthetic query generation with Gemini Flash (~10 per product)\n- Fine-tuning with MultipleNegativesRankingLoss\n- FAISS indexing with IVF-Flat index\n\n### 2. Structured Filter Extraction\n- Fine-tuned Flan-T5-small as sequence-to-sequence extractor\n- Extracts structured filters: price range, average rating, review count, subcategory\n- Creates 61,812 query-filter pairs\n\n## Experimental Results\n\n### Filter Extraction Quality\n- Fine-tuned Flan-T5-small: 99.4% overall exact match\n- BERT NER baseline: 24.4% (with rule augmentation)\n\n### End-to-end Retrieval\nBest configuration (fine-tuned Sentence Transformer + filter extraction):\n- Precision@k: 0.32 (k=1), 0.20 (k=5), 0.13 (k=10)\n- Recall@k: 0.16 (k=1), 0.44 (k=5), 0.57 (k=10)\n\n### Key Findings\n1. Adding structured filtering consistently boosts both precision and recall\n2. Constraint-aware embedding fine-tuning provides limited additional benefit once accurate pre-filtering is applied\n3. Synthetic queries effectively replace manual annotation\n\n## Limitations\n- LLM-generated labels required manual validation\n- Results demonstrated only for Cell Phones category\n- Label inconsistencies in ESCI dataset affect evaluation\n\n## Practical Insights\n- Lightweight models + FAISS suitable for real-time use\n- Two-stage design supports multi-model deployment across categories\n- Qualitative constraints can be normalized to adjustable thresholds",
+  "llm_info": {
+    "provider": "cli",
+    "model": "cli/codex/gpt-5.2",
+    "maxCompletionTokens": null,
+    "strategy": "single"
+  }
+}

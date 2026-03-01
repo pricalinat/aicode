@@ -1,0 +1,19 @@
+@startuml
+title AliCoCo体系结构图
+skinparam shadowing false
+
+"商品数据" --> "知识抽取"
+"知识抽取" --> "商品知识分类法"
+"商品知识分类法" --> "概念Atlas"
+"概念Atlas" --> "商品知识Mind"
+"商品知识分类法" --> "概念层<br/>品类/属性"
+"商品知识分类法" --> "原子概念层<br/>最小概念单元"
+"商品知识分类法" --> "实例层<br/>具体商品"
+@enduml
+
+============================================================
+Import to Draw.io:
+1. Arrange > Insert > Advanced > PlantUML (SVG)
+2. Paste the code above
+3. Click 'Insert'
+============================================================
