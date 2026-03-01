@@ -49,3 +49,27 @@
 ### 备注
 - API返回的是interval级别的使用量，会周期性重置
 - 需要进一步优化：跟踪累计使用量或结合时间判断
+
+---
+
+## Iteration 2 (2026-03-01) - Claude优先调度策略
+
+### 改动内容
+- 新增 `scripts/auto_scheduler.sh`：
+  - 优先使用 Claude
+  - Claude 不可用/配额耗尽自动切 Codex
+  - Codex 模式下每30分钟探测 Claude 恢复
+  - 恢复后立即切回 Claude
+  - 每5分钟采样API使用量，按2小时窗口判断是否触发迭代（增量<100）
+  - 支持 `停止/空闲` 进入等待态，`继续/start/resume` 恢复
+- 新增 `docs/auto_scheduler.md` 使用文档
+- 已后台启动调度器进程（session: `delta-forest`）
+
+### 测试结果
+- 调度器启动成功
+- 首次日志输出正常：
+  - 自动调度器启动
+  - 2小时累计使用增量计算成功
+
+### 提交hash
+`14c2e3c`
