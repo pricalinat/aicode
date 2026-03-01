@@ -1,0 +1,17 @@
+name,count,description
+retrieval,278,信息检索，从大规模相关项目集合中找到目标
+evaluation,223,评估方法，设计指标衡量系统效果
+accuracy,211,准确率优化，提升预测/匹配精度
+recommendation,204,推荐系统，为用户推荐感兴趣项目
+matching,201,匹配/对齐，建立项目间的对应关系
+prediction,164,预测任务，预测用户行为或项目属性
+generation,164,内容生成，生成文本/图像等内容
+ranking,135,排序优化，对候选项目进行排序
+noise,115,噪声处理，提升系统鲁棒性
+efficiency,108,效率优化，提升计算效率或可扩展性
+classification,98,分类任务，将项目分类到预定义类别
+fairness,96,公平性，确保推荐/分配的公平
+explainability,63,可解释性，让用户理解系统决策原因
+personalization,54,个性化，针对个人用户定制
+sparsity,54,稀疏性问题，数据稀疏导致的问题
+cold_start,39,冷启动，新用户/新项目缺乏历史数据

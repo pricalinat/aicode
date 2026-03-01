@@ -1,0 +1,13 @@
+name,count,description
+reinforcement,230,强化学习，RL、Bandit、Policy Gradient
+transformer,216,Transformer架构，BERT、GPT、Attention
+embedding,206,向量化表示，将实体映射到向量空间
+graph,109,图方法，GNN、GCN、知识图谱
+neural_network,86,神经网络，CNN、RNN、LSTM、GRU
+transfer_learning,73,迁移学习，预训练+微调
+gan,56,生成对抗网络
+metric_learning,47,度量学习，Siamese、Triplet、Contrastive
+cnn,22,卷积神经网络
+ensemble,21,集成学习，Boosting、Bagging
+rnn,20,循环神经网络
+vae,7,变分自编码器

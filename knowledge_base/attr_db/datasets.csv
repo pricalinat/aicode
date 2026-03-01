@@ -1,0 +1,14 @@
+name,count,type,description
+amazon,54,电商,Amazon电商数据集
+movielens,23,推荐,MovieLens电影推荐数据集
+taobao,22,电商,淘宝电商数据集
+yelp,14,评论,Yelp商家评论数据集
+ebay,9,电商,eBay电商数据集
+jd,7,电商,京东电商数据集
+twitter,5,社交,Twitter社交数据集
+netflix,4,推荐,Netflix电影推荐数据集
+douban,3,评论,豆瓣数据集
+pinterest,3,社交,Pinterest社交数据集
+aliexpress,2,电商,速卖通电商数据集
+beir,2,检索,BEIR信息检索基准
+tmall,1,电商,天猫电商数据集
