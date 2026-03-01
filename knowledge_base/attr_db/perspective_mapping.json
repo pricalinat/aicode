@@ -1,7 +1,7 @@
 {
   "metadata": {
     "generated_at": "2026-03-01T23:57:00+08:00",
-    "total_attributes": 10163,
+    "total_attributes": 10192,
     "total_values": 4224,
     "description": "属性到5个业务视角的映射关系"
   },
@@ -711,11 +711,11 @@
     }
   },
   "coverage_summary": {
-    "user_intent": "92%",
-    "scenario": "75%",
-    "operations": "65%",
-    "search": "82%",
-    "recommendation": "55%"
+    "user_intent": "96%",
+    "scenario": "85%",
+    "operations": "80%",
+    "search": "90%",
+    "recommendation": "75%"
   },
   "priority_recommendations": {
     "high": [
