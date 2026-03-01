@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-03-02T00:00:00+08:00",
+    "description": "属性库需求映射系统 - 建立属性与上游业务的映射关系"
+  },
+
+  "demand_attribute_matrix": {
+    "用户意图业务": {
+      "description": "搜索意图理解、Query解析、意图分类",
+      "required_attributes": {
+        "品类属性": {
+          "priority": "P0",
+          "usage": "意图识别、类目预测",
+          "examples": ["品类ID", "品类名称", "品类层级", "品类路径"]
+        },
+        "价格属性": {
+          "priority": "P0",
+          "usage": "价格区间意图识别",
+          "examples": ["售价", "原价", "折扣价", "价格区间"]
+        },
+        "品牌属性": {
+          "priority": "P1",
+          "usage": "品牌偏好识别",
+          "examples": ["品牌ID", "品牌名称", "品牌LOGO", "品牌等级"]
+        },
+        "规格属性": {
+          "priority": "P1",
+          "usage": "SKU识别、变体理解",
+          "examples": ["颜色", "尺寸", "容量", "材质", "型号"]
+        }
+      }
+    },
+
+    "场景业务": {
+      "description": "使用场景匹配、送礼推荐",
+      "required_attributes": {
+        "适用场景": {
+          "priority": "P0",
+          "usage": "场景推荐、场景搜索",
+          "examples": ["使用场景", "场景标签", "场景类型"]
+        },
+        "适用人群": {
+          "priority": "P0",
+          "usage": "人群定向推荐",
+          "examples": ["适用人群", "目标用户", "年龄适合", "性别适合"]
+        },
+        "节日属性": {
+          "priority": "P0",
+          "usage": "节日推荐、礼品推荐",
+          "examples": ["节日标签", "节日类型", "节日适用"]
+        }
+      }
+    },
+
+    "运营选品业务": {
+      "description": "爆款/利润款/引流款识别",
+      "required_attributes": {
+        "销量属性": {
+          "priority": "P0",
+          "usage": "爆款识别、热度判断",
+          "examples": ["销量", "累计销量", "日销量", "销量趋势"]
+        },
+        "价格带属性": {
+          "priority": "P0",
+          "usage": "价格带定位、选品策略",
+          "examples": ["价格带", "价格段", "定价区间"]
+        },
+        "利润率属性": {
+          "priority": "P0",
+          "usage": "利润款识别、成本核算",
+          "examples": ["利润率", "成本价", "毛利", "毛利额"]
+        }
+      }
+    },
+
+    "搜索业务": {
+      "description": "召回匹配、排序优化、筛选项",
+      "required_attributes": {
+        "可筛属性": {
+          "priority": "P0",
+          "usage": "筛选项配置、过滤条件",
+          "examples": ["筛选标签", "筛选项", "过滤条件"]
+        },
+        "可排序属性": {
+          "priority": "P0",
+          "usage": "排序字段、排序权重",
+          "examples": ["排序字段", "排序权重", "可排序"]
+        },
+        "搜索热度属性": {
+          "priority": "P1",
+          "usage": "搜索召回、热度排序",
+          "examples": ["搜索热度", "搜索量", "点击率", "曝光点击比"]
+        }
+      }
+    },
+
+    "推荐业务": {
+      "description": "用户画像、商品画像、协同过滤",
+      "required_attributes": {
+        "用户偏好属性": {
+          "priority": "P0",
+          "usage": "个性化推荐、用户画像",
+          "examples": ["偏好标签", "兴趣标签", "历史偏好"]
+        },
+        "相似度属性": {
+          "priority": "P0",
+          "usage": "相似商品推荐、商品聚类",
+          "examples": ["相似商品", "关联商品", "商品向量"]
+        },
+        "行为数据属性": {
+          "priority": "P1",
+          "usage": "协同过滤、行为分析",
+          "examples": ["浏览量", "收藏量", "加购量", "转化率", "复购率"]
+        }
+      }
+    }
+  },
+
+  "gap_analysis": {
+    "summary": {
+      "total_required_attrs": 18,
+      "current_coverage": "需要评估",
+      "gap_level": "需要详细评估"
+    },
+
+    "gap_details": [
+      {
+        "business": "用户意图业务",
+        "current_status": "部分覆盖",
+        "gaps": [
+          "品类层级不全",
+          "价格区间标签缺失",
+          "品牌偏好标签未建立"
+        ],
+        "recommendations": [
+          "完善品类层级体系",
+          "建立价格区间标签系统",
+          "构建品牌偏好模型"
+        ]
+      },
+      {
+        "business": "场景业务",
+        "current_status": "覆盖较少",
+        "gaps": [
+          "适用场景标签缺失",
+          "适用人群标签未标准化",
+          "节日属性未建立"
+        ],
+        "recommendations": [
+          "建立场景标签体系",
+          "标准化人群标签",
+          "构建节日营销标签"
+        ]
+      },
+      {
+        "business": "运营选品业务",
+        "current_status": "基础覆盖",
+        "gaps": [
+          "实时销量数据缺失",
+          "利润率计算口径不统一",
+          "价格带标签未建立"
+        ],
+        "recommendations": [
+          "建立实时销量看板",
+          "统一利润率计算标准",
+          "构建价格带分层模型"
+        ]
+      },
+      {
+        "business": "搜索业务",
+        "current_status": "部分覆盖",
+        "gaps": [
+          "可筛属性配置不规范",
+          "排序权重未体系化",
+          "搜索热度数据缺失"
+        ],
+        "recommendations": [
+          "制定筛选项配置标准",
+          "建立排序权重模型",
+          "构建搜索热度指标体系"
+        ]
+      },
+      {
+        "business": "推荐业务",
+        "current_status": "覆盖较少",
+        "gaps": [
+          "用户偏好标签缺失",
+          "商品向量未生成",
+          "行为数据采集不全"
+        ],
+        "recommendations": [
+          "建立用户偏好标签系统",
+          "构建商品向量 Embedding",
+          "完善行为数据埋点"
+        ]
+      }
+    ],
+
+    "priority_fixes": [
+      {
+        "priority": 1,
+        "gap": "适用场景标签缺失",
+        "impact": "影响场景业务和推荐业务"
+      },
+      {
+        "priority": 2,
+        "gap": "用户偏好标签缺失",
+        "impact": "影响推荐业务核心能力"
+      },
+      {
+        "priority": 3,
+        "gap": "搜索热度数据缺失",
+        "impact": "影响搜索排序效果"
+      }
+    ]
+  },
+
+  "evolution_system": {
+    "design_principles": [
+      "数据驱动 - 基于业务使用反馈迭代",
+      "分层管理 - 区分核心属性和扩展属性",
+      "自动化 - 减少人工维护成本",
+      "可观测 - 监控属性使用效果"
+    ],
+
+    "components": {
+      "属性采集层": {
+        "description": "从各业务系统采集属性数据",
+        "sources": [
+          "商品发布系统",
+          "运营后台",
+          "搜索推荐系统",
+          "用户行为日志"
+        ]
+      },
+
+      "属性治理层": {
+        "description": "属性标准化、去重、关联",
+        "functions": [
+          "属性标准化",
+          "同义属性归一",
+          "属性关联映射",
+          "属性质量监控"
+        ]
+      },
+
+      "属性服务层": {
+        "description": "对外提供属性查询和服务",
+        "capabilities": [
+          "属性检索",
+          "属性推荐",
+          "属性分析",
+          "属性监控"
+        ]
+      },
+
+      "反馈迭代层": {
+        "description": "基于业务反馈持续优化",
+        "mechanisms": [
+          "使用率监控",
+          "效果评估",
+          "需求收集",
+          "版本管理"
+        ]
+      }
+    },
+
+    "automation_rules": {
+      "new_attribute_detection": {
+        "enabled": true,
+        "triggers": [
+          "业务方主动新增",
+          "搜索Query中新出现的term",
+          "商品属性中的高频字段"
+        ]
+      },
+
+      "attribute_quality": {
+        "thresholds": {
+          "completeness": 0.8,
+          "accuracy": 0.9,
+          "usage_rate": 0.1
+        },
+        "actions": {
+          "low_quality": "标记并预警",
+          "unused": "定期清理或归档"
+        }
+      },
+
+      "mapping_updates": {
+        "frequency": "weekly",
+        "auto_approve_threshold": 0.95,
+        "manual_review_threshold": 0.8
+      }
+    },
+
+    "metrics": {
+      "coverage_metrics": [
+        "业务属性覆盖率",
+        "核心属性完备率",
+        "属性更新时效性"
+      ],
+      "quality_metrics": [
+        "属性准确率",
+        "属性一致率",
+        "属性去重率"
+      ],
+      "usage_metrics": [
+        "属性调用量",
+        "属性响应时间",
+        "业务满意度"
+      ]
+    }
+  },
+
+  "implementation_roadmap": {
+    "phase1": {
+      "title": "基础建设 (1-2周)",
+      "tasks": [
+        "建立属性元数据中心",
+        "制定属性标准规范",
+        "搭建属性治理平台基础"
+      ]
+    },
+    "phase2": {
+      "title": "核心补全 (3-4周)",
+      "tasks": [
+        "补全场景标签体系",
+        "构建用户偏好标签",
+        "建立搜索热度指标"
+      ]
+    },
+    "phase3": {
+      "title": "智能化升级 (5-8周)",
+      "tasks": [
+        "部署自动标签挖掘",
+        "构建属性推荐模型",
+        "建立自演进机制"
+      ]
+    },
+    "phase4": {
+      "title": "持续优化 (长期)",
+      "tasks": [
+        "监控属性使用效果",
+        "定期业务需求调研",
+        "迭代属性覆盖和质量"
+      ]
+    }
+  }
+}
