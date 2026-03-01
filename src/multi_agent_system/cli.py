@@ -18,6 +18,8 @@ from .knowledge.supply_graph_database import SupplyGraphDatabase
 from .knowledge.supply_graph_models import SupplyEntity, SupplyEntityType
 from .matching import DualMatcher
 from .reporting import ReportFormat, ReportGenerator, ReportType
+from knowledge_base.kb_schema import query_by_category, query_by_method, query_by_topic, get_statistics
+
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -108,7 +110,81 @@ def build_parser() -> argparse.ArgumentParser:
     gen_report_parser.add_argument("--input", required=True, help="Input JSON file with report data")
     gen_report_parser.add_argument("--output", help="Output file (default: stdout)")
 
+    # Knowledge base query command
+    kb_parser = subparsers.add_parser("query-kb", help="Query knowledge base papers")
+    kb_parser.add_argument("--topic", default=None, help="Filter by topic name")
+    kb_parser.add_argument("--category", default=None, help="Filter by category (e.g., product_matching)")
+    kb_parser.add_argument("--method", default=None, help="Filter by method keyword")
+    kb_parser.add_argument("--limit", type=int, default=20, help="Max results to return")
+
+    # Knowledge base statistics command
+    kb_stats_parser = subparsers.add_parser("kb-stats", help="Get knowledge base statistics")
+
     return parser
+
+
+
+
+def query_kb(args) -> int:
+    """Query knowledge base papers."""
+    import sqlite3
+    from knowledge_base.kb_schema import DB_PATH
+    
+    conn = sqlite3.connect(DB_PATH)
+    results = []
+    
+    if args.topic:
+        from knowledge_base.kb_schema import query_by_topic
+        rows = query_by_topic(conn, args.topic)
+        for row in rows:
+            results.append({
+                "paper_id": row[0],
+                "title": row[1],
+                "category": row[7],
+                "year": row[3]
+            })
+    elif args.category:
+        from knowledge_base.kb_schema import query_by_category
+        rows = query_by_category(conn, args.category)
+        for row in rows:
+            results.append({
+                "paper_id": row[0],
+                "title": row[1],
+                "authors": row[2],
+                "year": row[3],
+                "category": row[7]
+            })
+    elif args.method:
+        from knowledge_base.kb_schema import query_by_method
+        rows = query_by_method(conn, args.method)
+        for row in rows:
+            results.append({
+                "paper_id": row[0],
+                "title": row[1],
+                "method": row[11] if len(row) > 11 else None
+            })
+    else:
+        print(json.dumps({"error": "Please specify --topic, --category, or --method"}, ensure_ascii=False))
+        return 1
+    
+    conn.close()
+    results = results[:args.limit]
+    
+    print(json.dumps({"results": results, "count": len(results)}, ensure_ascii=False, indent=2))
+    return 0
+
+
+def kb_stats(args) -> int:
+    """Get knowledge base statistics."""
+    import sqlite3
+    from knowledge_base.kb_schema import get_statistics, DB_PATH
+    
+    conn = sqlite3.connect(DB_PATH)
+    stats = get_statistics(conn)
+    conn.close()
+    
+    print(json.dumps(stats, ensure_ascii=False, indent=2))
+    return 0
 
 
 def main() -> int:
@@ -162,6 +238,10 @@ def main() -> int:
         return run_dual_matching_demo(args)
     elif args.command == "generate-report":
         return generate_report(args)
+    elif args.command == "query-kb":
+        return query_kb(args)
+    elif args.command == "kb-stats":
+        return kb_stats(args)
     elif args.command == "run-offline-ab":
         return run_offline_ab(args)
     else:
