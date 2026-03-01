@@ -1,0 +1,289 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-01T23:57:00+08:00",
+    "total_attributes": 1004,
+    "total_values": 4224,
+    "description": "属性到5个业务视角的映射关系"
+  },
+  "mappings": {
+    "user_intent": {
+      "description": "用户意图视角 - 用户搜索、比较、购买决策时的关注点",
+      "coverage": "85%",
+      "primary_attributes": [
+        {
+          "attr_id": "brand",
+          "attr_name": "品牌",
+          "type": "enum",
+          "values_count": 64,
+          "usage": "搜索、比较"
+        },
+        {
+          "attr_id": "category",
+          "attr_name": "品类",
+          "type": "tree",
+          "values_count": 91,
+          "usage": "搜索、导航"
+        },
+        {
+          "attr_id": "price",
+          "attr_name": "价格",
+          "type": "range",
+          "values_count": 15,
+          "usage": "搜索、排序、比较"
+        },
+        {
+          "attr_id": "color",
+          "attr_name": "颜色",
+          "type": "enum",
+          "values_count": 39,
+          "usage": "搜索、比较"
+        },
+        {
+          "attr_id": "size",
+          "attr_name": "尺寸",
+          "type": "enum",
+          "values_count": 56,
+          "usage": "搜索、比较"
+        },
+        {
+          "attr_id": "style",
+          "attr_name": "风格",
+          "type": "enum",
+          "values_count": 16,
+          "usage": "搜索、比较"
+        },
+        {
+          "attr_id": "discount",
+          "attr_name": "折扣",
+          "type": "enum",
+          "values_count": 18,
+          "usage": "购买决策"
+        },
+        {
+          "attr_id": "certification",
+          "attr_name": "认证",
+          "type": "enum",
+          "usage": "购买决策"
+        },
+        {
+          "attr_id": "energy_rating",
+          "attr_name": "能效等级",
+          "type": "enum",
+          "usage": "购买决策"
+        }
+      ],
+      "category_specific": {
+        "electronics": ["屏幕尺寸", "处理器", "运行内存", "存储容量", "电池容量"],
+        "clothing": ["材质", "尺码", "面料"],
+        "footwear": ["鞋底材质", "鞋跟高度"]
+      },
+      "missing_attributes": [
+        {"attr_id": "user_rating", "attr_name": "用户评分", "type": "range", "priority": "high"},
+        {"attr_id": "sales_count", "attr_name": "销量", "type": "range", "priority": "high"},
+        {"attr_id": "review_count", "attr_name": "评价数", "type": "range", "priority": "high"},
+        {"attr_id": "value_score", "attr_name": "性价比", "type": "enum", "priority": "medium"},
+        {"attr_id": "quality_score", "attr_name": "产品质量", "type": "enum", "priority": "medium"},
+        {"attr_id": "after_sales", "attr_name": "售后服务", "type": "enum", "priority": "medium"},
+        {"attr_id": "delivery_speed", "attr_name": "物流速度", "type": "enum", "priority": "medium"},
+        {"attr_id": "packaging", "attr_name": "包装质量", "type": "enum", "priority": "low"}
+      ]
+    },
+    "scenario": {
+      "description": "场景视角 - 使用场景、适用环境、适用时机",
+      "coverage": "60%",
+      "primary_attributes": [
+        {
+          "attr_id": "usage_scenario",
+          "attr_name": "使用场景",
+          "type": "enum",
+          "values": ["日常使用", "商务办公", "游戏", "设计创作", "编程开发", "旅行便携", "户外运动", "学生学习", "家庭娱乐", "专业工作"],
+          "usage": "场景匹配"
+        },
+        {
+          "attr_id": "occasion",
+          "attr_name": "适用场合",
+          "type": "enum",
+          "values": ["日常休闲", "职场商务", "约会派对", "运动户外", "正式场合"],
+          "usage": "场景匹配"
+        },
+        {
+          "attr_id": "gift_occasion",
+          "attr_name": "送礼场合",
+          "type": "enum",
+          "values": ["生日", "婚礼", "纪念日", "节日", "情人节", "圣诞节", "新年", "感谢"],
+          "usage": "送礼场景"
+        },
+        {
+          "attr_id": "gift_recipient",
+          "attr_name": "送礼对象",
+          "type": "enum",
+          "values": ["送男士", "送女士", "送父母", "送孩子", "送朋友", "送同事"],
+          "usage": "送礼场景"
+        }
+      ],
+      "missing_attributes": [
+        {"attr_id": "suitable_environment", "attr_name": "适用环境", "type": "enum", "values": ["室内", "室外", "户外", "车内", "浴室"], "priority": "high"},
+        {"attr_id": "suitable_season", "attr_name": "适用季节", "type": "enum", "values": ["春季", "夏季", "秋季", "冬季", "四季通用"], "priority": "high"},
+        {"attr_id": "suitable_weather", "attr_name": "适用天气", "type": "enum", "values": ["晴天", "雨天", "雪天", "刮风", "潮湿"], "priority": "medium"},
+        {"attr_id": "suitable_time", "attr_name": "适用时段", "type": "enum", "values": ["白天", "晚上", "全天候"], "priority": "low"},
+        {"attr_id": "suitable_holiday", "attr_name": "适用节假日", "type": "enum", "values": ["春节", "中秋", "国庆", "五一"], "priority": "medium"},
+        {"attr_id": "gift_relationship", "attr_name": "送礼关系", "type": "enum", "values": ["情侣", "父子", "母子", "朋友", "同事", "师生"], "priority": "medium"}
+      ]
+    },
+    "operations": {
+      "description": "运营选品视角 - 爆款、利润款、引流款特征",
+      "coverage": "40%",
+      "primary_attributes": [
+        {
+          "attr_id": "discount",
+          "attr_name": "折扣",
+          "type": "enum",
+          "values_count": 18,
+          "usage": "促销运营"
+        },
+        {
+          "attr_id": "gift_price",
+          "attr_name": "礼品价位",
+          "type": "enum",
+          "values": ["实惠型(<100)", "中等(100-500)", "高档(500-2000)", "奢华(>2000)"],
+          "usage": "选品定位"
+        },
+        {
+          "attr_id": "target_audience",
+          "attr_name": "目标人群",
+          "type": "enum",
+          "values": ["学生", "上班族", "商务人士", "游戏玩家", "设计师", "摄影师", "内容创作者", "家长", "老年人", "科技爱好者", "专业人士"],
+          "usage": "人群定位"
+        },
+        {
+          "attr_id": "gender",
+          "attr_name": "性别",
+          "type": "enum",
+          "values_count": 6,
+          "usage": "人群定位"
+        }
+      ],
+      "missing_attributes": [
+        {"attr_id": "product_role", "attr_name": "商品角色", "type": "enum", "values": ["爆款", "利润款", "引流款", "形象款", "长尾款"], "priority": "high"},
+        {"attr_id": "profit_margin", "attr_name": "毛利率", "type": "range", "priority": "high"},
+        {"attr_id": "traffic_power", "attr_name": "引流能力", "type": "enum", "values": ["强", "中", "弱"], "priority": "high"},
+        {"attr_id": "conversion_power", "attr_name": "转化能力", "type": "enum", "values": ["强", "中", "弱"], "priority": "high"},
+        {"attr_id": "repurchase_rate", "attr_name": "复购率", "type": "enum", "values": ["高", "中", "低"], "priority": "medium"},
+        {"attr_id": "price_segment", "attr_name": "客单价区间", "type": "enum", "values": ["引流款(<50)", "跑量款(50-200)", "利润款(200-500)", "高端款(>500)"], "priority": "medium"},
+        {"attr_id": "inventory_turnover", "attr_name": "库存周转", "type": "enum", "values": ["快销", "正常", "滞销"], "priority": "medium"},
+        {"attr_id": "seasonality", "attr_name": "季节性", "type": "enum", "values": ["季节性", "常年销售", "节日性"], "priority": "low"}
+      ]
+    },
+    "search": {
+      "description": "搜索视角 - 搜索高频属性、可筛性、可排序性",
+      "coverage": "75%",
+      "high_heat_filters": [
+        {"attr_id": "brand", "attr_name": "品牌", "values_count": 64, "filter_weight": 100},
+        {"attr_id": "category", "attr_name": "品类", "values_count": 91, "filter_weight": 100},
+        {"attr_id": "price", "attr_name": "价格", "values_count": 15, "filter_weight": 95},
+        {"attr_id": "color", "attr_name": "颜色", "values_count": 39, "filter_weight": 80},
+        {"attr_id": "size", "attr_name": "尺寸", "values_count": 56, "filter_weight": 75}
+      ],
+      "medium_heat_filters": [
+        {"attr_id": "style", "attr_name": "风格", "values_count": 16},
+        {"attr_id": "material", "attr_name": "材质", "values_count": 39},
+        {"attr_id": "gender", "attr_name": "性别", "values_count": 6},
+        {"attr_id": "target_audience", "attr_name": "目标人群", "values_count": 11},
+        {"attr_id": "origin", "attr_name": "产地", "values_count": 25}
+      ],
+      "category_specific_filters": {
+        "electronics": ["屏幕尺寸", "处理器", "运行内存", "存储容量", "电池容量"],
+        "clothing": ["身高尺码", "面料", "款式"],
+        "sports": ["运动类型", "适用天气", "运动强度"],
+        "beauty": ["肤质", "香型", "护肤功效"]
+      },
+      "sortable_attributes": ["price"],
+      "missing_attributes": [
+        {"attr_id": "search_volume", "attr_name": "搜索热度", "type": "range", "priority": "medium"},
+        {"attr_id": "search_growth", "attr_name": "搜索增长", "type": "enum", "values": ["上升", "稳定", "下降"], "priority": "low"},
+        {"attr_id": "search_suggest", "attr_name": "联想词", "type": "array", "priority": "low"},
+        {"attr_id": "filter_weight", "attr_name": "筛选项权重", "type": "number", "priority": "medium"},
+        {"attr_id": "sortable", "attr_name": "排序可用", "type": "boolean", "priority": "medium"},
+        {"attr_id": "default_sort", "attr_name": "默认排序", "type": "enum", "values": ["销量", "价格", "新品"], "priority": "low"}
+      ]
+    },
+    "recommendation": {
+      "description": "推荐视角 - 推荐强关联、用户画像、协同过滤",
+      "coverage": "35%",
+      "primary_attributes": [
+        {
+          "attr_id": "gender",
+          "attr_name": "性别",
+          "type": "enum",
+          "values_count": 6,
+          "usage": "用户画像"
+        },
+        {
+          "attr_id": "target_audience",
+          "attr_name": "目标人群",
+          "type": "enum",
+          "values_count": 11,
+          "usage": "用户画像"
+        },
+        {
+          "attr_id": "preference_pref_*",
+          "attr_name": "用户偏好占位符",
+          "type": "placeholder",
+          "count": 50,
+          "usage": "用户偏好（需填充）"
+        },
+        {
+          "attr_id": "design_style_style_*",
+          "attr_name": "设计风格占位符",
+          "type": "placeholder",
+          "count": 50,
+          "usage": "风格偏好（需填充）"
+        }
+      ],
+      "placeholder_attributes": [
+        {"prefix": "preference_pref_", "count": 50, "status": "需填充真实偏好值"},
+        {"prefix": "marketing_attr_", "count": 20, "status": "需填充营销标签"},
+        {"prefix": "tech_spec_", "count": 15, "status": "需填充技术特性"},
+        {"prefix": "extended_attr_", "count": 30, "status": "需填充品类特定属性"}
+      ],
+      "missing_attributes": [
+        {"attr_id": "user_age", "attr_name": "用户年龄", "type": "range", "priority": "high"},
+        {"attr_id": "user_profession", "attr_name": "用户职业", "type": "enum", "values": ["学生", "白领", "自由职业", "退休"], "priority": "medium"},
+        {"attr_id": "spending_ability", "attr_name": "消费能力", "type": "enum", "values": ["低", "中", "高", "超高"], "priority": "high"},
+        {"attr_id": "purchase_frequency", "attr_name": "购买频次", "type": "enum", "values": ["高频", "中频", "低频"], "priority": "medium"},
+        {"attr_id": "brand_preference", "attr_name": "品牌偏好", "type": "array", "priority": "medium"},
+        {"attr_id": "price_sensitivity", "attr_name": "价格敏感度", "type": "enum", "values": ["敏感", "一般", "不敏感"], "priority": "medium"},
+        {"attr_id": "matching_products", "attr_name": "商品搭配", "type": "array", "priority": "high"},
+        {"attr_id": "substitute_products", "attr_name": "替代商品", "type": "array", "priority": "high"},
+        {"attr_id": "complementary_products", "attr_name": "互补商品", "type": "array", "priority": "high"},
+        {"attr_id": "purchase_correlation", "attr_name": "购买关联", "type": "array", "priority": "high"},
+        {"attr_id": "browse_correlation", "attr_name": "浏览历史关联", "type": "array", "priority": "medium"}
+      ]
+    }
+  },
+  "coverage_summary": {
+    "user_intent": "85%",
+    "scenario": "60%",
+    "operations": "40%",
+    "search": "75%",
+    "recommendation": "35%"
+  },
+  "priority_recommendations": {
+    "high": [
+      "user_rating", "sales_count", "review_count",
+      "product_role", "profit_margin", "traffic_power",
+      "user_age", "spending_ability", "matching_products",
+      "substitute_products", "complementary_products"
+    ],
+    "medium": [
+      "value_score", "quality_score", "after_sales",
+      "suitable_environment", "suitable_season",
+      "repurchase_rate", "price_segment",
+      "filter_weight", "sortable"
+    ],
+    "low": [
+      "packaging", "suitable_time", "suitable_holiday",
+      "search_growth", "search_suggest", "default_sort"
+    ]
+  }
+}
