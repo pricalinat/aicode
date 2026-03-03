@@ -1,4 +1,4 @@
-# 第七章：LLM-as-Judge 评测方法
+# 第7章：LLM-as-Judge 评测方法
 
 > **本章导读**
 > - LLM-as-Judge 的核心原理与设计动机
