@@ -1,0 +1,142 @@
+{
+  "name": "claude-code-viewer",
+  "version": "1.0.5",
+  "main": "dist/main/main.js",
+  "bin": {
+    "ccviewer": "./cli/claude-viewer-cli.js"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "electron-vite preview",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "keywords": [
+    "claude",
+    "session",
+    "viewer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "description": "A beautiful viewer for Claude Code conversation sessions",
+  "devDependencies": {
+    "@electron/notarize": "^2.3.0",
+    "@tailwindcss/postcss": "^4.1.7",
+    "@types/node": "^22.15.21",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "dotenv": "^17.0.1",
+    "electron": "^36.3.1",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^3.1.0",
+    "postcss": "^8.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@electron-toolkit/preload": "^3.0.2",
+    "@electron-toolkit/utils": "^4.0.0",
+    "chokidar": "^4.0.3",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.511.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "recharts": "^2.15.3",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.7",
+    "uuid": "^11.0.4",
+    "zustand": "^5.0.5"
+  },
+  "build": {
+    "appId": "com.mainpy.claude-code-viewer",
+    "productName": "Claude Code Viewer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "cli/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "cli",
+        "to": "cli",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "protocols": [
+        {
+          "name": "Claude Viewer",
+          "schemes": [
+            "claude-viewer"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "Claude Code Viewer",
+      "sign": true,
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "afterSign": "scripts/notarize.js",
+    "win": {
+      "target": "nsis",
+      "protocols": [
+        {
+          "name": "Claude Viewer",
+          "schemes": [
+            "claude-viewer"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage",
+      "protocols": [
+        {
+          "name": "Claude Viewer",
+          "schemes": [
+            "claude-viewer"
+          ]
+        }
+      ]
+    }
+  }
+}

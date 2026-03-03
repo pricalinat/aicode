@@ -1,0 +1,27 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Query Analysis| as QA
+|Candidate Retrieval| as CR
+|Re-ranking| as RR
+|Quality Assessment| as QA2
+|Result Output| as RO
+
+QA -> CR: User Intent
+CR -> RR: Candidate Set
+RR -> QA2: Ranked List
+QA2 -> RO: Final Results
+
+note left of CR
+  Multi-channel recall:
+  - Keyword recall
+  - Vector recall
+  - Graph recall
+end note
+
+note right of RR
+  Cross-encoder reranking
+  Learning to rank
+end note
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Input| as I
+
+rectangle "Text Modal" as TM {
+  [Text Classification]
+  [Named Entity\nRecognition]
+  [Text Similarity]
+}
+
+rectangle "Image Modal" as IM {
+  [Image\nClassification]
+  [Object\nDetection]
+  [Image\nSegmentation]
+}
+
+rectangle "Video Modal" as VM {
+  [Video\nClassification]
+  [Action\nRecognition]
+  [Scene\nUnderstanding]
+}
+
+rectangle "Audio Modal" as AM {
+  [Speech\nRecognition]
+  [Audio\nClassification]
+}
+
+I --> TM: Text Input
+I --> IM: Image Input
+I --> VM: Video Input
+I --> AM: Audio Input
+
+TM --> [Multi-modal\nFusion]
+IM --> [Multi-modal\nFusion]
+VM --> [Multi-modal\nFusion]
+AM --> [Multi-modal\nFusion]
+
+note right of I
+  Multi-modal data in
+  e-commerce scenarios
+end note
+
+@enduml

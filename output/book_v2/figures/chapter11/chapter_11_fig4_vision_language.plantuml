@@ -1,0 +1,36 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Dataset| as D
+
+rectangle "Image-Text Pairs\n(Millions)" as ITP {
+  [Web Images]
+  [Alt Texts]
+  [Captions]
+}
+
+rectangle "Contrastive\nPre-training" as CP {
+  [Image Encoder\n(ViT)]
+  [Text Encoder\n(BERT-style)]
+  [Contrastive Loss]
+}
+
+rectangle "Unified\nRepresentation\nSpace" as URS {
+  [Image Embeddings]
+  [Text Embeddings]
+  [Cross-modal\nAlignment]
+}
+
+ITP --> CP: Large-scale Training
+CP --> URS: Learned Representations
+
+D --> ITP: Curation
+
+note right of URS
+  CLIP, BLIP, ALBEF
+  Zero-shot image
+  classification
+  Cross-modal retrieval
+end note
+
+@enduml

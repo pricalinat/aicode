@@ -1,0 +1,31 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Raw Data| as RD
+|Annotation Task| as AT
+|Annotation Process| as AP
+|Quality Control| as QC
+|Annotated Data| as AD
+
+RD -> AT: Task Design
+AT -> AP: Annotation Guidelines
+AP -> QC: Multi-annotator
+QC -> AD: Quality Verified Data
+
+rectangle "Quality Control Methods" as QCM {
+  [Inter-annotator\nAgreement]
+  [Sampling\nAudit]
+  [Conflict\nResolution]
+  [Guidelines\nIteration]
+}
+
+AP --> QCM: Quality Checks
+QCM --> QC: Feedback
+
+note right of AP
+  Professional annotation
+ 众包 annotation
+  Semi-automatic annotation
+end note
+
+@enduml

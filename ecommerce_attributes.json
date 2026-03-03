@@ -1,0 +1,9370 @@
+{
+  "version": "1.0",
+  "description": "标准化电商属性体系 - 覆盖80+属性项，1200+属性值",
+  "attributes": [
+    {
+      "id": "brand",
+      "name": "品牌",
+      "type": "enum",
+      "category": "基础信息",
+      "values": [
+        {
+          "id": "apple",
+          "name": "Apple",
+          "tags": [
+            "手机",
+            "电脑",
+            "平板",
+            "耳机",
+            "手表"
+          ]
+        },
+        {
+          "id": "samsung",
+          "name": "Samsung",
+          "tags": [
+            "手机",
+            "电视",
+            "冰箱",
+            "洗衣机"
+          ]
+        },
+        {
+          "id": "huawei",
+          "name": "华为",
+          "tags": [
+            "手机",
+            "笔记本",
+            "平板",
+            "耳机"
+          ]
+        },
+        {
+          "id": "xiaomi",
+          "name": "小米",
+          "tags": [
+            "手机",
+            "电视",
+            "家电",
+            "智能家居"
+          ]
+        },
+        {
+          "id": "oppo",
+          "name": "OPPO",
+          "tags": [
+            "手机",
+            "耳机"
+          ]
+        },
+        {
+          "id": "vivo",
+          "name": "vivo",
+          "tags": [
+            "手机",
+            "耳机"
+          ]
+        },
+        {
+          "id": "oneplus",
+          "name": "一加",
+          "tags": [
+            "手机"
+          ]
+        },
+        {
+          "id": "realme",
+          "name": "realme",
+          "tags": [
+            "手机"
+          ]
+        },
+        {
+          "id": "honor",
+          "name": "荣耀",
+          "tags": [
+            "手机",
+            "笔记本"
+          ]
+        },
+        {
+          "id": "meizu",
+          "name": "魅族",
+          "tags": [
+            "手机"
+          ]
+        },
+        {
+          "id": "nike",
+          "name": "Nike",
+          "tags": [
+            "运动鞋",
+            "运动服",
+            "运动配件"
+          ]
+        },
+        {
+          "id": "adidas",
+          "name": "Adidas",
+          "tags": [
+            "运动鞋",
+            "运动服",
+            "运动配件"
+          ]
+        },
+        {
+          "id": "puma",
+          "name": "Puma",
+          "tags": [
+            "运动鞋",
+            "运动服"
+          ]
+        },
+        {
+          "id": "newbalance",
+          "name": "New Balance",
+          "tags": [
+            "运动鞋",
+            "休闲鞋"
+          ]
+        },
+        {
+          "id": "converse",
+          "name": "Converse",
+          "tags": [
+            "运动鞋",
+            "帆布鞋"
+          ]
+        },
+        {
+          "id": "vans",
+          "name": "Vans",
+          "tags": [
+            "运动鞋",
+            "帆布鞋"
+          ]
+        },
+        {
+          "id": "uniqlo",
+          "name": "优衣库",
+          "tags": [
+            "服装",
+            "内衣",
+            "T恤"
+          ]
+        },
+        {
+          "id": "zara",
+          "name": "Zara",
+          "tags": [
+            "服装",
+            "外套",
+            "裙子"
+          ]
+        },
+        {
+          "id": "h&m",
+          "name": "H&M",
+          "tags": [
+            "服装",
+            "童装"
+          ]
+        },
+        {
+          "id": "muji",
+          "name": "无印良品",
+          "tags": [
+            "家居",
+            "服装",
+            "文具"
+          ]
+        },
+        {
+          "id": "sony",
+          "name": "Sony",
+          "tags": [
+            "电视",
+            "相机",
+            "耳机",
+            "游戏机"
+          ]
+        },
+        {
+          "id": "lg",
+          "name": "LG",
+          "tags": [
+            "电视",
+            "冰箱",
+            "洗衣机"
+          ]
+        },
+        {
+          "id": "panasonic",
+          "name": "松下",
+          "tags": [
+            "电器",
+            "剃须刀",
+            "吹风机"
+          ]
+        },
+        {
+          "id": "philips",
+          "name": "飞利浦",
+          "tags": [
+            "电器",
+            "剃须刀",
+            "电动牙刷"
+          ]
+        },
+        {
+          "id": "dyson",
+          "name": "戴森",
+          "tags": [
+            "吸尘器",
+            "吹风机",
+            "风扇"
+          ]
+        },
+        {
+          "id": "bose",
+          "name": "Bose",
+          "tags": [
+            "耳机",
+            "音响"
+          ]
+        },
+        {
+          "id": "beats",
+          "name": "Beats",
+          "tags": [
+            "耳机"
+          ]
+        },
+        {
+          "id": "logitech",
+          "name": "罗技",
+          "tags": [
+            "鼠标",
+            "键盘",
+            "耳机"
+          ]
+        },
+        {
+          "id": "razer",
+          "name": "雷蛇",
+          "tags": [
+            "鼠标",
+            "键盘",
+            "耳机"
+          ]
+        },
+        {
+          "id": "lenovo",
+          "name": "联想",
+          "tags": [
+            "电脑",
+            "手机",
+            "平板"
+          ]
+        },
+        {
+          "id": "dell",
+          "name": "戴尔",
+          "tags": [
+            "电脑",
+            "显示器"
+          ]
+        },
+        {
+          "id": "hp",
+          "name": "惠普",
+          "tags": [
+            "电脑",
+            "打印机"
+          ]
+        },
+        {
+          "id": "asus",
+          "name": "华硕",
+          "tags": [
+            "电脑",
+            "主板",
+            "显卡"
+          ]
+        },
+        {
+          "id": "acer",
+          "name": "宏碁",
+          "tags": [
+            "电脑",
+            "显示器"
+          ]
+        },
+        {
+          "id": "msi",
+          "name": "MSI",
+          "tags": [
+            "电脑",
+            "显卡"
+          ]
+        },
+        {
+          "id": "gigabyte",
+          "name": "技嘉",
+          "tags": [
+            "主板",
+            "显卡"
+          ]
+        },
+        {
+          "id": "nvidia",
+          "name": "NVIDIA",
+          "tags": [
+            "显卡"
+          ]
+        },
+        {
+          "id": "intel",
+          "name": "Intel",
+          "tags": [
+            "CPU"
+          ]
+        },
+        {
+          "id": "amd",
+          "name": "AMD",
+          "tags": [
+            "CPU",
+            "显卡"
+          ]
+        },
+        {
+          "id": "seagate",
+          "name": "希捷",
+          "tags": [
+            "硬盘"
+          ]
+        },
+        {
+          "id": "wd",
+          "name": "西部数据",
+          "tags": [
+            "硬盘",
+            "固态硬盘"
+          ]
+        },
+        {
+          "id": "samsung_elec",
+          "name": "三星电子",
+          "tags": [
+            "固态硬盘",
+            "内存"
+          ]
+        },
+        {
+          "id": "crucial",
+          "name": "Crucial",
+          "tags": [
+            "内存",
+            "固态硬盘"
+          ]
+        },
+        {
+          "id": "kingston",
+          "name": "金士顿",
+          "tags": [
+            "内存",
+            "U盘"
+          ]
+        },
+        {
+          "id": "sandisk",
+          "name": "闪迪",
+          "tags": [
+            "内存卡",
+            "U盘"
+          ]
+        },
+        {
+          "id": "supreme",
+          "name": "Supreme",
+          "tags": [
+            "服装",
+            "潮流"
+          ]
+        },
+        {
+          "id": "offwhite",
+          "name": "Off-White",
+          "tags": [
+            "服装",
+            "潮流"
+          ]
+        },
+        {
+          "id": "stone_island",
+          "name": "Stone Island",
+          "tags": [
+            "服装",
+            "高端"
+          ]
+        },
+        {
+          "id": "the_north_face",
+          "name": "The North Face",
+          "tags": [
+            "户外",
+            "服装"
+          ]
+        },
+        {
+          "id": "columbia",
+          "name": "Columbia",
+          "tags": [
+            "户外",
+            "服装"
+          ]
+        },
+        {
+          "id": "jack_wolfskin",
+          "name": "Jack Wolfskin",
+          "tags": [
+            "户外",
+            "服装"
+          ]
+        },
+        {
+          "id": "decathlon",
+          "name": "迪卡侬",
+          "tags": [
+            "运动",
+            "户外"
+          ]
+        },
+        {
+          "id": "anta",
+          "name": "安踏",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "361",
+          "name": "361度",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "xtep",
+          "name": "特步",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "jokaste",
+          "name": "361°",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "kappa",
+          "name": "Kappa",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "fila",
+          "name": "Fila",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "lululemon",
+          "name": "Lululemon",
+          "tags": [
+            "运动",
+            "瑜伽"
+          ]
+        },
+        {
+          "id": "under_armour",
+          "name": "Under Armour",
+          "tags": [
+            "运动",
+            "服装"
+          ]
+        },
+        {
+          "id": "asics",
+          "name": "Asics",
+          "tags": [
+            "运动鞋"
+          ]
+        },
+        {
+          "id": "mizuno",
+          "name": "Mizuno",
+          "tags": [
+            "运动鞋"
+          ]
+        },
+        {
+          "id": "saucony",
+          "name": "Saucony",
+          "tags": [
+            "运动鞋"
+          ]
+        },
+        {
+          "id": "brooks",
+          "name": "Brooks",
+          "tags": [
+            "运动鞋"
+          ]
+        },
+        {
+          "id": "hoka",
+          "name": "Hoka",
+          "tags": [
+            "运动鞋"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "category",
+      "name": "品类",
+      "type": "tree",
+      "category": "基础信息",
+      "values": [
+        {
+          "id": "electronics",
+          "name": "电子产品",
+          "parent": null
+        },
+        {
+          "id": "smartphone",
+          "name": "智能手机",
+          "parent": "electronics"
+        },
+        {
+          "id": "tablet",
+          "name": "平板电脑",
+          "parent": "electronics"
+        },
+        {
+          "id": "laptop",
+          "name": "笔记本电脑",
+          "parent": "electronics"
+        },
+        {
+          "id": "desktop",
+          "name": "台式电脑",
+          "parent": "electronics"
+        },
+        {
+          "id": "smartwatch",
+          "name": "智能手表",
+          "parent": "electronics"
+        },
+        {
+          "id": "earphones",
+          "name": "耳机",
+          "parent": "electronics"
+        },
+        {
+          "id": "speaker",
+          "name": "音箱",
+          "parent": "electronics"
+        },
+        {
+          "id": "camera",
+          "name": "相机",
+          "parent": "electronics"
+        },
+        {
+          "id": "gaming",
+          "name": "游戏设备",
+          "parent": "electronics"
+        },
+        {
+          "id": "tv",
+          "name": "电视",
+          "parent": "electronics"
+        },
+        {
+          "id": "monitor",
+          "name": "显示器",
+          "parent": "electronics"
+        },
+        {
+          "id": "computer_parts",
+          "name": "电脑配件",
+          "parent": "electronics"
+        },
+        {
+          "id": "cpu",
+          "name": "处理器",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "gpu",
+          "name": "显卡",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "motherboard",
+          "name": "主板",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "ram",
+          "name": "内存",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "storage",
+          "name": "存储设备",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "ssd",
+          "name": "固态硬盘",
+          "parent": "storage"
+        },
+        {
+          "id": "hdd",
+          "name": "机械硬盘",
+          "parent": "storage"
+        },
+        {
+          "id": "mouse",
+          "name": "鼠标",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "keyboard",
+          "name": "键盘",
+          "parent": "computer_parts"
+        },
+        {
+          "id": "clothing",
+          "name": "服装",
+          "parent": null
+        },
+        {
+          "id": "menswear",
+          "name": "男装",
+          "parent": "clothing"
+        },
+        {
+          "id": "womenswear",
+          "name": "女装",
+          "parent": "clothing"
+        },
+        {
+          "id": "kidswear",
+          "name": "童装",
+          "parent": "clothing"
+        },
+        {
+          "id": "underwear",
+          "name": "内衣",
+          "parent": "clothing"
+        },
+        {
+          "id": "sportswear",
+          "name": "运动服",
+          "parent": "clothing"
+        },
+        {
+          "id": "outerwear",
+          "name": "外套",
+          "parent": "clothing"
+        },
+        {
+          "id": "shirt",
+          "name": "衬衫",
+          "parent": "clothing"
+        },
+        {
+          "id": "tshirt",
+          "name": "T恤",
+          "parent": "clothing"
+        },
+        {
+          "id": "pants",
+          "name": "裤子",
+          "parent": "clothing"
+        },
+        {
+          "id": "dress",
+          "name": "连衣裙",
+          "parent": "clothing"
+        },
+        {
+          "id": "skirt",
+          "name": "裙子",
+          "parent": "clothing"
+        },
+        {
+          "id": "shoes",
+          "name": "鞋类",
+          "parent": null
+        },
+        {
+          "id": "sports_shoes",
+          "name": "运动鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "casual_shoes",
+          "name": "休闲鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "formal_shoes",
+          "name": "正装鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "boots",
+          "name": "靴子",
+          "parent": "shoes"
+        },
+        {
+          "id": "sandals",
+          "name": "凉鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "slippers",
+          "name": "拖鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "sneakers",
+          "name": "帆布鞋",
+          "parent": "shoes"
+        },
+        {
+          "id": "home",
+          "name": "家居",
+          "parent": null
+        },
+        {
+          "id": "furniture",
+          "name": "家具",
+          "parent": "home"
+        },
+        {
+          "id": "sofa",
+          "name": "沙发",
+          "parent": "furniture"
+        },
+        {
+          "id": "bed",
+          "name": "床",
+          "parent": "furniture"
+        },
+        {
+          "id": "table",
+          "name": "桌子",
+          "parent": "furniture"
+        },
+        {
+          "id": "chair",
+          "name": "椅子",
+          "parent": "furniture"
+        },
+        {
+          "id": "cabinet",
+          "name": "柜子",
+          "parent": "furniture"
+        },
+        {
+          "id": "home_textiles",
+          "name": "家纺",
+          "parent": "home"
+        },
+        {
+          "id": "bedding",
+          "name": "床品套件",
+          "parent": "home_textiles"
+        },
+        {
+          "id": "curtain",
+          "name": "窗帘",
+          "parent": "home_textiles"
+        },
+        {
+          "id": "carpet",
+          "name": "地毯",
+          "parent": "home_textiles"
+        },
+        {
+          "id": "kitchenware",
+          "name": "厨具",
+          "parent": "home"
+        },
+        {
+          "id": "cookware",
+          "name": "炒锅",
+          "parent": "kitchenware"
+        },
+        {
+          "id": "pot",
+          "name": "汤锅",
+          "parent": "kitchenware"
+        },
+        {
+          "id": "knife",
+          "name": "刀具",
+          "parent": "kitchenware"
+        },
+        {
+          "id": "appliances",
+          "name": "家电",
+          "parent": null
+        },
+        {
+          "id": "refrigerator",
+          "name": "冰箱",
+          "parent": "appliances"
+        },
+        {
+          "id": "washing_machine",
+          "name": "洗衣机",
+          "parent": "appliances"
+        },
+        {
+          "id": "ac",
+          "name": "空调",
+          "parent": "appliances"
+        },
+        {
+          "id": "vacuum",
+          "name": "吸尘器",
+          "parent": "appliances"
+        },
+        {
+          "id": "microwave",
+          "name": "微波炉",
+          "parent": "appliances"
+        },
+        {
+          "id": "rice_cooker",
+          "name": "电饭煲",
+          "parent": "appliances"
+        },
+        {
+          "id": "beauty",
+          "name": "美妆",
+          "parent": null
+        },
+        {
+          "id": "skincare",
+          "name": "护肤品",
+          "parent": "beauty"
+        },
+        {
+          "id": "makeup",
+          "name": "彩妆",
+          "parent": "beauty"
+        },
+        {
+          "id": "perfume",
+          "name": "香水",
+          "parent": "beauty"
+        },
+        {
+          "id": "sports",
+          "name": "运动户外",
+          "parent": null
+        },
+        {
+          "id": "fitness",
+          "name": "健身器材",
+          "parent": "sports"
+        },
+        {
+          "id": "camping",
+          "name": "露营装备",
+          "parent": "sports"
+        },
+        {
+          "id": "cycling",
+          "name": "骑行装备",
+          "parent": "sports"
+        },
+        {
+          "id": "swimming",
+          "name": "游泳装备",
+          "parent": "sports"
+        },
+        {
+          "id": "books",
+          "name": "图书",
+          "parent": null
+        },
+        {
+          "id": "fiction",
+          "name": "小说",
+          "parent": "books"
+        },
+        {
+          "id": "non_fiction",
+          "name": "非虚构",
+          "parent": "books"
+        },
+        {
+          "id": "textbook",
+          "name": "教材",
+          "parent": "books"
+        },
+        {
+          "id": "comics",
+          "name": "漫画",
+          "parent": "books"
+        },
+        {
+          "id": "baby",
+          "name": "母婴",
+          "parent": null
+        },
+        {
+          "id": "diaper",
+          "name": "纸尿裤",
+          "parent": "baby"
+        },
+        {
+          "id": "milk_powder",
+          "name": "奶粉",
+          "parent": "baby"
+        },
+        {
+          "id": "toys",
+          "name": "玩具",
+          "parent": null
+        },
+        {
+          "id": "building_blocks",
+          "name": "积木",
+          "parent": "toys"
+        },
+        {
+          "id": "plush",
+          "name": "毛绒玩具",
+          "parent": "toys"
+        },
+        {
+          "id": "rc_toys",
+          "name": "遥控玩具",
+          "parent": "toys"
+        },
+        {
+          "id": "office",
+          "name": "办公",
+          "parent": null
+        },
+        {
+          "id": "stationery",
+          "name": "文具",
+          "parent": "office"
+        },
+        {
+          "id": "printer",
+          "name": "打印机",
+          "parent": "office"
+        },
+        {
+          "id": "automotive",
+          "name": "汽车用品",
+          "parent": null
+        },
+        {
+          "id": "car_electronics",
+          "name": "车载电子",
+          "parent": "automotive"
+        },
+        {
+          "id": "car_accessories",
+          "name": "汽车配件",
+          "parent": "automotive"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "color",
+      "name": "颜色",
+      "type": "enum",
+      "category": "外观",
+      "values": [
+        {
+          "id": "black",
+          "name": "黑色",
+          "tags": [
+            "经典",
+            "百搭"
+          ]
+        },
+        {
+          "id": "white",
+          "name": "白色",
+          "tags": [
+            "经典",
+            "百搭"
+          ]
+        },
+        {
+          "id": "gray",
+          "name": "灰色",
+          "tags": [
+            "中性"
+          ]
+        },
+        {
+          "id": "silver",
+          "name": "银色",
+          "tags": [
+            "金属感"
+          ]
+        },
+        {
+          "id": "gold",
+          "name": "金色",
+          "tags": [
+            "奢华"
+          ]
+        },
+        {
+          "id": "rose_gold",
+          "name": "玫瑰金",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "red",
+          "name": "红色",
+          "tags": [
+            "热情",
+            "喜庆"
+          ]
+        },
+        {
+          "id": "blue",
+          "name": "蓝色",
+          "tags": [
+            "冷静",
+            "专业"
+          ]
+        },
+        {
+          "id": "navy",
+          "name": "海军蓝",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "light_blue",
+          "name": "浅蓝色",
+          "tags": [
+            "清新"
+          ]
+        },
+        {
+          "id": "green",
+          "name": "绿色",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "dark_green",
+          "name": "深绿色",
+          "tags": [
+            "沉稳"
+          ]
+        },
+        {
+          "id": "mint",
+          "name": "薄荷绿",
+          "tags": [
+            "清新"
+          ]
+        },
+        {
+          "id": "yellow",
+          "name": "黄色",
+          "tags": [
+            "活力"
+          ]
+        },
+        {
+          "id": "orange",
+          "name": "橙色",
+          "tags": [
+            "活力"
+          ]
+        },
+        {
+          "id": "pink",
+          "name": "粉色",
+          "tags": [
+            "甜美"
+          ]
+        },
+        {
+          "id": "light_pink",
+          "name": "浅粉色",
+          "tags": [
+            "甜美"
+          ]
+        },
+        {
+          "id": "purple",
+          "name": "紫色",
+          "tags": [
+            "神秘"
+          ]
+        },
+        {
+          "id": "lavender",
+          "name": "薰衣草紫",
+          "tags": [
+            "浪漫"
+          ]
+        },
+        {
+          "id": "brown",
+          "name": "棕色",
+          "tags": [
+            "大地色"
+          ]
+        },
+        {
+          "id": "coffee",
+          "name": "咖啡色",
+          "tags": [
+            "成熟"
+          ]
+        },
+        {
+          "id": "beige",
+          "name": "米色",
+          "tags": [
+            "温柔"
+          ]
+        },
+        {
+          "id": "khaki",
+          "name": "卡其色",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "cream",
+          "name": "奶油色",
+          "tags": [
+            "温柔"
+          ]
+        },
+        {
+          "id": "camel",
+          "name": "驼色",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "burgundy",
+          "name": "酒红色",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "teal",
+          "name": "青绿色",
+          "tags": [
+            "独特"
+          ]
+        },
+        {
+          "id": "coral",
+          "name": "珊瑚色",
+          "tags": "活力"
+        },
+        {
+          "id": "peach",
+          "name": "桃色",
+          "tags": [
+            "甜美"
+          ]
+        },
+        {
+          "id": "ivory",
+          "name": "象牙白",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "charcoal",
+          "name": "炭灰色",
+          "tags": [
+            "沉稳"
+          ]
+        },
+        {
+          "id": "midnight",
+          "name": "午夜蓝",
+          "tags": [
+            "深邃"
+          ]
+        },
+        {
+          "id": "sky_blue",
+          "name": "天蓝色",
+          "tags": [
+            "清新"
+          ]
+        },
+        {
+          "id": "emerald",
+          "name": "翡翠绿",
+          "tags": [
+            "高贵"
+          ]
+        },
+        {
+          "id": "maroon",
+          "name": "栗色",
+          "tags": [
+            "沉稳"
+          ]
+        },
+        {
+          "id": "olive",
+          "name": "橄榄绿",
+          "tags": [
+            "军旅"
+          ]
+        },
+        {
+          "id": "tan",
+          "name": "棕褐色",
+          "tags": [
+            "户外"
+          ]
+        },
+        {
+          "id": "chestnut",
+          "name": "栗子色",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "graphite",
+          "name": "石墨色",
+          "tags": [
+            "科技"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "size",
+      "name": "尺寸",
+      "type": "enum",
+      "category": "规格",
+      "values": [
+        {
+          "id": "xxs",
+          "name": "XXS",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "xs",
+          "name": "XS",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "s",
+          "name": "S",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "m",
+          "name": "M",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "l",
+          "name": "L",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "xl",
+          "name": "XL",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "xxl",
+          "name": "XXL",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "xxxl",
+          "name": "3XL",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "4xl",
+          "name": "4XL",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "5xl",
+          "name": "5XL",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "size_28",
+          "name": "28码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_29",
+          "name": "29码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_30",
+          "name": "30码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_31",
+          "name": "31码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_32",
+          "name": "32码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_33",
+          "name": "33码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_34",
+          "name": "34码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_35",
+          "name": "35码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_36",
+          "name": "36码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_38",
+          "name": "38码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_40",
+          "name": "40码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "size_42",
+          "name": "42码",
+          "tags": [
+            "裤子"
+          ]
+        },
+        {
+          "id": "eu_35",
+          "name": "EU35",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_36",
+          "name": "EU36",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_37",
+          "name": "EU37",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_38",
+          "name": "EU38",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_39",
+          "name": "EU39",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_40",
+          "name": "EU40",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_41",
+          "name": "EU41",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_42",
+          "name": "EU42",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_43",
+          "name": "EU43",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_44",
+          "name": "EU44",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_45",
+          "name": "EU45",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "eu_46",
+          "name": "EU46",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_5",
+          "name": "US5",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_6",
+          "name": "US6",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_7",
+          "name": "US7",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_8",
+          "name": "US8",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_9",
+          "name": "US9",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_10",
+          "name": "US10",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_11",
+          "name": "US11",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "us_12",
+          "name": "US12",
+          "tags": [
+            "鞋"
+          ]
+        },
+        {
+          "id": "inch_32",
+          "name": "32寸",
+          "tags": [
+            "显示器",
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_34",
+          "name": "34寸",
+          "tags": [
+            "显示器",
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_40",
+          "name": "40寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_43",
+          "name": "43寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_50",
+          "name": "50寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_55",
+          "name": "55寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_60",
+          "name": "60寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_65",
+          "name": "65寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_70",
+          "name": "70寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_75",
+          "name": "75寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "inch_85",
+          "name": "85寸",
+          "tags": [
+            "电视"
+          ]
+        },
+        {
+          "id": "13inch",
+          "name": "13英寸",
+          "tags": [
+            "笔记本",
+            "平板"
+          ]
+        },
+        {
+          "id": "14inch",
+          "name": "14英寸",
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "15inch",
+          "name": "15英寸",
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "15.6inch",
+          "name": "15.6英寸",
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "16inch",
+          "name": "16英寸",
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "17inch",
+          "name": "17英寸",
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "27inch",
+          "name": "27英寸",
+          "tags": [
+            "显示器"
+          ]
+        },
+        {
+          "id": "32gb",
+          "name": "32GB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "64gb",
+          "name": "64GB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "128gb",
+          "name": "128GB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "256gb",
+          "name": "256GB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "512gb",
+          "name": "512GB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "1tb",
+          "name": "1TB",
+          "tags": [
+            "手机",
+            "平板",
+            "存储"
+          ]
+        },
+        {
+          "id": "2tb",
+          "name": "2TB",
+          "tags": [
+            "存储"
+          ]
+        },
+        {
+          "id": "single",
+          "name": "单人",
+          "tags": [
+            "床品",
+            "被子"
+          ]
+        },
+        {
+          "id": "double",
+          "name": "双人",
+          "tags": [
+            "床品",
+            "被子"
+          ]
+        },
+        {
+          "id": "queen",
+          "name": "大床",
+          "tags": [
+            "床品",
+            "被子"
+          ]
+        },
+        {
+          "id": "king",
+          "name": "特大床",
+          "tags": [
+            "床品",
+            "被子"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "material",
+      "name": "材质",
+      "type": "enum",
+      "category": "规格",
+      "values": [
+        {
+          "id": "cotton",
+          "name": "棉",
+          "tags": [
+            "天然纤维",
+            "透气",
+            "舒适"
+          ]
+        },
+        {
+          "id": "polyester",
+          "name": "聚酯纤维",
+          "tags": [
+            "合成纤维",
+            "耐磨"
+          ]
+        },
+        {
+          "id": "silk",
+          "name": "丝绸",
+          "tags": [
+            "天然纤维",
+            "高档"
+          ]
+        },
+        {
+          "id": "linen",
+          "name": "亚麻",
+          "tags": [
+            "天然纤维",
+            "透气"
+          ]
+        },
+        {
+          "id": "wool",
+          "name": "羊毛",
+          "tags": [
+            "天然纤维",
+            "保暖"
+          ]
+        },
+        {
+          "id": "cashmere",
+          "name": "羊绒",
+          "tags": [
+            "天然纤维",
+            "高档",
+            "保暖"
+          ]
+        },
+        {
+          "id": "denim",
+          "name": "牛仔布",
+          "tags": [
+            "耐磨",
+            "休闲"
+          ]
+        },
+        {
+          "id": "leather",
+          "name": "真皮",
+          "tags": [
+            "天然皮革",
+            "高档"
+          ]
+        },
+        {
+          "id": "pu_leather",
+          "name": "PU皮",
+          "tags": [
+            "合成皮革"
+          ]
+        },
+        {
+          "id": "nylon",
+          "name": "尼龙",
+          "tags": [
+            "合成纤维",
+            "耐磨"
+          ]
+        },
+        {
+          "id": "spandex",
+          "name": "氨纶",
+          "tags": [
+            "弹力"
+          ]
+        },
+        {
+          "id": "polyamide",
+          "name": "锦纶",
+          "tags": [
+            "合成纤维"
+          ]
+        },
+        {
+          "id": "acrylic",
+          "name": "腈纶",
+          "tags": [
+            "合成纤维"
+          ]
+        },
+        {
+          "id": "viscose",
+          "name": "粘胶纤维",
+          "tags": [
+            "人造纤维"
+          ]
+        },
+        {
+          "id": "bamboo",
+          "name": "竹纤维",
+          "tags": [
+            "天然纤维"
+          ]
+        },
+        {
+          "id": "modal",
+          "name": "莫代尔",
+          "tags": [
+            "人造纤维"
+          ]
+        },
+        {
+          "id": "tencel",
+          "name": "天丝",
+          "tags": [
+            "人造纤维"
+          ]
+        },
+        {
+          "id": "down",
+          "name": "羽绒",
+          "tags": [
+            "保暖"
+          ]
+        },
+        {
+          "id": "feather",
+          "name": "羽毛",
+          "tags": [
+            "保暖"
+          ]
+        },
+        {
+          "id": "cotton_blend",
+          "name": "棉混纺",
+          "tags": [
+            "混纺"
+          ]
+        },
+        {
+          "id": "metal",
+          "name": "金属",
+          "tags": [
+            "材质"
+          ]
+        },
+        {
+          "id": "aluminum",
+          "name": "铝合金",
+          "tags": [
+            "轻便",
+            "耐用"
+          ]
+        },
+        {
+          "id": "stainless_steel",
+          "name": "不锈钢",
+          "tags": [
+            "耐用"
+          ]
+        },
+        {
+          "id": "titanium",
+          "name": "钛合金",
+          "tags": [
+            "轻便",
+            "高档"
+          ]
+        },
+        {
+          "id": "plastic",
+          "name": "塑料",
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "abs",
+          "name": "ABS塑料",
+          "tags": [
+            "工程塑料"
+          ]
+        },
+        {
+          "id": "pc",
+          "name": "聚碳酸酯",
+          "tags": [
+            "透明",
+            "耐用"
+          ]
+        },
+        {
+          "id": "glass",
+          "name": "玻璃",
+          "tags": [
+            "材质"
+          ]
+        },
+        {
+          "id": "ceramic",
+          "name": "陶瓷",
+          "tags": [
+            "材质"
+          ]
+        },
+        {
+          "id": "wood",
+          "name": "实木",
+          "tags": [
+            "天然材料"
+          ]
+        },
+        {
+          "id": "mdf",
+          "name": "中密度纤维板",
+          "tags": [
+            "人造板"
+          ]
+        },
+        {
+          "id": "marble",
+          "name": "大理石",
+          "tags": [
+            "天然石材"
+          ]
+        },
+        {
+          "id": "quartz",
+          "name": "石英石",
+          "tags": [
+            "人造石"
+          ]
+        },
+        {
+          "id": "rubber",
+          "name": "橡胶",
+          "tags": [
+            "材质"
+          ]
+        },
+        {
+          "id": "silicone",
+          "name": "硅胶",
+          "tags": [
+            "材质"
+          ]
+        },
+        {
+          "id": "carbon_fiber",
+          "name": "碳纤维",
+          "tags": [
+            "高科技材料"
+          ]
+        },
+        {
+          "id": "foam",
+          "name": "海绵",
+          "tags": [
+            "填充材料"
+          ]
+        },
+        {
+          "id": "memory_foam",
+          "name": "记忆海绵",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "latex",
+          "name": "乳胶",
+          "tags": [
+            "天然材料",
+            "舒适"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "price",
+      "name": "价格",
+      "type": "range",
+      "category": "基础信息",
+      "values": [
+        {
+          "id": "under_50",
+          "name": "50元以下",
+          "min": 0,
+          "max": 50
+        },
+        {
+          "id": "50_100",
+          "name": "50-100元",
+          "min": 50,
+          "max": 100
+        },
+        {
+          "id": "100_200",
+          "name": "100-200元",
+          "min": 100,
+          "max": 200
+        },
+        {
+          "id": "200_300",
+          "name": "200-300元",
+          "min": 200,
+          "max": 300
+        },
+        {
+          "id": "300_500",
+          "name": "300-500元",
+          "min": 300,
+          "max": 500
+        },
+        {
+          "id": "500_800",
+          "name": "500-800元",
+          "min": 500,
+          "max": 800
+        },
+        {
+          "id": "800_1000",
+          "name": "800-1000元",
+          "min": 800,
+          "max": 1000
+        },
+        {
+          "id": "1000_1500",
+          "name": "1000-1500元",
+          "min": 1000,
+          "max": 1500
+        },
+        {
+          "id": "1500_2000",
+          "name": "1500-2000元",
+          "min": 1500,
+          "max": 2000
+        },
+        {
+          "id": "2000_3000",
+          "name": "2000-3000元",
+          "min": 2000,
+          "max": 3000
+        },
+        {
+          "id": "3000_5000",
+          "name": "3000-5000元",
+          "min": 3000,
+          "max": 5000
+        },
+        {
+          "id": "5000_8000",
+          "name": "5000-8000元",
+          "min": 5000,
+          "max": 8000
+        },
+        {
+          "id": "8000_10000",
+          "name": "8000-10000元",
+          "min": 8000,
+          "max": 10000
+        },
+        {
+          "id": "10000_20000",
+          "name": "10000-20000元",
+          "min": 10000,
+          "max": 20000
+        },
+        {
+          "id": "over_20000",
+          "name": "20000元以上",
+          "min": 20000,
+          "max": null
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "origin",
+      "name": "产地",
+      "type": "enum",
+      "category": "基础信息",
+      "values": [
+        {
+          "id": "china",
+          "name": "中国",
+          "tags": [
+            "制造大国"
+          ]
+        },
+        {
+          "id": "usa",
+          "name": "美国",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "japan",
+          "name": "日本",
+          "tags": [
+            "精细"
+          ]
+        },
+        {
+          "id": "germany",
+          "name": "德国",
+          "tags": [
+            "品质"
+          ]
+        },
+        {
+          "id": "korea",
+          "name": "韩国",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "uk",
+          "name": "英国",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "france",
+          "name": "法国",
+          "tags": [
+            "奢华"
+          ]
+        },
+        {
+          "id": "italy",
+          "name": "意大利",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "taiwan",
+          "name": "台湾",
+          "tags": [
+            "电子"
+          ]
+        },
+        {
+          "id": "australia",
+          "name": "澳大利亚",
+          "tags": [
+            "天然"
+          ]
+        },
+        {
+          "id": "canada",
+          "name": "加拿大",
+          "tags": [
+            "天然"
+          ]
+        },
+        {
+          "id": "switzerland",
+          "name": "瑞士",
+          "tags": [
+            "精密"
+          ]
+        },
+        {
+          "id": "netherlands",
+          "name": "荷兰",
+          "tags": [
+            "品质"
+          ]
+        },
+        {
+          "id": "sweden",
+          "name": "瑞典",
+          "tags": [
+            "设计"
+          ]
+        },
+        {
+          "id": "denmark",
+          "name": "丹麦",
+          "tags": [
+            "设计"
+          ]
+        },
+        {
+          "id": "singapore",
+          "name": "新加坡",
+          "tags": [
+            "亚洲"
+          ]
+        },
+        {
+          "id": "thailand",
+          "name": "泰国",
+          "tags": [
+            "东南亚"
+          ]
+        },
+        {
+          "id": "vietnam",
+          "name": "越南",
+          "tags": [
+            "东南亚"
+          ]
+        },
+        {
+          "id": "india",
+          "name": "印度",
+          "tags": [
+            "南亚"
+          ]
+        },
+        {
+          "id": "indonesia",
+          "name": "印度尼西亚",
+          "tags": [
+            "东南亚"
+          ]
+        },
+        {
+          "id": "malaysia",
+          "name": "马来西亚",
+          "tags": [
+            "东南亚"
+          ]
+        },
+        {
+          "id": "mexico",
+          "name": "墨西哥",
+          "tags": [
+            "北美"
+          ]
+        },
+        {
+          "id": "brazil",
+          "name": "巴西",
+          "tags": [
+            "南美"
+          ]
+        },
+        {
+          "id": "turkey",
+          "name": "土耳其",
+          "tags": [
+            "中东"
+          ]
+        },
+        {
+          "id": "uae",
+          "name": "阿联酋",
+          "tags": [
+            "中东"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "gender",
+      "name": "性别",
+      "type": "enum",
+      "category": "人群",
+      "values": [
+        {
+          "id": "male",
+          "name": "男",
+          "tags": [
+            "男性"
+          ]
+        },
+        {
+          "id": "female",
+          "name": "女",
+          "tags": [
+            "女性"
+          ]
+        },
+        {
+          "id": "unisex",
+          "name": "中性",
+          "tags": [
+            "unisex"
+          ]
+        },
+        {
+          "id": "kids",
+          "name": "儿童",
+          "tags": [
+            "儿童"
+          ]
+        },
+        {
+          "id": "baby",
+          "name": "婴儿",
+          "tags": [
+            "婴儿"
+          ]
+        },
+        {
+          "id": "teen",
+          "name": "青少年",
+          "tags": [
+            "青少年"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "season",
+      "name": "季节",
+      "type": "enum",
+      "category": "时间",
+      "values": [
+        {
+          "id": "spring",
+          "name": "春季",
+          "tags": [
+            "春"
+          ]
+        },
+        {
+          "id": "summer",
+          "name": "夏季",
+          "tags": [
+            "夏"
+          ]
+        },
+        {
+          "id": "autumn",
+          "name": "秋季",
+          "tags": [
+            "秋"
+          ]
+        },
+        {
+          "id": "winter",
+          "name": "冬季",
+          "tags": [
+            "冬"
+          ]
+        },
+        {
+          "id": "all_season",
+          "name": "四季通用",
+          "tags": [
+            "全季节"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "style",
+      "name": "风格",
+      "type": "enum",
+      "category": "外观",
+      "values": [
+        {
+          "id": "casual",
+          "name": "休闲",
+          "tags": [
+            "日常"
+          ]
+        },
+        {
+          "id": "formal",
+          "name": "正装",
+          "tags": [
+            "正式场合"
+          ]
+        },
+        {
+          "id": "business",
+          "name": "商务",
+          "tags": [
+            "职场"
+          ]
+        },
+        {
+          "id": "sports",
+          "name": "运动",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "street",
+          "name": "街头",
+          "tags": [
+            "潮流"
+          ]
+        },
+        {
+          "id": "vintage",
+          "name": "复古",
+          "tags": [
+            "怀旧"
+          ]
+        },
+        {
+          "id": "minimalist",
+          "name": "极简",
+          "tags": [
+            "简约"
+          ]
+        },
+        {
+          "id": "bohemian",
+          "name": "波西米亚",
+          "tags": [
+            "浪漫"
+          ]
+        },
+        {
+          "id": "preppy",
+          "name": "学院",
+          "tags": [
+            "学生"
+          ]
+        },
+        {
+          "id": "gothic",
+          "name": "哥特",
+          "tags": [
+            "暗黑"
+          ]
+        },
+        {
+          "id": "punk",
+          "name": "朋克",
+          "tags": [
+            "叛逆"
+          ]
+        },
+        {
+          "id": "chic",
+          "name": "时尚",
+          "tags": [
+            "潮流"
+          ]
+        },
+        {
+          "id": "elegant",
+          "name": "优雅",
+          "tags": [
+            "精致"
+          ]
+        },
+        {
+          "id": "cute",
+          "name": "可爱",
+          "tags": [
+            "甜美"
+          ]
+        },
+        {
+          "id": "cool",
+          "name": "酷",
+          "tags": [
+            "中性"
+          ]
+        },
+        {
+          "id": "luxury",
+          "name": "奢华",
+          "tags": [
+            "高端"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "pattern",
+      "name": "图案",
+      "type": "enum",
+      "category": "外观",
+      "values": [
+        {
+          "id": "solid",
+          "name": "纯色",
+          "tags": [
+            "简约"
+          ]
+        },
+        {
+          "id": "striped",
+          "name": "条纹",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "plaid",
+          "name": "格子",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "floral",
+          "name": "花朵",
+          "tags": [
+            "女性"
+          ]
+        },
+        {
+          "id": "geometric",
+          "name": "几何",
+          "tags": [
+            "现代"
+          ]
+        },
+        {
+          "id": "animal",
+          "name": "动物纹",
+          "tags": [
+            "野性"
+          ]
+        },
+        {
+          "id": "leopard",
+          "name": "豹纹",
+          "tags": [
+            "野性"
+          ]
+        },
+        {
+          "id": "camo",
+          "name": "迷彩",
+          "tags": [
+            "军事"
+          ]
+        },
+        {
+          "id": "dots",
+          "name": "波点",
+          "tags": [
+            "复古"
+          ]
+        },
+        {
+          "id": "abstract",
+          "name": "抽象",
+          "tags": [
+            "艺术"
+          ]
+        },
+        {
+          "id": "letter",
+          "name": "字母",
+          "tags": [
+            "定制"
+          ]
+        },
+        {
+          "id": "logo",
+          "name": "logo",
+          "tags": [
+            "品牌"
+          ]
+        },
+        {
+          "id": "cartoon",
+          "name": "卡通",
+          "tags": [
+            "童趣"
+          ]
+        },
+        {
+          "id": "tie_dye",
+          "name": "扎染",
+          "tags": [
+            "波西米亚"
+          ]
+        },
+        {
+          "id": "patchwork",
+          "name": "拼接",
+          "tags": [
+            "设计"
+          ]
+        },
+        {
+          "id": "embroidery",
+          "name": "刺绣",
+          "tags": [
+            "精致"
+          ]
+        },
+        {
+          "id": "gradient",
+          "name": "渐变",
+          "tags": [
+            "现代"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "sleeve_length",
+      "name": "袖长",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "short_sleeve",
+          "name": "短袖",
+          "tags": [
+            "夏季"
+          ]
+        },
+        {
+          "id": "half_sleeve",
+          "name": "五分袖",
+          "tags": [
+            "春秋"
+          ]
+        },
+        {
+          "id": "three_quarter",
+          "name": "七分袖",
+          "tags": [
+            "春秋"
+          ]
+        },
+        {
+          "id": "long_sleeve",
+          "name": "长袖",
+          "tags": [
+            "冬季"
+          ]
+        },
+        {
+          "id": "sleeveless",
+          "name": "无袖",
+          "tags": [
+            "夏季"
+          ]
+        },
+        {
+          "id": "raglan",
+          "name": "插肩袖",
+          "tags": [
+            "运动"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "neckline",
+      "name": "领型",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "crew_neck",
+          "name": "圆领",
+          "tags": [
+            "基本"
+          ]
+        },
+        {
+          "id": "v_neck",
+          "name": "V领",
+          "tags": [
+            "显瘦"
+          ]
+        },
+        {
+          "id": "u_neck",
+          "name": "U领",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "polo",
+          "name": "Polo领",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "henley",
+          "name": "亨利领",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "mandarin",
+          "name": "立领",
+          "tags": [
+            "中式"
+          ]
+        },
+        {
+          "id": "hood",
+          "name": "连帽",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "boat_neck",
+          "name": "船领",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "high_neck",
+          "name": "高领",
+          "tags": [
+            "保暖"
+          ]
+        },
+        {
+          "id": "turtleneck",
+          "name": "高翻领",
+          "tags": [
+            "保暖"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "pants_type",
+      "name": "裤型",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "straight",
+          "name": "直筒",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "slim",
+          "name": "小脚",
+          "tags": [
+            "修身"
+          ]
+        },
+        {
+          "id": "skinny",
+          "name": "紧身",
+          "tags": [
+            "修身"
+          ]
+        },
+        {
+          "id": "loose",
+          "name": "宽松",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "wide_leg",
+          "name": "阔腿",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "bootcut",
+          "name": "靴型",
+          "tags": [
+            "显腿长"
+          ]
+        },
+        {
+          "id": "cargo",
+          "name": "工装",
+          "tags": [
+            "功能"
+          ]
+        },
+        {
+          "id": "jogger",
+          "name": "运动",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "culottes",
+          "name": "七分裤",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "palazzo",
+          "name": "宽腿裤",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "pleated",
+          "name": "打褶",
+          "tags": [
+            "正式"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "dress_length",
+      "name": "裙长",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "mini",
+          "name": "超短裙",
+          "tags": [
+            "迷你"
+          ]
+        },
+        {
+          "id": "above_knee",
+          "name": "短裙",
+          "tags": [
+            "膝盖以上"
+          ]
+        },
+        {
+          "id": "knee_length",
+          "name": "中裙",
+          "tags": [
+            "膝盖"
+          ]
+        },
+        {
+          "id": "below_knee",
+          "name": "中长裙",
+          "tags": [
+            "膝盖以下"
+          ]
+        },
+        {
+          "id": "midi",
+          "name": "长裙",
+          "tags": [
+            "及小腿"
+          ]
+        },
+        {
+          "id": "maxi",
+          "name": "超长裙",
+          "tags": [
+            "及地"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "waist_type",
+      "name": "腰型",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "high_waist",
+          "name": "高腰",
+          "tags": [
+            "显腿长"
+          ]
+        },
+        {
+          "id": "mid_waist",
+          "name": "中腰",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "low_waist",
+          "name": "低腰",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "elastic",
+          "name": "松紧腰",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "button",
+          "name": "系扣",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "belt",
+          "name": "腰带",
+          "tags": [
+            "可调节"
+          ]
+        },
+        {
+          "id": "wrap",
+          "name": "绑带",
+          "tags": [
+            "时尚"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "closure_type",
+      "name": "闭合方式",
+      "type": "enum",
+      "category": "服装规格",
+      "values": [
+        {
+          "id": "zipper",
+          "name": "拉链",
+          "tags": [
+            "方便"
+          ]
+        },
+        {
+          "id": "button",
+          "name": "纽扣",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "snap",
+          "name": "按扣",
+          "tags": [
+            "方便"
+          ]
+        },
+        {
+          "id": "hook",
+          "name": "钩扣",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "Velcro",
+          "name": "魔术贴",
+          "tags": [
+            "方便"
+          ]
+        },
+        {
+          "id": "drawstring",
+          "name": "抽绳",
+          "tags": [
+            "可调节"
+          ]
+        },
+        {
+          "id": "wrap",
+          "name": "系带",
+          "tags": [
+            "可调节"
+          ]
+        },
+        {
+          "id": "elastic_band",
+          "name": "松紧带",
+          "tags": [
+            "舒适"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "sole_material",
+      "name": "鞋底材质",
+      "type": "enum",
+      "category": "鞋类规格",
+      "values": [
+        {
+          "id": "rubber_sole",
+          "name": "橡胶底",
+          "tags": [
+            "耐磨"
+          ]
+        },
+        {
+          "id": "eva_sole",
+          "name": "EVA底",
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "pu_sole",
+          "name": "PU底",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "tpr_sole",
+          "name": "TPR底",
+          "tags": [
+            "耐磨"
+          ]
+        },
+        {
+          "id": "leather_sole",
+          "name": "真皮底",
+          "tags": [
+            "高档"
+          ]
+        },
+        {
+          "id": "gel_sole",
+          "name": "凝胶底",
+          "tags": [
+            "缓震"
+          ]
+        },
+        {
+          "id": "foam_sole",
+          "name": "海绵底",
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "md_sole",
+          "name": "MD底",
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "vibram",
+          "name": "Vibram底",
+          "tags": [
+            "专业"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "heel_height",
+      "name": "鞋跟高",
+      "type": "enum",
+      "category": "鞋类规格",
+      "values": [
+        {
+          "id": "flat",
+          "name": "平底",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "low_heel",
+          "name": "低跟",
+          "tags": [
+            "日常"
+          ]
+        },
+        {
+          "id": "mid_heel",
+          "name": "中跟",
+          "tags": [
+            "适中"
+          ]
+        },
+        {
+          "id": "high_heel",
+          "name": "高跟",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "ultra_high_heel",
+          "name": "超高跟",
+          "tags": [
+            "特殊场合"
+          ]
+        },
+        {
+          "id": "wedge",
+          "name": "坡跟",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "platform",
+          "name": "厚底",
+          "tags": [
+            "增高"
+          ]
+        },
+        {
+          "id": "kitten_heel",
+          "name": "小猫跟",
+          "tags": [
+            "优雅"
+          ]
+        },
+        {
+          "id": "block_heel",
+          "name": "粗跟",
+          "tags": [
+            "稳定"
+          ]
+        },
+        {
+          "id": "stiletto",
+          "name": "细跟",
+          "tags": [
+            "性感"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "upper_material",
+      "name": "鞋面材质",
+      "type": "enum",
+      "category": "鞋类规格",
+      "values": [
+        {
+          "id": "genuine_leather",
+          "name": "真皮",
+          "tags": [
+            "高档"
+          ]
+        },
+        {
+          "id": "synthetic_leather",
+          "name": "合成皮",
+          "tags": [
+            "经济"
+          ]
+        },
+        {
+          "id": "mesh",
+          "name": "网面",
+          "tags": [
+            "透气"
+          ]
+        },
+        {
+          "id": "canvas",
+          "name": "帆布",
+          "tags": [
+            "透气"
+          ]
+        },
+        {
+          "id": "suede",
+          "name": "绒面",
+          "tags": [
+            "柔软"
+          ]
+        },
+        {
+          "id": "patent_leather",
+          "name": "漆皮",
+          "tags": [
+            "亮面"
+          ]
+        },
+        {
+          "id": "knit",
+          "name": "针织",
+          "tags": [
+            "透气"
+          ]
+        },
+        {
+          "id": "flyknit",
+          "name": "飞织",
+          "tags": [
+            "轻便"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "shoe_style",
+      "name": "鞋型",
+      "type": "enum",
+      "category": "鞋类规格",
+      "values": [
+        {
+          "id": "low_top",
+          "name": "低帮",
+          "tags": [
+            "日常"
+          ]
+        },
+        {
+          "id": "mid_top",
+          "name": "中帮",
+          "tags": [
+            "支撑"
+          ]
+        },
+        {
+          "id": "high_top",
+          "name": "高帮",
+          "tags": [
+            "保暖"
+          ]
+        },
+        {
+          "id": "slip_on",
+          "name": "一脚蹬",
+          "tags": [
+            "方便"
+          ]
+        },
+        {
+          "id": "lace_up",
+          "name": "系带",
+          "tags": [
+            "可调节"
+          ]
+        },
+        {
+          "id": "derby",
+          "name": "德比鞋",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "oxford",
+          "name": "牛津鞋",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "loafer",
+          "name": "乐福鞋",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "moccasin",
+          "name": "豆豆鞋",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "mule",
+          "name": "穆勒鞋",
+          "tags": [
+            "夏季"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "screen_size",
+      "name": "屏幕尺寸",
+      "type": "range",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "4_5",
+          "name": "4.0-5.0英寸",
+          "min": 4.0,
+          "max": 5.0,
+          "tags": [
+            "手机"
+          ]
+        },
+        {
+          "id": "5_6",
+          "name": "5.0-6.0英寸",
+          "min": 5.0,
+          "max": 6.0,
+          "tags": [
+            "手机"
+          ]
+        },
+        {
+          "id": "6_7",
+          "name": "6.0-7.0英寸",
+          "min": 6.0,
+          "max": 7.0,
+          "tags": [
+            "手机",
+            "平板"
+          ]
+        },
+        {
+          "id": "7_10",
+          "name": "7.0-10.0英寸",
+          "min": 7.0,
+          "max": 10.0,
+          "tags": [
+            "平板"
+          ]
+        },
+        {
+          "id": "10_13",
+          "name": "10.0-13.0英寸",
+          "min": 10.0,
+          "max": 13.0,
+          "tags": [
+            "平板",
+            "笔记本"
+          ]
+        },
+        {
+          "id": "13_15",
+          "name": "13.0-15.0英寸",
+          "min": 13.0,
+          "max": 15.0,
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "15_17",
+          "name": "15.0-17.0英寸",
+          "min": 15.0,
+          "max": 17.0,
+          "tags": [
+            "笔记本"
+          ]
+        },
+        {
+          "id": "17_plus",
+          "name": "17英寸以上",
+          "min": 17.0,
+          "max": null,
+          "tags": [
+            "笔记本"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "screen_resolution",
+      "name": "屏幕分辨率",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "hd",
+          "name": "HD (1280x720)",
+          "tags": [
+            "高清"
+          ]
+        },
+        {
+          "id": "fhd",
+          "name": "FHD (1920x1080)",
+          "tags": [
+            "全高清"
+          ]
+        },
+        {
+          "id": "qhd",
+          "name": "QHD (2560x1440)",
+          "tags": [
+            "2K"
+          ]
+        },
+        {
+          "id": "uhd",
+          "name": "UHD (3840x2160)",
+          "tags": [
+            "4K"
+          ]
+        },
+        {
+          "id": "8k",
+          "name": "8K (7680x4320)",
+          "tags": [
+            "8K"
+          ]
+        },
+        {
+          "id": "retina",
+          "name": "Retina",
+          "tags": [
+            "苹果"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "display_type",
+      "name": "显示屏类型",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "lcd",
+          "name": "LCD",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "led",
+          "name": "LED",
+          "tags": [
+            "节能"
+          ]
+        },
+        {
+          "id": "oled",
+          "name": "OLED",
+          "tags": [
+            "高端",
+            "自发光"
+          ]
+        },
+        {
+          "id": "amoled",
+          "name": "AMOLED",
+          "tags": [
+            "三星"
+          ]
+        },
+        {
+          "id": "ips",
+          "name": "IPS",
+          "tags": [
+            "广视角"
+          ]
+        },
+        {
+          "id": "tn",
+          "name": "TN",
+          "tags": [
+            "快速响应"
+          ]
+        },
+        {
+          "id": "va",
+          "name": "VA",
+          "tags": [
+            "对比度高"
+          ]
+        },
+        {
+          "id": "mini_led",
+          "name": "Mini LED",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "e_ink",
+          "name": "E-ink",
+          "tags": [
+            "电子书"
+          ]
+        },
+        {
+          "id": "ltpo",
+          "name": "LTPO",
+          "tags": [
+            "省电"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "processor",
+      "name": "处理器",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "snapdragon_8gen3",
+          "name": "骁龙8 Gen 3",
+          "tags": [
+            "高通",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "snapdragon_8gen2",
+          "name": "骁龙8 Gen 2",
+          "tags": [
+            "高通",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "snapdragon_7gen3",
+          "name": "骁龙7 Gen 3",
+          "tags": [
+            "高通",
+            "中端"
+          ]
+        },
+        {
+          "id": "dimensity_9300",
+          "name": "天玑9300",
+          "tags": [
+            "联发科",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "dimensity_8200",
+          "name": "天玑8200",
+          "tags": [
+            "联发科",
+            "中端"
+          ]
+        },
+        {
+          "id": "a17_pro",
+          "name": "A17 Pro",
+          "tags": [
+            "苹果",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "a17",
+          "name": "A17",
+          "tags": [
+            "苹果",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "a16",
+          "name": "A16",
+          "tags": [
+            "苹果",
+            "高端"
+          ]
+        },
+        {
+          "id": "kirin_9000s",
+          "name": "麒麟9000s",
+          "tags": [
+            "华为",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "exynos_2400",
+          "name": "Exynos 2400",
+          "tags": [
+            "三星",
+            "旗舰"
+          ]
+        },
+        {
+          "id": "intel_i9_14900",
+          "name": "Intel i9-14900",
+          "tags": [
+            "Intel",
+            "桌面旗舰"
+          ]
+        },
+        {
+          "id": "intel_i7_14700",
+          "name": "Intel i7-14700",
+          "tags": [
+            "Intel",
+            "桌面高端"
+          ]
+        },
+        {
+          "id": "intel_i5_14600",
+          "name": "Intel i5-14600",
+          "tags": [
+            "Intel",
+            "桌面主流"
+          ]
+        },
+        {
+          "id": "intel_i9_13900h",
+          "name": "Intel i9-13900H",
+          "tags": [
+            "Intel",
+            "笔记本旗舰"
+          ]
+        },
+        {
+          "id": "intel_i7_13700h",
+          "name": "Intel i7-13700H",
+          "tags": [
+            "Intel",
+            "笔记本高端"
+          ]
+        },
+        {
+          "id": "intel_i5_13500h",
+          "name": "Intel i5-13500H",
+          "tags": [
+            "Intel",
+            "笔记本主流"
+          ]
+        },
+        {
+          "id": "amd_ryzen_9_7945hx",
+          "name": "AMD Ryzen 9 7945HX",
+          "tags": [
+            "AMD",
+            "笔记本旗舰"
+          ]
+        },
+        {
+          "id": "amd_ryzen_7_7745hx",
+          "name": "AMD Ryzen 7 7745HX",
+          "tags": [
+            "AMD",
+            "笔记本高端"
+          ]
+        },
+        {
+          "id": "apple_m3_max",
+          "name": "Apple M3 Max",
+          "tags": [
+            "苹果",
+            "笔记本旗舰"
+          ]
+        },
+        {
+          "id": "apple_m3_pro",
+          "name": "Apple M3 Pro",
+          "tags": [
+            "苹果",
+            "笔记本高端"
+          ]
+        },
+        {
+          "id": "apple_m3",
+          "name": "Apple M3",
+          "tags": [
+            "苹果",
+            "笔记本主流"
+          ]
+        },
+        {
+          "id": "apple_m2",
+          "name": "Apple M2",
+          "tags": [
+            "苹果",
+            "笔记本主流"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "ram_capacity",
+      "name": "运行内存",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "4gb",
+          "name": "4GB",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "6gb",
+          "name": "6GB",
+          "tags": [
+            "中端"
+          ]
+        },
+        {
+          "id": "8gb",
+          "name": "8GB",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "12gb",
+          "name": "12GB",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "16gb",
+          "name": "16GB",
+          "tags": [
+            "旗舰"
+          ]
+        },
+        {
+          "id": "24gb",
+          "name": "24GB",
+          "tags": [
+            "顶级"
+          ]
+        },
+        {
+          "id": "32gb",
+          "name": "32GB",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "64gb",
+          "name": "64GB",
+          "tags": [
+            "工作站"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "storage_capacity",
+      "name": "存储容量",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "32gb",
+          "name": "32GB",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "64gb",
+          "name": "64GB",
+          "tags": [
+            "中端"
+          ]
+        },
+        {
+          "id": "128gb",
+          "name": "128GB",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "256gb",
+          "name": "256GB",
+          "tags": [
+            "高配"
+          ]
+        },
+        {
+          "id": "512gb",
+          "name": "512GB",
+          "tags": [
+            "旗舰"
+          ]
+        },
+        {
+          "id": "1tb",
+          "name": "1TB",
+          "tags": [
+            "顶级"
+          ]
+        },
+        {
+          "id": "2tb",
+          "name": "2TB",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "4tb",
+          "name": "4TB",
+          "tags": [
+            "大容量"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "battery_capacity",
+      "name": "电池容量",
+      "type": "range",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "under_3000",
+          "name": "3000mAh以下",
+          "min": 0,
+          "max": 3000,
+          "tags": [
+            "小容量"
+          ]
+        },
+        {
+          "id": "3000_4000",
+          "name": "3000-4000mAh",
+          "min": 3000,
+          "max": 4000,
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "4000_5000",
+          "name": "4000-5000mAh",
+          "min": 4000,
+          "max": 5000,
+          "tags": [
+            "大电池"
+          ]
+        },
+        {
+          "id": "5000_6000",
+          "name": "5000-6000mAh",
+          "min": 5000,
+          "max": 6000,
+          "tags": [
+            "超大电池"
+          ]
+        },
+        {
+          "id": "6000_plus",
+          "name": "6000mAh以上",
+          "min": 6000,
+          "max": null,
+          "tags": [
+            "巨无霸"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "charging_power",
+      "name": "充电功率",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "5w",
+          "name": "5W",
+          "tags": [
+            "慢充"
+          ]
+        },
+        {
+          "id": "10w",
+          "name": "10W",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "18w",
+          "name": "18W",
+          "tags": [
+            "快充"
+          ]
+        },
+        {
+          "id": "20w",
+          "name": "20W",
+          "tags": [
+            "快充"
+          ]
+        },
+        {
+          "id": "30w",
+          "name": "30W",
+          "tags": [
+            "闪充"
+          ]
+        },
+        {
+          "id": "45w",
+          "name": "45W",
+          "tags": [
+            "超级闪充"
+          ]
+        },
+        {
+          "id": "65w",
+          "name": "65W",
+          "tags": [
+            "超级闪充"
+          ]
+        },
+        {
+          "id": "100w",
+          "name": "100W",
+          "tags": [
+            "极速闪充"
+          ]
+        },
+        {
+          "id": "120w",
+          "name": "120W",
+          "tags": [
+            "极速闪充"
+          ]
+        },
+        {
+          "id": "240w",
+          "name": "240W",
+          "tags": [
+            "极速"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "camera_main",
+      "name": "主摄像头像素",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "12mp",
+          "name": "1200万像素",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "48mp",
+          "name": "4800万像素",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "50mp",
+          "name": "5000万像素",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "64mp",
+          "name": "6400万像素",
+          "tags": [
+            "高像素"
+          ]
+        },
+        {
+          "id": "100mp",
+          "name": "1亿像素",
+          "tags": [
+            "超高像素"
+          ]
+        },
+        {
+          "id": "200mp",
+          "name": "2亿像素",
+          "tags": [
+            "极致像素"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "camera_count",
+      "name": "摄像头数量",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "single",
+          "name": "单摄",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "dual",
+          "name": "双摄",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "triple",
+          "name": "三摄",
+          "tags": [
+            "高配"
+          ]
+        },
+        {
+          "id": "quad",
+          "name": "四摄",
+          "tags": [
+            "旗舰"
+          ]
+        },
+        {
+          "id": "penta",
+          "name": "五摄",
+          "tags": [
+            "顶级"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5g",
+      "name": "5G网络",
+      "type": "boolean",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "yes",
+          "name": "支持5G",
+          "tags": [
+            "5G"
+          ]
+        },
+        {
+          "id": "no",
+          "name": "不支持5G",
+          "tags": [
+            "4G"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "wifi_standard",
+      "name": "WiFi标准",
+      "type": "enum",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "wifi_4",
+          "name": "WiFi 4",
+          "tags": [
+            "2.4G"
+          ]
+        },
+        {
+          "id": "wifi_5",
+          "name": "WiFi 5",
+          "tags": [
+            "5G"
+          ]
+        },
+        {
+          "id": "wifi_6",
+          "name": "WiFi 6",
+          "tags": [
+            "高速"
+          ]
+        },
+        {
+          "id": "wifi_6e",
+          "name": "WiFi 6E",
+          "tags": [
+            "6G"
+          ]
+        },
+        {
+          "id": "wifi_7",
+          "name": "WiFi 7",
+          "tags": [
+            "最新"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "bluetooth",
+      "name": "蓝牙版本",
+      "type": "enum",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "bt_4.0",
+          "name": "蓝牙4.0",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "bt_5.0",
+          "name": "蓝牙5.0",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "bt_5.1",
+          "name": "蓝牙5.1",
+          "tags": [
+            "定位"
+          ]
+        },
+        {
+          "id": "bt_5.2",
+          "name": "蓝牙5.2",
+          "tags": [
+            "低延迟"
+          ]
+        },
+        {
+          "id": "bt_5.3",
+          "name": "蓝牙5.3",
+          "tags": [
+            "低功耗"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "nfc",
+      "name": "NFC",
+      "type": "boolean",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "yes",
+          "name": "支持NFC",
+          "tags": [
+            "支付"
+          ]
+        },
+        {
+          "id": "no",
+          "name": "不支持NFC",
+          "tags": []
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "waterproof_level",
+      "name": "防水等级",
+      "type": "enum",
+      "category": "防护",
+      "values": [
+        {
+          "id": "ipx0",
+          "name": "无防水",
+          "tags": []
+        },
+        {
+          "id": "ipx4",
+          "name": "IPX4",
+          "tags": [
+            "日常"
+          ]
+        },
+        {
+          "id": "ipx5",
+          "name": "IPX5",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "ipx7",
+          "name": "IPX7",
+          "tags": [
+            "可游泳"
+          ]
+        },
+        {
+          "id": "ipx8",
+          "name": "IPX8",
+          "tags": [
+            "可潜水"
+          ]
+        },
+        {
+          "id": "ip68",
+          "name": "IP68",
+          "tags": [
+            "顶级防水"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "weight",
+      "name": "重量",
+      "type": "range",
+      "category": "物理规格",
+      "values": [
+        {
+          "id": "ultra_light",
+          "name": "100g以下",
+          "max": 100,
+          "tags": [
+            "超轻"
+          ]
+        },
+        {
+          "id": "light",
+          "name": "100-150g",
+          "min": 100,
+          "max": 150,
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "normal",
+          "name": "150-200g",
+          "min": 150,
+          "max": 200,
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "heavy",
+          "name": "200-250g",
+          "min": 200,
+          "max": 250,
+          "tags": [
+            "较重"
+          ]
+        },
+        {
+          "id": "laptop_1kg",
+          "name": "1kg以下",
+          "max": 1000,
+          "tags": [
+            "超轻本"
+          ]
+        },
+        {
+          "id": "laptop_1.5kg",
+          "name": "1-1.5kg",
+          "min": 1000,
+          "max": 1500,
+          "tags": [
+            "轻薄本"
+          ]
+        },
+        {
+          "id": "laptop_2kg",
+          "name": "1.5-2kg",
+          "min": 1500,
+          "max": 2000,
+          "tags": [
+            "普通本"
+          ]
+        },
+        {
+          "id": "laptop_2.5kg",
+          "name": "2-2.5kg",
+          "min": 2000,
+          "max": 2500,
+          "tags": [
+            "游戏本"
+          ]
+        },
+        {
+          "id": "laptop_3kg",
+          "name": "2.5kg以上",
+          "min": 2500,
+          "tags": [
+            "重型本"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "refresh_rate",
+      "name": "刷新率",
+      "type": "enum",
+      "category": "显示规格",
+      "values": [
+        {
+          "id": "60hz",
+          "name": "60Hz",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "90hz",
+          "name": "90Hz",
+          "tags": [
+            "流畅"
+          ]
+        },
+        {
+          "id": "120hz",
+          "name": "120Hz",
+          "tags": [
+            "高刷"
+          ]
+        },
+        {
+          "id": "144hz",
+          "name": "144Hz",
+          "tags": [
+            "电竞"
+          ]
+        },
+        {
+          "id": "165hz",
+          "name": "165Hz",
+          "tags": [
+            "电竞"
+          ]
+        },
+        {
+          "id": "240hz",
+          "name": "240Hz",
+          "tags": [
+            "专业电竞"
+          ]
+        },
+        {
+          "id": "360hz",
+          "name": "360Hz",
+          "tags": [
+            "极致电竞"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "operating_system",
+      "name": "操作系统",
+      "type": "enum",
+      "category": "软件",
+      "values": [
+        {
+          "id": "ios_17",
+          "name": "iOS 17",
+          "tags": [
+            "苹果"
+          ]
+        },
+        {
+          "id": "ios_16",
+          "name": "iOS 16",
+          "tags": [
+            "苹果"
+          ]
+        },
+        {
+          "id": "android_14",
+          "name": "Android 14",
+          "tags": [
+            "谷歌"
+          ]
+        },
+        {
+          "id": "android_13",
+          "name": "Android 13",
+          "tags": [
+            "谷歌"
+          ]
+        },
+        {
+          "id": "harmonyos_4",
+          "name": "鸿蒙4.0",
+          "tags": [
+            "华为"
+          ]
+        },
+        {
+          "id": "harmonyos_3",
+          "name": "鸿蒙3.0",
+          "tags": [
+            "华为"
+          ]
+        },
+        {
+          "id": "miui_14",
+          "name": "MIUI 14",
+          "tags": [
+            "小米"
+          ]
+        },
+        {
+          "id": "coloros_14",
+          "name": "ColorOS 14",
+          "tags": [
+            "OPPO"
+          ]
+        },
+        {
+          "id": "origin_os_4",
+          "name": "OriginOS 4",
+          "tags": [
+            "vivo"
+          ]
+        },
+        {
+          "id": "one_ui_6",
+          "name": "One UI 6",
+          "tags": [
+            "三星"
+          ]
+        },
+        {
+          "id": "windows_11",
+          "name": "Windows 11",
+          "tags": [
+            "微软"
+          ]
+        },
+        {
+          "id": "windows_10",
+          "name": "Windows 10",
+          "tags": [
+            "微软"
+          ]
+        },
+        {
+          "id": "macos_sonoma",
+          "name": "macOS Sonoma",
+          "tags": [
+            "苹果"
+          ]
+        },
+        {
+          "id": "chrome_os",
+          "name": "Chrome OS",
+          "tags": [
+            "谷歌"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "SIM_card",
+      "name": "SIM卡类型",
+      "type": "enum",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "single_sim",
+          "name": "单卡",
+          "tags": []
+        },
+        {
+          "id": "dual_sim",
+          "name": "双卡",
+          "tags": [
+            "双卡双待"
+          ]
+        },
+        {
+          "id": "esim",
+          "name": "eSIM",
+          "tags": [
+            "虚拟卡"
+          ]
+        },
+        {
+          "id": "physical_esim",
+          "name": "实体+eSIM",
+          "tags": [
+            "混合"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "charging_port",
+      "name": "充电接口",
+      "type": "enum",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "lightning",
+          "name": "Lightning",
+          "tags": [
+            "苹果"
+          ]
+        },
+        {
+          "id": "usb_c",
+          "name": "USB-C",
+          "tags": [
+            "通用"
+          ]
+        },
+        {
+          "id": "micro_usb",
+          "name": "Micro USB",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "wireless",
+          "name": "无线充电",
+          "tags": [
+            "无接口"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "headphone_jack",
+      "name": "耳机孔",
+      "type": "boolean",
+      "category": "连接性",
+      "values": [
+        {
+          "id": "yes",
+          "name": "有耳机孔",
+          "tags": [
+            "3.5mm"
+          ]
+        },
+        {
+          "id": "no",
+          "name": "无耳机孔",
+          "tags": [
+            "蓝牙或转接"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "biometric",
+      "name": "生物识别",
+      "type": "enum",
+      "category": "安全",
+      "values": [
+        {
+          "id": "fingerprint",
+          "name": "指纹识别",
+          "tags": [
+            "侧边",
+            "屏下"
+          ]
+        },
+        {
+          "id": "face_id",
+          "name": "面部识别",
+          "tags": [
+            "3D"
+          ]
+        },
+        {
+          "id": "iris",
+          "name": "虹膜识别",
+          "tags": [
+            "三星"
+          ]
+        },
+        {
+          "id": "none",
+          "name": "无",
+          "tags": []
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "speaker",
+      "name": "扬声器",
+      "type": "enum",
+      "category": "音频",
+      "values": [
+        {
+          "id": "mono",
+          "name": "单扬声器",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "stereo",
+          "name": "双扬声器",
+          "tags": [
+            "立体声"
+          ]
+        },
+        {
+          "id": "quad",
+          "name": "四扬声器",
+          "tags": [
+            "环绕声"
+          ]
+        },
+        {
+          "id": "dolby_atmos",
+          "name": "杜比全景声",
+          "tags": [
+            "影院级"
+          ]
+        },
+        {
+          "id": "hi_res",
+          "name": "Hi-Res认证",
+          "tags": [
+            "高解析"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "gpu",
+      "name": "显卡",
+      "type": "enum",
+      "category": "电子规格",
+      "values": [
+        {
+          "id": "rtx_4090",
+          "name": "RTX 4090",
+          "tags": [
+            "旗舰"
+          ]
+        },
+        {
+          "id": "rtx_4080",
+          "name": "RTX 4080",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "rtx_4070",
+          "name": "RTX 4070",
+          "tags": [
+            "中高端"
+          ]
+        },
+        {
+          "id": "rtx_4060",
+          "name": "RTX 4060",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "rtx_4050",
+          "name": "RTX 4050",
+          "tags": [
+            "入门"
+          ]
+        },
+        {
+          "id": "rtx_3080",
+          "name": "RTX 3080",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "rtx_3070",
+          "name": "RTX 3070",
+          "tags": [
+            "中高端"
+          ]
+        },
+        {
+          "id": "rtx_3060",
+          "name": "RTX 3060",
+          "tags": [
+            "主流"
+          ]
+        },
+        {
+          "id": "rx_7900xtx",
+          "name": "RX 7900 XTX",
+          "tags": [
+            "AMD旗舰"
+          ]
+        },
+        {
+          "id": "rx_7800xt",
+          "name": "RX 7800 XT",
+          "tags": [
+            "AMD中高端"
+          ]
+        },
+        {
+          "id": "rx_7600",
+          "name": "RX 7600",
+          "tags": [
+            "AMD入门"
+          ]
+        },
+        {
+          "id": "intel_iris",
+          "name": "Intel Iris Xe",
+          "tags": [
+            "集成显卡"
+          ]
+        },
+        {
+          "id": "apple_m3_gpu",
+          "name": "Apple M3 GPU",
+          "tags": [
+            "苹果"
+          ]
+        },
+        {
+          "id": "rtx_4080_laptop",
+          "name": "RTX 4080 (笔记本)",
+          "tags": [
+            "旗舰游戏本"
+          ]
+        },
+        {
+          "id": "rtx_4090_laptop",
+          "name": "RTX 4090 (笔记本)",
+          "tags": [
+            "顶级游戏本"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "power",
+      "name": "功率",
+      "type": "range",
+      "category": "电器规格",
+      "values": [
+        {
+          "id": "under_50w",
+          "name": "50W以下",
+          "max": 50,
+          "tags": [
+            "低功耗"
+          ]
+        },
+        {
+          "id": "50_100w",
+          "name": "50-100W",
+          "min": 50,
+          "max": 100,
+          "tags": [
+            "小功率"
+          ]
+        },
+        {
+          "id": "100_200w",
+          "name": "100-200W",
+          "min": 100,
+          "max": 200,
+          "tags": [
+            "中等"
+          ]
+        },
+        {
+          "id": "200_500w",
+          "name": "200-500W",
+          "min": 200,
+          "max": 500,
+          "tags": [
+            "中高"
+          ]
+        },
+        {
+          "id": "500_1000w",
+          "name": "500-1000W",
+          "min": 500,
+          "max": 1000,
+          "tags": [
+            "高功率"
+          ]
+        },
+        {
+          "id": "1000_2000w",
+          "name": "1000-2000W",
+          "min": 1000,
+          "max": 2000,
+          "tags": [
+            "大功率"
+          ]
+        },
+        {
+          "id": "2000w_plus",
+          "name": "2000W以上",
+          "min": 2000,
+          "tags": [
+            "超大功率"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "energy_rating",
+      "name": "能效等级",
+      "type": "enum",
+      "category": "电器规格",
+      "values": [
+        {
+          "id": "grade_1",
+          "name": "一级能效",
+          "tags": [
+            "最节能"
+          ]
+        },
+        {
+          "id": "grade_2",
+          "name": "二级能效",
+          "tags": [
+            "节能"
+          ]
+        },
+        {
+          "id": "grade_3",
+          "name": "三级能效",
+          "tags": [
+            "中等"
+          ]
+        },
+        {
+          "id": "grade_4",
+          "name": "四级能效",
+          "tags": [
+            "较耗电"
+          ]
+        },
+        {
+          "id": "grade_5",
+          "name": "五级能效",
+          "tags": [
+            "耗电"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "capacity",
+      "name": "容量",
+      "type": "range",
+      "category": "电器规格",
+      "values": [
+        {
+          "id": "under_50l",
+          "name": "50L以下",
+          "max": 50,
+          "tags": [
+            "小容量"
+          ]
+        },
+        {
+          "id": "50_100l",
+          "name": "50-100L",
+          "min": 50,
+          "max": 100,
+          "tags": [
+            "中等"
+          ]
+        },
+        {
+          "id": "100_200l",
+          "name": "100-200L",
+          "min": 100,
+          "max": 200,
+          "tags": [
+            "大容量"
+          ]
+        },
+        {
+          "id": "200_300l",
+          "name": "200-300L",
+          "min": 200,
+          "max": 300,
+          "tags": [
+            "超大"
+          ]
+        },
+        {
+          "id": "300_400l",
+          "name": "300-400L",
+          "min": 300,
+          "max": 400,
+          "tags": [
+            "巨型"
+          ]
+        },
+        {
+          "id": "400l_plus",
+          "name": "400L以上",
+          "min": 400,
+          "tags": [
+            "商用"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "refrigerator_type",
+      "name": "冰箱类型",
+      "type": "enum",
+      "category": "家电",
+      "values": [
+        {
+          "id": "single_door",
+          "name": "单门",
+          "tags": [
+            "迷你"
+          ]
+        },
+        {
+          "id": "double_door",
+          "name": "双门",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "triple_door",
+          "name": "三门",
+          "tags": [
+            "中端"
+          ]
+        },
+        {
+          "id": "side_by_side",
+          "name": "对开门",
+          "tags": [
+            "大容量"
+          ]
+        },
+        {
+          "id": "french_door",
+          "name": "法式多门",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "quad_door",
+          "name": "四门",
+          "tags": [
+            "旗舰"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "washing_type",
+      "name": "洗涤方式",
+      "type": "enum",
+      "category": "家电",
+      "values": [
+        {
+          "id": "agitator",
+          "name": "波轮",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "front_load",
+          "name": "滚筒",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "heat_pump",
+          "name": "热泵式",
+          "tags": [
+            "节能"
+          ]
+        },
+        {
+          "id": "compact",
+          "name": "迷你洗衣机",
+          "tags": [
+            "小户型"
+          ]
+        },
+        {
+          "id": "twin_tub",
+          "name": "双缸",
+          "tags": [
+            "经济"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "ac_type",
+      "name": "空调类型",
+      "type": "enum",
+      "category": "家电",
+      "values": [
+        {
+          "id": "window",
+          "name": "窗机",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "split",
+          "name": "挂机",
+          "tags": [
+            "家用"
+          ]
+        },
+        {
+          "id": "cabinet",
+          "name": "柜机",
+          "tags": [
+            "大厅"
+          ]
+        },
+        {
+          "id": "central",
+          "name": "中央空调",
+          "tags": [
+            "全屋"
+          ]
+        },
+        {
+          "id": "portable",
+          "name": "移动空调",
+          "tags": [
+            "灵活"
+          ]
+        },
+        {
+          "id": "inverter",
+          "name": "变频",
+          "tags": [
+            "节能"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "vacuum_type",
+      "name": "吸尘器类型",
+      "type": "enum",
+      "category": "家电",
+      "values": [
+        {
+          "id": "upright",
+          "name": "立式",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "canister",
+          "name": "卧式",
+          "tags": [
+            "经典"
+          ]
+        },
+        {
+          "id": "cordless_stick",
+          "name": "无线手持",
+          "tags": [
+            "便捷"
+          ]
+        },
+        {
+          "id": "robot",
+          "name": "扫地机器人",
+          "tags": [
+            "自动"
+          ]
+        },
+        {
+          "id": "handheld",
+          "name": "手持",
+          "tags": [
+            "小巧"
+          ]
+        },
+        {
+          "id": "wet_dry",
+          "name": "干湿两用",
+          "tags": [
+            "多功能"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "warranty",
+      "name": "保修期",
+      "type": "enum",
+      "category": "服务",
+      "values": [
+        {
+          "id": "1_year",
+          "name": "1年",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "2_year",
+          "name": "2年",
+          "tags": [
+            "延保"
+          ]
+        },
+        {
+          "id": "3_year",
+          "name": "3年",
+          "tags": [
+            "长保"
+          ]
+        },
+        {
+          "id": "5_year",
+          "name": "5年",
+          "tags": [
+            "超长保"
+          ]
+        },
+        {
+          "id": "lifetime",
+          "name": "终身保修",
+          "tags": [
+            "终身"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "certification",
+      "name": "认证",
+      "type": "enum",
+      "category": "资质",
+      "values": [
+        {
+          "id": "ccc",
+          "name": "CCC认证",
+          "tags": [
+            "中国"
+          ]
+        },
+        {
+          "id": "ce",
+          "name": "CE认证",
+          "tags": [
+            "欧洲"
+          ]
+        },
+        {
+          "id": "fcc",
+          "name": "FCC认证",
+          "tags": [
+            "美国"
+          ]
+        },
+        {
+          "id": "rohs",
+          "name": "RoHS认证",
+          "tags": [
+            "环保"
+          ]
+        },
+        {
+          "id": "iso9001",
+          "name": "ISO9001",
+          "tags": [
+            "质量"
+          ]
+        },
+        {
+          "id": "energy_star",
+          "name": "能源之星",
+          "tags": [
+            "节能"
+          ]
+        },
+        {
+          "id": "dolby",
+          "name": "杜比认证",
+          "tags": [
+            "音效"
+          ]
+        },
+        {
+          "id": "hi_res_audio",
+          "name": "Hi-Res Audio",
+          "tags": [
+            "高解析音频"
+          ]
+        },
+        {
+          "id": "fda",
+          "name": "FDA认证",
+          "tags": [
+            "美国"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "package_content",
+      "name": "包装内容",
+      "type": "enum",
+      "category": "配件",
+      "values": [
+        {
+          "id": "charger",
+          "name": "充电器",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "cable",
+          "name": "数据线",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "case",
+          "name": "手机壳",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "screen_protector",
+          "name": "贴膜",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "earphones",
+          "name": "耳机",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "adapter",
+          "name": "转接头",
+          "tags": [
+            "配件"
+          ]
+        },
+        {
+          "id": "manual",
+          "name": "说明书",
+          "tags": [
+            "文档"
+          ]
+        },
+        {
+          "id": "warranty_card",
+          "name": "保修卡",
+          "tags": [
+            "文档"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "usage_scenario",
+      "name": "使用场景",
+      "type": "enum",
+      "category": "场景",
+      "values": [
+        {
+          "id": "daily",
+          "name": "日常使用",
+          "tags": [
+            "普通"
+          ]
+        },
+        {
+          "id": "business",
+          "name": "商务办公",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "gaming",
+          "name": "游戏",
+          "tags": [
+            "高性能"
+          ]
+        },
+        {
+          "id": "design",
+          "name": "设计创作",
+          "tags": [
+            "色彩准确"
+          ]
+        },
+        {
+          "id": "coding",
+          "name": "编程开发",
+          "tags": [
+            "效率"
+          ]
+        },
+        {
+          "id": "travel",
+          "name": "旅行便携",
+          "tags": [
+            "轻便"
+          ]
+        },
+        {
+          "id": "outdoor",
+          "name": "户外运动",
+          "tags": [
+            "耐用"
+          ]
+        },
+        {
+          "id": "student",
+          "name": "学生学习",
+          "tags": [
+            "性价比"
+          ]
+        },
+        {
+          "id": "home_entertainment",
+          "name": "家庭娱乐",
+          "tags": [
+            "大屏"
+          ]
+        },
+        {
+          "id": "professional",
+          "name": "专业工作",
+          "tags": [
+            "工作站"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "target_audience",
+      "name": "目标人群",
+      "type": "enum",
+      "category": "人群",
+      "values": [
+        {
+          "id": "student",
+          "name": "学生",
+          "tags": [
+            "年轻"
+          ]
+        },
+        {
+          "id": "office_worker",
+          "name": "上班族",
+          "tags": [
+            "职场"
+          ]
+        },
+        {
+          "id": "business_person",
+          "name": "商务人士",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "gamer",
+          "name": "游戏玩家",
+          "tags": [
+            "高性能"
+          ]
+        },
+        {
+          "id": "designer",
+          "name": "设计师",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "photographer",
+          "name": "摄影师",
+          "tags": [
+            "影像"
+          ]
+        },
+        {
+          "id": "content_creator",
+          "name": "内容创作者",
+          "tags": [
+            "多媒体"
+          ]
+        },
+        {
+          "id": "parent",
+          "name": "家长",
+          "tags": [
+            "家庭"
+          ]
+        },
+        {
+          "id": "elderly",
+          "name": "老年人",
+          "tags": [
+            "易用"
+          ]
+        },
+        {
+          "id": "tech_enthusiast",
+          "name": "科技爱好者",
+          "tags": [
+            "发烧"
+          ]
+        },
+        {
+          "id": "professional",
+          "name": "专业人士",
+          "tags": [
+            "高端"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "skin_type",
+      "name": "肤质",
+      "type": "enum",
+      "category": "美妆",
+      "values": [
+        {
+          "id": "dry",
+          "name": "干性皮肤",
+          "tags": [
+            "保湿"
+          ]
+        },
+        {
+          "id": "oily",
+          "name": "油性皮肤",
+          "tags": [
+            "控油"
+          ]
+        },
+        {
+          "id": "combination",
+          "name": "混合性皮肤",
+          "tags": [
+            "平衡"
+          ]
+        },
+        {
+          "id": "sensitive",
+          "name": "敏感性皮肤",
+          "tags": [
+            "温和"
+          ]
+        },
+        {
+          "id": "normal",
+          "name": "中性皮肤",
+          "tags": [
+            "通用"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "makeup_type",
+      "name": "彩妆类型",
+      "type": "enum",
+      "category": "美妆",
+      "values": [
+        {
+          "id": "foundation",
+          "name": "粉底",
+          "tags": [
+            "底妆"
+          ]
+        },
+        {
+          "id": "bb_cream",
+          "name": "BB霜",
+          "tags": [
+            "底妆"
+          ]
+        },
+        {
+          "id": "concealer",
+          "name": "遮瑕",
+          "tags": [
+            "底妆"
+          ]
+        },
+        {
+          "id": "powder",
+          "name": "散粉",
+          "tags": [
+            "定妆"
+          ]
+        },
+        {
+          "id": "blush",
+          "name": "腮红",
+          "tags": [
+            "彩妆"
+          ]
+        },
+        {
+          "id": "eyeshadow",
+          "name": "眼影",
+          "tags": [
+            "眼妆"
+          ]
+        },
+        {
+          "id": "eyeliner",
+          "name": "眼线",
+          "tags": [
+            "眼妆"
+          ]
+        },
+        {
+          "id": "mascara",
+          "name": "睫毛膏",
+          "tags": [
+            "眼妆"
+          ]
+        },
+        {
+          "id": "lipstick",
+          "name": "口红",
+          "tags": [
+            "唇妆"
+          ]
+        },
+        {
+          "id": "lip_gloss",
+          "name": "唇釉",
+          "tags": [
+            "唇妆"
+          ]
+        },
+        {
+          "id": "lip_balm",
+          "name": "润唇膏",
+          "tags": [
+            "唇部护理"
+          ]
+        },
+        {
+          "id": "bronzer",
+          "name": "修容",
+          "tags": [
+            "立体"
+          ]
+        },
+        {
+          "id": "highlighter",
+          "name": "高光",
+          "tags": [
+            "提亮"
+          ]
+        },
+        {
+          "id": "primer",
+          "name": "妆前乳",
+          "tags": [
+            "打底"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "skincare_step",
+      "name": "护肤步骤",
+      "type": "enum",
+      "category": "美妆",
+      "values": [
+        {
+          "id": "cleanser",
+          "name": "洁面",
+          "tags": [
+            "清洁"
+          ]
+        },
+        {
+          "id": "toner",
+          "name": "爽肤水",
+          "tags": [
+            "补水"
+          ]
+        },
+        {
+          "id": "essence",
+          "name": "精华",
+          "tags": [
+            "修护"
+          ]
+        },
+        {
+          "id": "eye_cream",
+          "name": "眼霜",
+          "tags": [
+            "眼周护理"
+          ]
+        },
+        {
+          "id": "moisturizer",
+          "name": "面霜",
+          "tags": [
+            "保湿"
+          ]
+        },
+        {
+          "id": "lotion",
+          "name": "乳液",
+          "tags": [
+            "保湿"
+          ]
+        },
+        {
+          "id": "sunscreen",
+          "name": "防晒",
+          "tags": [
+            "隔离"
+          ]
+        },
+        {
+          "id": "mask",
+          "name": "面膜",
+          "tags": [
+            "密集护理"
+          ]
+        },
+        {
+          "id": "exfoliator",
+          "name": "去角质",
+          "tags": [
+            "深层清洁"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "fragrance_type",
+      "name": "香型",
+      "type": "enum",
+      "category": "美妆",
+      "values": [
+        {
+          "id": "floral",
+          "name": "花香",
+          "tags": [
+            "女性"
+          ]
+        },
+        {
+          "id": "fruity",
+          "name": "果香",
+          "tags": [
+            "清新"
+          ]
+        },
+        {
+          "id": "woody",
+          "name": "木质",
+          "tags": [
+            "中性"
+          ]
+        },
+        {
+          "id": "oriental",
+          "name": "东方香",
+          "tags": [
+            "浓郁"
+          ]
+        },
+        {
+          "id": "fresh",
+          "name": "清新",
+          "tags": [
+            "清爽"
+          ]
+        },
+        {
+          "id": "citrus",
+          "name": "柑橘",
+          "tags": [
+            "清爽"
+          ]
+        },
+        {
+          "id": "green",
+          "name": "绿叶",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "spicy",
+          "name": "辛辣",
+          "tags": [
+            "浓郁"
+          ]
+        },
+        {
+          "id": "aquatic",
+          "name": "水生",
+          "tags": [
+            "清爽"
+          ]
+        },
+        {
+          "id": "vanilla",
+          "name": "香草",
+          "tags": [
+            "甜美"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "toy_age",
+      "name": "玩具适用年龄",
+      "type": "enum",
+      "category": "玩具",
+      "values": [
+        {
+          "id": "0_6m",
+          "name": "0-6个月",
+          "tags": [
+            "婴儿"
+          ]
+        },
+        {
+          "id": "6_12m",
+          "name": "6-12个月",
+          "tags": [
+            "婴儿"
+          ]
+        },
+        {
+          "id": "1_2y",
+          "name": "1-2岁",
+          "tags": [
+            "幼儿"
+          ]
+        },
+        {
+          "id": "2_3y",
+          "name": "2-3岁",
+          "tags": [
+            "幼儿"
+          ]
+        },
+        {
+          "id": "3_5y",
+          "name": "3-5岁",
+          "tags": [
+            "学前"
+          ]
+        },
+        {
+          "id": "5_8y",
+          "name": "5-8岁",
+          "tags": [
+            "学龄"
+          ]
+        },
+        {
+          "id": "8_12y",
+          "name": "8-12岁",
+          "tags": [
+            "学龄"
+          ]
+        },
+        {
+          "id": "12_plus",
+          "name": "12岁以上",
+          "tags": [
+            "青少年"
+          ]
+        },
+        {
+          "id": "all_age",
+          "name": "全年龄",
+          "tags": [
+            "通用"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "toy_material",
+      "name": "玩具材质",
+      "type": "enum",
+      "category": "玩具",
+      "values": [
+        {
+          "id": "plastic",
+          "name": "塑料",
+          "tags": [
+            "常见"
+          ]
+        },
+        {
+          "id": "wood",
+          "name": "实木",
+          "tags": [
+            "天然"
+          ]
+        },
+        {
+          "id": "fabric",
+          "name": "布料",
+          "tags": [
+            "柔软"
+          ]
+        },
+        {
+          "id": "metal",
+          "name": "金属",
+          "tags": [
+            "耐用"
+          ]
+        },
+        {
+          "id": "rubber",
+          "name": "橡胶",
+          "tags": [
+            "弹性"
+          ]
+        },
+        {
+          "id": "eva",
+          "name": "EVA",
+          "tags": [
+            "安全"
+          ]
+        },
+        {
+          "id": "abs",
+          "name": "ABS塑料",
+          "tags": [
+            "环保"
+          ]
+        },
+        {
+          "id": "organic",
+          "name": "有机材料",
+          "tags": [
+            "天然"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "toy_category",
+      "name": "玩具类别",
+      "type": "enum",
+      "category": "玩具",
+      "values": [
+        {
+          "id": "educational",
+          "name": "益智玩具",
+          "tags": [
+            "学习"
+          ]
+        },
+        {
+          "id": "building",
+          "name": "积木",
+          "tags": [
+            "搭建"
+          ]
+        },
+        {
+          "id": "plush",
+          "name": "毛绒玩具",
+          "tags": [
+            "陪伴"
+          ]
+        },
+        {
+          "id": "action_figure",
+          "name": "手办",
+          "tags": [
+            "收藏"
+          ]
+        },
+        {
+          "id": "doll",
+          "name": "娃娃",
+          "tags": [
+            "扮演"
+          ]
+        },
+        {
+          "id": "vehicle",
+          "name": "车模",
+          "tags": [
+            "收藏"
+          ]
+        },
+        {
+          "id": "rc",
+          "name": "遥控玩具",
+          "tags": [
+            "科技"
+          ]
+        },
+        {
+          "id": "puzzle",
+          "name": "拼图",
+          "tags": [
+            "益智"
+          ]
+        },
+        {
+          "id": "board_game",
+          "name": "桌游",
+          "tags": [
+            "互动"
+          ]
+        },
+        {
+          "id": "outdoor",
+          "name": "户外玩具",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "art",
+          "name": "美术玩具",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "musical",
+          "name": "音乐玩具",
+          "tags": [
+            "艺术"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "book_genre",
+      "name": "书籍类型",
+      "type": "enum",
+      "category": "图书",
+      "values": [
+        {
+          "id": "fiction",
+          "name": "小说",
+          "tags": [
+            "文学"
+          ]
+        },
+        {
+          "id": "non_fiction",
+          "name": "非虚构",
+          "tags": [
+            "知识"
+          ]
+        },
+        {
+          "id": "sci_fi",
+          "name": "科幻",
+          "tags": [
+            "文学"
+          ]
+        },
+        {
+          "id": "fantasy",
+          "name": "奇幻",
+          "tags": [
+            "文学"
+          ]
+        },
+        {
+          "id": "mystery",
+          "name": "悬疑",
+          "tags": [
+            "文学"
+          ]
+        },
+        {
+          "id": "romance",
+          "name": "言情",
+          "tags": [
+            "文学"
+          ]
+        },
+        {
+          "id": "biography",
+          "name": "传记",
+          "tags": [
+            "非虚构"
+          ]
+        },
+        {
+          "id": "history",
+          "name": "历史",
+          "tags": [
+            "非虚构"
+          ]
+        },
+        {
+          "id": "science",
+          "name": "科普",
+          "tags": [
+            "非虚构"
+          ]
+        },
+        {
+          "id": "self_help",
+          "name": "自我提升",
+          "tags": [
+            "非虚构"
+          ]
+        },
+        {
+          "id": "business",
+          "name": "商业",
+          "tags": [
+            "非虚构"
+          ]
+        },
+        {
+          "id": "children",
+          "name": "儿童文学",
+          "tags": [
+            "童书"
+          ]
+        },
+        {
+          "id": "comics",
+          "name": "漫画",
+          "tags": [
+            "绘本"
+          ]
+        },
+        {
+          "id": "cooking",
+          "name": "烹饪",
+          "tags": [
+            "生活"
+          ]
+        },
+        {
+          "id": "travel",
+          "name": "旅游",
+          "tags": [
+            "生活"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "language",
+      "name": "语言",
+      "type": "enum",
+      "category": "内容",
+      "values": [
+        {
+          "id": "chinese_simplified",
+          "name": "简体中文",
+          "tags": [
+            "中国"
+          ]
+        },
+        {
+          "id": "chinese_traditional",
+          "name": "繁体中文",
+          "tags": [
+            "台湾",
+            "香港"
+          ]
+        },
+        {
+          "id": "english",
+          "name": "英文",
+          "tags": [
+            "国际"
+          ]
+        },
+        {
+          "id": "japanese",
+          "name": "日文",
+          "tags": [
+            "日本"
+          ]
+        },
+        {
+          "id": "korean",
+          "name": "韩文",
+          "tags": [
+            "韩国"
+          ]
+        },
+        {
+          "id": "french",
+          "name": "法文",
+          "tags": [
+            "法国"
+          ]
+        },
+        {
+          "id": "german",
+          "name": "德文",
+          "tags": [
+            "德国"
+          ]
+        },
+        {
+          "id": "spanish",
+          "name": "西班牙文",
+          "tags": [
+            "西班牙"
+          ]
+        },
+        {
+          "id": "multilingual",
+          "name": "多语言",
+          "tags": [
+            "国际版"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "format",
+      "name": "格式",
+      "type": "enum",
+      "category": "内容",
+      "values": [
+        {
+          "id": "paperback",
+          "name": "平装",
+          "tags": [
+            "普通"
+          ]
+        },
+        {
+          "id": "hardcover",
+          "name": "精装",
+          "tags": [
+            "高档"
+          ]
+        },
+        {
+          "id": "ebook",
+          "name": "电子书",
+          "tags": [
+            "数字"
+          ]
+        },
+        {
+          "id": "audiobook",
+          "name": "有声书",
+          "tags": [
+            "音频"
+          ]
+        },
+        {
+          "id": "mp3",
+          "name": "MP3",
+          "tags": [
+            "音频"
+          ]
+        },
+        {
+          "id": "flac",
+          "name": "FLAC",
+          "tags": [
+            "无损音频"
+          ]
+        },
+        {
+          "id": "dvd",
+          "name": "DVD",
+          "tags": [
+            "视频"
+          ]
+        },
+        {
+          "id": "bluray",
+          "name": "蓝光",
+          "tags": [
+            "高清"
+          ]
+        },
+        {
+          "id": "4k_bluray",
+          "name": "4K蓝光",
+          "tags": [
+            "超高清"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "sports_type",
+      "name": "运动类型",
+      "type": "enum",
+      "category": "运动",
+      "values": [
+        {
+          "id": "running",
+          "name": "跑步",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "basketball",
+          "name": "篮球",
+          "tags": [
+            "团队"
+          ]
+        },
+        {
+          "id": "football",
+          "name": "足球",
+          "tags": [
+            "团队"
+          ]
+        },
+        {
+          "id": "tennis",
+          "name": "网球",
+          "tags": [
+            "个人"
+          ]
+        },
+        {
+          "id": "badminton",
+          "name": "羽毛球",
+          "tags": [
+            "个人"
+          ]
+        },
+        {
+          "id": "ping_pong",
+          "name": "乒乓球",
+          "tags": [
+            "个人"
+          ]
+        },
+        {
+          "id": "golf",
+          "name": "高尔夫",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "swimming",
+          "name": "游泳",
+          "tags": [
+            "水上"
+          ]
+        },
+        {
+          "id": "cycling",
+          "name": "骑行",
+          "tags": [
+            "户外"
+          ]
+        },
+        {
+          "id": "hiking",
+          "name": "徒步",
+          "tags": [
+            "户外"
+          ]
+        },
+        {
+          "id": "camping",
+          "name": "露营",
+          "tags": [
+            "户外"
+          ]
+        },
+        {
+          "id": "climbing",
+          "name": "攀岩",
+          "tags": [
+            "极限"
+          ]
+        },
+        {
+          "id": "yoga",
+          "name": "瑜伽",
+          "tags": [
+            "室内"
+          ]
+        },
+        {
+          "id": "fitness",
+          "name": "健身",
+          "tags": [
+            "室内"
+          ]
+        },
+        {
+          "id": "skiing",
+          "name": "滑雪",
+          "tags": [
+            "冬季"
+          ]
+        },
+        {
+          "id": "snowboarding",
+          "name": "单板滑雪",
+          "tags": [
+            "冬季"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "baby_diapers_size",
+      "name": "纸尿裤尺寸",
+      "type": "enum",
+      "category": "母婴",
+      "values": [
+        {
+          "id": "nb",
+          "name": "NB (新生儿)",
+          "tags": [
+            "0-5kg"
+          ]
+        },
+        {
+          "id": "s",
+          "name": "S",
+          "tags": [
+            "4-8kg"
+          ]
+        },
+        {
+          "id": "m",
+          "name": "M",
+          "tags": [
+            "6-11kg"
+          ]
+        },
+        {
+          "id": "l",
+          "name": "L",
+          "tags": [
+            "9-14kg"
+          ]
+        },
+        {
+          "id": "xl",
+          "name": "XL",
+          "tags": [
+            "12-17kg"
+          ]
+        },
+        {
+          "id": "xxl",
+          "name": "XXL",
+          "tags": [
+            "15kg+"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "baby_food_stage",
+      "name": "辅食阶段",
+      "type": "enum",
+      "category": "母婴",
+      "values": [
+        {
+          "id": "stage_1",
+          "name": "1段 (4-6个月)",
+          "tags": [
+            "初添加"
+          ]
+        },
+        {
+          "id": "stage_2",
+          "name": "2段 (6-8个月)",
+          "tags": [
+            "过渡"
+          ]
+        },
+        {
+          "id": "stage_3",
+          "name": "3段 (8-12个月)",
+          "tags": [
+            "固体"
+          ]
+        },
+        {
+          "id": "stage_4",
+          "name": "4段 (12个月+)",
+          "tags": [
+            "幼儿"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "office_supplies_type",
+      "name": "文具类型",
+      "type": "enum",
+      "category": "办公",
+      "values": [
+        {
+          "id": "pen",
+          "name": "笔",
+          "tags": [
+            "书写"
+          ]
+        },
+        {
+          "id": "pencil",
+          "name": "铅笔",
+          "tags": [
+            "书写"
+          ]
+        },
+        {
+          "id": "notebook",
+          "name": "笔记本",
+          "tags": [
+            "记录"
+          ]
+        },
+        {
+          "id": "folder",
+          "name": "文件夹",
+          "tags": [
+            "整理"
+          ]
+        },
+        {
+          "id": "stapler",
+          "name": "订书机",
+          "tags": [
+            "装订"
+          ]
+        },
+        {
+          "id": "tape",
+          "name": "胶带",
+          "tags": [
+            "粘合"
+          ]
+        },
+        {
+          "id": "scissors",
+          "name": "剪刀",
+          "tags": [
+            "裁剪"
+          ]
+        },
+        {
+          "id": "ruler",
+          "name": "尺子",
+          "tags": [
+            "测量"
+          ]
+        },
+        {
+          "id": "eraser",
+          "name": "橡皮",
+          "tags": [
+            "擦除"
+          ]
+        },
+        {
+          "id": "highlighter",
+          "name": "荧光笔",
+          "tags": [
+            "标记"
+          ]
+        },
+        {
+          "id": "marker",
+          "name": "马克笔",
+          "tags": [
+            "标记"
+          ]
+        },
+        {
+          "id": "sticky_notes",
+          "name": "便签",
+          "tags": [
+            "提醒"
+          ]
+        },
+        {
+          "id": "binder",
+          "name": "活页夹",
+          "tags": [
+            "整理"
+          ]
+        },
+        {
+          "id": "calendar",
+          "name": "日历",
+          "tags": [
+            "计划"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "car_brand",
+      "name": "汽车品牌",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "toyota",
+          "name": "丰田",
+          "tags": [
+            "日系"
+          ]
+        },
+        {
+          "id": "honda",
+          "name": "本田",
+          "tags": [
+            "日系"
+          ]
+        },
+        {
+          "id": "nissan",
+          "name": "日产",
+          "tags": [
+            "日系"
+          ]
+        },
+        {
+          "id": "bmw",
+          "name": "宝马",
+          "tags": [
+            "德系"
+          ]
+        },
+        {
+          "id": "mercedes",
+          "name": "奔驰",
+          "tags": [
+            "德系"
+          ]
+        },
+        {
+          "id": "audi",
+          "name": "奥迪",
+          "tags": [
+            "德系"
+          ]
+        },
+        {
+          "id": "volkswagen",
+          "name": "大众",
+          "tags": [
+            "德系"
+          ]
+        },
+        {
+          "id": "tesla",
+          "name": "特斯拉",
+          "tags": [
+            "新能源"
+          ]
+        },
+        {
+          "id": "byd",
+          "name": "比亚迪",
+          "tags": [
+            "国产"
+          ]
+        },
+        {
+          "id": "geely",
+          "name": "吉利",
+          "tags": [
+            "国产"
+          ]
+        },
+        {
+          "id": "changan",
+          "name": "长安",
+          "tags": [
+            "国产"
+          ]
+        },
+        {
+          "id": "hyundai",
+          "name": "现代",
+          "tags": [
+            "韩系"
+          ]
+        },
+        {
+          "id": "kia",
+          "name": "起亚",
+          "tags": [
+            "韩系"
+          ]
+        },
+        {
+          "id": "ford",
+          "name": "福特",
+          "tags": [
+            "美系"
+          ]
+        },
+        {
+          "id": "chevrolet",
+          "name": "雪佛兰",
+          "tags": [
+            "美系"
+          ]
+        },
+        {
+          "id": "lexus",
+          "name": "雷克萨斯",
+          "tags": [
+            "豪华"
+          ]
+        },
+        {
+          "id": "porsche",
+          "name": "保时捷",
+          "tags": [
+            "豪华"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "car_type",
+      "name": "车型",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "sedan",
+          "name": "轿车",
+          "tags": [
+            "家用"
+          ]
+        },
+        {
+          "id": "suv",
+          "name": "SUV",
+          "tags": [
+            "越野"
+          ]
+        },
+        {
+          "id": "mpv",
+          "name": "MPV",
+          "tags": [
+            "商务"
+          ]
+        },
+        {
+          "id": "coupe",
+          "name": "跑车",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "convertible",
+          "name": "敞篷车",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "hatchback",
+          "name": "两厢车",
+          "tags": [
+            "紧凑"
+          ]
+        },
+        {
+          "id": "wagon",
+          "name": "旅行车",
+          "tags": [
+            "旅行"
+          ]
+        },
+        {
+          "id": "pickup",
+          "name": "皮卡",
+          "tags": [
+            "货运"
+          ]
+        },
+        {
+          "id": "van",
+          "name": "厢式车",
+          "tags": [
+            "商用"
+          ]
+        },
+        {
+          "id": "electric",
+          "name": "电动车",
+          "tags": [
+            "新能源"
+          ]
+        },
+        {
+          "id": "hybrid",
+          "name": "混合动力",
+          "tags": [
+            "新能源"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "fuel_type",
+      "name": "燃料类型",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "gasoline",
+          "name": "汽油",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "diesel",
+          "name": "柴油",
+          "tags": [
+            "商用"
+          ]
+        },
+        {
+          "id": "electric",
+          "name": "纯电动",
+          "tags": [
+            "新能源"
+          ]
+        },
+        {
+          "id": "hybrid",
+          "name": "混合动力",
+          "tags": [
+            "新能源"
+          ]
+        },
+        {
+          "id": "plug_in_hybrid",
+          "name": "插电混动",
+          "tags": [
+            "新能源"
+          ]
+        },
+        {
+          "id": "hydrogen",
+          "name": "氢能源",
+          "tags": [
+            "未来"
+          ]
+        },
+        {
+          "id": "cng",
+          "name": "天然气",
+          "tags": [
+            "清洁能源"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "transmission",
+      "name": "变速箱",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "manual",
+          "name": "手动",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "automatic",
+          "name": "自动",
+          "tags": [
+            "舒适"
+          ]
+        },
+        {
+          "id": "cvt",
+          "name": "CVT无级变速",
+          "tags": [
+            "平顺"
+          ]
+        },
+        {
+          "id": "dct",
+          "name": "双离合",
+          "tags": [
+            "运动"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "drive_wheel",
+      "name": "驱动方式",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "fwd",
+          "name": "前驱",
+          "tags": [
+            "家用"
+          ]
+        },
+        {
+          "id": "rwd",
+          "name": "后驱",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "awd",
+          "name": "全时四驱",
+          "tags": [
+            "越野"
+          ]
+        },
+        {
+          "id": "4wd",
+          "name": "分时四驱",
+          "tags": [
+            "越野"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "car_seats",
+      "name": "座位数",
+      "type": "enum",
+      "category": "汽车",
+      "values": [
+        {
+          "id": "2_seats",
+          "name": "2座",
+          "tags": [
+            "跑车"
+          ]
+        },
+        {
+          "id": "4_seats",
+          "name": "4座",
+          "tags": [
+            "轿跑"
+          ]
+        },
+        {
+          "id": "5_seats",
+          "name": "5座",
+          "tags": [
+            "家用"
+          ]
+        },
+        {
+          "id": "6_seats",
+          "name": "6座",
+          "tags": [
+            "MPV"
+          ]
+        },
+        {
+          "id": "7_seats",
+          "name": "7座",
+          "tags": [
+            "SUV",
+            "MPV"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "discount",
+      "name": "折扣",
+      "type": "enum",
+      "category": "促销",
+      "values": [
+        {
+          "id": "no_discount",
+          "name": "无折扣",
+          "tags": []
+        },
+        {
+          "id": "9折",
+          "name": "9折",
+          "tags": [
+            "9折"
+          ]
+        },
+        {
+          "id": "8折",
+          "name": "8折",
+          "tags": [
+            "8折"
+          ]
+        },
+        {
+          "id": "7折",
+          "name": "7折",
+          "tags": [
+            "7折"
+          ]
+        },
+        {
+          "id": "6折",
+          "name": "6折",
+          "tags": [
+            "6折"
+          ]
+        },
+        {
+          "id": "5折",
+          "name": "5折",
+          "tags": [
+            "半价"
+          ]
+        },
+        {
+          "id": "4折",
+          "name": "4折",
+          "tags": [
+            "4折"
+          ]
+        },
+        {
+          "id": "3折",
+          "name": "3折",
+          "tags": [
+            "3折"
+          ]
+        },
+        {
+          "id": "2折",
+          "name": "2折",
+          "tags": [
+            "2折"
+          ]
+        },
+        {
+          "id": "1折",
+          "name": "1折",
+          "tags": [
+            "特惠"
+          ]
+        },
+        {
+          "id": "plus_50_off",
+          "name": "满减50",
+          "tags": [
+            "满减"
+          ]
+        },
+        {
+          "id": "plus_100_off",
+          "name": "满减100",
+          "tags": [
+            "满减"
+          ]
+        },
+        {
+          "id": "plus_200_off",
+          "name": "满减200",
+          "tags": [
+            "满减"
+          ]
+        },
+        {
+          "id": "plus_500_off",
+          "name": "满减500",
+          "tags": [
+            "满减"
+          ]
+        },
+        {
+          "id": "free_shipping",
+          "name": "包邮",
+          "tags": [
+            "促销"
+          ]
+        },
+        {
+          "id": "gift",
+          "name": "赠品",
+          "tags": [
+            "促销"
+          ]
+        },
+        {
+          "id": "bundle",
+          "name": "套餐优惠",
+          "tags": [
+            "促销"
+          ]
+        },
+        {
+          "id": "flash_sale",
+          "name": "限时特惠",
+          "tags": [
+            "促销"
+          ]
+        },
+        {
+          "id": "member_price",
+          "name": "会员价",
+          "tags": [
+            "会员"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "stock_status",
+      "name": "库存状态",
+      "type": "enum",
+      "category": "销售",
+      "values": [
+        {
+          "id": "in_stock",
+          "name": "有货",
+          "tags": [
+            "正常"
+          ]
+        },
+        {
+          "id": "out_of_stock",
+          "name": "缺货",
+          "tags": [
+            "不可购买"
+          ]
+        },
+        {
+          "id": "pre_order",
+          "name": "预售",
+          "tags": [
+            "预定"
+          ]
+        },
+        {
+          "id": "limited_stock",
+          "name": "库存紧张",
+          "tags": [
+            "尽快购买"
+          ]
+        },
+        {
+          "id": "back_order",
+          "name": "可预订",
+          "tags": [
+            "等待补货"
+          ]
+        },
+        {
+          "id": "discontinued",
+          "name": "已停产",
+          "tags": [
+            "停售"
+          ]
+        },
+        {
+          "id": "clearance",
+          "name": "清仓",
+          "tags": [
+            "特价"
+          ]
+        },
+        {
+          "id": "online_only",
+          "name": "线上专供",
+          "tags": [
+            "电商特供"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "delivery_time",
+      "name": "配送时间",
+      "type": "enum",
+      "category": "物流",
+      "values": [
+        {
+          "id": "same_day",
+          "name": "当日达",
+          "tags": [
+            "急速"
+          ]
+        },
+        {
+          "id": "next_day",
+          "name": "次日达",
+          "tags": [
+            "快速"
+          ]
+        },
+        {
+          "id": "2_3_days",
+          "name": "2-3天达",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "3_5_days",
+          "name": "3-5天达",
+          "tags": [
+            "较慢"
+          ]
+        },
+        {
+          "id": "5_7_days",
+          "name": "5-7天达",
+          "tags": [
+            "慢"
+          ]
+        },
+        {
+          "id": "7_plus_days",
+          "name": "7天以上",
+          "tags": [
+            "很慢"
+          ]
+        },
+        {
+          "id": "pickup",
+          "name": "自提",
+          "tags": [
+            "到店"
+          ]
+        },
+        {
+          "id": "store_delivery",
+          "name": "门店配送",
+          "tags": [
+            "同城"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "payment_method",
+      "name": "支付方式",
+      "type": "enum",
+      "category": "支付",
+      "values": [
+        {
+          "id": "alipay",
+          "name": "支付宝",
+          "tags": [
+            "线上"
+          ]
+        },
+        {
+          "id": "wechat_pay",
+          "name": "微信支付",
+          "tags": [
+            "线上"
+          ]
+        },
+        {
+          "id": "union_pay",
+          "name": "银联",
+          "tags": [
+            "银行卡"
+          ]
+        },
+        {
+          "id": "credit_card",
+          "name": "信用卡",
+          "tags": [
+            "银行卡"
+          ]
+        },
+        {
+          "id": "debit_card",
+          "name": "借记卡",
+          "tags": [
+            "银行卡"
+          ]
+        },
+        {
+          "id": "cash",
+          "name": "现金",
+          "tags": [
+            "线下"
+          ]
+        },
+        {
+          "id": "installment",
+          "name": "分期付款",
+          "tags": [
+            "信用"
+          ]
+        },
+        {
+          "id": "points",
+          "name": "积分抵扣",
+          "tags": [
+            "会员"
+          ]
+        },
+        {
+          "id": "coupon",
+          "name": "优惠券",
+          "tags": [
+            "抵扣"
+          ]
+        },
+        {
+          "id": "gift_card",
+          "name": "礼品卡",
+          "tags": [
+            "礼品"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "return_policy",
+      "name": "退换货政策",
+      "type": "enum",
+      "category": "服务",
+      "values": [
+        {
+          "id": "7_days",
+          "name": "7天无理由",
+          "tags": [
+            "退货"
+          ]
+        },
+        {
+          "id": "15_days",
+          "name": "15天无理由",
+          "tags": [
+            "退货"
+          ]
+        },
+        {
+          "id": "30_days",
+          "name": "30天无理由",
+          "tags": [
+            "退货"
+          ]
+        },
+        {
+          "id": "no_return",
+          "name": "不支持退货",
+          "tags": [
+            "特殊"
+          ]
+        },
+        {
+          "id": "free_return",
+          "name": "免费退换",
+          "tags": [
+            "售后"
+          ]
+        },
+        {
+          "id": "paid_return",
+          "name": "付费退换",
+          "tags": [
+            "售后"
+          ]
+        },
+        {
+          "id": "exchange_only",
+          "name": "只换不修",
+          "tags": [
+            "换货"
+          ]
+        },
+        {
+          "id": "repair_only",
+          "name": "只修不换",
+          "tags": [
+            "维修"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "seller_type",
+      "name": "卖家类型",
+      "type": "enum",
+      "category": "销售",
+      "values": [
+        {
+          "id": " Flagship_store",
+          "name": "官方旗舰店",
+          "tags": [
+            "品牌直营"
+          ]
+        },
+        {
+          "id": "authorized_dealer",
+          "name": "授权经销商",
+          "tags": [
+            "正规"
+          ]
+        },
+        {
+          "id": "third_party",
+          "name": "第三方卖家",
+          "tags": [
+            "普通"
+          ]
+        },
+        {
+          "id": "self_operated",
+          "name": "自营",
+          "tags": [
+            "平台自营"
+          ]
+        },
+        {
+          "id": "overseas",
+          "name": "海外直邮",
+          "tags": [
+            "跨境"
+          ]
+        },
+        {
+          "id": "cross_border",
+          "name": "保税仓",
+          "tags": [
+            "跨境"
+          ]
+        },
+        {
+          "id": "flagship",
+          "name": "品牌旗舰店",
+          "tags": [
+            "官方"
+          ]
+        },
+        {
+          "id": "factory_outlet",
+          "name": "工厂直营",
+          "tags": [
+            "源头"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "product_condition",
+      "name": "商品新旧",
+      "type": "enum",
+      "category": "销售",
+      "values": [
+        {
+          "id": "brand_new",
+          "name": "全新",
+          "tags": [
+            "正品"
+          ]
+        },
+        {
+          "id": "like_new",
+          "name": "几乎全新",
+          "tags": [
+            "99新"
+          ]
+        },
+        {
+          "id": "excellent",
+          "name": "轻微使用痕迹",
+          "tags": [
+            "95新"
+          ]
+        },
+        {
+          "id": "good",
+          "name": "有明显使用痕迹",
+          "tags": [
+            "9新"
+          ]
+        },
+        {
+          "id": "fair",
+          "name": "功能正常外观一般",
+          "tags": [
+            "8新"
+          ]
+        },
+        {
+          "id": "refurbished",
+          "name": "官方翻新",
+          "tags": [
+            "翻新"
+          ]
+        },
+        {
+          "id": "used",
+          "name": "二手",
+          "tags": [
+            "旧货"
+          ]
+        },
+        {
+          "id": "open_box",
+          "name": "拆封未使用",
+          "tags": [
+            "展示品"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "manufacturer_date",
+      "name": "生产日期",
+      "type": "date_range",
+      "category": "时间",
+      "values": [
+        {
+          "id": "2024",
+          "name": "2024年",
+          "tags": [
+            "最新"
+          ]
+        },
+        {
+          "id": "2023",
+          "name": "2023年",
+          "tags": [
+            "较新"
+          ]
+        },
+        {
+          "id": "2022",
+          "name": "2022年",
+          "tags": [
+            "1-2年"
+          ]
+        },
+        {
+          "id": "2021",
+          "name": "2021年",
+          "tags": [
+            "2-3年"
+          ]
+        },
+        {
+          "id": "2020",
+          "name": "2020年",
+          "tags": [
+            "3-4年"
+          ]
+        },
+        {
+          "id": "older",
+          "name": "2020年之前",
+          "tags": [
+            "较旧"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "shelf_life",
+      "name": "保质期",
+      "type": "enum",
+      "category": "食品",
+      "values": [
+        {
+          "id": "6_months",
+          "name": "6个月",
+          "tags": [
+            "短保"
+          ]
+        },
+        {
+          "id": "12_months",
+          "name": "12个月",
+          "tags": [
+            "标准"
+          ]
+        },
+        {
+          "id": "18_months",
+          "name": "18个月",
+          "tags": [
+            "较长"
+          ]
+        },
+        {
+          "id": "24_months",
+          "name": "24个月",
+          "tags": [
+            "长保"
+          ]
+        },
+        {
+          "id": "36_months",
+          "name": "36个月",
+          "tags": [
+            "更长"
+          ]
+        },
+        {
+          "id": "fresh",
+          "name": "新鲜食品",
+          "tags": [
+            "短保"
+          ]
+        },
+        {
+          "id": "no_expiry",
+          "name": "无保质期",
+          "tags": [
+            "永久"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "food_type",
+      "name": "食品类型",
+      "type": "enum",
+      "category": "食品",
+      "values": [
+        {
+          "id": "snack",
+          "name": "零食",
+          "tags": [
+            "小吃"
+          ]
+        },
+        {
+          "id": "beverage",
+          "name": "饮料",
+          "tags": [
+            "饮品"
+          ]
+        },
+        {
+          "id": "instant",
+          "name": "速食",
+          "tags": [
+            "方便"
+          ]
+        },
+        {
+          "id": "fresh",
+          "name": "生鲜",
+          "tags": [
+            "新鲜"
+          ]
+        },
+        {
+          "id": "frozen",
+          "name": "冷冻食品",
+          "tags": [
+            "冷藏"
+          ]
+        },
+        {
+          "id": "canned",
+          "name": "罐头",
+          "tags": [
+            "保存"
+          ]
+        },
+        {
+          "id": "condiment",
+          "name": "调味品",
+          "tags": [
+            "调料"
+          ]
+        },
+        {
+          "id": "dessert",
+          "name": "甜品",
+          "tags": [
+            "甜食"
+          ]
+        },
+        {
+          "id": "organic",
+          "name": "有机食品",
+          "tags": [
+            "健康"
+          ]
+        },
+        {
+          "id": "health_food",
+          "name": "保健品",
+          "tags": [
+            "营养"
+          ]
+        },
+        {
+          "id": "tea",
+          "name": "茶叶",
+          "tags": [
+            "饮品"
+          ]
+        },
+        {
+          "id": "coffee",
+          "name": "咖啡",
+          "tags": [
+            "饮品"
+          ]
+        },
+        {
+          "id": "wine",
+          "name": "红酒",
+          "tags": [
+            "酒类"
+          ]
+        },
+        {
+          "id": "beer",
+          "name": "啤酒",
+          "tags": [
+            "酒类"
+          ]
+        },
+        {
+          "id": "spirits",
+          "name": "白酒",
+          "tags": [
+            "酒类"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "furniture_material",
+      "name": "家具材质",
+      "type": "enum",
+      "category": "家居",
+      "values": [
+        {
+          "id": "solid_wood",
+          "name": "实木",
+          "tags": [
+            "天然"
+          ]
+        },
+        {
+          "id": "oak",
+          "name": "橡木",
+          "tags": [
+            "实木"
+          ]
+        },
+        {
+          "id": "pine",
+          "name": "松木",
+          "tags": [
+            "实木"
+          ]
+        },
+        {
+          "id": "walnut",
+          "name": "胡桃木",
+          "tags": [
+            "实木"
+          ]
+        },
+        {
+          "id": "birch",
+          "name": "桦木",
+          "tags": [
+            "实木"
+          ]
+        },
+        {
+          "id": "plywood",
+          "name": "胶合板",
+          "tags": [
+            "人造板"
+          ]
+        },
+        {
+          "id": "mdf",
+          "name": "中密度纤维板",
+          "tags": [
+            "人造板"
+          ]
+        },
+        {
+          "id": "particle_board",
+          "name": "颗粒板",
+          "tags": [
+            "人造板"
+          ]
+        },
+        {
+          "id": "glass",
+          "name": "玻璃",
+          "tags": [
+            "现代"
+          ]
+        },
+        {
+          "id": "metal",
+          "name": "金属",
+          "tags": [
+            "工业风"
+          ]
+        },
+        {
+          "id": "leather_furniture",
+          "name": "真皮",
+          "tags": [
+            "高档"
+          ]
+        },
+        {
+          "id": "faux_leather",
+          "name": "仿皮",
+          "tags": [
+            "经济"
+          ]
+        },
+        {
+          "id": "fabric",
+          "name": "布艺",
+          "tags": [
+            "温馨"
+          ]
+        },
+        {
+          "id": "velvet",
+          "name": "天鹅绒",
+          "tags": [
+            "高档"
+          ]
+        },
+        {
+          "id": "bamboo_furniture",
+          "name": "竹制",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "rattan",
+          "name": "藤编",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "marble_furniture",
+          "name": "大理石",
+          "tags": [
+            "高档"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "bedding_size",
+      "name": "床品尺寸",
+      "type": "enum",
+      "category": "家纺",
+      "values": [
+        {
+          "id": "twin_bed",
+          "name": "单人床 (90*190cm)",
+          "tags": [
+            "单人"
+          ]
+        },
+        {
+          "id": "full_bed",
+          "name": "双人床 (135*190cm)",
+          "tags": [
+            "双人"
+          ]
+        },
+        {
+          "id": "queen_bed",
+          "name": "大床 (150*200cm)",
+          "tags": [
+            "大床"
+          ]
+        },
+        {
+          "id": "king_bed",
+          "name": "特大床 (180*200cm)",
+          "tags": [
+            "特大"
+          ]
+        },
+        {
+          "id": "cal_king",
+          "name": "加州王床 (193*203cm)",
+          "tags": [
+            "超大"
+          ]
+        },
+        {
+          "id": "european_queen",
+          "name": "欧式大床 (160*200cm)",
+          "tags": [
+            "欧式"
+          ]
+        },
+        {
+          "id": "european_king",
+          "name": "欧式特大 (180*200cm)",
+          "tags": [
+            "欧式"
+          ]
+        },
+        {
+          "id": "custom",
+          "name": "定制尺寸",
+          "tags": [
+            "定制"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "furniture_style",
+      "name": "家具风格",
+      "type": "enum",
+      "category": "家居",
+      "values": [
+        {
+          "id": "modern",
+          "name": "现代简约",
+          "tags": [
+            "简约"
+          ]
+        },
+        {
+          "id": "nordic",
+          "name": "北欧风格",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "european",
+          "name": "欧式古典",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "chinese",
+          "name": "中式古典",
+          "tags": [
+            "传统"
+          ]
+        },
+        {
+          "id": "american",
+          "name": "美式风格",
+          "tags": [
+            "大气"
+          ]
+        },
+        {
+          "id": "japanese",
+          "name": "日式风格",
+          "tags": [
+            "简约"
+          ]
+        },
+        {
+          "id": "industrial",
+          "name": "工业风",
+          "tags": [
+            "个性"
+          ]
+        },
+        {
+          "id": "mediterranean",
+          "name": "地中海风格",
+          "tags": [
+            "浪漫"
+          ]
+        },
+        {
+          "id": "vintage_furniture",
+          "name": "复古风格",
+          "tags": [
+            "怀旧"
+          ]
+        },
+        {
+          "id": "minimalist_furniture",
+          "name": "极简主义",
+          "tags": [
+            "简单"
+          ]
+        },
+        {
+          "id": "scandinavian",
+          "name": "斯堪的纳维亚",
+          "tags": [
+            "北欧"
+          ]
+        },
+        {
+          "id": "art_deco",
+          "name": "装饰艺术",
+          "tags": [
+            "艺术"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "lighting_type",
+      "name": "灯具类型",
+      "type": "enum",
+      "category": "家居",
+      "values": [
+        {
+          "id": "ceiling_light",
+          "name": "吊灯",
+          "tags": [
+            "主灯"
+          ]
+        },
+        {
+          "id": "chandelier",
+          "name": "水晶吊灯",
+          "tags": [
+            "奢华"
+          ]
+        },
+        {
+          "id": "pendant",
+          "name": "吸顶灯",
+          "tags": [
+            "主灯"
+          ]
+        },
+        {
+          "id": "wall_light",
+          "name": "壁灯",
+          "tags": [
+            "辅助"
+          ]
+        },
+        {
+          "id": "table_lamp",
+          "name": "台灯",
+          "tags": [
+            "阅读"
+          ]
+        },
+        {
+          "id": "floor_lamp",
+          "name": "落地灯",
+          "tags": [
+            "氛围"
+          ]
+        },
+        {
+          "id": "track_light",
+          "name": "轨道灯",
+          "tags": [
+            "射灯"
+          ]
+        },
+        {
+          "id": "spotlight",
+          "name": "射灯",
+          "tags": [
+            "重点照明"
+          ]
+        },
+        {
+          "id": "strip_light",
+          "name": "灯带",
+          "tags": [
+            "氛围"
+          ]
+        },
+        {
+          "id": "night_light",
+          "name": "小夜灯",
+          "tags": [
+            "辅助"
+          ]
+        },
+        {
+          "id": "desk_lamp",
+          "name": "学习灯",
+          "tags": [
+            "护眼"
+          ]
+        },
+        {
+          "id": "induction_light",
+          "name": "感应灯",
+          "tags": [
+            "智能"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "pet_type",
+      "name": "宠物用品类型",
+      "type": "enum",
+      "category": "宠物",
+      "values": [
+        {
+          "id": "dog_food",
+          "name": "狗粮",
+          "tags": [
+            "主食"
+          ]
+        },
+        {
+          "id": "cat_food",
+          "name": "猫粮",
+          "tags": [
+            "主食"
+          ]
+        },
+        {
+          "id": "dog_toy",
+          "name": "狗玩具",
+          "tags": [
+            "玩具"
+          ]
+        },
+        {
+          "id": "cat_toy",
+          "name": "猫玩具",
+          "tags": [
+            "玩具"
+          ]
+        },
+        {
+          "id": "dog_bed",
+          "name": "狗窝",
+          "tags": [
+            "床品"
+          ]
+        },
+        {
+          "id": "cat_bed",
+          "name": "猫窝",
+          "tags": [
+            "床品"
+          ]
+        },
+        {
+          "id": "pet_carrier",
+          "name": "宠物包",
+          "tags": [
+            "出行"
+          ]
+        },
+        {
+          "id": "pet_collar",
+          "name": "项圈",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "pet_leash",
+          "name": "牵引绳",
+          "tags": [
+            "出行"
+          ]
+        },
+        {
+          "id": "pet_bowl",
+          "name": "食盆水盆",
+          "tags": [
+            "餐具"
+          ]
+        },
+        {
+          "id": "pet_clothes",
+          "name": "宠物衣服",
+          "tags": [
+            "服装"
+          ]
+        },
+        {
+          "id": "pet_shampoo",
+          "name": "宠物沐浴露",
+          "tags": [
+            "护理"
+          ]
+        },
+        {
+          "id": "cat_litter",
+          "name": "猫砂",
+          "tags": [
+            "用品"
+          ]
+        },
+        {
+          "id": "pet_cage",
+          "name": "宠物笼",
+          "tags": [
+            "住所"
+          ]
+        },
+        {
+          "id": "aquarium",
+          "name": "鱼缸",
+          "tags": [
+            "水族"
+          ]
+        },
+        {
+          "id": "bird_cage",
+          "name": "鸟笼",
+          "tags": [
+            "鸟类"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "garden_type",
+      "name": "园艺用品类型",
+      "type": "enum",
+      "category": "园艺",
+      "values": [
+        {
+          "id": "tools",
+          "name": "园艺工具",
+          "tags": [
+            "工具"
+          ]
+        },
+        {
+          "id": "seeds",
+          "name": "种子",
+          "tags": [
+            "种植"
+          ]
+        },
+        {
+          "id": "fertilizer",
+          "name": "肥料",
+          "tags": [
+            "养护"
+          ]
+        },
+        {
+          "id": "pots",
+          "name": "花盆",
+          "tags": [
+            "容器"
+          ]
+        },
+        {
+          "id": "soil",
+          "name": "土壤",
+          "tags": [
+            "介质"
+          ]
+        },
+        {
+          "id": "pesticide",
+          "name": "农药",
+          "tags": [
+            "保护"
+          ]
+        },
+        {
+          "id": "watering",
+          "name": "浇水设备",
+          "tags": [
+            "灌溉"
+          ]
+        },
+        {
+          "id": "fence",
+          "name": "围栏",
+          "tags": [
+            "装饰"
+          ]
+        },
+        {
+          "id": "lights",
+          "name": "庭院灯",
+          "tags": [
+            "照明"
+          ]
+        },
+        {
+          "id": "furniture",
+          "name": "户外家具",
+          "tags": [
+            "家具"
+          ]
+        },
+        {
+          "id": "bbq",
+          "name": "烧烤炉",
+          "tags": [
+            "厨具"
+          ]
+        },
+        {
+          "id": "umbrella",
+          "name": "户外伞",
+          "tags": [
+            "遮阳"
+          ]
+        },
+        {
+          "id": "hammock",
+          "name": "吊床",
+          "tags": [
+            "休闲"
+          ]
+        },
+        {
+          "id": "planter",
+          "name": "花箱",
+          "tags": [
+            "种植"
+          ]
+        },
+        {
+          "id": "statue",
+          "name": "庭院雕塑",
+          "tags": [
+            "装饰"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "musical_instrument",
+      "name": "乐器类型",
+      "type": "enum",
+      "category": "音乐",
+      "values": [
+        {
+          "id": "guitar",
+          "name": "吉他",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "electric_guitar",
+          "name": "电吉他",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "bass",
+          "name": "贝斯",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "violin",
+          "name": "小提琴",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "cello",
+          "name": "大提琴",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "piano",
+          "name": "钢琴",
+          "tags": [
+            "键盘"
+          ]
+        },
+        {
+          "id": "keyboard",
+          "name": "电子琴",
+          "tags": [
+            "键盘"
+          ]
+        },
+        {
+          "id": "drum",
+          "name": "架子鼓",
+          "tags": [
+            "打击乐"
+          ]
+        },
+        {
+          "id": "percussion",
+          "name": "打击乐器",
+          "tags": [
+            "打击乐"
+          ]
+        },
+        {
+          "id": "flute",
+          "name": "笛子",
+          "tags": [
+            "管乐"
+          ]
+        },
+        {
+          "id": "saxophone",
+          "name": "萨克斯",
+          "tags": [
+            "管乐"
+          ]
+        },
+        {
+          "id": "trumpet",
+          "name": "小号",
+          "tags": [
+            "管乐"
+          ]
+        },
+        {
+          "id": "viola",
+          "name": "中提琴",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "harp",
+          "name": "竖琴",
+          "tags": [
+            "弦乐"
+          ]
+        },
+        {
+          "id": "ukelele",
+          "name": "尤克里里",
+          "tags": [
+            "弦乐"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "fitness_equipment",
+      "name": "健身器材类型",
+      "type": "enum",
+      "category": "运动",
+      "values": [
+        {
+          "id": "treadmill",
+          "name": "跑步机",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "exercise_bike",
+          "name": "动感单车",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "rowing_machine",
+          "name": "划船机",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "elliptical",
+          "name": "椭圆机",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "weight_bench",
+          "name": "哑铃凳",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "dumbbells",
+          "name": "哑铃",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "barbell",
+          "name": "杠铃",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "kettlebell",
+          "name": "壶铃",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "resistance_band",
+          "name": "弹力带",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "yoga_mat",
+          "name": "瑜伽垫",
+          "tags": [
+            "瑜伽"
+          ]
+        },
+        {
+          "id": "yoga_blocks",
+          "name": "瑜伽砖",
+          "tags": [
+            "瑜伽"
+          ]
+        },
+        {
+          "id": "pull_up_bar",
+          "name": "引体向上杆",
+          "tags": [
+            "力量"
+          ]
+        },
+        {
+          "id": "ab_wheel",
+          "name": "腹肌轮",
+          "tags": [
+            "核心"
+          ]
+        },
+        {
+          "id": "jumping_rope",
+          "name": "跳绳",
+          "tags": [
+            "有氧"
+          ]
+        },
+        {
+          "id": "foam_roller",
+          "name": "泡沫轴",
+          "tags": [
+            "放松"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "camera_lens_type",
+      "name": "镜头类型",
+      "type": "enum",
+      "category": "摄影",
+      "values": [
+        {
+          "id": "prime",
+          "name": "定焦镜头",
+          "tags": [
+            "定焦"
+          ]
+        },
+        {
+          "id": "zoom",
+          "name": "变焦镜头",
+          "tags": [
+            "变焦"
+          ]
+        },
+        {
+          "id": "wide_angle",
+          "name": "广角镜头",
+          "tags": [
+            "风景"
+          ]
+        },
+        {
+          "id": "telephoto",
+          "name": "长焦镜头",
+          "tags": [
+            "远摄"
+          ]
+        },
+        {
+          "id": "macro",
+          "name": "微距镜头",
+          "tags": [
+            "微距"
+          ]
+        },
+        {
+          "id": "standard",
+          "name": "标准镜头",
+          "tags": [
+            "日常"
+          ]
+        },
+        {
+          "id": "fisheye",
+          "name": "鱼眼镜头",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "tilt_shift",
+          "name": "移轴镜头",
+          "tags": [
+            "建筑"
+          ]
+        },
+        {
+          "id": "portrait",
+          "name": "人像镜头",
+          "tags": [
+            "人像"
+          ]
+        },
+        {
+          "id": "sports",
+          "name": "运动镜头",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "mirror_lens",
+          "name": "反射式镜头",
+          "tags": [
+            "超远摄"
+          ]
+        },
+        {
+          "id": "extension_tube",
+          "name": "近摄接环",
+          "tags": [
+            "微距"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "software_type",
+      "name": "软件类型",
+      "type": "enum",
+      "category": "软件",
+      "values": [
+        {
+          "id": "os",
+          "name": "操作系统",
+          "tags": [
+            "系统"
+          ]
+        },
+        {
+          "id": "office",
+          "name": "办公软件",
+          "tags": [
+            "生产力"
+          ]
+        },
+        {
+          "id": "antivirus",
+          "name": "杀毒软件",
+          "tags": [
+            "安全"
+          ]
+        },
+        {
+          "id": "design",
+          "name": "设计软件",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "video_editing",
+          "name": "视频编辑",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "photo_editing",
+          "name": "图片编辑",
+          "tags": [
+            "创意"
+          ]
+        },
+        {
+          "id": "audio",
+          "name": "音频软件",
+          "tags": [
+            "音乐"
+          ]
+        },
+        {
+          "id": "development",
+          "name": "开发工具",
+          "tags": [
+            "编程"
+          ]
+        },
+        {
+          "id": "accounting",
+          "name": "财务软件",
+          "tags": [
+            "商务"
+          ]
+        },
+        {
+          "id": "education",
+          "name": "教育软件",
+          "tags": [
+            "学习"
+          ]
+        },
+        {
+          "id": "game",
+          "name": "游戏",
+          "tags": [
+            "娱乐"
+          ]
+        },
+        {
+          "id": "utility",
+          "name": "实用工具",
+          "tags": [
+            "工具"
+          ]
+        },
+        {
+          "id": "database",
+          "name": "数据库",
+          "tags": [
+            "企业"
+          ]
+        },
+        {
+          "id": "virtualization",
+          "name": "虚拟化软件",
+          "tags": [
+            "企业"
+          ]
+        },
+        {
+          "id": "cloud",
+          "name": "云服务",
+          "tags": [
+            "企业"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "jewelry_type",
+      "name": "首饰类型",
+      "type": "enum",
+      "category": "珠宝",
+      "values": [
+        {
+          "id": "ring",
+          "name": "戒指",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "necklace",
+          "name": "项链",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "bracelet",
+          "name": "手链",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "earring",
+          "name": "耳环",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "pendant",
+          "name": "吊坠",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "brooch",
+          "name": "胸针",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "anklet",
+          "name": "脚链",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "watch",
+          "name": "手表",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "cufflinks",
+          "name": "袖扣",
+          "tags": [
+            "配饰"
+          ]
+        },
+        {
+          "id": "body_jewelry",
+          "name": "身体穿刺",
+          "tags": [
+            "个性"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "jewelry_material",
+      "name": "珠宝材质",
+      "type": "enum",
+      "category": "珠宝",
+      "values": [
+        {
+          "id": "gold_24k",
+          "name": "24K金",
+          "tags": [
+            "纯金"
+          ]
+        },
+        {
+          "id": "gold_18k",
+          "name": "18K金",
+          "tags": [
+            "合金"
+          ]
+        },
+        {
+          "id": "gold_14k",
+          "name": "14K金",
+          "tags": [
+            "合金"
+          ]
+        },
+        {
+          "id": "silver_925",
+          "name": "925纯银",
+          "tags": [
+            "银"
+          ]
+        },
+        {
+          "id": "silver_999",
+          "name": "999纯银",
+          "tags": [
+            "银"
+          ]
+        },
+        {
+          "id": "platinum",
+          "name": "铂金",
+          "tags": [
+            "贵金属"
+          ]
+        },
+        {
+          "id": "palladium",
+          "name": "钯金",
+          "tags": [
+            "贵金属"
+          ]
+        },
+        {
+          "id": "titanium_jewelry",
+          "name": "钛金",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "stainless_steel_jewelry",
+          "name": "不锈钢",
+          "tags": [
+            "耐用"
+          ]
+        },
+        {
+          "id": "copper",
+          "name": "铜",
+          "tags": [
+            "复古"
+          ]
+        },
+        {
+          "id": "alloy",
+          "name": "合金",
+          "tags": [
+            "流行"
+          ]
+        },
+        {
+          "id": "diamond",
+          "name": "钻石",
+          "tags": [
+            "宝石"
+          ]
+        },
+        {
+          "id": "ruby",
+          "name": "红宝石",
+          "tags": [
+            "宝石"
+          ]
+        },
+        {
+          "id": "sapphire",
+          "name": "蓝宝石",
+          "tags": [
+            "宝石"
+          ]
+        },
+        {
+          "id": "emerald_jewelry",
+          "name": "翡翠",
+          "tags": [
+            "玉石"
+          ]
+        },
+        {
+          "id": "jade",
+          "name": "和田玉",
+          "tags": [
+            "玉石"
+          ]
+        },
+        {
+          "id": "pearl",
+          "name": "珍珠",
+          "tags": [
+            "有机宝石"
+          ]
+        },
+        {
+          "id": "amber",
+          "name": "琥珀",
+          "tags": [
+            "有机宝石"
+          ]
+        },
+        {
+          "id": "opal",
+          "name": "欧泊",
+          "tags": [
+            "宝石"
+          ]
+        },
+        {
+          "id": "topaz",
+          "name": "托帕石",
+          "tags": [
+            "半宝石"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "watch_type",
+      "name": "手表类型",
+      "type": "enum",
+      "category": "珠宝",
+      "values": [
+        {
+          "id": "quartz_watch",
+          "name": "石英表",
+          "tags": [
+            "精准"
+          ]
+        },
+        {
+          "id": "automatic_watch",
+          "name": "自动机械表",
+          "tags": [
+            "机械"
+          ]
+        },
+        {
+          "id": "manual_watch",
+          "name": "手动机械表",
+          "tags": [
+            "机械"
+          ]
+        },
+        {
+          "id": "smart_watch",
+          "name": "智能手表",
+          "tags": [
+            "科技"
+          ]
+        },
+        {
+          "id": "fashion_watch",
+          "name": "时装表",
+          "tags": [
+            "时尚"
+          ]
+        },
+        {
+          "id": "luxury_watch",
+          "name": "奢华腕表",
+          "tags": [
+            "高端"
+          ]
+        },
+        {
+          "id": "diver_watch",
+          "name": "潜水表",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "pilot_watch",
+          "name": "飞行员表",
+          "tags": [
+            "专业"
+          ]
+        },
+        {
+          "id": "dress_watch",
+          "name": "正装表",
+          "tags": [
+            "正式"
+          ]
+        },
+        {
+          "id": "field_watch",
+          "name": "军表",
+          "tags": [
+            "户外"
+          ]
+        },
+        {
+          "id": "chronograph",
+          "name": "计时码表",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "tourbillon",
+          "name": "陀飞轮",
+          "tags": [
+            "顶级工艺"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "watch_case_material",
+      "name": "表壳材质",
+      "type": "enum",
+      "category": "珠宝",
+      "values": [
+        {
+          "id": "stainless_steel_watch",
+          "name": "不锈钢",
+          "tags": [
+            "耐用"
+          ]
+        },
+        {
+          "id": "gold_watch",
+          "name": "K金",
+          "tags": [
+            "奢华"
+          ]
+        },
+        {
+          "id": "platinum_watch",
+          "name": "铂金",
+          "tags": [
+            "顶级"
+          ]
+        },
+        {
+          "id": "titanium_watch",
+          "name": "钛金属",
+          "tags": [
+            "轻盈"
+          ]
+        },
+        {
+          "id": "ceramic_watch",
+          "name": "陶瓷",
+          "tags": [
+            "耐磨"
+          ]
+        },
+        {
+          "id": "carbon_fiber_watch",
+          "name": "碳纤维",
+          "tags": [
+            "科技"
+          ]
+        },
+        {
+          "id": "plastic_watch",
+          "name": "塑料",
+          "tags": [
+            "运动"
+          ]
+        },
+        {
+          "id": "leather_watch_case",
+          "name": "皮革",
+          "tags": [
+            "复古"
+          ]
+        },
+        {
+          "id": "rubber_watch",
+          "name": "橡胶",
+          "tags": [
+            "运动"
+          ]
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "metadata": {
+    "total_attributes": 101,
+    "total_values": 1203,
+    "categories": [
+      "基础信息",
+      "外观",
+      "规格",
+      "人群",
+      "时间",
+      "服装规格",
+      "鞋类规格",
+      "电子规格",
+      "连接性",
+      "防护",
+      "物理规格",
+      "显示规格",
+      "软件",
+      "安全",
+      "音频",
+      "电器规格",
+      "家电",
+      "服务",
+      "资质",
+      "配件",
+      "场景",
+      "美妆",
+      "玩具",
+      "图书",
+      "内容",
+      "运动",
+      "母婴",
+      "办公",
+      "汽车"
+    ],
+    "created": "2026-03-01",
+    "version": "1.0"
+  }
+}

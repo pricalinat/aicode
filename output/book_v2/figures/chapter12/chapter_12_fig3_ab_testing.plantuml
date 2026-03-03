@@ -1,0 +1,34 @@
+@startuml
+skinparam componentStyle rectangle
+
+|User Traffic| as UT
+
+[Traffic Allocation] as TA
+[Control Group] as CG
+[Experiment Group] as EG
+[Metrics Collection] as MC
+[Statistical Test] as ST
+[Decision] as DEC
+
+UT --> TA: Random Split
+TA --> CG: Variant A
+TA --> EG: Variant B
+
+CG --> MC: Control Metrics
+EG --> MC: Experiment Metrics
+MC --> ST: Comparison Analysis
+ST --> DEC: Launch/ Rollback
+
+note right of ST
+  - Significance testing
+  - Confidence interval
+  - Effect size
+end note
+
+note left of DEC
+  Full rollout
+  Continue testing
+  Rollback
+end note
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Document Image| as DI
+
+[Preprocessing] as P
+[Layout Analysis] as LA
+[Text Recognition\n(OCR)] as TR
+[Structure Parsing] as SP
+[Information\nExtraction] as IE
+
+DI --> P: Input Document
+P --> LA: Preprocessed Image
+LA --> TR: Layout Regions
+TR --> SP: Text + Position
+SP --> IE: Structured Data
+
+rectangle "Layout Analysis" as LA2 {
+  [Title Detection]
+  [Paragraph\nSegmentation]
+  [Table Detection]
+  [Image Detection]
+}
+
+rectangle "Information Extraction" as IE2 {
+  [Entity\nExtraction]
+  [Relation\nExtraction]
+  [Attribute\nExtraction]
+  [Key Value\nPairs]
+}
+
+LA --> LA2
+IE --> IE2
+
+note right of IE
+  Product attributes
+  Price, specifications
+  Service features
+end note
+
+@enduml

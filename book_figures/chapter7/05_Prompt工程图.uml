@@ -1,0 +1,19 @@
+@startuml
+title 图5：Prompt工程图
+skinparam shadowing false
+
+"角色定义" --> "系统Prompt"
+"评分标准" --> "系统Prompt"
+"输出格式" --> "系统Prompt"
+"系统Prompt" --> "完整Prompt"
+"评测维度" --> "完整Prompt"
+"示例输入" --> "完整Prompt"
+"完整Prompt" --> "Few-shot示例"
+"Few-shot示例" --> "Chain-of-Thought"
+"Chain-of-Thought" --> "约束条件"
+"约束条件" --> "格式规范"
+"格式规范" --> "基准测试"
+"基准测试" --> "人工校验"
+"人工校验" --> "A/B对比"
+"A/B对比" --> "最终版本"
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Unlabeled Data| as UD
+|Sampling Strategy| as SS
+|Oracle Annotation| as OA
+|Labeled Data| as LD
+|Model Training| as MT
+
+UD -> SS: Pool of Unlabeled Samples
+SS -> OA: Select Most Valuable Samples
+OA -> LD: Add Annotated Samples
+LD -> MT: Update Training Set
+MT -> SS: Trained Model
+
+rectangle "Sampling Strategies" as SSS {
+  [Uncertainty\nSampling]
+  [Diversity\nSampling]
+  [Expected Model\nChange]
+  [Margin\nSampling]
+}
+
+SS --> SSS: Choose Strategy
+
+note right of SS
+  Reduce annotation cost
+  by selecting most
+  informative samples
+end note
+
+@enduml

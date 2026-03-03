@@ -1,0 +1,26 @@
+@startuml
+skinparam componentStyle rectangle
+
+|User Query| as UQ
+|Text Preprocessing| as TP
+|Intent Classification| as IC
+|Slot Filling| as SF
+|Intent Understanding| as IU
+
+UQ -> TP: Raw Query
+TP -> IC: Processed Text
+IC -> SF: Intent Type
+SF -> IU: Slots + Intent
+IU --> [Service Matching]
+
+note right of IC
+  Multi-intent detection
+  Confidence scoring
+end note
+
+note right of SF
+  NER-based slot extraction
+  Context completion
+end note
+
+@enduml

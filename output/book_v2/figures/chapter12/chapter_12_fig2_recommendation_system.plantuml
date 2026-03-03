@@ -1,0 +1,48 @@
+@startuml
+skinparam componentStyle rectangle
+
+|User Features| as UF
+|Item Features| as IF
+|Context Features| as CF
+
+[Recall Layer] as RL
+[Ranking Layer] as RKL
+[Reranking Layer] as RERL
+
+rectangle "Recall Strategies" as RS {
+  [Collaborative\nFiltering]
+  [Content-Based]
+  [Knowledge Graph]
+  [Hot Items]
+}
+
+rectangle "Ranking Models" as RM {
+  [DeepFM]
+  [Wide & Deep]
+  [DIN]
+  [DCN]
+}
+
+rectangle "Reranking" as RER {
+  [Diversity\nOptimization]
+  [Business Rules]
+  [Exposure\nControl]
+}
+
+UF --> RL
+IF --> RL
+CF --> RL
+RL --> RS
+
+RS --> RKL
+RKL --> RM
+RM --> RERL
+RERL --> RER
+
+note right of RL
+  Multi-channel
+  candidate generation
+  from millions of items
+end note
+
+@enduml

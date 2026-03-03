@@ -1,0 +1,34 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Query| as Q
+
+[Query Understanding] as QU
+[Recall] as R
+[Coarse Ranking] as CR
+[Fine Ranking] as FR
+[Reranking] as RR
+[Results] as RES
+
+Q --> QU: User Search Query
+QU --> R: Understanding Result
+R --> CR: Candidate Set
+CR --> FR: Top-K
+FR --> RR: Ranked List
+RR --> RES: Final Results
+
+note left of R
+  Multi-channel recall:
+  - Keyword
+  - Vector
+  - Knowledge Graph
+end note
+
+note right of FR
+  Deep learning models:
+  - DeepFM
+  - Wide & Deep
+  - DCN
+end note
+
+@enduml

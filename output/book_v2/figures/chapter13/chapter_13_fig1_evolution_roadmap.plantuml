@@ -1,0 +1,36 @@
+@startuml
+skinparam componentStyle rectangle
+
+rectangle "Current Challenges" as CC {
+  [Data Sparsity]
+  [Semantic Gap]
+  [Efficiency]
+  [Evaluation\nGap]
+}
+
+rectangle "Technology Trends" as TT {
+  [LLM\nApplications]
+  [Multi-modal\nFusion]
+  [Knowledge Graph\nEvolution]
+  [Evaluation\nInnovation]
+}
+
+rectangle "Future Applications" as FA {
+  [Intelligent\nAssistants]
+  [Immersive\nExperience]
+  [Cross-platform]
+  [Personalization]
+}
+
+CC --> TT
+TT --> FA
+
+note right of TT
+  - RAG\n- Agent\n- Multimodal LLM
+end note
+
+note right of FA
+  - AR/VR\n- Digital Human\n- Metaverse
+end note
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Multi-modal Inputs| as MI
+
+rectangle "Early Fusion" as EF {
+  [Feature\nConcatenation]
+  [Shared\nRepresentation]
+}
+
+rectangle "Late Fusion" as LF {
+  [Decision\nVoting]
+  [Weighted\nAveraging]
+  [Stacking]
+}
+
+rectangle "Attention Fusion" as AF {
+  [Cross-attention]
+  [Self-attention\nFusion]
+  [Transformer\nFusion]
+}
+
+MI --> EF
+MI --> LF
+MI --> AF
+
+note right of EF
+  Fuse at input level
+  Simple but may lose
+  modality-specific info
+end note
+
+note right of LF
+  Fuse at decision level
+  Each modality independent
+end note
+
+note right of AF
+  Fuse via attention
+  Dynamic weight learning
+end note
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Service Quality\nDimensions| as SQD
+
+rectangle "Functionality" as F {
+  [Function Completeness]
+  [Availability]
+  [Reliability]
+}
+
+rectangle "Performance" as P {
+  [Response Time]
+  [Throughput]
+  [Stability]
+}
+
+rectangle "User Perception" as UP {
+  [User Ratings]
+  [Reviews Sentiment]
+  [Complaint Rate]
+}
+
+rectangle "Compliance" as C {
+  [Security Check]
+  [Regulatory Compliance]
+  [Platform Rules]
+}
+
+SQD --> F
+SQD --> P
+SQD --> UP
+SQD --> C
+
+note right of SQD
+  Multi-dimensional
+  service quality
+  evaluation model
+end note
+
+@enduml

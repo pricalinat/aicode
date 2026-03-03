@@ -1,0 +1,35 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Query| as Q
+|Knowledge Graph| as KG
+
+[Entity Linking] as EL
+[Semantic\nAugmentation] as SA
+[Ranking\nEnhancement] as RE
+[Result\nExplanation] as REXP
+
+Q --> EL: User Query
+EL --> KG: Link to Entities
+KG --> SA: Retrieve Entity Info
+SA --> RE: Add KG Features
+RE --> REXP: Explainable Results
+
+rectangle "Knowledge Graph" as KG2 {
+  [Product\nEntities]
+  [Brand\nEntities]
+  [Category\nEntities]
+  [User\nEntities]
+  [Relations]
+}
+
+EL --> KG2: Lookup
+KG2 --> SA: Rich Context
+
+note right of RE
+  - Entity popularity
+  - Relation strength
+  - Attribute matching
+end note
+
+@enduml

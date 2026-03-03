@@ -1,0 +1,37 @@
+@startuml
+skinparam componentStyle rectangle
+
+package "Service Understanding Evaluation" {
+    [Service Classification\nEvaluation] as SCE
+    [Intent Recognition\nEvaluation] as IRE
+    [Service Matching\nEvaluation] as SME
+    [Service Quality\nEvaluation] as SQE
+    [Multi-dimensional\nComprehensive Evaluation] as MDE
+}
+
+[Evaluation Data\nConstruction] as EDC
+[Offline Evaluation] as FE
+[Online A/B Testing] as OA
+[Metrics: Accuracy\nPrecision Recall F1\nNDCG MRR] as MET
+
+EDC --> SCE
+EDC --> IRE
+EDC --> SME
+EDC --> SQE
+
+SCE --> MDE
+IRE --> MDE
+SME --> MDE
+SQE --> MDE
+
+MDE --> FE
+MDE --> OA
+MDE --> MET
+
+note right of MDE
+  Comprehensive evaluation
+  framework covers all
+  service understanding aspects
+end note
+
+@enduml

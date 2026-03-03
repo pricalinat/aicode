@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-01T23:57:00+08:00",
+    "total_attributes": 1004,
+    "total_values": 4224,
+    "description": "属性之间的关系网络 - 层级、互斥、依赖、组合、影响关系"
+  },
+  "relationships": {
+    "hierarchical": {
+      "description": "层级关系 - 属性之间的父子、兄弟、祖先关系",
+      "edges": [
+        {
+          "parent": "category",
+          "children": ["electronics", "clothing", "footwear", "beauty", "sports", "home", "food", "toys", "books", "health"],
+          "type": "category_tree"
+        },
+        {
+          "parent": "electronics",
+          "children": ["phone", "laptop", "tablet", "camera", "earphones", "smart_watch", "computer_parts"],
+          "type": "subcategory"
+        },
+        {
+          "parent": "clothing",
+          "children": ["tops", "bottoms", "dresses", "outerwear", "underwear", "sports_wear"],
+          "type": "subcategory"
+        },
+        {
+          "parent": "price",
+          "children": ["price_segment", "price_range_low", "price_range_mid", "price_range_high"],
+          "type": "price_hierarchy"
+        },
+        {
+          "parent": "target_audience",
+          "children": ["student", "office_worker", "business_person", "gamer", "designer", "photographer"],
+          "type": "audience细分"
+        },
+        {
+          "parent": "usage_scenario",
+          "children": ["daily_use", "business", "gaming", "creative", "travel", "sports"],
+          "type": "scenario细分"
+        },
+        {
+          "parent": "gift_occasion",
+          "children": ["birthday", "wedding", "anniversary", "festival", "valentines", "christmas"],
+          "type": "occasion细分"
+        }
+      ]
+    },
+    "mutual_exclusion": {
+      "description": "互斥关系 - 不能同时使用的属性组合",
+      "edges": [
+        {
+          "attr1": "gender",
+          "attr2": "unisex",
+          "reason": "性别属性与中性属性互斥",
+          "exclusion_type": "hard"
+        },
+        {
+          "attr1": "size",
+          "attr2": "one_size",
+          "reason": "多尺寸与均码互斥",
+          "exclusion_type": "hard"
+        },
+        {
+          "attr1": "left_hand",
+          "attr2": "right_hand",
+          "reason": "左右手属性互斥",
+          "exclusion_type": "hard"
+        },
+        {
+          "attr1": "product_role",
+          "attr2": "profit_role",
+          "reason": "爆款与利润款角色互斥（同一商品不能同时是爆款和利润款）",
+          "exclusion_type": "business_rule"
+        },
+        {
+          "attr1": "traffic_power",
+          "attr2": "conversion_power",
+          "reason": "引流能力与转化能力在某些场景下互斥",
+          "exclusion_type": "soft"
+        },
+        {
+          "attr1": "seasonality",
+          "attr2": "year_round",
+          "reason": "季节性与常年销售互斥",
+          "exclusion_type": "hard"
+        },
+        {
+          "attr1": "gift_occasion",
+          "attr2": "daily_use",
+          "reason": "送礼场合与日常使用场景在定位上互斥",
+          "exclusion_type": "soft"
+        }
+      ]
+    },
+    "dependency": {
+      "description": "依赖关系 - 一个属性的存在依赖于另一个属性",
+      "edges": [
+        {
+          "dependent": "screen_size",
+          "depends_on": "category",
+          "condition": "category IN [phone, tablet, laptop, monitor]",
+          "reason": "屏幕尺寸仅适用于带屏幕的电子产品"
+        },
+        {
+          "dependent": "processor",
+          "depends_on": "category",
+          "condition": "category IN [laptop, computer, tablet]",
+          "reason": "处理器仅适用于计算设备"
+        },
+        {
+          "dependent": "shoe_size",
+          "depends_on": "category",
+          "condition": "category IN [shoes, sandals, boots]",
+          "reason": "鞋码仅适用于鞋类商品"
+        },
+        {
+          "dependent": "clothing_size",
+          "depends_on": "category",
+          "condition": "category IN [clothing, underwear, socks]",
+          "reason": "服装尺码仅适用于服装类"
+        },
+        {
+          "dependent": "skin_type",
+          "depends_on": "category",
+          "condition": "category IN [skincare, makeup]",
+          "reason": "肤质仅适用于美妆护肤类"
+        },
+        {
+          "dependent": "aroma",
+          "depends_on": "category",
+          "condition": "category IN [perfume, skincare]",
+          "reason": "香型仅适用于香水和部分护肤品"
+        },
+        {
+          "dependent": "gift_price",
+          "depends_on": "gift_occasion",
+          "condition": "gift_occasion IS NOT NULL",
+          "reason": "礼品价位依赖于是否选择送礼场景"
+        },
+        {
+          "dependent": "gift_recipient",
+          "depends_on": "gift_occasion",
+          "condition": "gift_occasion IS NOT NULL",
+          "reason": "送礼对象依赖于是否选择送礼场合"
+        },
+        {
+          "dependent": "filter_weight",
+          "depends_on": "filterable",
+          "condition": "filterable = true",
+          "reason": "筛选项权重依赖于属性是否可筛选"
+        },
+        {
+          "dependent": "sortable",
+          "depends_on": "filterable",
+          "condition": "filterable = true",
+          "reason": "排序依赖于筛选功能"
+        },
+        {
+          "dependent": "profit_margin",
+          "depends_on": "product_role",
+          "condition": "product_role IN [profit, premium]",
+          "reason": "毛利率主要适用于利润款和高端款"
+        },
+        {
+          "dependent": "repurchase_rate",
+          "depends_on": "product_role",
+          "condition": "product_role IN [hit, repurchase]",
+          "reason": "复购率主要适用于爆款和高复购商品"
+        },
+        {
+          "dependent": "complementary_products",
+          "depends_on": "category",
+          "condition": "category IS NOT NULL",
+          "reason": "互补商品需要明确品类"
+        },
+        {
+          "dependent": "substitute_products",
+          "depends_on": "category",
+          "condition": "category IS NOT NULL",
+          "reason": "替代商品需要明确品类"
+        }
+      ]
+    },
+    "combination": {
+      "description": "组合关系 - 经常一起使用的属性组合",
+      "combinations": [
+        {
+          "attrs": ["brand", "category", "price"],
+          "usage": "基础搜索三件套",
+          "frequency": "very_high"
+        },
+        {
+          "attrs": ["color", "size", "style"],
+          "usage": "商品属性选择",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["gender", "target_audience", "age_group"],
+          "usage": "人群定向",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["usage_scenario", "occasion", "gift_occasion"],
+          "usage": "场景选择",
+          "frequency": "medium"
+        },
+        {
+          "attrs": ["category", "material", "origin"],
+          "usage": "品质筛选",
+          "frequency": "medium"
+        },
+        {
+          "attrs": ["discount", "gift_price", "promotion_type"],
+          "usage": "促销组合",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["product_role", "profit_margin", "price_segment"],
+          "usage": "运营选品组合",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["suitable_season", "suitable_environment", "suitable_weather"],
+          "usage": "场景环境组合",
+          "frequency": "medium"
+        },
+        {
+          "attrs": ["user_age", "spending_ability", "brand_preference"],
+          "usage": "用户画像组合",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["matching_products", "complementary_products", "substitute_products"],
+          "usage": "商品关联组合",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["category", "screen_size", "processor", "memory", "storage"],
+          "usage": "电子产品规格组合",
+          "frequency": "very_high"
+        },
+        {
+          "attrs": ["category", "clothing_size", "color", "material", "style"],
+          "usage": "服装规格组合",
+          "frequency": "very_high"
+        },
+        {
+          "attrs": ["category", "skin_type", "aroma", "effect"],
+          "usage": "美妆护肤组合",
+          "frequency": "high"
+        },
+        {
+          "attrs": ["category", "sport_type", "level", "indoor_outdoor"],
+          "usage": "运动户外组合",
+          "frequency": "medium"
+        }
+      ]
+    },
+    "influence": {
+      "description": "影响关系 - 一个属性的变化会影响另一个属性",
+      "edges": [
+        {
+          "source": "price",
+          "target": "user_rating",
+          "influence": "价格影响用户评分预期",
+          "direction": "bidirectional",
+          "strength": "medium"
+        },
+        {
+          "source": "sales_count",
+          "target": "user_rating",
+          "influence": "销量影响可信度感知",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "discount",
+          "target": "sales_count",
+          "influence": "折扣力度影响销量",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "product_role",
+          "target": "profit_margin",
+          "influence": "商品角色决定利润率区间",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "traffic_power",
+          "target": "sales_count",
+          "influence": "引流能力影响销量",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "search_volume",
+          "target": "sales_count",
+          "influence": "搜索热度影响销售",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "user_age",
+          "target": "spending_ability",
+          "influence": "年龄影响消费能力",
+          "direction": "unidirectional",
+          "strength": "medium"
+        },
+        {
+          "source": "brand",
+          "target": "price",
+          "influence": "品牌定位影响价格区间",
+          "direction": "bidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "category",
+          "target": "target_audience",
+          "influence": "品类影响目标人群",
+          "direction": "unidirectional",
+          "strength": "medium"
+        },
+        {
+          "source": "suitable_season",
+          "target": "sales_count",
+          "influence": "季节性影响销量波动",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "spending_ability",
+          "target": "price_sensitivity",
+          "influence": "消费能力影响价格敏感度",
+          "direction": "bidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "complementary_products",
+          "target": "purchase_correlation",
+          "influence": "互补商品影响购买关联",
+          "direction": "bidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "user_rating",
+          "target": "conversion_power",
+          "influence": "评分影响转化能力",
+          "direction": "unidirectional",
+          "strength": "high"
+        },
+        {
+          "source": "review_count",
+          "target": "user_rating",
+          "influence": "评价数量影响评分可信度",
+          "direction": "bidirectional",
+          "strength": "medium"
+        }
+      ]
+    }
+  },
+  "network_statistics": {
+    "total_hierarchical_edges": 7,
+    "total_mutual_exclusion_edges": 7,
+    "total_dependency_edges": 14,
+    "total_combination_groups": 14,
+    "total_influence_edges": 14,
+    "most_connected_attributes": [
+      {"attr": "category", "connections": 12},
+      {"attr": "price", "connections": 8},
+      {"attr": "product_role", "connections": 6},
+      {"attr": "target_audience", "connections": 5},
+      {"attr": "gift_occasion", "connections": 4},
+      {"attr": "sales_count", "connections": 4},
+      {"attr": "user_rating", "connections": 3},
+      {"attr": "spending_ability", "connections": 3}
+    ]
+  },
+  "gaps_analysis": {
+    "missing_hierarchical": [
+      "建议增加：材质层级关系（天然材料->棉/丝/麻->具体材质）",
+      "建议增加：风格层级关系（现代->简约->北欧->具体风格）"
+    ],
+    "missing_dependency": [
+      "屏幕分辨率依赖于屏幕尺寸",
+      "电池容量依赖于设备类型",
+      "内存依赖于设备类型"
+    ],
+    "missing_combinations": [
+      "用户意图+场景组合",
+      "运营选品+推荐系统组合",
+      "搜索热度+转化能力组合"
+    ],
+    "missing_influence": [
+      "评价数对搜索排名的影响",
+      "价格敏感度对推荐的影响",
+      "复购率对流量的影响"
+    ]
+  }
+}

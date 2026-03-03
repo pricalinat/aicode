@@ -1,0 +1,34 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Data Sources| as DS
+
+rectangle "Public Datasets" as PD {
+  [Amazon\nProduct Search]
+  [MovieLens]
+  [ESCI]
+}
+
+rectangle "Business Data" as BD {
+  [Search Logs]
+  [Click Logs]
+  [Purchase Logs]
+  [User Reviews]
+}
+
+rectangle "Active Collection" as AC {
+  [Query\nConstruction]
+  [Test Case\nDesign]
+  [Scenario\nSimulation]
+}
+
+DS --> PD
+DS --> BD
+DS --> AC
+
+note right of DS
+  Diversified data
+  collection approach
+end note
+
+@enduml

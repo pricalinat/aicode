@@ -1,0 +1,37 @@
+@startuml
+skinparam componentStyle rectangle
+
+|User Query| as UQ
+
+[LLM Understanding] as LLMU
+[Knowledge Retrieval] as KR
+[Response Generation] as RG
+[Supply Understanding] as SU
+
+rectangle "RAG Pipeline" as RAG {
+  [Query\nUnderstanding]
+  [Vector\nRetrieval]
+  [Knowledge\nRanking]
+  [Context\nIntegration]
+}
+
+rectangle "Supply Understanding\nwith LLM" as SU2 {
+  [Intent\nRecognition]
+  [Entity\nUnderstanding]
+  [Matching\nOptimization]
+  [Explanation\nGeneration]
+}
+
+UQ --> LLMU
+LLMU --> RAG: Parse Query
+RAG --> RG: Retrieve + Context
+RG --> SU2: Generate Response
+SU2 --> [Supply Matching]
+
+note right of RAG
+  Retrieval Augmented
+  Generation combines
+  LLM with knowledge base
+end note
+
+@enduml

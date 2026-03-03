@@ -1,0 +1,29 @@
+@startuml
+skinparam componentStyle rectangle
+
+|Online System| as OS
+|Data Platform| as DP
+|Evaluation Data| as ED
+|Model Iteration| as MI
+|New Model| as NM
+
+rectangle "Evaluation Closed Loop" as ECL {
+  OS -> DP: User Behavior Data
+  DP -> ED: Data Processing
+  ED -> MI: Evaluation Dataset
+  MI -> NM: Model Training
+  NM -> OS: Deployment
+  
+  OS -[dashed]-> DP: A/B Testing Feedback
+  DP -[dashed]-> ED: Data Updates
+  ED -[dashed]-> MI: Effect Analysis
+  MI -[dashed]-> OS: Continuous Improvement
+}
+
+note right of ECL
+  Data-model co-evolution
+  cycle for continuous
+  system improvement
+end note
+
+@enduml

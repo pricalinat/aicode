@@ -1,0 +1,45 @@
+@startuml
+skinparam componentStyle rectangle
+
+|AI System| as AIS
+
+rectangle "Privacy Protection" as PP {
+  [Data Security]
+  [Privacy\nComputing]
+  [Transparency]
+  [User Consent]
+}
+
+rectangle "Fairness" as F {
+  [Supply\nFairness]
+  [User\nFairness]
+  [Bias\nDetection]
+  [Fairness\nAuditing]
+}
+
+rectangle "Explainability" as E {
+  [Decision\nExplanation]
+  [Audit\nTrail]
+  [Interpretable\nModels]
+  [User Trust]
+}
+
+rectangle "Sustainability" as S {
+  [Energy\nEfficiency]
+  [Green AI]
+  [Long-term\nValue]
+  [Resource\nOptimization]
+}
+
+AIS --> PP
+AIS --> F
+AIS --> E
+AIS --> S
+
+note right of AIS
+  Responsible AI
+  Development for
+  supply understanding
+end note
+
+@enduml
