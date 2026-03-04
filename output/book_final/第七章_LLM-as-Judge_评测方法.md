@@ -576,14 +576,7 @@ $$Score_{compliance} = \frac{\sum_d w_d \cdot Compliance_d}{\sum_d w_d}$$
 
 > **实验数据**：在外卖平台服务理解评测中，LLM-as-Judge 对服务合规性的判断准确率达 92.3%，与人工审核一致性达 87.5%。
 
-### 7.6.5 代码生成质量评估
 
-代码生成的评估维度：
-
-$$S_{code} = \alpha \cdot Correctness + \beta \cdot Readability + \gamma \cdot Efficiency + \delta \cdot Security$$
-
-**正确性评估**：通常需要通过实际执行测试用例验证：
-$$Pass@K = \mathbb{E}\left[\min\left(1, \sum_{i=1}^{K} \mathbb{1}[tested(i)]\right)\right]$$
 
 
 ## 7.7 批判性分析
